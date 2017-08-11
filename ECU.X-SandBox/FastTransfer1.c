@@ -196,17 +196,21 @@ bool receiveData1() {
                 Data = Receive_get1();
                 ReciveArray1[i] = Data;
                 DelayUS(200);
-                printf("%u ",Data);
+                //printf("%u ",Data);
                 i++;
             }while(Data != 0x00);
+            
+            //printf("\n\r ");
+            
+            ClearBuffer();
             
             cobs_decode_result result;
 
             result = cobs_decode(ProcessArray1, sizeof(ProcessArray1), ReciveArray1, i);
             
-            char CS = CRC8(ProcessArray1, result.out_len-1);
-             
-            if(ProcessArray1[result.out_len-1] == CS){
+            unsigned char CS = CRC8(ProcessArray1, result.out_len-2);
+            
+            if(ProcessArray1[result.out_len-2] == CS){
                 INDICATOR ^= 1;
                 SaveDataToArray(&ProcessArray1,  result.out_len);
                 return true;

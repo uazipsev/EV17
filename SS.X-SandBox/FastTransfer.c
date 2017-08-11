@@ -135,18 +135,18 @@ void sendData(unsigned char whereToSend, unsigned char ComandByte, unsigned char
     int count = 5;
     i = count;
 
-        SendArray[count] = GetFaults(0);//ring_buffer.buf[i];
-        count++;
-        SendArray[count] = GetFaults(1);//ring_buffer.buf[i];
+        SendArray[5] = GetFaults(0);//ring_buffer.buf[i];
+        //count++;
+        SendArray[6] = GetFaults(1);//ring_buffer.buf[i];
         //count++;
 
-    unsigned char CS = CRC8(SendArray, count+1);
+    unsigned char CS = CRC8(SendArray, 7);
     //send the crc
     //printf("CRC = %x\n",CS);
     
-    SendArray[count++] = (CS);
+    SendArray[7] = CS;
     
-    result = cobs_encode(COBSArray, sizeof(COBSArray), SendArray, count);
+    result = cobs_encode(COBSArray, sizeof(COBSArray), SendArray, 8);
     
     SendArray[0] = whereToSend;
     

@@ -3,27 +3,24 @@
 #include <xc.h>
 #include "PinDef.h"
 #include "UART.h"
+#include "Communications.h"
+
 
 char ByteHigh, ByteLow = 0;
 
 void ReadFaults(){
-//    if(BPD_FAULT == 1){
-        ByteHigh = 0xAA;
-//    }
-//    else{
-        ByteLow = 0xBB;
-//    }
-//    ByteHigh = ByteHigh | ((BPD_FAULT & 0x01) << 0);
-//    ByteHigh = ByteHigh | ((BOTS_FAULT) << 1);
-//    ByteHigh = ByteHigh | ((AMD_FAULT) << 2);
-//    ByteHigh = ByteHigh | ((STOP_L_FAULT) << 3);
-//    ByteHigh = ByteHigh | ((STOP_R_FAULT) << 4);
-//    ByteHigh = ByteHigh | ((STOP_C_FAULT) << 5);
-//    ByteHigh = ByteHigh | ((IMD_FAULT) << 6);
-//    ByteHigh = ByteHigh | ((BPD_FAULT) << 7);
-//    ByteLow = ByteLow | ((BPD_FAULT & 0x01) << 0);
-//    ByteLow = ByteLow | ((IS_FAULT) << 1);
-//    ByteLow = ByteLow | ((AUX_FAULT) << 2);
+    
+    ByteHigh = ByteHigh | ((BPD_FAULT & 0x01) << 0);
+    ByteHigh = ByteHigh | ((BOTS_FAULT & 0x01) << 1);
+    ByteHigh = ByteHigh | ((AMD_FAULT & 0x01) << 2);
+    ByteHigh = ByteHigh | ((STOP_L_FAULT & 0x01) << 3);
+    ByteHigh = ByteHigh | ((STOP_R_FAULT & 0x01) << 4);
+    ByteHigh = ByteHigh | ((STOP_C_FAULT & 0x01) << 5);
+    ByteHigh = ByteHigh | ((IMD_FAULT & 0x01) << 6);
+    ByteHigh = ByteHigh | ((ECU_FAULT & 0x01) << 7);
+    ByteLow = ByteLow | ((BPD_FAULT & 0x01) << 0);
+    ByteLow = ByteLow | ((IS_FAULT & 0x01) << 1);
+    ByteLow = ByteLow | ((AUX_FAULT & 0x01) << 2);
 //    ByteHigh = ByteHigh | (0 << 0);
 //    ByteHigh = ByteHigh | (0 << 1);
 //    ByteHigh = ByteHigh | (1 << 2);

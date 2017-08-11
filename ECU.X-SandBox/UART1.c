@@ -165,3 +165,7 @@ void __attribute__((interrupt, no_auto_psv)) _U2TXInterrupt(void) {
 bool TXStallGet1(){
     return Transmit_stall1;
 }
+
+void ClearBuffer(){
+    UART1_buff_flush(&input_buffer1,1);
+}

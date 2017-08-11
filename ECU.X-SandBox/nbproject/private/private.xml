@@ -4,9 +4,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/EV17.git/trunk/ECU.X-SandBox/main.c</file>
-            <file>file:/C:/EV17.git/trunk/ECU.X-SandBox/FastTransfer1.c</file>
-            <file>file:/C:/EV17.git/trunk/ECU.X-SandBox/Communications.c</file>
+            <file>file:/D:/EV17.git/trunk/ECU.X-SandBox/Communications.c</file>
+            <file>file:/D:/EV17.git/trunk/ECU.X-SandBox/FastTransfer1.c</file>
+            <file>file:/D:/EV17.git/trunk/ECU.X-SandBox/Functions.c</file>
+            <file>file:/D:/EV17.git/trunk/ECU.X-SandBox/UART1.c</file>
         </group>
     </open-files>
 </project-private>

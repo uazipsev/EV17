@@ -1,15 +1,15 @@
 Version 3.2 HI-TECH Software Intermediate Code
 "30 COBS.c
-[c E151 0 1 2 .. ]
-[n E151 . COBS_ENCODE_OK COBS_ENCODE_NULL_POINTER COBS_ENCODE_OUT_BUFFER_OVERFLOW  ]
-"41 cobs.h
-[s S5 `ui 1 `E151 1 ]
+[c E145 0 1 2 .. ]
+[n E145 . COBS_ENCODE_OK COBS_ENCODE_NULL_POINTER COBS_ENCODE_OUT_BUFFER_OVERFLOW  ]
+"41 COBS.h
+[s S5 `ui 1 `E145 1 ]
 [n S5 . out_len status ]
 "116 COBS.c
-[c E160 0 1 2 4 8 .. ]
-[n E160 . COBS_DECODE_OK COBS_DECODE_NULL_POINTER COBS_DECODE_OUT_BUFFER_OVERFLOW COBS_DECODE_ZERO_BYTE_IN_INPUT COBS_DECODE_INPUT_TOO_SHORT  ]
-"57 cobs.h
-[s S6 `ui 1 `E160 1 ]
+[c E154 0 1 2 4 8 .. ]
+[n E154 . COBS_DECODE_OK COBS_DECODE_NULL_POINTER COBS_DECODE_OUT_BUFFER_OVERFLOW COBS_DECODE_ZERO_BYTE_IN_INPUT COBS_DECODE_INPUT_TOO_SHORT  ]
+"57 COBS.h
+[s S6 `ui 1 `E154 1 ]
 [n S6 . out_len status ]
 [; ;__size_t.h: 4: typedef unsigned size_t;
 [; ;stdlib.h: 7: typedef unsigned short wchar_t;
@@ -65,58 +65,52 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stdlib.h: 104: extern char * ftoa(float f, int * status);
 [; ;stdint.h: 13: typedef signed char int8_t;
 [; ;stdint.h: 20: typedef signed int int16_t;
-[; ;stdint.h: 28: typedef signed short long int int24_t;
-[; ;stdint.h: 36: typedef signed long int int32_t;
-[; ;stdint.h: 43: typedef unsigned char uint8_t;
-[; ;stdint.h: 49: typedef unsigned int uint16_t;
-[; ;stdint.h: 56: typedef unsigned short long int uint24_t;
-[; ;stdint.h: 63: typedef unsigned long int uint32_t;
-[; ;stdint.h: 71: typedef signed char int_least8_t;
-[; ;stdint.h: 78: typedef signed int int_least16_t;
-[; ;stdint.h: 90: typedef signed short long int int_least24_t;
-[; ;stdint.h: 98: typedef signed long int int_least32_t;
-[; ;stdint.h: 105: typedef unsigned char uint_least8_t;
-[; ;stdint.h: 111: typedef unsigned int uint_least16_t;
-[; ;stdint.h: 121: typedef unsigned short long int uint_least24_t;
-[; ;stdint.h: 128: typedef unsigned long int uint_least32_t;
-[; ;stdint.h: 137: typedef signed char int_fast8_t;
-[; ;stdint.h: 144: typedef signed int int_fast16_t;
-[; ;stdint.h: 156: typedef signed short long int int_fast24_t;
-[; ;stdint.h: 164: typedef signed long int int_fast32_t;
-[; ;stdint.h: 171: typedef unsigned char uint_fast8_t;
-[; ;stdint.h: 177: typedef unsigned int uint_fast16_t;
-[; ;stdint.h: 187: typedef unsigned short long int uint_fast24_t;
-[; ;stdint.h: 194: typedef unsigned long int uint_fast32_t;
-[; ;stdint.h: 200: typedef int32_t intmax_t;
-[; ;stdint.h: 205: typedef uint32_t uintmax_t;
-[; ;stdint.h: 210: typedef int16_t intptr_t;
-[; ;stdint.h: 215: typedef uint16_t uintptr_t;
-[; ;cobs.h: 33: typedef enum
-[; ;cobs.h: 34: {
-[; ;cobs.h: 35: COBS_ENCODE_OK = 0x00,
-[; ;cobs.h: 36: COBS_ENCODE_NULL_POINTER = 0x01,
-[; ;cobs.h: 37: COBS_ENCODE_OUT_BUFFER_OVERFLOW = 0x02
-[; ;cobs.h: 38: } cobs_encode_status;
-[; ;cobs.h: 40: typedef struct
-[; ;cobs.h: 41: {
-[; ;cobs.h: 42: size_t out_len;
-[; ;cobs.h: 43: cobs_encode_status status;
-[; ;cobs.h: 44: } cobs_encode_result;
-[; ;cobs.h: 47: typedef enum
-[; ;cobs.h: 48: {
-[; ;cobs.h: 49: COBS_DECODE_OK = 0x00,
-[; ;cobs.h: 50: COBS_DECODE_NULL_POINTER = 0x01,
-[; ;cobs.h: 51: COBS_DECODE_OUT_BUFFER_OVERFLOW = 0x02,
-[; ;cobs.h: 52: COBS_DECODE_ZERO_BYTE_IN_INPUT = 0x04,
-[; ;cobs.h: 53: COBS_DECODE_INPUT_TOO_SHORT = 0x08
-[; ;cobs.h: 54: } cobs_decode_status;
-[; ;cobs.h: 56: typedef struct
-[; ;cobs.h: 57: {
-[; ;cobs.h: 58: size_t out_len;
-[; ;cobs.h: 59: cobs_decode_status status;
-[; ;cobs.h: 60: } cobs_decode_result;
-[; ;cobs.h: 71: cobs_encode_result cobs_encode(uint8_t *dst_buf_ptr, size_t dst_buf_len, const uint8_t * src_ptr, size_t src_len);
-[; ;cobs.h: 72: cobs_decode_result cobs_decode(uint8_t *dst_buf_ptr, size_t dst_buf_len, const uint8_t * src_ptr, size_t src_len);
+[; ;stdint.h: 38: typedef signed long int int32_t;
+[; ;stdint.h: 45: typedef unsigned char uint8_t;
+[; ;stdint.h: 51: typedef unsigned int uint16_t;
+[; ;stdint.h: 67: typedef unsigned long int uint32_t;
+[; ;stdint.h: 75: typedef signed char int_least8_t;
+[; ;stdint.h: 82: typedef signed int int_least16_t;
+[; ;stdint.h: 104: typedef signed long int int_least32_t;
+[; ;stdint.h: 111: typedef unsigned char uint_least8_t;
+[; ;stdint.h: 117: typedef unsigned int uint_least16_t;
+[; ;stdint.h: 136: typedef unsigned long int uint_least32_t;
+[; ;stdint.h: 145: typedef signed char int_fast8_t;
+[; ;stdint.h: 152: typedef signed int int_fast16_t;
+[; ;stdint.h: 174: typedef signed long int int_fast32_t;
+[; ;stdint.h: 181: typedef unsigned char uint_fast8_t;
+[; ;stdint.h: 187: typedef unsigned int uint_fast16_t;
+[; ;stdint.h: 206: typedef unsigned long int uint_fast32_t;
+[; ;stdint.h: 212: typedef int32_t intmax_t;
+[; ;stdint.h: 217: typedef uint32_t uintmax_t;
+[; ;stdint.h: 222: typedef int16_t intptr_t;
+[; ;stdint.h: 227: typedef uint16_t uintptr_t;
+[; ;COBS.h: 33: typedef enum
+[; ;COBS.h: 34: {
+[; ;COBS.h: 35: COBS_ENCODE_OK = 0x00,
+[; ;COBS.h: 36: COBS_ENCODE_NULL_POINTER = 0x01,
+[; ;COBS.h: 37: COBS_ENCODE_OUT_BUFFER_OVERFLOW = 0x02
+[; ;COBS.h: 38: } cobs_encode_status;
+[; ;COBS.h: 40: typedef struct
+[; ;COBS.h: 41: {
+[; ;COBS.h: 42: size_t out_len;
+[; ;COBS.h: 43: cobs_encode_status status;
+[; ;COBS.h: 44: } cobs_encode_result;
+[; ;COBS.h: 47: typedef enum
+[; ;COBS.h: 48: {
+[; ;COBS.h: 49: COBS_DECODE_OK = 0x00,
+[; ;COBS.h: 50: COBS_DECODE_NULL_POINTER = 0x01,
+[; ;COBS.h: 51: COBS_DECODE_OUT_BUFFER_OVERFLOW = 0x02,
+[; ;COBS.h: 52: COBS_DECODE_ZERO_BYTE_IN_INPUT = 0x04,
+[; ;COBS.h: 53: COBS_DECODE_INPUT_TOO_SHORT = 0x08
+[; ;COBS.h: 54: } cobs_decode_status;
+[; ;COBS.h: 56: typedef struct
+[; ;COBS.h: 57: {
+[; ;COBS.h: 58: size_t out_len;
+[; ;COBS.h: 59: cobs_decode_status status;
+[; ;COBS.h: 60: } cobs_decode_result;
+[; ;COBS.h: 71: cobs_encode_result cobs_encode(uint8_t *dst_buf_ptr, size_t dst_buf_len, const uint8_t * src_ptr, size_t src_len);
+[; ;COBS.h: 72: cobs_decode_result cobs_decode(uint8_t *dst_buf_ptr, size_t dst_buf_len, const uint8_t * src_ptr, size_t src_len);
 "29 COBS.c
 [v _cobs_encode `(S5 ~T0 @X0 1 ef4`*uc`ui`*Cuc`ui ]
 "30
@@ -133,17 +127,17 @@ Version 3.2 HI-TECH Software Intermediate Code
 [f ]
 "31
 [v _result `S5 ~T0 @X0 1 a ]
-[v F186 `S5 ~T0 @X0 1 s ]
-[i F186
+[v F180 `S5 ~T0 @X0 1 s ]
+[i F180
 :U ..
 :U ..
 -> -> 0 `i `ui
-. `E151 0
+. `E145 0
 ..
 ..
 ]
 [; ;COBS.c: 31: cobs_encode_result result = { 0, COBS_ENCODE_OK };
-[e = _result F186 ]
+[e = _result F180 ]
 "32
 [v _src_end_ptr `*Cuc ~T0 @X0 1 a ]
 [; ;COBS.c: 32: const uint8_t * src_end_ptr = src_ptr + src_len;
@@ -176,7 +170,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;COBS.c: 43: result.status = COBS_ENCODE_NULL_POINTER;
 "43
-[e = . _result 1 . `E151 1 ]
+[e = . _result 1 . `E145 1 ]
 [; ;COBS.c: 44: return result;
 "44
 [e ) _result ]
@@ -206,7 +200,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;COBS.c: 55: result.status |= COBS_ENCODE_OUT_BUFFER_OVERFLOW;
 "55
-[e =| . _result 1 . `E151 2 ]
+[e =| . _result 1 . `E145 2 ]
 [; ;COBS.c: 56: break;
 "56
 [e $U 11  ]
@@ -315,7 +309,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;COBS.c: 99: result.status |= COBS_ENCODE_OUT_BUFFER_OVERFLOW;
 "99
-[e =| . _result 1 . `E151 2 ]
+[e =| . _result 1 . `E145 2 ]
 [; ;COBS.c: 100: dst_write_ptr = dst_buf_end_ptr;
 "100
 [e = _dst_write_ptr _dst_buf_end_ptr ]
@@ -363,17 +357,17 @@ Version 3.2 HI-TECH Software Intermediate Code
 [f ]
 "117
 [v _result `S6 ~T0 @X0 1 a ]
-[v F198 `S6 ~T0 @X0 1 s ]
-[i F198
+[v F192 `S6 ~T0 @X0 1 s ]
+[i F192
 :U ..
 :U ..
 -> -> 0 `i `ui
-. `E160 0
+. `E154 0
 ..
 ..
 ]
 [; ;COBS.c: 117: cobs_decode_result result = { 0, COBS_DECODE_OK };
-[e = _result F198 ]
+[e = _result F192 ]
 "118
 [v _src_end_ptr `*Cuc ~T0 @X0 1 a ]
 [; ;COBS.c: 118: const uint8_t * src_end_ptr = src_ptr + src_len;
@@ -406,7 +400,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;COBS.c: 130: result.status = COBS_DECODE_NULL_POINTER;
 "130
-[e = . _result 1 . `E160 1 ]
+[e = . _result 1 . `E154 1 ]
 [; ;COBS.c: 131: return result;
 "131
 [e ) _result ]
@@ -439,7 +433,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;COBS.c: 141: result.status |= COBS_DECODE_ZERO_BYTE_IN_INPUT;
 "141
-[e =| . _result 1 . `E160 3 ]
+[e =| . _result 1 . `E154 3 ]
 [; ;COBS.c: 142: break;
 "142
 [e $U 25  ]
@@ -461,7 +455,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;COBS.c: 150: result.status |= COBS_DECODE_INPUT_TOO_SHORT;
 "150
-[e =| . _result 1 . `E160 4 ]
+[e =| . _result 1 . `E154 4 ]
 [; ;COBS.c: 151: len_code = remaining_bytes;
 "151
 [e = _len_code -> _remaining_bytes `uc ]
@@ -480,7 +474,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;COBS.c: 158: result.status |= COBS_DECODE_OUT_BUFFER_OVERFLOW;
 "158
-[e =| . _result 1 . `E160 2 ]
+[e =| . _result 1 . `E154 2 ]
 [; ;COBS.c: 159: len_code = remaining_bytes;
 "159
 [e = _len_code -> _remaining_bytes `uc ]
@@ -509,7 +503,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;COBS.c: 167: result.status |= COBS_DECODE_ZERO_BYTE_IN_INPUT;
 "167
-[e =| . _result 1 . `E160 3 ]
+[e =| . _result 1 . `E154 3 ]
 "168
 }
 [e :U 33 ]
@@ -553,7 +547,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;COBS.c: 182: result.status |= COBS_DECODE_OUT_BUFFER_OVERFLOW;
 "182
-[e =| . _result 1 . `E160 2 ]
+[e =| . _result 1 . `E154 2 ]
 [; ;COBS.c: 183: break;
 "183
 [e $U 25  ]
