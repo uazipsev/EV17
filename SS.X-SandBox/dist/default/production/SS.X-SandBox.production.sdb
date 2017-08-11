@@ -69,9 +69,9 @@ COBS_DECODE_INPUT_TOO_SHORT 8
 [v _cobs_decode cobs_decode `(S1327  1 e 3 0 ]
 "12 D:\EV17.git\trunk\SS.X-SandBox\Communications.c
 [v _ComStart ComStart `(v  1 e 1 0 ]
-"17
+"16
 [v _updateComms updateComms `(v  1 e 1 0 ]
-"23
+"22
 [v _respondECU respondECU `(v  1 e 1 0 ]
 "11 D:\EV17.git\trunk\SS.X-SandBox\Function.c
 [v _ReadFaults ReadFaults `(v  1 e 1 0 ]
@@ -314,7 +314,7 @@ COBS_DECODE_INPUT_TOO_SHORT 8
 ]
 [u S650 . 1 `S601 1 . 1 0 `S610 1 . 1 0 `S618 1 . 1 0 `S624 1 . 1 0 `S627 1 . 1 0 `S636 1 . 1 0 `S641 1 . 1 0 ]
 [v _PORTDbits PORTDbits `VES650  1 e 1 @3971 ]
-[s S1396 . 1 `uc 1 LATA0 1 0 :1:0 
+[s S1414 . 1 `uc 1 LATA0 1 0 :1:0 
 `uc 1 LATA1 1 0 :1:1 
 `uc 1 LATA2 1 0 :1:2 
 `uc 1 LATA3 1 0 :1:3 
@@ -324,7 +324,7 @@ COBS_DECODE_INPUT_TOO_SHORT 8
 `uc 1 LATA7 1 0 :1:7 
 ]
 "7585
-[s S1405 . 1 `uc 1 LA0 1 0 :1:0 
+[s S1423 . 1 `uc 1 LA0 1 0 :1:0 
 `uc 1 LA1 1 0 :1:1 
 `uc 1 LA2 1 0 :1:2 
 `uc 1 LA3 1 0 :1:3 
@@ -333,8 +333,8 @@ COBS_DECODE_INPUT_TOO_SHORT 8
 `uc 1 LA6 1 0 :1:6 
 `uc 1 LA7 1 0 :1:7 
 ]
-[u S1414 . 1 `S1396 1 . 1 0 `S1405 1 . 1 0 ]
-[v _LATAbits LATAbits `VES1414  1 e 1 @3977 ]
+[u S1432 . 1 `S1414 1 . 1 0 `S1423 1 . 1 0 ]
+[v _LATAbits LATAbits `VES1432  1 e 1 @3977 ]
 [s S38 . 1 `uc 1 LATD0 1 0 :1:0 
 `uc 1 LATD1 1 0 :1:1 
 `uc 1 LATD2 1 0 :1:2 
@@ -617,15 +617,15 @@ COBS_DECODE_INPUT_TOO_SHORT 8
 {
 "37
 } 0
-"17 D:\EV17.git\trunk\SS.X-SandBox\Communications.c
+"16 D:\EV17.git\trunk\SS.X-SandBox\Communications.c
 [v _updateComms updateComms `(v  1 e 1 0 ]
 {
-"21
+"20
 } 0
-"23
+"22
 [v _respondECU respondECU `(v  1 e 1 0 ]
 {
-"29
+"28
 } 0
 "39 D:\EV17.git\trunk\SS.X-SandBox\CarCom.c
 [v _sendData sendData `(v  1 e 1 0 ]
@@ -836,7 +836,7 @@ COBS_DECODE_INPUT_TOO_SHORT 8
 "12 D:\EV17.git\trunk\SS.X-SandBox\Communications.c
 [v _ComStart ComStart `(v  1 e 1 0 ]
 {
-"15
+"14
 } 0
 "20 D:\EV17.git\trunk\SS.X-SandBox\UART.c
 [v _EUSART1_Initialize EUSART1_Initialize `(v  1 e 1 0 ]

@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=Communications.c Main.c UART.c tmr0.c Function.c COBS.c CarCom.c CarDataDictionary.c
+SOURCEFILES_QUOTED_IF_SPACED=Communications.c Main.c UART.c tmr0.c Function.c COBS.c CarDataDictionary.c CarCom.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/Communications.p1 ${OBJECTDIR}/Main.p1 ${OBJECTDIR}/UART.p1 ${OBJECTDIR}/tmr0.p1 ${OBJECTDIR}/Function.p1 ${OBJECTDIR}/COBS.p1 ${OBJECTDIR}/CarCom.p1 ${OBJECTDIR}/CarDataDictionary.p1
-POSSIBLE_DEPFILES=${OBJECTDIR}/Communications.p1.d ${OBJECTDIR}/Main.p1.d ${OBJECTDIR}/UART.p1.d ${OBJECTDIR}/tmr0.p1.d ${OBJECTDIR}/Function.p1.d ${OBJECTDIR}/COBS.p1.d ${OBJECTDIR}/CarCom.p1.d ${OBJECTDIR}/CarDataDictionary.p1.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/Communications.p1 ${OBJECTDIR}/Main.p1 ${OBJECTDIR}/UART.p1 ${OBJECTDIR}/tmr0.p1 ${OBJECTDIR}/Function.p1 ${OBJECTDIR}/COBS.p1 ${OBJECTDIR}/CarDataDictionary.p1 ${OBJECTDIR}/CarCom.p1
+POSSIBLE_DEPFILES=${OBJECTDIR}/Communications.p1.d ${OBJECTDIR}/Main.p1.d ${OBJECTDIR}/UART.p1.d ${OBJECTDIR}/tmr0.p1.d ${OBJECTDIR}/Function.p1.d ${OBJECTDIR}/COBS.p1.d ${OBJECTDIR}/CarDataDictionary.p1.d ${OBJECTDIR}/CarCom.p1.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/Communications.p1 ${OBJECTDIR}/Main.p1 ${OBJECTDIR}/UART.p1 ${OBJECTDIR}/tmr0.p1 ${OBJECTDIR}/Function.p1 ${OBJECTDIR}/COBS.p1 ${OBJECTDIR}/CarCom.p1 ${OBJECTDIR}/CarDataDictionary.p1
+OBJECTFILES=${OBJECTDIR}/Communications.p1 ${OBJECTDIR}/Main.p1 ${OBJECTDIR}/UART.p1 ${OBJECTDIR}/tmr0.p1 ${OBJECTDIR}/Function.p1 ${OBJECTDIR}/COBS.p1 ${OBJECTDIR}/CarDataDictionary.p1 ${OBJECTDIR}/CarCom.p1
 
 # Source Files
-SOURCEFILES=Communications.c Main.c UART.c tmr0.c Function.c COBS.c CarCom.c CarDataDictionary.c
+SOURCEFILES=Communications.c Main.c UART.c tmr0.c Function.c COBS.c CarDataDictionary.c CarCom.c
 
 
 CFLAGS=
@@ -141,14 +141,6 @@ ${OBJECTDIR}/COBS.p1: COBS.c  nbproject/Makefile-${CND_CONF}.mk
 	@-${MV} ${OBJECTDIR}/COBS.d ${OBJECTDIR}/COBS.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/COBS.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/CarCom.p1: CarCom.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/CarCom.p1.d 
-	@${RM} ${OBJECTDIR}/CarCom.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1 --debugger=pickit3  --double=24 --float=24 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:auto:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/CarCom.p1  CarCom.c 
-	@-${MV} ${OBJECTDIR}/CarCom.d ${OBJECTDIR}/CarCom.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/CarCom.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
 ${OBJECTDIR}/CarDataDictionary.p1: CarDataDictionary.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/CarDataDictionary.p1.d 
@@ -156,6 +148,14 @@ ${OBJECTDIR}/CarDataDictionary.p1: CarDataDictionary.c  nbproject/Makefile-${CND
 	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1 --debugger=pickit3  --double=24 --float=24 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:auto:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/CarDataDictionary.p1  CarDataDictionary.c 
 	@-${MV} ${OBJECTDIR}/CarDataDictionary.d ${OBJECTDIR}/CarDataDictionary.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/CarDataDictionary.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/CarCom.p1: CarCom.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/CarCom.p1.d 
+	@${RM} ${OBJECTDIR}/CarCom.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1 --debugger=pickit3  --double=24 --float=24 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:auto:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/CarCom.p1  CarCom.c 
+	@-${MV} ${OBJECTDIR}/CarCom.d ${OBJECTDIR}/CarCom.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/CarCom.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
 else
 ${OBJECTDIR}/Communications.p1: Communications.c  nbproject/Makefile-${CND_CONF}.mk
@@ -206,14 +206,6 @@ ${OBJECTDIR}/COBS.p1: COBS.c  nbproject/Makefile-${CND_CONF}.mk
 	@-${MV} ${OBJECTDIR}/COBS.d ${OBJECTDIR}/COBS.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/COBS.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/CarCom.p1: CarCom.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/CarCom.p1.d 
-	@${RM} ${OBJECTDIR}/CarCom.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  --double=24 --float=24 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:auto:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/CarCom.p1  CarCom.c 
-	@-${MV} ${OBJECTDIR}/CarCom.d ${OBJECTDIR}/CarCom.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/CarCom.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
 ${OBJECTDIR}/CarDataDictionary.p1: CarDataDictionary.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/CarDataDictionary.p1.d 
@@ -221,6 +213,14 @@ ${OBJECTDIR}/CarDataDictionary.p1: CarDataDictionary.c  nbproject/Makefile-${CND
 	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  --double=24 --float=24 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:auto:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/CarDataDictionary.p1  CarDataDictionary.c 
 	@-${MV} ${OBJECTDIR}/CarDataDictionary.d ${OBJECTDIR}/CarDataDictionary.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/CarDataDictionary.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/CarCom.p1: CarCom.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/CarCom.p1.d 
+	@${RM} ${OBJECTDIR}/CarCom.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  --double=24 --float=24 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:auto:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/CarCom.p1  CarCom.c 
+	@-${MV} ${OBJECTDIR}/CarCom.d ${OBJECTDIR}/CarCom.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/CarCom.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
 endif
 

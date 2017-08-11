@@ -8726,7 +8726,6 @@ char receiveArray[10];
 
 void ComStart(){
 EUSART1_Initialize();
-
 }
 
 void updateComms() {

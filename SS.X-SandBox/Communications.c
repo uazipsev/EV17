@@ -11,7 +11,6 @@ char receiveArray[10];
 
 void ComStart(){
     EUSART1_Initialize();  //Config USART  
-    //begin(receiveArray, sizeof (receiveArray), SS_ADDRESS, false, Send_put, Receive_get, Receive_available, Receive_peek); //Start FT
 }
 
 void updateComms() {

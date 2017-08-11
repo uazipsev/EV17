@@ -1,7 +1,7 @@
 
 
 Microchip Technology PIC18 LITE Macro Assembler V1.42 build -159332390 
-                                                                                               Fri Aug 11 16:24:17 2017
+                                                                                               Fri Aug 11 16:57:57 2017
 
 Microchip Technology Omniscient Code Generator v1.42 (Free mode) build 201704130522
      1                           	processor	18F45K22
@@ -692,7 +692,7 @@ Microchip Technology Omniscient Code Generator v1.42 (Free mode) build 201704130
    678                           
    679 ;; *************** function _updateComms *****************
    680 ;; Defined at:
-   681 ;;		line 17 in file "Communications.c"
+   681 ;;		line 16 in file "Communications.c"
    682 ;; Parameters:    Size  Location     Type
    683 ;;		None
    684 ;; Auto vars:     Size  Location     Type
@@ -727,7 +727,7 @@ Microchip Technology Omniscient Code Generator v1.42 (Free mode) build 201704130
    713  000E14                     _updateComms:
    714                           	opt stack 21
    715                           
-   716                           ;Communications.c: 18: if (receiveData()) {
+   716                           ;Communications.c: 17: if (receiveData()) {
    717                           
    718                           ;incstack = 0
    719  000E14  ECCE  F003         	call	_receiveData	;wreg free
@@ -735,7 +735,7 @@ Microchip Technology Omniscient Code Generator v1.42 (Free mode) build 201704130
    721  000E1A  B4D8               	btfsc	status,2,c
    722  000E1C  0012               	return	
    723                           
-   724                           ;Communications.c: 19: respondECU();
+   724                           ;Communications.c: 18: respondECU();
    725  000E1E  ECE0  F005         	call	_respondECU	;wreg free
    726  000E22  0012               	return	
    727  000E24                     __end_of_updateComms:
@@ -752,7 +752,7 @@ Microchip Technology Omniscient Code Generator v1.42 (Free mode) build 201704130
    738                           
    739 ;; *************** function _respondECU *****************
    740 ;; Defined at:
-   741 ;;		line 23 in file "Communications.c"
+   741 ;;		line 22 in file "Communications.c"
    742 ;; Parameters:    Size  Location     Type
    743 ;;		None
    744 ;; Auto vars:     Size  Location     Type
@@ -787,19 +787,19 @@ Microchip Technology Omniscient Code Generator v1.42 (Free mode) build 201704130
    773  000BC0                     _respondECU:
    774                           	opt stack 21
    775                           
-   776                           ;Communications.c: 24: LATDbits.LATD4 = 1;
+   776                           ;Communications.c: 23: LATDbits.LATD4 = 1;
    777                           
    778                           ;incstack = 0
    779  000BC0  888C               	bsf	3980,4,c	;volatile
    780                           
-   781                           ;Communications.c: 25: Delay(5);
+   781                           ;Communications.c: 24: Delay(5);
    782  000BC2  0E00               	movlw	0
    783  000BC4  6E1C               	movwf	Delay@wait+1,c
    784  000BC6  0E05               	movlw	5
    785  000BC8  6E1B               	movwf	Delay@wait,c
    786  000BCA  ECFB  F005         	call	_Delay	;wreg free
    787                           
-   788                           ;Communications.c: 26: sendData(1, 1, 1, 1);
+   788                           ;Communications.c: 25: sendData(1, 1, 1, 1);
    789  000BCE  0E01               	movlw	1
    790  000BD0  0100               	movlb	0	; () banked
    791  000BD2  6F6D               	movwf	sendData@ComandByte& (0+255),b
@@ -812,14 +812,14 @@ Microchip Technology Omniscient Code Generator v1.42 (Free mode) build 201704130
    798  000BE0  0E01               	movlw	1
    799  000BE2  ECFD  F001         	call	_sendData
    800                           
-   801                           ;Communications.c: 27: Delay(3);
+   801                           ;Communications.c: 26: Delay(3);
    802  000BE6  0E00               	movlw	0
    803  000BE8  6E1C               	movwf	Delay@wait+1,c
    804  000BEA  0E03               	movlw	3
    805  000BEC  6E1B               	movwf	Delay@wait,c
    806  000BEE  ECFB  F005         	call	_Delay	;wreg free
    807                           
-   808                           ;Communications.c: 28: LATDbits.LATD4 = 0;
+   808                           ;Communications.c: 27: LATDbits.LATD4 = 0;
    809  000BF2  988C               	bcf	3980,4,c	;volatile
    810  000BF4  0012               	return		;funcret
    811  000BF6                     __end_of_respondECU:
@@ -3120,12 +3120,12 @@ Microchip Technology Omniscient Code Generator v1.42 (Free mode) build 201704130
   3105                           ;CarCom.c: 28: if (sum) {
   3106  000B62  501E               	movf	CRC8@sum,w,c
   3107  000B64  B4D8               	btfsc	status,2,c
-  3108  000B66  D002               	goto	l342
+  3108  000B66  D002               	goto	l374
   3109                           
   3110                           ;CarCom.c: 29: crc ^= 0x8C;
   3111  000B68  0E8C               	movlw	140
   3112  000B6A  1A21               	xorwf	CRC8@crc,f,c
-  3113  000B6C                     l342:
+  3113  000B6C                     l374:
   3114                           
   3115                           ;CarCom.c: 30: }
   3116                           ;CarCom.c: 31: extract >>= 1;
@@ -5527,13 +5527,13 @@ CODE                 0      0       0       0        0.0%
 
 
 Microchip Technology PIC18 Macro Assembler V1.42 build -159332390 
-Symbol Table                                                                                   Fri Aug 11 16:24:17 2017
+Symbol Table                                                                                   Fri Aug 11 16:57:57 2017
 
              i2_UART_buff_modulo_inc 0CE2             cobs_encode@dst_write_ptr 0068  
                                  l93 09FA                         __CFG_CP0$OFF 000000  
                        __CFG_CP1$OFF 000000                         __CFG_CP2$OFF 000000  
-                       __CFG_CP3$OFF 000000                                  l342 0B6C  
-                                l271 0C14                         __CFG_CPB$OFF 000000  
+                       __CFG_CP3$OFF 000000                                  l271 0C14  
+                                l374 0B6C                         __CFG_CPB$OFF 000000  
                                 u500 0912                                  u430 0894  
                                 u520 0924                                  u440 08A4  
                                 u450 08B8                         __CFG_CPD$OFF 000000  
