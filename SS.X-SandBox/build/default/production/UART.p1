@@ -1,6 +1,6 @@
 Version 3.2 HI-TECH Software Intermediate Code
 "102 UART.h
-[s S851 `uc -> 200 `i `i 1 `i 1 `i 1 ]
+[s S851 `uc -> 100 `i `i 1 `i 1 `i 1 ]
 [n S851 UART_ring_buff buf head tail count ]
 "9418 C:\Program Files (x86)\Microchip\xc8\v1.42\include\pic18f45k22.h
 [s S433 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -6715,7 +6715,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;UART.h: 99: extern volatile unsigned int talkTime;
 [; ;UART.h: 100: void *memset(void *s, int c, size_t n);
 [; ;UART.h: 102: struct UART_ring_buff {
-[; ;UART.h: 103: unsigned char buf[200];
+[; ;UART.h: 103: unsigned char buf[100];
 [; ;UART.h: 104: int head;
 [; ;UART.h: 105: int tail;
 [; ;UART.h: 106: int count;
@@ -6813,16 +6813,16 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v __this `*S851 ~T0 @X0 1 r1 ]
 [v _c `Cuc ~T0 @X0 1 r2 ]
 [f ]
-[; ;UART.c: 68: if (_this->count < 200) {
+[; ;UART.c: 68: if (_this->count < 100) {
 "68
-[e $ ! < . *U __this 3 -> 200 `i 855  ]
+[e $ ! < . *U __this 3 -> 100 `i 855  ]
 {
 [; ;UART.c: 69: _this->buf[_this->head] = c;
 "69
 [e = *U + &U . *U __this 0 * -> -> . *U __this 1 `ui `ux -> -> # *U &U . *U __this 0 `ui `ux _c ]
-[; ;UART.c: 70: _this->head = UART_buff_modulo_inc(_this->head, 200);
+[; ;UART.c: 70: _this->head = UART_buff_modulo_inc(_this->head, 100);
 "70
-[e = . *U __this 1 -> ( _UART_buff_modulo_inc (2 , -> . *U __this 1 `ui -> -> 200 `i `ui `i ]
+[e = . *U __this 1 -> ( _UART_buff_modulo_inc (2 , -> . *U __this 1 `ui -> -> 100 `i `ui `i ]
 [; ;UART.c: 71: ++_this->count;
 "71
 [e =+ . *U __this 3 -> 1 `i ]
@@ -6835,12 +6835,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;UART.c: 73: _this->buf[_this->head] = c;
 "73
 [e = *U + &U . *U __this 0 * -> -> . *U __this 1 `ui `ux -> -> # *U &U . *U __this 0 `ui `ux _c ]
-[; ;UART.c: 74: _this->head = UART_buff_modulo_inc(_this->head, 200);
+[; ;UART.c: 74: _this->head = UART_buff_modulo_inc(_this->head, 100);
 "74
-[e = . *U __this 1 -> ( _UART_buff_modulo_inc (2 , -> . *U __this 1 `ui -> -> 200 `i `ui `i ]
-[; ;UART.c: 75: _this->tail = UART_buff_modulo_inc(_this->tail, 200);
+[e = . *U __this 1 -> ( _UART_buff_modulo_inc (2 , -> . *U __this 1 `ui -> -> 100 `i `ui `i ]
+[; ;UART.c: 75: _this->tail = UART_buff_modulo_inc(_this->tail, 100);
 "75
-[e = . *U __this 2 -> ( _UART_buff_modulo_inc (2 , -> . *U __this 2 `ui -> -> 200 `i `ui `i ]
+[e = . *U __this 2 -> ( _UART_buff_modulo_inc (2 , -> . *U __this 2 `ui -> -> 100 `i `ui `i ]
 "77
 }
 [e :U 856 ]
@@ -6866,9 +6866,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;UART.c: 83: c = _this->buf[_this->tail];
 "83
 [e = _c *U + &U . *U __this 0 * -> -> . *U __this 2 `ui `ux -> -> # *U &U . *U __this 0 `ui `ux ]
-[; ;UART.c: 84: _this->tail = UART_buff_modulo_inc(_this->tail, 200);
+[; ;UART.c: 84: _this->tail = UART_buff_modulo_inc(_this->tail, 100);
 "84
-[e = . *U __this 2 -> ( _UART_buff_modulo_inc (2 , -> . *U __this 2 `ui -> -> 200 `i `ui `i ]
+[e = . *U __this 2 -> ( _UART_buff_modulo_inc (2 , -> . *U __this 2 `ui -> -> 100 `i `ui `i ]
 [; ;UART.c: 85: --_this->count;
 "85
 [e =- . *U __this 3 -> 1 `i ]
@@ -6916,7 +6916,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;UART.c: 97: memset(_this->buf, 0, sizeof (_this->buf));
 "97
-[e ( _memset (3 , , -> &U . *U __this 0 `*v -> 0 `i * -> # *U &U . *U __this 0 `ui -> -> 200 `i `ui ]
+[e ( _memset (3 , , -> &U . *U __this 0 `*v -> 0 `i * -> # *U &U . *U __this 0 `ui -> -> 100 `i `ui ]
 "98
 }
 [e :U 861 ]

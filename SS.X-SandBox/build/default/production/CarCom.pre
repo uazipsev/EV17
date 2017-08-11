@@ -1,5 +1,5 @@
 
-# 1 "FastTransfer.c"
+# 1 "CarCom.c"
 
 # 26 "C:\Program Files (x86)\Microchip\xc8\v1.42\include\htc.h"
 extern const char __xc8_OPTIM_SPEED;
@@ -8527,16 +8527,9 @@ extern char * ultoa(char * buf, unsigned long val, int base);
 
 extern char * ftoa(float f, int * status);
 
-# 14 "FastTransfer.h"
-void begin(volatile int * ptr, unsigned char maxSize, unsigned char givenAddress, bool error, void (*stufftosend)(unsigned char), unsigned char (*stufftoreceive)(void), int (*stuffavailable)(void), unsigned char (*stuffpeek)(void));
+# 12 "CarCom.h"
 void sendData(unsigned char whereToSend, unsigned char ComandByte, unsigned char DataTable, unsigned char DataTableIndex);
 bool receiveData();
-void ToSend(const unsigned char where, const unsigned int what);
-unsigned char AKNAK(unsigned char module);
-unsigned int alignError(void);
-unsigned int CRCError(void);
-unsigned int addressError(void);
-unsigned int dataAddressError(void);
 
 # 13 "C:\Program Files (x86)\Microchip\xc8\v1.42\include\stdint.h"
 typedef signed char int8_t;
@@ -8724,7 +8717,7 @@ extern volatile unsigned int talkTime;
 void *memset(void *s, int c, size_t n);
 
 struct UART_ring_buff {
-unsigned char buf[200];
+unsigned char buf[100];
 int head;
 int tail;
 int count;
@@ -8757,67 +8750,7 @@ void ReadFaults();
 char GetFaults(char num);
 void Delay(int wait);
 
-# 18 "FastTransfer.c"
-void (*serial_write)(unsigned char);
-unsigned char (*serial_read)(void);
-int (*serial_available)(void);
-unsigned char (*serial_peek)(void);
-unsigned char rx_buffer[200];
-unsigned char rx_array_inx;
-unsigned char rx_len;
-unsigned char calc_CS;
-unsigned char moduleAddress;
-unsigned char returnAddress;
-unsigned char maxDataAddress;
-volatile int * receiveArrayAddress;
-unsigned char * sendStructAddress;
-bool AKNAKsend;
-unsigned int alignErrorCounter;
-unsigned int crcErrorCounter;
-unsigned int addressErrorCounter;
-unsigned int dataAdressErrorCounter;
-unsigned char rx_address;
-
-# 44
-struct ringBufS {
-unsigned char buf[200];
-int head;
-int tail;
-int count;
-};
-struct ringBufS ring_buffer;
-
-union stuff {
-unsigned char parts[2];
-unsigned int integer;
-};
-union stuff group;
-
-struct crcBufS {
-unsigned char buf[(5 * 3)];
-int head;
-};
-struct crcBufS crc_buffer;
-
-unsigned char CRC8(const unsigned char * data, unsigned char len);
-unsigned char FastTransfer_buffer_get(struct ringBufS* _this);
-void FastTransfer_buffer_flush(struct ringBufS* _this, const int clearBuffer);
-unsigned int FastTransfer_buffer_modulo_inc(const unsigned int value, const unsigned int modulus);
-void crcBufS_put(struct crcBufS* _this, unsigned char address, unsigned char oldCRC, unsigned char status);
-void crcBufS_status_put(struct crcBufS* _this, unsigned char time, unsigned char status);
-unsigned char crcBufS_get(struct crcBufS* _this, unsigned char time, unsigned char space);
-void CRCcheck(void);
-
-
-
-
-void begin(volatile int * ptr, unsigned char maxSize, unsigned char givenAddress, bool error, void (*stufftosend)(unsigned char), unsigned char (*stufftoreceive)(void), int (*stuffavailable)(void), unsigned char (*stuffpeek)(void)) {
-
-# 88
-}
-
-
-
+# 20 "CarCom.c"
 unsigned char CRC8(const unsigned char * data, unsigned char len) {
 unsigned char crc = 0x00;
 while (len--) {
@@ -8848,8 +8781,6 @@ unsigned char COBSArray[30];
 unsigned char DataLenth = 1;
 
 cobs_encode_result result;
-
-
 
 SendArray[0] = 4+1;
 SendArray[1] = ComandByte;
@@ -8928,167 +8859,3 @@ else{
 
 return 0;
 }
-
-
-
-unsigned char FastTransfer_buffer_get(struct ringBufS* _this) {
-unsigned char c;
-if (_this->count > 0) {
-c = _this->buf[_this->tail];
-_this->tail = FastTransfer_buffer_modulo_inc(_this->tail, 200);
---_this->count;
-} else {
-c = 0;
-}
-return (c);
-}
-
-void *memset(void *s, int c, size_t n);
-
-
-
-void FastTransfer_buffer_flush(struct ringBufS* _this, const int clearBuffer) {
-_this->count = 0;
-_this->head = 0;
-_this->tail = 0;
-if (clearBuffer) {
-memset(_this->buf, 0, sizeof (_this->buf));
-}
-}
-
-
-
-
-unsigned int FastTransfer_buffer_modulo_inc(const unsigned int value, const unsigned int modulus) {
-unsigned int my_value = value + 1;
-if (my_value >= modulus) {
-my_value = 0;
-}
-return (my_value);
-}
-
-
-
-
-unsigned char AKNAK(unsigned char module) {
-int r;
-for (r = 0; r < 5; r++) {
-if (module == crcBufS_get(&crc_buffer, r, 0)) {
-return crcBufS_get(&crc_buffer, r, 2);
-}
-}
-return 4;
-}
-
-
-
-
-unsigned int alignError(void) {
-return alignErrorCounter;
-}
-
-
-
-
-unsigned int CRCError(void) {
-return crcErrorCounter;
-}
-
-
-
-
-unsigned int addressError(void) {
-return addressErrorCounter;
-}
-
-unsigned int dataAddressError(void) {
-return dataAdressErrorCounter;
-}
-
-
-
-void crcBufS_put(struct crcBufS* _this, unsigned char address, unsigned char oldCRC, unsigned char status) {
-_this->buf[_this->head] = address;
-_this->head++;
-_this->buf[_this->head] = oldCRC;
-_this->head++;
-_this->buf[_this->head] = status;
-_this->head++;
-if (_this->head >= (5 * 3)) {
-_this->head = 0;
-}
-}
-
-
-
-
-void crcBufS_status_put(struct crcBufS* _this, unsigned char time, unsigned char status) {
-if (time >= 5) {
-time = 5 - 1;
-}
-time = time + 1;
-int wantedTime = time * 3;
-if (wantedTime > _this->head) {
-wantedTime = ((5 * 3)) - (wantedTime - _this->head);
-_this->buf[(wantedTime + 2)] = status;
-} else {
-_this->buf[(_this->head - wantedTime) + 2] = status;
-}
-}
-
-
-
-
-unsigned char crcBufS_get(struct crcBufS* _this, unsigned char time, unsigned char space) {
-if (time >= 5) {
-time = 5 - 1;
-}
-if (space >= 3) {
-space = 3 - 1;
-}
-time = time + 1;
-int wantedTime = time * 3;
-if (wantedTime > _this->head) {
-wantedTime = ((5 * 3)) - (wantedTime - _this->head);
-return (_this->buf[(wantedTime + space)]);
-} else {
-return (_this->buf[(_this->head - wantedTime) + space]);
-}
-}
-
-
-
-
-void CRCcheck(void) {
-
-while (!(serial_available() > 3));
-
-unsigned char arrayHolder[3];
-arrayHolder[0] = serial_read();
-arrayHolder[1] = serial_read();
-arrayHolder[2] = serial_read();
-unsigned char SentCRC = serial_read();
-unsigned char calculatedCRC = CRC8(arrayHolder, 3);
-
-
-if (SentCRC == calculatedCRC) {
-
-int rt;
-for (rt = 0; rt < 5; rt++) {
-if (returnAddress == crcBufS_get(&crc_buffer, rt, 0)) {
-if (arrayHolder[2] == crcBufS_get(&crc_buffer, rt, 1)) {
-if (arrayHolder[1] == 1) {
-crcBufS_status_put(&crc_buffer, rt, 1);
-break;
-} else if (arrayHolder[1] == 2) {
-crcBufS_status_put(&crc_buffer, rt, 2);
-break;
-}
-}
-}
-}
-} else {
-crcErrorCounter++;
-}
-}
-

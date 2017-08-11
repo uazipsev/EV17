@@ -1,24 +1,10 @@
 Version 3.2 HI-TECH Software Intermediate Code
 "102 UART.h
-[s S851 `uc -> 200 `i `i 1 `i 1 `i 1 ]
+[s S851 `uc -> 100 `i `i 1 `i 1 `i 1 ]
 [n S851 UART_ring_buff buf head tail count ]
 "113
 [v _EUSART1_Initialize `(v ~T0 @X0 0 ef ]
-[v F6948 `(v ~T0 @X0 0 tf1`uc ]
-[v F6951 `(uc ~T0 @X0 0 tf ]
-[v F6954 `(i ~T0 @X0 0 tf ]
-[v F6957 `(uc ~T0 @X0 0 tf ]
-"14 FastTransfer.h
-[v _begin `(v ~T0 @X0 0 ef8`*Vi`uc`uc`uc`*F6948`*F6951`*F6954`*F6957 ]
-"126 UART.h
-[v _Send_put `(v ~T0 @X0 0 ef1`uc ]
-"125
-[v _Receive_get `(uc ~T0 @X0 0 ef ]
-"124
-[v _Receive_available `(i ~T0 @X0 0 ef ]
-"123
-[v _Receive_peek `(uc ~T0 @X0 0 ef ]
-"16 FastTransfer.h
+"13 CarCom.h
 [v _receiveData `(uc ~T0 @X0 0 ef ]
 "13 Communications.h
 [v _respondECU `(v ~T0 @X0 0 ef ]
@@ -35,7 +21,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _LATDbits `VS383 ~T0 @X0 0 e@3980 ]
 "15 Function.h
 [v _Delay `(v ~T0 @X0 0 ef1`i ]
-"15 FastTransfer.h
+"12 CarCom.h
 [v _sendData `(v ~T0 @X0 0 ef4`uc`uc`uc`uc ]
 [; ;stdbool.h: 12: typedef unsigned char bool;
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
@@ -6585,15 +6571,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic18.h: 164: extern __nonreentrant void _delay(unsigned long);
 [; ;pic18.h: 166: extern __nonreentrant void _delaywdt(unsigned long);
 [; ;pic18.h: 168: extern __nonreentrant void _delay3(unsigned char);
-[; ;FastTransfer.h: 14: void begin(volatile int * ptr, unsigned char maxSize, unsigned char givenAddress, bool error, void (*stufftosend)(unsigned char), unsigned char (*stufftoreceive)(void), int (*stuffavailable)(void), unsigned char (*stuffpeek)(void));
-[; ;FastTransfer.h: 15: void sendData(unsigned char whereToSend, unsigned char ComandByte, unsigned char DataTable, unsigned char DataTableIndex);
-[; ;FastTransfer.h: 16: bool receiveData();
-[; ;FastTransfer.h: 17: void ToSend(const unsigned char where, const unsigned int what);
-[; ;FastTransfer.h: 18: unsigned char AKNAK(unsigned char module);
-[; ;FastTransfer.h: 19: unsigned int alignError(void);
-[; ;FastTransfer.h: 20: unsigned int CRCError(void);
-[; ;FastTransfer.h: 21: unsigned int addressError(void);
-[; ;FastTransfer.h: 22: unsigned int dataAddressError(void);
+[; ;CarCom.h: 12: void sendData(unsigned char whereToSend, unsigned char ComandByte, unsigned char DataTable, unsigned char DataTableIndex);
+[; ;CarCom.h: 13: bool receiveData();
 [; ;Communications.h: 11: void ComStart();
 [; ;Communications.h: 12: void updateComms();
 [; ;Communications.h: 13: void respondECU();
@@ -6713,7 +6692,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;UART.h: 99: extern volatile unsigned int talkTime;
 [; ;UART.h: 100: void *memset(void *s, int c, size_t n);
 [; ;UART.h: 102: struct UART_ring_buff {
-[; ;UART.h: 103: unsigned char buf[200];
+[; ;UART.h: 103: unsigned char buf[100];
 [; ;UART.h: 104: int head;
 [; ;UART.h: 105: int tail;
 [; ;UART.h: 106: int count;
@@ -6755,9 +6734,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;Communications.c: 13: EUSART1_Initialize();
 "13
 [e ( _EUSART1_Initialize ..  ]
-[; ;Communications.c: 14: begin(receiveArray, sizeof (receiveArray), 8, 0, Send_put, Receive_get, Receive_available, Receive_peek);
-"14
-[e ( _begin (4 , , , , , , , -> &U _receiveArray `*Vi -> -> # _receiveArray `ui `uc -> -> 8 `i `uc -> -> 0 `i `uc &U _Send_put &U _Receive_get &U _Receive_available &U _Receive_peek ]
 [; ;Communications.c: 15: }
 "15
 [e :UE 852 ]

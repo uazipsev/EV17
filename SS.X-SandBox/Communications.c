@@ -1,6 +1,6 @@
 #include <stdbool.h>
 #include <xc.h>
-#include "FastTransfer.h"
+#include "CarCom.h"
 #include "Communications.h"
 #include "ADDRESSING.h"
 #include "PinDef.h"
@@ -11,7 +11,7 @@ char receiveArray[10];
 
 void ComStart(){
     EUSART1_Initialize();  //Config USART  
-    begin(receiveArray, sizeof (receiveArray), SS_ADDRESS, false, Send_put, Receive_get, Receive_available, Receive_peek); //Start FT
+    //begin(receiveArray, sizeof (receiveArray), SS_ADDRESS, false, Send_put, Receive_get, Receive_available, Receive_peek); //Start FT
 }
 
 void updateComms() {

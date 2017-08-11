@@ -92,7 +92,7 @@ extern "C" {
     char getch(void);
     void putch(char txData);
 #define BAUD_SET 38400
-#define UART_BUFFER_SIZE 200
+#define UART_BUFFER_SIZE 100
 #define CLOCK_RATE   16000000
 #define BAUD_RATE (((CLOCK_RATE/BAUD_SET)/4)-1)
 

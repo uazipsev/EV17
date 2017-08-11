@@ -1,0 +1,238 @@
+Version 3.2 HI-TECH Software Intermediate Code
+[; ;CarDataDictionary.h: 8: unsigned char GetData(unsigned char DataTable, unsigned char DataTableIndex, unsigned char *DataArray, unsigned char numbofbytes);
+"3 CarDataDictionary.c
+[v _DataTableArrayOne `uc ~T0 @X0 -> 10 `i e ]
+[; ;CarDataDictionary.c: 3: unsigned char DataTableArrayOne[10];
+"4
+[v _DataTableArrayTwo `uc ~T0 @X0 -> 3 `i e ]
+[; ;CarDataDictionary.c: 4: unsigned char DataTableArrayTwo[3];
+"6
+[v _GetData `(uc ~T0 @X0 1 ef4`uc`uc`*uc`uc ]
+{
+[; ;CarDataDictionary.c: 6: unsigned char GetData(unsigned char DataTable, unsigned char DataTableIndex, unsigned char *DataArray, unsigned char numbofbytes){
+[e :U _GetData ]
+[v _DataTable `uc ~T0 @X0 1 r1 ]
+[v _DataTableIndex `uc ~T0 @X0 1 r2 ]
+[v _DataArray `*uc ~T0 @X0 1 r3 ]
+[v _numbofbytes `uc ~T0 @X0 1 r4 ]
+[f ]
+"7
+[v _Error `uc ~T0 @X0 1 a ]
+[; ;CarDataDictionary.c: 7: unsigned char Error = 0;
+[e = _Error -> -> 0 `i `uc ]
+"8
+[v _DataCount `uc ~T0 @X0 1 a ]
+[; ;CarDataDictionary.c: 8: unsigned char DataCount = 0;
+[e = _DataCount -> -> 0 `i `uc ]
+"9
+[v _ReturnCounter `uc ~T0 @X0 1 a ]
+[; ;CarDataDictionary.c: 9: unsigned char ReturnCounter = 0;
+[e = _ReturnCounter -> -> 0 `i `uc ]
+[; ;CarDataDictionary.c: 10: switch(DataTable){
+"10
+[e $U 3  ]
+{
+[; ;CarDataDictionary.c: 11: case 0:
+"11
+[e :U 4 ]
+[; ;CarDataDictionary.c: 12: DataCount = DataTableIndex + numbofbytes;
+"12
+[e = _DataCount -> + -> _DataTableIndex `i -> _numbofbytes `i `uc ]
+[; ;CarDataDictionary.c: 13: for(DataTableIndex;DataTableIndex<DataCount;DataTableIndex++){
+"13
+{
+[e _DataTableIndex ]
+[e $U 8  ]
+[e :U 5 ]
+{
+[; ;CarDataDictionary.c: 14: DataArray[ReturnCounter] = DataTableArrayOne[DataTableIndex];
+"14
+[e = *U + _DataArray * -> _ReturnCounter `ux -> -> # *U _DataArray `ui `ux *U + &U _DataTableArrayOne * -> _DataTableIndex `ux -> -> # *U &U _DataTableArrayOne `ui `ux ]
+[; ;CarDataDictionary.c: 15: ReturnCounter++;
+"15
+[e ++ _ReturnCounter -> -> 1 `i `uc ]
+"16
+}
+"13
+[e ++ _DataTableIndex -> -> 1 `i `uc ]
+[e :U 8 ]
+[e $ < -> _DataTableIndex `i -> _DataCount `i 5  ]
+[e :U 6 ]
+"16
+}
+[; ;CarDataDictionary.c: 16: }
+[; ;CarDataDictionary.c: 17: break;
+"17
+[e $U 2  ]
+[; ;CarDataDictionary.c: 18: case 1:
+"18
+[e :U 9 ]
+[; ;CarDataDictionary.c: 19: DataCount = DataTableIndex + numbofbytes;
+"19
+[e = _DataCount -> + -> _DataTableIndex `i -> _numbofbytes `i `uc ]
+[; ;CarDataDictionary.c: 20: for(DataTableIndex;DataTableIndex<DataCount;DataTableIndex++){
+"20
+{
+[e _DataTableIndex ]
+[e $U 13  ]
+[e :U 10 ]
+{
+[; ;CarDataDictionary.c: 21: DataArray[ReturnCounter] = DataTableArrayTwo[DataTableIndex];
+"21
+[e = *U + _DataArray * -> _ReturnCounter `ux -> -> # *U _DataArray `ui `ux *U + &U _DataTableArrayTwo * -> _DataTableIndex `ux -> -> # *U &U _DataTableArrayTwo `ui `ux ]
+[; ;CarDataDictionary.c: 22: ReturnCounter++;
+"22
+[e ++ _ReturnCounter -> -> 1 `i `uc ]
+"23
+}
+"20
+[e ++ _DataTableIndex -> -> 1 `i `uc ]
+[e :U 13 ]
+[e $ < -> _DataTableIndex `i -> _DataCount `i 10  ]
+[e :U 11 ]
+"23
+}
+[; ;CarDataDictionary.c: 23: }
+[; ;CarDataDictionary.c: 24: break;
+"24
+[e $U 2  ]
+[; ;CarDataDictionary.c: 25: default:
+"25
+[e :U 14 ]
+[; ;CarDataDictionary.c: 26: Error = -1;
+"26
+[e = _Error -> -U -> 1 `i `uc ]
+"27
+}
+[; ;CarDataDictionary.c: 27: }
+[e $U 2  ]
+"10
+[e :U 3 ]
+[e [\ _DataTable , $ -> -> 0 `i `uc 4
+ , $ -> -> 1 `i `uc 9
+ 14 ]
+"27
+[e :U 2 ]
+[; ;CarDataDictionary.c: 28: return Error;
+"28
+[e ) _Error ]
+[e $UE 1  ]
+[; ;CarDataDictionary.c: 29: }
+"29
+[e :UE 1 ]
+}
+"31
+[v _SetData `(uc ~T0 @X0 1 ef4`uc`uc`*uc`uc ]
+{
+[; ;CarDataDictionary.c: 31: unsigned char SetData(unsigned char DataTable, unsigned char DataTableIndex, unsigned char *DataArray, unsigned char numbofbytes){
+[e :U _SetData ]
+[v _DataTable `uc ~T0 @X0 1 r1 ]
+[v _DataTableIndex `uc ~T0 @X0 1 r2 ]
+[v _DataArray `*uc ~T0 @X0 1 r3 ]
+[v _numbofbytes `uc ~T0 @X0 1 r4 ]
+[f ]
+"32
+[v _Error `uc ~T0 @X0 1 a ]
+[; ;CarDataDictionary.c: 32: unsigned char Error = 0;
+[e = _Error -> -> 0 `i `uc ]
+"33
+[v _DataCount `uc ~T0 @X0 1 a ]
+[; ;CarDataDictionary.c: 33: unsigned char DataCount = 0;
+[e = _DataCount -> -> 0 `i `uc ]
+"34
+[v _ReturnCounter `uc ~T0 @X0 1 a ]
+[; ;CarDataDictionary.c: 34: unsigned char ReturnCounter = 0;
+[e = _ReturnCounter -> -> 0 `i `uc ]
+[; ;CarDataDictionary.c: 35: switch(DataTable){
+"35
+[e $U 17  ]
+{
+[; ;CarDataDictionary.c: 36: case 0:
+"36
+[e :U 18 ]
+[; ;CarDataDictionary.c: 37: DataCount = DataTableIndex + numbofbytes;
+"37
+[e = _DataCount -> + -> _DataTableIndex `i -> _numbofbytes `i `uc ]
+[; ;CarDataDictionary.c: 38: for(DataTableIndex;DataTableIndex<DataCount;DataTableIndex++){
+"38
+{
+[e _DataTableIndex ]
+[e $U 22  ]
+[e :U 19 ]
+{
+[; ;CarDataDictionary.c: 39: DataTableArrayOne[DataTableIndex] = &DataArray[ReturnCounter];
+"39
+[e = *U + &U _DataTableArrayOne * -> _DataTableIndex `ux -> -> # *U &U _DataTableArrayOne `ui `ux -> &U *U + _DataArray * -> _ReturnCounter `ux -> -> # *U _DataArray `ui `ux `uc ]
+[; ;CarDataDictionary.c: 40: ReturnCounter++;
+"40
+[e ++ _ReturnCounter -> -> 1 `i `uc ]
+"41
+}
+"38
+[e ++ _DataTableIndex -> -> 1 `i `uc ]
+[e :U 22 ]
+[e $ < -> _DataTableIndex `i -> _DataCount `i 19  ]
+[e :U 20 ]
+"41
+}
+[; ;CarDataDictionary.c: 41: }
+[; ;CarDataDictionary.c: 42: break;
+"42
+[e $U 16  ]
+[; ;CarDataDictionary.c: 43: case 1:
+"43
+[e :U 23 ]
+[; ;CarDataDictionary.c: 44: DataCount = DataTableIndex + numbofbytes;
+"44
+[e = _DataCount -> + -> _DataTableIndex `i -> _numbofbytes `i `uc ]
+[; ;CarDataDictionary.c: 45: for(DataTableIndex;DataTableIndex<DataCount;DataTableIndex++){
+"45
+{
+[e _DataTableIndex ]
+[e $U 27  ]
+[e :U 24 ]
+{
+[; ;CarDataDictionary.c: 46: DataTableArrayTwo[DataTableIndex] = &DataArray[ReturnCounter];
+"46
+[e = *U + &U _DataTableArrayTwo * -> _DataTableIndex `ux -> -> # *U &U _DataTableArrayTwo `ui `ux -> &U *U + _DataArray * -> _ReturnCounter `ux -> -> # *U _DataArray `ui `ux `uc ]
+[; ;CarDataDictionary.c: 47: ReturnCounter++;
+"47
+[e ++ _ReturnCounter -> -> 1 `i `uc ]
+"48
+}
+"45
+[e ++ _DataTableIndex -> -> 1 `i `uc ]
+[e :U 27 ]
+[e $ < -> _DataTableIndex `i -> _DataCount `i 24  ]
+[e :U 25 ]
+"48
+}
+[; ;CarDataDictionary.c: 48: }
+[; ;CarDataDictionary.c: 49: break;
+"49
+[e $U 16  ]
+[; ;CarDataDictionary.c: 50: default:
+"50
+[e :U 28 ]
+[; ;CarDataDictionary.c: 51: Error = -1;
+"51
+[e = _Error -> -U -> 1 `i `uc ]
+"52
+}
+[; ;CarDataDictionary.c: 52: }
+[e $U 16  ]
+"35
+[e :U 17 ]
+[e [\ _DataTable , $ -> -> 0 `i `uc 18
+ , $ -> -> 1 `i `uc 23
+ 28 ]
+"52
+[e :U 16 ]
+[; ;CarDataDictionary.c: 53: return Error;
+"53
+[e ) _Error ]
+[e $UE 15  ]
+[; ;CarDataDictionary.c: 54: }
+"54
+[e :UE 15 ]
+}

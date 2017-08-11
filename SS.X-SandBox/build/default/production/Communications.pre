@@ -8455,16 +8455,9 @@ extern __nonreentrant void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern __nonreentrant void _delay3(unsigned char);
 
-# 14 "FastTransfer.h"
-void begin(volatile int * ptr, unsigned char maxSize, unsigned char givenAddress, bool error, void (*stufftosend)(unsigned char), unsigned char (*stufftoreceive)(void), int (*stuffavailable)(void), unsigned char (*stuffpeek)(void));
+# 12 "CarCom.h"
 void sendData(unsigned char whereToSend, unsigned char ComandByte, unsigned char DataTable, unsigned char DataTableIndex);
 bool receiveData();
-void ToSend(const unsigned char where, const unsigned int what);
-unsigned char AKNAK(unsigned char module);
-unsigned int alignError(void);
-unsigned int CRCError(void);
-unsigned int addressError(void);
-unsigned int dataAddressError(void);
 
 # 11 "Communications.h"
 void ComStart();
@@ -8702,7 +8695,7 @@ extern volatile unsigned int talkTime;
 void *memset(void *s, int c, size_t n);
 
 struct UART_ring_buff {
-unsigned char buf[200];
+unsigned char buf[100];
 int head;
 int tail;
 int count;
@@ -8733,7 +8726,7 @@ char receiveArray[10];
 
 void ComStart(){
 EUSART1_Initialize();
-begin(receiveArray, sizeof (receiveArray), 8, 0, Send_put, Receive_get, Receive_available, Receive_peek);
+
 }
 
 void updateComms() {

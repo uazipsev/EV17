@@ -5,5 +5,5 @@ UART.h  \
 Function.h  \
 ADDRESSING.h  \
 PinDef.h  \
-FastTransfer.h  \
-Communications.h 
+Communications.h  \
+CarCom.h 
