@@ -115,7 +115,6 @@ void SYSTEM_Initialize(void) {
     PIN_MANAGER_Initialize();
     INTERRUPT_Initialize();
     EUSART1_Initialize();
-    begin(receiveArray, sizeof (receiveArray), PDU_ADDRESS, false, Send_put, Receive_get, Receive_available, Receive_peek);
     PWM4_Initialize();
     TMR1_Initialize();
     TMR2_Initialize();

@@ -14,18 +14,13 @@
 #include "ADDRESSING.h"
 #include "Functions.h"
 #include "PDU.h"
+#include "CarCom.h"
 
 void processPowerRequest(int powerSet);
-void respondECU();
 
 void updateComms() {
     if (receiveData()) {
-        static int previousPowerState;
-        if (previousPowerState != receiveArray[POWER_RAILS]) {
-            previousPowerState = receiveArray[POWER_RAILS];
-            processPowerRequest(previousPowerState);
-        }
-        respondECU();
+        
     }
 }
 
@@ -52,14 +47,4 @@ unsigned int FaultsCollector() {
         sendVal = sendVal | ((GetPDUFault(i)&0x01) << i);
     }
     return sendVal;
-}
-
-void respondECU() {
-    LATCbits.LATC5 = 1;
-    ToSend(RESPONSE_ADDRESS, PDU_ADDRESS);
-    ToSend(1,FaultsCollector());
-    Delay(5);
-    sendData(ECU_ADDRESS);
-    Delay(3);
-    LATCbits.LATC5 = 0;
 }

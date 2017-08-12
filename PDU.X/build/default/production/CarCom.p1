@@ -1,61 +1,41 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"102 UART.h
-[s S851 `uc -> 200 `i `i 1 `i 1 `i 1 ]
-[n S851 UART_ring_buff buf head tail count ]
-"9418 C:\Program Files (x86)\Microchip\xc8\v1.42\include\pic18f45k22.h
-[s S433 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S433 . TMR1IE TMR2IE CCP1IE SSP1IE TX1IE RC1IE ADIE ]
-"9427
-[s S434 :3 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S434 . . SSPIE TXIE RCIE ]
-"9417
-[u S432 `S433 1 `S434 1 ]
-[n S432 . . . ]
-"9434
-[v _PIE1bits `VS432 ~T0 @X0 0 e@3997 ]
-"12385
-[v _BAUD1CON `Vuc ~T0 @X0 0 e@4024 ]
-"10352
-[v _RC1STA `Vuc ~T0 @X0 0 e@4011 ]
-"10808
-[v _TX1STA `Vuc ~T0 @X0 0 e@4012 ]
-"11330
-[v _SPBRG1 `Vuc ~T0 @X0 0 e@4015 ]
-"11408
-[v _SPBRGH1 `Vuc ~T0 @X0 0 e@4016 ]
-"11174
-[v _TXREG1 `Vuc ~T0 @X0 0 e@4013 ]
-"11252
-[v _RCREG1 `Vuc ~T0 @X0 0 e@4014 ]
-"114 UART.h
-[v _UART_buff_init `(v ~T0 @X0 0 ef1`*S851 ]
-"100
-[v _memset `(*v ~T0 @X0 0 ef3`*v`i`ui ]
-"119
-[v _UART_buff_modulo_inc `(ui ~T0 @X0 0 ef2`Cui`Cui ]
-"10651 C:\Program Files (x86)\Microchip\xc8\v1.42\include\pic18f45k22.h
-[s S488 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S488 . RX9D OERR FERR ADDEN CREN SREN RX9 SPEN ]
-"10661
-[s S489 :3 `uc 1 :1 `uc 1 ]
-[n S489 . . ADEN ]
-"10665
-[s S490 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S490 . RX9D1 OERR1 FERR1 ADDEN1 CREN1 SREN1 RX91 SPEN1 ]
-"10675
-[s S491 :1 `uc 1 :5 `uc 1 :1 `uc 1 ]
-[n S491 . RCD8 . RC8_9 ]
-"10680
-[s S492 :6 `uc 1 :1 `uc 1 ]
-[n S492 . . RC9 ]
-"10684
-[s S493 :5 `uc 1 :1 `uc 1 ]
-[n S493 . . SRENA ]
-"10650
-[u S487 `S488 1 `S489 1 `S490 1 `S491 1 `S492 1 `S493 1 ]
-[n S487 . . . . . . . ]
-"10689
-[v _RC1STAbits `VS487 ~T0 @X0 0 e@4011 ]
+"102 mcc_generated_files/..\UART.h
+[s S853 `uc -> 200 `i `i 1 `i 1 `i 1 ]
+[n S853 UART_ring_buff buf head tail count ]
+"51 CarCom.c
+[c E7102 0 1 2 .. ]
+[n E7102 . COBS_ENCODE_OK COBS_ENCODE_NULL_POINTER COBS_ENCODE_OUT_BUFFER_OVERFLOW  ]
+"41 COBS.h
+[s S850 `ui 1 `E7102 1 ]
+[n S850 . out_len status ]
+"71
+[v _cobs_encode `(S850 ~T0 @X0 0 ef4`*uc`ui`*Cuc`ui ]
+"126 mcc_generated_files/..\UART.h
+[v _Send_put `(v ~T0 @X0 0 ef1`uc ]
+"124
+[v _Receive_available `(i ~T0 @X0 0 ef ]
+"125
+[v _Receive_get `(uc ~T0 @X0 0 ef ]
+[v F6934 `(v ~T0 @X0 1 tf1`ul ]
+"164 C:\Program Files (x86)\Microchip\xc8\v1.42\include\pic18.h
+[v __delay `JF6934 ~T0 @X0 0 e ]
+[p i __delay ]
+"109 CarCom.c
+[c E7111 0 1 2 4 8 .. ]
+[n E7111 . COBS_DECODE_OK COBS_DECODE_NULL_POINTER COBS_DECODE_OUT_BUFFER_OVERFLOW COBS_DECODE_ZERO_BYTE_IN_INPUT COBS_DECODE_INPUT_TOO_SHORT  ]
+"57 COBS.h
+[s S851 `ui 1 `E7111 1 ]
+[n S851 . out_len status ]
+"72
+[v _cobs_decode `(S851 ~T0 @X0 0 ef4`*uc`ui`*Cuc`ui ]
+"17 CarCom.h
+[v _ComController `(v ~T0 @X0 0 ef2`*uc`ui ]
+"8 CarDataDictionary.h
+[v _GetDataDict `(uc ~T0 @X0 0 ef4`uc`uc`*uc`uc ]
+"18300 C:\Program Files (x86)\Microchip\xc8\v1.42\include\pic18f45k22.h
+[v _LATC5 `Vb ~T0 @X0 0 e@31837 ]
+"11 Functions.h
+[v _Delay `(v ~T0 @X0 0 ef1`l ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -6604,58 +6584,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic18.h: 166: extern __nonreentrant void _delaywdt(unsigned long);
 [; ;pic18.h: 168: extern __nonreentrant void _delay3(unsigned char);
 [; ;stdbool.h: 12: typedef unsigned char bool;
-[; ;stdint.h: 13: typedef signed char int8_t;
-[; ;stdint.h: 20: typedef signed int int16_t;
-[; ;stdint.h: 38: typedef signed long int int32_t;
-[; ;stdint.h: 45: typedef unsigned char uint8_t;
-[; ;stdint.h: 51: typedef unsigned int uint16_t;
-[; ;stdint.h: 67: typedef unsigned long int uint32_t;
-[; ;stdint.h: 75: typedef signed char int_least8_t;
-[; ;stdint.h: 82: typedef signed int int_least16_t;
-[; ;stdint.h: 104: typedef signed long int int_least32_t;
-[; ;stdint.h: 111: typedef unsigned char uint_least8_t;
-[; ;stdint.h: 117: typedef unsigned int uint_least16_t;
-[; ;stdint.h: 136: typedef unsigned long int uint_least32_t;
-[; ;stdint.h: 145: typedef signed char int_fast8_t;
-[; ;stdint.h: 152: typedef signed int int_fast16_t;
-[; ;stdint.h: 174: typedef signed long int int_fast32_t;
-[; ;stdint.h: 181: typedef unsigned char uint_fast8_t;
-[; ;stdint.h: 187: typedef unsigned int uint_fast16_t;
-[; ;stdint.h: 206: typedef unsigned long int uint_fast32_t;
-[; ;stdint.h: 212: typedef int32_t intmax_t;
-[; ;stdint.h: 217: typedef uint32_t uintmax_t;
-[; ;stdint.h: 222: typedef int16_t intptr_t;
-[; ;stdint.h: 227: typedef uint16_t uintptr_t;
 [; ;__size_t.h: 4: typedef unsigned size_t;
-[; ;stdarg.h: 7: typedef void * va_list[1];
-[; ;stdarg.h: 10: extern void * __va_start(void);
-[; ;stdarg.h: 13: extern void * __va_arg(void *, ...);
-[; ;stdio.h: 43: struct __prbuf
-[; ;stdio.h: 44: {
-[; ;stdio.h: 45: char * ptr;
-[; ;stdio.h: 46: void (* func)(char);
-[; ;stdio.h: 47: };
-[; ;errno.h: 29: extern int errno;
-[; ;conio.h: 12: extern void init_uart(void);
-[; ;conio.h: 14: extern char getch(void);
-[; ;conio.h: 15: extern char getche(void);
-[; ;conio.h: 16: extern void putch(char);
-[; ;conio.h: 17: extern void ungetch(char);
-[; ;conio.h: 19: extern __bit kbhit(void);
-[; ;conio.h: 23: extern char * cgets(char *);
-[; ;conio.h: 24: extern void cputs(const char *);
-[; ;stdio.h: 88: extern int cprintf(char *, ...);
-[; ;stdio.h: 93: extern int _doprnt(struct __prbuf *, const register char *, register va_list);
-[; ;stdio.h: 183: extern char * gets(char *);
-[; ;stdio.h: 184: extern int puts(const char *);
-[; ;stdio.h: 185: extern int scanf(const char *, ...) __attribute__((unsupported("scanf() is not supported by this compiler")));
-[; ;stdio.h: 186: extern int sscanf(const char *, const char *, ...) __attribute__((unsupported("sscanf() is not supported by this compiler")));
-[; ;stdio.h: 187: extern int vprintf(const char *, va_list) __attribute__((unsupported("vprintf() is not supported by this compiler")));
-[; ;stdio.h: 188: extern int vsprintf(char *, const char *, va_list) __attribute__((unsupported("vsprintf() is not supported by this compiler")));
-[; ;stdio.h: 189: extern int vscanf(const char *, va_list ap) __attribute__((unsupported("vscanf() is not supported by this compiler")));
-[; ;stdio.h: 190: extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupported("vsscanf() is not supported by this compiler")));
-[; ;stdio.h: 194: extern int sprintf(char *, const char *, ...);
-[; ;stdio.h: 195: extern int printf(const char *, ...);
 [; ;stdlib.h: 7: typedef unsigned short wchar_t;
 [; ;stdlib.h: 15: typedef struct {
 [; ;stdlib.h: 16: int rem;
@@ -6706,452 +6635,529 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stdlib.h: 101: extern char * ltoa(char * buf, long val, int base);
 [; ;stdlib.h: 102: extern char * ultoa(char * buf, unsigned long val, int base);
 [; ;stdlib.h: 104: extern char * ftoa(float f, int * status);
-[; ;UART.h: 23: uint8_t EUSART1_Read(void);
-[; ;UART.h: 48: void EUSART1_Write(uint8_t txData);
-[; ;UART.h: 69: void EUSART1_Transmit_ISR(void);
-[; ;UART.h: 90: void EUSART1_Receive_ISR(void);
-[; ;UART.h: 92: char getch(void);
-[; ;UART.h: 93: void putch(char txData);
-[; ;UART.h: 99: extern volatile unsigned int talkTime;
-[; ;UART.h: 100: void *memset(void *s, int c, size_t n);
-[; ;UART.h: 102: struct UART_ring_buff {
-[; ;UART.h: 103: unsigned char buf[200];
-[; ;UART.h: 104: int head;
-[; ;UART.h: 105: int tail;
-[; ;UART.h: 106: int count;
-[; ;UART.h: 107: };
-"109 UART.h
-[v _input_buffer `S851 ~T0 @X0 1 e ]
-[; ;UART.h: 109: struct UART_ring_buff input_buffer;
+[; ;CarCom.h: 13: unsigned char CRC8(const unsigned char * data, unsigned char len);
+[; ;CarCom.h: 15: void sendData(unsigned char whereToSend, unsigned char ComandByte, unsigned char DataTable, unsigned char DataTableIndex, unsigned char *DTS, unsigned int lenth);
+[; ;CarCom.h: 16: bool receiveData();
+[; ;CarCom.h: 17: void ComController(unsigned char *DTS, unsigned int lenth);
+[; ;pin_manager.h: 311: void PIN_MANAGER_Initialize (void);
+[; ;pin_manager.h: 323: void PIN_MANAGER_IOC(void);
+[; ;stdint.h: 13: typedef signed char int8_t;
+[; ;stdint.h: 20: typedef signed int int16_t;
+[; ;stdint.h: 38: typedef signed long int int32_t;
+[; ;stdint.h: 45: typedef unsigned char uint8_t;
+[; ;stdint.h: 51: typedef unsigned int uint16_t;
+[; ;stdint.h: 67: typedef unsigned long int uint32_t;
+[; ;stdint.h: 75: typedef signed char int_least8_t;
+[; ;stdint.h: 82: typedef signed int int_least16_t;
+[; ;stdint.h: 104: typedef signed long int int_least32_t;
+[; ;stdint.h: 111: typedef unsigned char uint_least8_t;
+[; ;stdint.h: 117: typedef unsigned int uint_least16_t;
+[; ;stdint.h: 136: typedef unsigned long int uint_least32_t;
+[; ;stdint.h: 145: typedef signed char int_fast8_t;
+[; ;stdint.h: 152: typedef signed int int_fast16_t;
+[; ;stdint.h: 174: typedef signed long int int_fast32_t;
+[; ;stdint.h: 181: typedef unsigned char uint_fast8_t;
+[; ;stdint.h: 187: typedef unsigned int uint_fast16_t;
+[; ;stdint.h: 206: typedef unsigned long int uint_fast32_t;
+[; ;stdint.h: 212: typedef int32_t intmax_t;
+[; ;stdint.h: 217: typedef uint32_t uintmax_t;
+[; ;stdint.h: 222: typedef int16_t intptr_t;
+[; ;stdint.h: 227: typedef uint16_t uintptr_t;
+[; ;COBS.h: 33: typedef enum
+[; ;COBS.h: 34: {
+[; ;COBS.h: 35: COBS_ENCODE_OK = 0x00,
+[; ;COBS.h: 36: COBS_ENCODE_NULL_POINTER = 0x01,
+[; ;COBS.h: 37: COBS_ENCODE_OUT_BUFFER_OVERFLOW = 0x02
+[; ;COBS.h: 38: } cobs_encode_status;
+[; ;COBS.h: 40: typedef struct
+[; ;COBS.h: 41: {
+[; ;COBS.h: 42: size_t out_len;
+[; ;COBS.h: 43: cobs_encode_status status;
+[; ;COBS.h: 44: } cobs_encode_result;
+[; ;COBS.h: 47: typedef enum
+[; ;COBS.h: 48: {
+[; ;COBS.h: 49: COBS_DECODE_OK = 0x00,
+[; ;COBS.h: 50: COBS_DECODE_NULL_POINTER = 0x01,
+[; ;COBS.h: 51: COBS_DECODE_OUT_BUFFER_OVERFLOW = 0x02,
+[; ;COBS.h: 52: COBS_DECODE_ZERO_BYTE_IN_INPUT = 0x04,
+[; ;COBS.h: 53: COBS_DECODE_INPUT_TOO_SHORT = 0x08
+[; ;COBS.h: 54: } cobs_decode_status;
+[; ;COBS.h: 56: typedef struct
+[; ;COBS.h: 57: {
+[; ;COBS.h: 58: size_t out_len;
+[; ;COBS.h: 59: cobs_decode_status status;
+[; ;COBS.h: 60: } cobs_decode_result;
+[; ;COBS.h: 71: cobs_encode_result cobs_encode(uint8_t *dst_buf_ptr, size_t dst_buf_len, const uint8_t * src_ptr, size_t src_len);
+[; ;COBS.h: 72: cobs_decode_result cobs_decode(uint8_t *dst_buf_ptr, size_t dst_buf_len, const uint8_t * src_ptr, size_t src_len);
+[; ;interrupt_manager.h: 64: void INTERRUPT_Initialize (void);
+[; ;interrupt_manager.h: 76: void interrupt INTERRUPT_InterruptManager (void);
+[; ;stdarg.h: 7: typedef void * va_list[1];
+[; ;stdarg.h: 10: extern void * __va_start(void);
+[; ;stdarg.h: 13: extern void * __va_arg(void *, ...);
+[; ;stdio.h: 43: struct __prbuf
+[; ;stdio.h: 44: {
+[; ;stdio.h: 45: char * ptr;
+[; ;stdio.h: 46: void (* func)(char);
+[; ;stdio.h: 47: };
+[; ;errno.h: 29: extern int errno;
+[; ;conio.h: 12: extern void init_uart(void);
+[; ;conio.h: 14: extern char getch(void);
+[; ;conio.h: 15: extern char getche(void);
+[; ;conio.h: 16: extern void putch(char);
+[; ;conio.h: 17: extern void ungetch(char);
+[; ;conio.h: 19: extern __bit kbhit(void);
+[; ;conio.h: 23: extern char * cgets(char *);
+[; ;conio.h: 24: extern void cputs(const char *);
+[; ;stdio.h: 88: extern int cprintf(char *, ...);
+[; ;stdio.h: 93: extern int _doprnt(struct __prbuf *, const register char *, register va_list);
+[; ;stdio.h: 183: extern char * gets(char *);
+[; ;stdio.h: 184: extern int puts(const char *);
+[; ;stdio.h: 185: extern int scanf(const char *, ...) __attribute__((unsupported("scanf() is not supported by this compiler")));
+[; ;stdio.h: 186: extern int sscanf(const char *, const char *, ...) __attribute__((unsupported("sscanf() is not supported by this compiler")));
+[; ;stdio.h: 187: extern int vprintf(const char *, va_list) __attribute__((unsupported("vprintf() is not supported by this compiler")));
+[; ;stdio.h: 188: extern int vsprintf(char *, const char *, va_list) __attribute__((unsupported("vsprintf() is not supported by this compiler")));
+[; ;stdio.h: 189: extern int vscanf(const char *, va_list ap) __attribute__((unsupported("vscanf() is not supported by this compiler")));
+[; ;stdio.h: 190: extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupported("vsscanf() is not supported by this compiler")));
+[; ;stdio.h: 194: extern int sprintf(char *, const char *, ...);
+[; ;stdio.h: 195: extern int printf(const char *, ...);
+[; ;..\UART.h: 23: uint8_t EUSART1_Read(void);
+[; ;..\UART.h: 48: void EUSART1_Write(uint8_t txData);
+[; ;..\UART.h: 69: void EUSART1_Transmit_ISR(void);
+[; ;..\UART.h: 90: void EUSART1_Receive_ISR(void);
+[; ;..\UART.h: 92: char getch(void);
+[; ;..\UART.h: 93: void putch(char txData);
+[; ;..\UART.h: 99: extern volatile unsigned int talkTime;
+[; ;..\UART.h: 100: void *memset(void *s, int c, size_t n);
+[; ;..\UART.h: 102: struct UART_ring_buff {
+[; ;..\UART.h: 103: unsigned char buf[200];
+[; ;..\UART.h: 104: int head;
+[; ;..\UART.h: 105: int tail;
+[; ;..\UART.h: 106: int count;
+[; ;..\UART.h: 107: };
+"109 mcc_generated_files/..\UART.h
+[v _input_buffer `S853 ~T0 @X0 1 e ]
+[; ;..\UART.h: 109: struct UART_ring_buff input_buffer;
 "110
-[v _output_buffer `S851 ~T0 @X0 1 e ]
-[; ;UART.h: 110: struct UART_ring_buff output_buffer;
+[v _output_buffer `S853 ~T0 @X0 1 e ]
+[; ;..\UART.h: 110: struct UART_ring_buff output_buffer;
 "112
 [v _Transmit_stall `uc ~T0 @X0 1 e ]
 [i _Transmit_stall
 -> -> 1 `i `uc
 ]
-[; ;UART.h: 112: bool Transmit_stall = 1;
-[; ;UART.h: 113: void EUSART1_Initialize(void);
-[; ;UART.h: 114: void UART_buff_init(struct UART_ring_buff* _this);
-[; ;UART.h: 115: void UART_buff_put(struct UART_ring_buff* _this, const unsigned char c);
-[; ;UART.h: 116: unsigned char UART_buff_get(struct UART_ring_buff* _this);
-[; ;UART.h: 117: void UART_buff_flush(struct UART_ring_buff* _this, const int clearBuffer);
-[; ;UART.h: 118: int UART_buff_size(struct UART_ring_buff* _this);
-[; ;UART.h: 119: unsigned int UART_buff_modulo_inc(const unsigned int value, const unsigned int modulus);
-[; ;UART.h: 120: unsigned char UART_buff_peek(struct UART_ring_buff* _this);
-[; ;UART.h: 123: unsigned char Receive_peek(void);
-[; ;UART.h: 124: int Receive_available(void);
-[; ;UART.h: 125: unsigned char Receive_get(void);
-[; ;UART.h: 126: void Send_put(unsigned char _data);
-[; ;pin_manager.h: 311: void PIN_MANAGER_Initialize (void);
-[; ;pin_manager.h: 323: void PIN_MANAGER_IOC(void);
-"23 UART.c
-[v _EUSART1_Initialize `(v ~T0 @X0 1 ef ]
+[; ;..\UART.h: 112: bool Transmit_stall = 1;
+[; ;..\UART.h: 113: void EUSART1_Initialize(void);
+[; ;..\UART.h: 114: void UART_buff_init(struct UART_ring_buff* _this);
+[; ;..\UART.h: 115: void UART_buff_put(struct UART_ring_buff* _this, const unsigned char c);
+[; ;..\UART.h: 116: unsigned char UART_buff_get(struct UART_ring_buff* _this);
+[; ;..\UART.h: 117: void UART_buff_flush(struct UART_ring_buff* _this, const int clearBuffer);
+[; ;..\UART.h: 118: int UART_buff_size(struct UART_ring_buff* _this);
+[; ;..\UART.h: 119: unsigned int UART_buff_modulo_inc(const unsigned int value, const unsigned int modulus);
+[; ;..\UART.h: 120: unsigned char UART_buff_peek(struct UART_ring_buff* _this);
+[; ;..\UART.h: 123: unsigned char Receive_peek(void);
+[; ;..\UART.h: 124: int Receive_available(void);
+[; ;..\UART.h: 125: unsigned char Receive_get(void);
+[; ;..\UART.h: 126: void Send_put(unsigned char _data);
+[; ;adc.h: 72: typedef uint16_t adc_result_t;
+[; ;adc.h: 86: typedef enum
+[; ;adc.h: 87: {
+[; ;adc.h: 88: channel_CTMU = 0x1D,
+[; ;adc.h: 89: channel_DAC = 0x1E,
+[; ;adc.h: 90: channel_FVRBuf2 = 0x1F,
+[; ;adc.h: 91: U5Multisense = 0x10,
+[; ;adc.h: 92: U8Multisense = 0x16,
+[; ;adc.h: 93: U10Multisense = 0x17
+[; ;adc.h: 94: } adc_channel_t;
+[; ;adc.h: 129: void ADC_Initialize(void);
+[; ;adc.h: 158: void ADC_StartConversion(adc_channel_t channel);
+[; ;adc.h: 190: bool ADC_IsConversionDone();
+[; ;adc.h: 223: adc_result_t ADC_GetConversionResult(void);
+[; ;adc.h: 253: adc_result_t ADC_GetConversion(adc_channel_t channel);
+[; ;adc.h: 269: void ADC_ISR(void);
+[; ;pwm4.h: 97: void PWM4_Initialize(void);
+[; ;pwm4.h: 124: void PWM4_LoadDutyValue(uint16_t dutyValue);
+[; ;memory.h: 55: uint8_t FLASH_ReadByte(uint32_t flashAddr);
+[; ;memory.h: 81: uint16_t FLASH_ReadWord(uint32_t flashAddr);
+[; ;memory.h: 113: void FLASH_WriteByte(uint32_t flashAddr, uint8_t *flashRdBufPtr, uint8_t byte);
+[; ;memory.h: 149: int8_t FLASH_WriteBlock(uint32_t writeAddr, uint8_t *flashWrBufPtr);
+[; ;memory.h: 174: void FLASH_EraseBlock(uint32_t baseAddr);
+[; ;memory.h: 205: void DATAEE_WriteByte(uint8_t bAdd, uint8_t bData);
+[; ;memory.h: 231: uint8_t DATAEE_ReadByte(uint8_t bAdd);
+[; ;tmr2.h: 103: void TMR2_Initialize(void);
+[; ;tmr2.h: 132: void TMR2_StartTimer(void);
+[; ;tmr2.h: 164: void TMR2_StopTimer(void);
+[; ;tmr2.h: 199: uint8_t TMR2_ReadTimer(void);
+[; ;tmr2.h: 238: void TMR2_WriteTimer(uint8_t timerVal);
+[; ;tmr2.h: 290: void TMR2_LoadPeriodRegister(uint8_t periodVal);
+[; ;tmr2.h: 325: bool TMR2_HasOverflowOccured(void);
+[; ;tmr1.h: 94: void TMR1_Initialize(void);
+[; ;tmr1.h: 125: void TMR1_StartTimer(void);
+[; ;tmr1.h: 155: void TMR1_StopTimer(void);
+[; ;tmr1.h: 189: uint16_t TMR1_ReadTimer(void);
+[; ;tmr1.h: 215: void TMR1_WriteTimer(uint16_t timerVal);
+[; ;tmr1.h: 247: void TMR1_Reload(void);
+[; ;tmr1.h: 288: void TMR1_StartSinglePulseAcquisition(void);
+[; ;tmr1.h: 329: uint8_t TMR1_CheckGateValueStatus(void);
+[; ;tmr1.h: 345: void TMR1_ISR(void);
+[; ;mcc.h: 74: void SYSTEM_Initialize(void);
+[; ;mcc.h: 87: void OSCILLATOR_Initialize(void);
+[; ;Functions.h: 11: extern void Delay(long int wait);
+[; ;CarDataDictionary.h: 8: unsigned char GetDataDict(unsigned char DataTable, unsigned char DataTableIndex, unsigned char *DataArray, unsigned char numbofbytes);
+[; ;CarDataDictionary.h: 9: unsigned char SetDataDict(unsigned char DataTable, unsigned char DataTableIndex, unsigned char *DataArray, unsigned char numbofbytes);
+"23 CarCom.c
+[v _CRC8 `(uc ~T0 @X0 1 ef2`*Cuc`uc ]
 {
-[; ;UART.c: 23: void EUSART1_Initialize(void) {
-[e :U _EUSART1_Initialize ]
+[; ;CarCom.c: 23: unsigned char CRC8(const unsigned char * data, unsigned char len) {
+[e :U _CRC8 ]
+[v _data `*Cuc ~T0 @X0 1 r1 ]
+[v _len `uc ~T0 @X0 1 r2 ]
 [f ]
-[; ;UART.c: 25: PIE1bits.RC1IE = 0;
+"24
+[v _crc `uc ~T0 @X0 1 a ]
+[; ;CarCom.c: 24: unsigned char crc = 0x00;
+[e = _crc -> -> 0 `i `uc ]
+[; ;CarCom.c: 25: while (len--) {
 "25
-[e = . . _PIE1bits 0 5 -> -> 0 `i `uc ]
-[; ;UART.c: 26: PIE1bits.TX1IE = 0;
-"26
-[e = . . _PIE1bits 0 4 -> -> 0 `i `uc ]
-[; ;UART.c: 31: BAUD1CON = 0x48;
-"31
-[e = _BAUD1CON -> -> 72 `i `uc ]
-[; ;UART.c: 34: RC1STA = 0x98;
-"34
-[e = _RC1STA -> -> 152 `i `uc ]
-[; ;UART.c: 37: TX1STA = 0x26;
-"37
-[e = _TX1STA -> -> 38 `i `uc ]
-[; ;UART.c: 40: SPBRG1 = (((16000000/38400)/4)-1);
-"40
-[e = _SPBRG1 -> - / / -> 16000000 `l -> 38400 `l -> -> 4 `i `l -> -> 1 `i `l `uc ]
-[; ;UART.c: 43: SPBRGH1 = 0x00;
-"43
-[e = _SPBRGH1 -> -> 0 `i `uc ]
-[; ;UART.c: 46: TXREG1 = 0x00;
-"46
-[e = _TXREG1 -> -> 0 `i `uc ]
-[; ;UART.c: 49: RCREG1 = 0x00;
-"49
-[e = _RCREG1 -> -> 0 `i `uc ]
-[; ;UART.c: 51: UART_buff_init(&input_buffer);
-"51
-[e ( _UART_buff_init (1 &U _input_buffer ]
-[; ;UART.c: 52: UART_buff_init(&output_buffer);
-"52
-[e ( _UART_buff_init (1 &U _output_buffer ]
-[; ;UART.c: 54: PIE1bits.RC1IE = 1;
-"54
-[e = . . _PIE1bits 0 5 -> -> 1 `i `uc ]
-[; ;UART.c: 56: }
-"56
-[e :UE 852 ]
-}
-"58
-[v _UART_buff_init `(v ~T0 @X0 1 ef1`*S851 ]
-{
-[; ;UART.c: 58: void UART_buff_init(struct UART_ring_buff* _this) {
-[e :U _UART_buff_init ]
-[v __this `*S851 ~T0 @X0 1 r1 ]
-[f ]
-[; ;UART.c: 67: memset(_this, 0, sizeof (*_this));
-"67
-[e ( _memset (3 , , -> __this `*v -> 0 `i -> # *U __this `ui ]
-[; ;UART.c: 68: }
-"68
-[e :UE 853 ]
-}
-"70
-[v _UART_buff_put `(v ~T0 @X0 1 ef2`*S851`Cuc ]
-{
-[; ;UART.c: 70: void UART_buff_put(struct UART_ring_buff* _this, const unsigned char c) {
-[e :U _UART_buff_put ]
-[v __this `*S851 ~T0 @X0 1 r1 ]
-[v _c `Cuc ~T0 @X0 1 r2 ]
-[f ]
-[; ;UART.c: 71: if (_this->count < 200) {
-"71
-[e $ ! < . *U __this 3 -> 200 `i 855  ]
-{
-[; ;UART.c: 72: _this->buf[_this->head] = c;
-"72
-[e = *U + &U . *U __this 0 * -> -> . *U __this 1 `ui `ux -> -> # *U &U . *U __this 0 `ui `ux _c ]
-[; ;UART.c: 73: _this->head = UART_buff_modulo_inc(_this->head, 200);
-"73
-[e = . *U __this 1 -> ( _UART_buff_modulo_inc (2 , -> . *U __this 1 `ui -> -> 200 `i `ui `i ]
-[; ;UART.c: 74: ++_this->count;
-"74
-[e =+ . *U __this 3 -> 1 `i ]
-"75
-}
-[; ;UART.c: 75: } else {
-[e $U 856  ]
-[e :U 855 ]
-{
-[; ;UART.c: 76: _this->buf[_this->head] = c;
-"76
-[e = *U + &U . *U __this 0 * -> -> . *U __this 1 `ui `ux -> -> # *U &U . *U __this 0 `ui `ux _c ]
-[; ;UART.c: 77: _this->head = UART_buff_modulo_inc(_this->head, 200);
-"77
-[e = . *U __this 1 -> ( _UART_buff_modulo_inc (2 , -> . *U __this 1 `ui -> -> 200 `i `ui `i ]
-[; ;UART.c: 78: _this->tail = UART_buff_modulo_inc(_this->tail, 200);
-"78
-[e = . *U __this 2 -> ( _UART_buff_modulo_inc (2 , -> . *U __this 2 `ui -> -> 200 `i `ui `i ]
-"80
-}
+[e $U 855  ]
 [e :U 856 ]
-[; ;UART.c: 80: }
-[; ;UART.c: 81: }
-"81
-[e :UE 854 ]
-}
-"83
-[v _UART_buff_get `(uc ~T0 @X0 1 ef1`*S851 ]
 {
-[; ;UART.c: 83: unsigned char UART_buff_get(struct UART_ring_buff* _this) {
-[e :U _UART_buff_get ]
-[v __this `*S851 ~T0 @X0 1 r1 ]
-[f ]
-"84
-[v _c `uc ~T0 @X0 1 a ]
-[; ;UART.c: 84: unsigned char c;
-[; ;UART.c: 85: if (_this->count > 0) {
-"85
-[e $ ! > . *U __this 3 -> 0 `i 858  ]
+"26
+[v _extract `uc ~T0 @X0 1 a ]
+[; ;CarCom.c: 26: unsigned char extract = *data++;
+[e = _extract *U ++ _data * -> -> 1 `i `x -> -> # *U _data `i `x ]
+"27
+[v _tempI `uc ~T0 @X0 1 a ]
+[; ;CarCom.c: 27: unsigned char tempI;
+[; ;CarCom.c: 28: for (tempI = 8; tempI; tempI--) {
+"28
 {
-[; ;UART.c: 86: c = _this->buf[_this->tail];
-"86
-[e = _c *U + &U . *U __this 0 * -> -> . *U __this 2 `ui `ux -> -> # *U &U . *U __this 0 `ui `ux ]
-[; ;UART.c: 87: _this->tail = UART_buff_modulo_inc(_this->tail, 200);
-"87
-[e = . *U __this 2 -> ( _UART_buff_modulo_inc (2 , -> . *U __this 2 `ui -> -> 200 `i `ui `i ]
-[; ;UART.c: 88: --_this->count;
-"88
-[e =- . *U __this 3 -> 1 `i ]
-"89
-}
-[; ;UART.c: 89: } else {
-[e $U 859  ]
+[e = _tempI -> -> 8 `i `uc ]
+[e $U 861  ]
 [e :U 858 ]
 {
-[; ;UART.c: 90: c = 0;
-"90
-[e = _c -> -> 0 `i `uc ]
-"91
-}
-[e :U 859 ]
-[; ;UART.c: 91: }
-[; ;UART.c: 92: return (c);
-"92
-[e ) _c ]
-[e $UE 857  ]
-[; ;UART.c: 93: }
-"93
-[e :UE 857 ]
-}
-"95
-[v _UART_buff_flush `(v ~T0 @X0 1 ef2`*S851`Ci ]
+"29
+[v _sum `uc ~T0 @X0 1 a ]
+[; ;CarCom.c: 29: unsigned char sum = (crc ^ extract) & 0x01;
+[e = _sum -> & ^ -> _crc `i -> _extract `i -> 1 `i `uc ]
+[; ;CarCom.c: 30: crc >>= 1;
+"30
+[e =>> _crc -> 1 `i ]
+[; ;CarCom.c: 31: if (sum) {
+"31
+[e $ ! != -> _sum `i -> -> -> 0 `i `uc `i 862  ]
 {
-[; ;UART.c: 95: void UART_buff_flush(struct UART_ring_buff* _this, const int clearBuffer) {
-[e :U _UART_buff_flush ]
-[v __this `*S851 ~T0 @X0 1 r1 ]
-[v _clearBuffer `Ci ~T0 @X0 1 r2 ]
-[f ]
-[; ;UART.c: 96: _this->count = 0;
-"96
-[e = . *U __this 3 -> 0 `i ]
-[; ;UART.c: 97: _this->head = 0;
-"97
-[e = . *U __this 1 -> 0 `i ]
-[; ;UART.c: 98: _this->tail = 0;
-"98
-[e = . *U __this 2 -> 0 `i ]
-[; ;UART.c: 99: if (clearBuffer) {
-"99
-[e $ ! != _clearBuffer -> 0 `i 861  ]
-{
-[; ;UART.c: 100: memset(_this->buf, 0, sizeof (_this->buf));
-"100
-[e ( _memset (3 , , -> &U . *U __this 0 `*v -> 0 `i * -> # *U &U . *U __this 0 `ui -> -> 200 `i `ui ]
-"101
+[; ;CarCom.c: 32: crc ^= 0x8C;
+"32
+[e =^ _crc -> -> 140 `i `uc ]
+"33
 }
+[e :U 862 ]
+[; ;CarCom.c: 33: }
+[; ;CarCom.c: 34: extract >>= 1;
+"34
+[e =>> _extract -> 1 `i ]
+"35
+}
+"28
+[e -- _tempI -> -> 1 `i `uc ]
 [e :U 861 ]
-[; ;UART.c: 101: }
-[; ;UART.c: 102: }
-"102
-[e :UE 860 ]
+[e $ != -> _tempI `i -> -> -> 0 `i `uc `i 858  ]
+[e :U 859 ]
+"35
 }
-"104
-[v _UART_buff_size `(i ~T0 @X0 1 ef1`*S851 ]
+"36
+}
+[e :U 855 ]
+"25
+[e $ != -> -- _len -> -> 1 `i `uc `i -> -> -> 0 `i `uc `i 856  ]
+[e :U 857 ]
+[; ;CarCom.c: 35: }
+[; ;CarCom.c: 36: }
+[; ;CarCom.c: 37: return crc;
+"37
+[e ) _crc ]
+[e $UE 854  ]
+[; ;CarCom.c: 38: }
+"38
+[e :UE 854 ]
+}
+"41
+[v _sendData `(v ~T0 @X0 1 ef6`uc`uc`uc`uc`*uc`ui ]
 {
-[; ;UART.c: 104: int UART_buff_size(struct UART_ring_buff* _this) {
-[e :U _UART_buff_size ]
-[v __this `*S851 ~T0 @X0 1 r1 ]
+[; ;CarCom.c: 41: void sendData(unsigned char whereToSend, unsigned char ComandByte, unsigned char DataTable, unsigned char DataTableIndex, unsigned char *DTS, unsigned int lenth) {
+[e :U _sendData ]
+[v _whereToSend `uc ~T0 @X0 1 r1 ]
+[v _ComandByte `uc ~T0 @X0 1 r2 ]
+[v _DataTable `uc ~T0 @X0 1 r3 ]
+[v _DataTableIndex `uc ~T0 @X0 1 r4 ]
+[v _DTS `*uc ~T0 @X0 1 r5 ]
+[v _lenth `ui ~T0 @X0 1 r6 ]
 [f ]
-[; ;UART.c: 105: return (_this->count);
-"105
-[e ) . *U __this 3 ]
-[e $UE 862  ]
-[; ;UART.c: 106: }
-"106
-[e :UE 862 ]
-}
-"108
-[v _UART_buff_modulo_inc `(ui ~T0 @X0 1 ef2`Cui`Cui ]
+"46
+[v _SendArray `uc ~T0 @X0 -> 30 `i a ]
+"47
+[v _COBSArray `uc ~T0 @X0 -> 30 `i a ]
+"49
+[v _DataLenth `uc ~T0 @X0 1 a ]
+[; ;CarCom.c: 46: unsigned char SendArray[30];
+[; ;CarCom.c: 47: unsigned char COBSArray[30];
+[; ;CarCom.c: 49: unsigned char DataLenth = 1;
+[e = _DataLenth -> -> 1 `i `uc ]
+"51
+[v _result `S850 ~T0 @X0 1 a ]
+[; ;CarCom.c: 51: cobs_encode_result result;
+[; ;CarCom.c: 53: SendArray[0] = 4+1;
+"53
+[e = *U + &U _SendArray * -> -> -> 0 `i `ui `ux -> -> # *U &U _SendArray `ui `ux -> + -> 4 `i -> 1 `i `uc ]
+[; ;CarCom.c: 54: SendArray[1] = ComandByte;
+"54
+[e = *U + &U _SendArray * -> -> -> 1 `i `ui `ux -> -> # *U &U _SendArray `ui `ux _ComandByte ]
+[; ;CarCom.c: 55: SendArray[2] = DataTable;
+"55
+[e = *U + &U _SendArray * -> -> -> 2 `i `ui `ux -> -> # *U &U _SendArray `ui `ux _DataTable ]
+[; ;CarCom.c: 56: SendArray[3] = DataTableIndex;
+"56
+[e = *U + &U _SendArray * -> -> -> 3 `i `ui `ux -> -> # *U &U _SendArray `ui `ux _DataTableIndex ]
+[; ;CarCom.c: 57: SendArray[4] = lenth;
+"57
+[e = *U + &U _SendArray * -> -> -> 4 `i `ui `ux -> -> # *U &U _SendArray `ui `ux -> _lenth `uc ]
+"62
+[v _i `ui ~T0 @X0 1 a ]
+"63
+[v _count `i ~T0 @X0 1 a ]
+[; ;CarCom.c: 62: unsigned int i;
+[; ;CarCom.c: 63: int count = 5;
+[e = _count -> 5 `i ]
+[; ;CarCom.c: 64: i = count;
+"64
+[e = _i -> _count `ui ]
+[; ;CarCom.c: 66: SendArray[5] = DTS[0];
+"66
+[e = *U + &U _SendArray * -> -> -> 5 `i `ui `ux -> -> # *U &U _SendArray `ui `ux *U + _DTS * -> -> 0 `i `x -> -> # *U _DTS `i `x ]
+[; ;CarCom.c: 68: SendArray[6] = DTS[1];
+"68
+[e = *U + &U _SendArray * -> -> -> 6 `i `ui `ux -> -> # *U &U _SendArray `ui `ux *U + _DTS * -> -> 1 `i `x -> -> # *U _DTS `i `x ]
+[v _CS `uc ~T0 @X0 1 a ]
+[; ;CarCom.c: 71: unsigned char CS = CRC8(SendArray, 7);
+"71
+[e = _CS ( _CRC8 (2 , -> &U _SendArray `*Cuc -> -> 7 `i `uc ]
+[; ;CarCom.c: 75: SendArray[7] = CS;
+"75
+[e = *U + &U _SendArray * -> -> -> 7 `i `ui `ux -> -> # *U &U _SendArray `ui `ux _CS ]
+[; ;CarCom.c: 77: result = cobs_encode(COBSArray, sizeof(COBSArray), SendArray, 8);
+"77
+[e = _result ( _cobs_encode (4 , , , &U _COBSArray -> # _COBSArray `ui -> &U _SendArray `*Cuc -> -> 8 `i `ui ]
+[; ;CarCom.c: 79: SendArray[0] = whereToSend;
+"79
+[e = *U + &U _SendArray * -> -> -> 0 `i `ui `ux -> -> # *U &U _SendArray `ui `ux _whereToSend ]
+[; ;CarCom.c: 81: for(i = 1;i<result.out_len+1;i++){
+"81
 {
-[; ;UART.c: 108: unsigned int UART_buff_modulo_inc(const unsigned int value, const unsigned int modulus) {
-[e :U _UART_buff_modulo_inc ]
-[v _value `Cui ~T0 @X0 1 r1 ]
-[v _modulus `Cui ~T0 @X0 1 r2 ]
-[f ]
-"109
-[v _my_value `ui ~T0 @X0 1 a ]
-[; ;UART.c: 109: unsigned int my_value = value + 1;
-[e = _my_value + _value -> -> 1 `i `ui ]
-[; ;UART.c: 110: if (my_value >= modulus) {
-"110
-[e $ ! >= _my_value _modulus 864  ]
-{
-[; ;UART.c: 111: my_value = 0;
-"111
-[e = _my_value -> -> 0 `i `ui ]
-"112
-}
+[e = _i -> -> 1 `i `ui ]
+[e $U 867  ]
 [e :U 864 ]
-[; ;UART.c: 112: }
-[; ;UART.c: 113: return (my_value);
-"113
-[e ) _my_value ]
-[e $UE 863  ]
-[; ;UART.c: 114: }
-"114
+{
+[; ;CarCom.c: 82: SendArray[i] = COBSArray[i-1];
+"82
+[e = *U + &U _SendArray * -> _i `ux -> -> # *U &U _SendArray `ui `ux *U + &U _COBSArray * -> - _i -> -> 1 `i `ui `ux -> -> # *U &U _COBSArray `ui `ux ]
+"83
+}
+"81
+[e ++ _i -> -> 1 `i `ui ]
+[e :U 867 ]
+[e $ < _i + . _result 0 -> -> 1 `i `ui 864  ]
+[e :U 865 ]
+"83
+}
+[; ;CarCom.c: 83: }
+[; ;CarCom.c: 85: for(i = 0;i<result.out_len+2;i++){
+"85
+{
+[e = _i -> -> 0 `i `ui ]
+[e $U 871  ]
+[e :U 868 ]
+{
+[; ;CarCom.c: 86: Send_put(SendArray[i]);
+"86
+[e ( _Send_put (1 *U + &U _SendArray * -> _i `ux -> -> # *U &U _SendArray `ui `ux ]
+"87
+}
+"85
+[e ++ _i -> -> 1 `i `ui ]
+[e :U 871 ]
+[e $ < _i + . _result 0 -> -> 2 `i `ui 868  ]
+[e :U 869 ]
+"87
+}
+[; ;CarCom.c: 87: }
+[; ;CarCom.c: 88: }
+"88
 [e :UE 863 ]
 }
+"90
+[v _COBS_ENCODE_DST_BUF_LEN_MAX `i ~T0 @X0 1 e ]
+[i _COBS_ENCODE_DST_BUF_LEN_MAX
+-> 30 `i
+]
+[; ;CarCom.c: 90: COBS_ENCODE_DST_BUF_LEN_MAX = 30;
+"91
+[v _COBS_DECODE_DST_BUF_LEN_MAX `i ~T0 @X0 1 e ]
+[i _COBS_DECODE_DST_BUF_LEN_MAX
+-> 30 `i
+]
+[; ;CarCom.c: 91: COBS_DECODE_DST_BUF_LEN_MAX = 30;
+"93
+[v _ReciveArray `uc ~T0 @X0 -> 30 `i e ]
+[; ;CarCom.c: 93: char ReciveArray[30];
+"94
+[v _ProcessArray `uc ~T0 @X0 -> 30 `i e ]
+[; ;CarCom.c: 94: char ProcessArray[30];
+"96
+[v _receiveData `(uc ~T0 @X0 1 ef ]
+{
+[; ;CarCom.c: 96: bool receiveData(){
+[e :U _receiveData ]
+[f ]
+[; ;CarCom.c: 98: if(Receive_available()>5){
+"98
+[e $ ! > ( _Receive_available ..  -> 5 `i 873  ]
+{
+[; ;CarCom.c: 99: if(Receive_get() == 5){
+"99
+[e $ ! == -> ( _Receive_get ..  `i -> 5 `i 874  ]
+{
+"100
+[v _i `i ~T0 @X0 1 a ]
+[; ;CarCom.c: 100: int i = 0;
+[e = _i -> 0 `i ]
+"101
+[v _Data `uc ~T0 @X0 1 a ]
+[; ;CarCom.c: 101: char Data = 0;
+[e = _Data -> -> 0 `i `uc ]
+[; ;CarCom.c: 102: do{
+"102
+[e :U 877 ]
+{
+[; ;CarCom.c: 103: Data = Receive_get();
+"103
+[e = _Data ( _Receive_get ..  ]
+[; ;CarCom.c: 104: ReciveArray[i] = Data;
+"104
+[e = *U + &U _ReciveArray * -> -> _i `ui `ux -> -> # *U &U _ReciveArray `ui `ux _Data ]
+[; ;CarCom.c: 105: _delay((unsigned long)((100)*(8000000/4000000.0)));
+"105
+[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 8000000 `l `d .4000000.0 `ul ]
+[; ;CarCom.c: 106: i++;
+"106
+[e ++ _i -> 1 `i ]
+"107
+}
+[; ;CarCom.c: 107: }while(Data != 0x00);
+[e $ != -> _Data `i -> 0 `i 877  ]
+[e :U 876 ]
+"109
+[v _result `S851 ~T0 @X0 1 a ]
+[; ;CarCom.c: 109: cobs_decode_result result;
+[; ;CarCom.c: 111: result = cobs_decode(ProcessArray, sizeof(ProcessArray), ReciveArray, i);
+"111
+[e = _result ( _cobs_decode (4 , , , &U _ProcessArray -> # _ProcessArray `ui -> &U _ReciveArray `*Cuc -> _i `ui ]
+[v _CS `uc ~T0 @X0 1 a ]
+[; ;CarCom.c: 113: char CS = CRC8(ProcessArray, result.out_len-1);
+"113
+[e = _CS ( _CRC8 (2 , -> &U _ProcessArray `*Cuc -> - . _result 0 -> -> 1 `i `ui `uc ]
+[; ;CarCom.c: 115: if(ProcessArray[result.out_len-1] == CS){
+"115
+[e $ ! == -> *U + &U _ProcessArray * -> - . _result 0 -> -> 1 `i `ui `ux -> -> # *U &U _ProcessArray `ui `ux `i -> _CS `i 878  ]
+{
+[; ;CarCom.c: 116: ComController(ProcessArray,result.out_len);
 "116
-[v _UART_buff_peek `(uc ~T0 @X0 1 ef1`*S851 ]
-{
-[; ;UART.c: 116: unsigned char UART_buff_peek(struct UART_ring_buff* _this) {
-[e :U _UART_buff_peek ]
-[v __this `*S851 ~T0 @X0 1 r1 ]
-[f ]
-[; ;UART.c: 117: return _this->buf[_this->tail];
+[e ( _ComController (2 , &U _ProcessArray . _result 0 ]
+[; ;CarCom.c: 117: return 1;
 "117
-[e ) *U + &U . *U __this 0 * -> -> . *U __this 2 `ui `ux -> -> # *U &U . *U __this 0 `ui `ux ]
-[e $UE 865  ]
-[; ;UART.c: 118: }
+[e ) -> -> 1 `i `uc ]
+[e $UE 872  ]
 "118
-[e :UE 865 ]
 }
+[e :U 878 ]
+"119
+}
+[; ;CarCom.c: 118: }
+[; ;CarCom.c: 119: }
+[e $U 879  ]
 "120
-[v _Receive_peek `(uc ~T0 @X0 1 ef ]
-{
-[; ;UART.c: 120: unsigned char Receive_peek(void) {
-[e :U _Receive_peek ]
-[f ]
-[; ;UART.c: 121: return UART_buff_peek(&input_buffer);
-"121
-[e ) ( _UART_buff_peek (1 &U _input_buffer ]
-[e $UE 866  ]
-[; ;UART.c: 122: }
-"122
-[e :UE 866 ]
-}
-"124
-[v _Receive_available `(i ~T0 @X0 1 ef ]
-{
-[; ;UART.c: 124: int Receive_available(void) {
-[e :U _Receive_available ]
-[f ]
-[; ;UART.c: 125: return UART_buff_size(&input_buffer);
-"125
-[e ) ( _UART_buff_size (1 &U _input_buffer ]
-[e $UE 867  ]
-[; ;UART.c: 126: }
-"126
-[e :UE 867 ]
-}
-"128
-[v _Receive_get `(uc ~T0 @X0 1 ef ]
-{
-[; ;UART.c: 128: unsigned char Receive_get(void) {
-[e :U _Receive_get ]
-[f ]
-[; ;UART.c: 129: return UART_buff_get(&input_buffer);
-"129
-[e ) ( _UART_buff_get (1 &U _input_buffer ]
-[e $UE 868  ]
-[; ;UART.c: 130: }
-"130
-[e :UE 868 ]
-}
-"132
-[v _Send_put `(v ~T0 @X0 1 ef1`uc ]
-{
-[; ;UART.c: 132: void Send_put(unsigned char _data) {
-[e :U _Send_put ]
-[v __data `uc ~T0 @X0 1 r1 ]
-[f ]
-[; ;UART.c: 133: UART_buff_put(&output_buffer, _data);
-"133
-[e ( _UART_buff_put (2 , &U _output_buffer __data ]
-[; ;UART.c: 134: if (Transmit_stall == 1) {
-"134
-[e $ ! == -> _Transmit_stall `i -> 1 `i 870  ]
-{
-[; ;UART.c: 135: Transmit_stall = 0;
-"135
-[e = _Transmit_stall -> -> 0 `i `uc ]
-[; ;UART.c: 136: TXREG1 = UART_buff_get(&output_buffer);
-"136
-[e = _TXREG1 ( _UART_buff_get (1 &U _output_buffer ]
-[; ;UART.c: 137: PIE1bits.TX1IE = 1;
-"137
-[e = . . _PIE1bits 0 4 -> -> 1 `i `uc ]
-"138
-}
-[e :U 870 ]
-[; ;UART.c: 138: }
-[; ;UART.c: 139: }
-"139
-[e :UE 869 ]
-}
-"141
-[v _EUSART1_Receive_ISR `(v ~T0 @X0 1 ef ]
-{
-[; ;UART.c: 141: void EUSART1_Receive_ISR(void) {
-[e :U _EUSART1_Receive_ISR ]
-[f ]
-[; ;UART.c: 142: if (1 == RC1STAbits.OERR) {
-"142
-[e $ ! == -> 1 `i -> . . _RC1STAbits 0 1 `i 872  ]
-{
-[; ;UART.c: 145: RC1STAbits.CREN = 0;
-"145
-[e = . . _RC1STAbits 0 4 -> -> 0 `i `uc ]
-[; ;UART.c: 146: RC1STAbits.CREN = 1;
-"146
-[e = . . _RC1STAbits 0 4 -> -> 1 `i `uc ]
-"147
-}
-[e :U 872 ]
-"148
-[v _data `uc ~T0 @X0 1 a ]
-[; ;UART.c: 147: }
-[; ;UART.c: 148: unsigned char data = RCREG1;
-[e = _data _RCREG1 ]
-[; ;UART.c: 149: UART_buff_put(&input_buffer, data);
-"149
-[e ( _UART_buff_put (2 , &U _input_buffer _data ]
-[; ;UART.c: 150: PIE1bits.RC1IE == 0;
-"150
-[e == -> . . _PIE1bits 0 5 `i -> 0 `i ]
-[; ;UART.c: 151: }
-"151
-[e :UE 871 ]
-}
-"153
-[v _EUSART1_Transmit_ISR `(v ~T0 @X0 1 ef ]
-{
-[; ;UART.c: 153: void EUSART1_Transmit_ISR(void) {
-[e :U _EUSART1_Transmit_ISR ]
-[f ]
-[; ;UART.c: 154: if (UART_buff_size(&output_buffer) > 0) {
-"154
-[e $ ! > ( _UART_buff_size (1 &U _output_buffer -> 0 `i 874  ]
-{
-[; ;UART.c: 155: TXREG1 = UART_buff_get(&output_buffer);
-"155
-[e = _TXREG1 ( _UART_buff_get (1 &U _output_buffer ]
-"156
-}
-[; ;UART.c: 156: } else {
-[e $U 875  ]
 [e :U 874 ]
+[; ;CarCom.c: 120: else{
 {
-[; ;UART.c: 157: Transmit_stall = 1;
-"157
-[e = _Transmit_stall -> -> 1 `i `uc ]
-[; ;UART.c: 158: PIE1bits.TX1IE = 0;
-"158
-[e = . . _PIE1bits 0 4 -> -> 0 `i `uc ]
-"159
+"122
 }
-[e :U 875 ]
-[; ;UART.c: 159: }
-[; ;UART.c: 160: }
-"160
-[e :UE 873 ]
+[e :U 879 ]
+"123
 }
-"162
-[v _getch `(uc ~T0 @X0 1 ef ]
+[; ;CarCom.c: 122: }
+[; ;CarCom.c: 123: }
+[e $U 880  ]
+"124
+[e :U 873 ]
+[; ;CarCom.c: 124: else{
 {
-[; ;UART.c: 162: char getch(void) {
-[e :U _getch ]
+"126
+}
+[e :U 880 ]
+[; ;CarCom.c: 126: }
+[; ;CarCom.c: 128: return 0;
+"128
+[e ) -> -> 0 `i `uc ]
+[e $UE 872  ]
+[; ;CarCom.c: 129: }
+"129
+[e :UE 872 ]
+}
+"133
+[v _ComController `(v ~T0 @X0 1 ef2`*uc`ui ]
+{
+[; ;CarCom.c: 133: void ComController(unsigned char *DTI, unsigned int lenth){
+[e :U _ComController ]
+[v _DTI `*uc ~T0 @X0 1 r1 ]
+[v _lenth `ui ~T0 @X0 1 r2 ]
 [f ]
-[; ;UART.c: 163: return Receive_get();
-"163
-[e ) ( _Receive_get ..  ]
-[e $UE 876  ]
-[; ;UART.c: 164: }
-"164
-[e :UE 876 ]
-}
-"166
-[v _putch `(v ~T0 @X0 1 ef1`uc ]
+[; ;CarCom.c: 134: if(DTI[1] == 1){
+"134
+[e $ ! == -> *U + _DTI * -> -> 1 `i `x -> -> # *U _DTI `i `x `i -> 1 `i 882  ]
 {
-[; ;UART.c: 166: void putch(char txData) {
-[e :U _putch ]
-[v _txData `uc ~T0 @X0 1 r1 ]
-[f ]
-[; ;UART.c: 167: Send_put(txData);
-"167
-[e ( _Send_put (1 _txData ]
-[; ;UART.c: 168: }
-"168
-[e :UE 877 ]
+"135
+[v _DataToSend `uc ~T0 @X0 -> 4 `i a ]
+[; ;CarCom.c: 135: unsigned char DataToSend[4];
+[; ;CarCom.c: 136: GetDataDict(DTI[2], DTI[3], DataToSend, DTI[4]);
+"136
+[e ( _GetDataDict (4 , , , *U + _DTI * -> -> 2 `i `x -> -> # *U _DTI `i `x *U + _DTI * -> -> 3 `i `x -> -> # *U _DTI `i `x &U _DataToSend *U + _DTI * -> -> 4 `i `x -> -> # *U _DTI `i `x ]
+[; ;CarCom.c: 137: do { LATC5 = 1; } while(0);
+"137
+[e :U 885 ]
+{
+[e = _LATC5 -> -> 1 `i `b ]
+}
+[e :U 884 ]
+[; ;CarCom.c: 138: Delay(5);
+"138
+[e ( _Delay (1 -> -> 5 `i `l ]
+[; ;CarCom.c: 139: sendData(1, 1, 1, 1, DataToSend, DTI[4]);
+"139
+[e ( _sendData (4 , , , , , -> -> 1 `i `uc -> -> 1 `i `uc -> -> 1 `i `uc -> -> 1 `i `uc &U _DataToSend -> *U + _DTI * -> -> 4 `i `x -> -> # *U _DTI `i `x `ui ]
+[; ;CarCom.c: 140: Delay(3);
+"140
+[e ( _Delay (1 -> -> 3 `i `l ]
+[; ;CarCom.c: 141: do { LATC5 = 0; } while(0);
+"141
+[e :U 888 ]
+{
+[e = _LATC5 -> -> 0 `i `b ]
+}
+[e :U 887 ]
+"142
+}
+[e :U 882 ]
+[; ;CarCom.c: 142: }
+[; ;CarCom.c: 143: }
+"143
+[e :UE 881 ]
 }
