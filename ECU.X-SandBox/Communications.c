@@ -34,7 +34,6 @@
 #include "UART3.h"
 #include "horn.h"
 #include "CarCom_SAS_DDS_SS.h"
-#include "FastTransfer3.h"
 #include "Functions.h"
 #include "DriverConfigs.h"
 
@@ -91,8 +90,9 @@ void updateComms() {
 }
 
 void Run(){
-            RS485_Direction1(TALK);
-            //sendData1(SS_ADDRESS, 1, 1, 0);
+            unsigned char Data[2];
+            RS485_Direction1(TALK);         
+            sendData1(SS_ADDRESS, 1, 1, 0, Data, 2);
             Delay(3);
             RS485_Direction1(LISTEN);
 }

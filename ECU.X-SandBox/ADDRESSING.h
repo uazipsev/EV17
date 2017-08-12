@@ -12,7 +12,7 @@
 extern "C" {
 #endif
 
-    #define NUMOFEXTBYTES 4
+#define NUMOFEXTBYTES 4
 
 
 #define CLOSE_COMM_TIME 4

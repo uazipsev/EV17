@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=DDSComms.c BMMComms.c MCSComms.c PDUComms.c SASComms.c Communications.c SScomms.c CarDataDictionary.c Horn.c StoppedState.c StateMachine.c debug.c DriverConfigs.c EEprom.c Functions.c ThrottleBrakeControl.c pwm.c I2C.c Timers.c COBS.c CarCom_PDU_MCS_BMM.c CarCom_SAS_DDS_SS.c UART3.c UART2.c UART1.c UART.c main.c ConfigBits.c
+SOURCEFILES_QUOTED_IF_SPACED=COBS.c CarCom_PDU_MCS_BMM.c CarCom_SAS_DDS_SS.c DDSComms.c BMMComms.c MCSComms.c PDUComms.c SASComms.c Communications.c SScomms.c CarDataDictionary.c Horn.c StoppedState.c StateMachine.c debug.c DriverConfigs.c EEprom.c Functions.c ThrottleBrakeControl.c pwm.c I2C.c Timers.c UART3.c UART2.c UART1.c UART.c main.c ConfigBits.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/DDSComms.o ${OBJECTDIR}/BMMComms.o ${OBJECTDIR}/MCSComms.o ${OBJECTDIR}/PDUComms.o ${OBJECTDIR}/SASComms.o ${OBJECTDIR}/Communications.o ${OBJECTDIR}/SScomms.o ${OBJECTDIR}/CarDataDictionary.o ${OBJECTDIR}/Horn.o ${OBJECTDIR}/StoppedState.o ${OBJECTDIR}/StateMachine.o ${OBJECTDIR}/debug.o ${OBJECTDIR}/DriverConfigs.o ${OBJECTDIR}/EEprom.o ${OBJECTDIR}/Functions.o ${OBJECTDIR}/ThrottleBrakeControl.o ${OBJECTDIR}/pwm.o ${OBJECTDIR}/I2C.o ${OBJECTDIR}/Timers.o ${OBJECTDIR}/COBS.o ${OBJECTDIR}/CarCom_PDU_MCS_BMM.o ${OBJECTDIR}/CarCom_SAS_DDS_SS.o ${OBJECTDIR}/UART3.o ${OBJECTDIR}/UART2.o ${OBJECTDIR}/UART1.o ${OBJECTDIR}/UART.o ${OBJECTDIR}/main.o ${OBJECTDIR}/ConfigBits.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/DDSComms.o.d ${OBJECTDIR}/BMMComms.o.d ${OBJECTDIR}/MCSComms.o.d ${OBJECTDIR}/PDUComms.o.d ${OBJECTDIR}/SASComms.o.d ${OBJECTDIR}/Communications.o.d ${OBJECTDIR}/SScomms.o.d ${OBJECTDIR}/CarDataDictionary.o.d ${OBJECTDIR}/Horn.o.d ${OBJECTDIR}/StoppedState.o.d ${OBJECTDIR}/StateMachine.o.d ${OBJECTDIR}/debug.o.d ${OBJECTDIR}/DriverConfigs.o.d ${OBJECTDIR}/EEprom.o.d ${OBJECTDIR}/Functions.o.d ${OBJECTDIR}/ThrottleBrakeControl.o.d ${OBJECTDIR}/pwm.o.d ${OBJECTDIR}/I2C.o.d ${OBJECTDIR}/Timers.o.d ${OBJECTDIR}/COBS.o.d ${OBJECTDIR}/CarCom_PDU_MCS_BMM.o.d ${OBJECTDIR}/CarCom_SAS_DDS_SS.o.d ${OBJECTDIR}/UART3.o.d ${OBJECTDIR}/UART2.o.d ${OBJECTDIR}/UART1.o.d ${OBJECTDIR}/UART.o.d ${OBJECTDIR}/main.o.d ${OBJECTDIR}/ConfigBits.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/COBS.o ${OBJECTDIR}/CarCom_PDU_MCS_BMM.o ${OBJECTDIR}/CarCom_SAS_DDS_SS.o ${OBJECTDIR}/DDSComms.o ${OBJECTDIR}/BMMComms.o ${OBJECTDIR}/MCSComms.o ${OBJECTDIR}/PDUComms.o ${OBJECTDIR}/SASComms.o ${OBJECTDIR}/Communications.o ${OBJECTDIR}/SScomms.o ${OBJECTDIR}/CarDataDictionary.o ${OBJECTDIR}/Horn.o ${OBJECTDIR}/StoppedState.o ${OBJECTDIR}/StateMachine.o ${OBJECTDIR}/debug.o ${OBJECTDIR}/DriverConfigs.o ${OBJECTDIR}/EEprom.o ${OBJECTDIR}/Functions.o ${OBJECTDIR}/ThrottleBrakeControl.o ${OBJECTDIR}/pwm.o ${OBJECTDIR}/I2C.o ${OBJECTDIR}/Timers.o ${OBJECTDIR}/UART3.o ${OBJECTDIR}/UART2.o ${OBJECTDIR}/UART1.o ${OBJECTDIR}/UART.o ${OBJECTDIR}/main.o ${OBJECTDIR}/ConfigBits.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/COBS.o.d ${OBJECTDIR}/CarCom_PDU_MCS_BMM.o.d ${OBJECTDIR}/CarCom_SAS_DDS_SS.o.d ${OBJECTDIR}/DDSComms.o.d ${OBJECTDIR}/BMMComms.o.d ${OBJECTDIR}/MCSComms.o.d ${OBJECTDIR}/PDUComms.o.d ${OBJECTDIR}/SASComms.o.d ${OBJECTDIR}/Communications.o.d ${OBJECTDIR}/SScomms.o.d ${OBJECTDIR}/CarDataDictionary.o.d ${OBJECTDIR}/Horn.o.d ${OBJECTDIR}/StoppedState.o.d ${OBJECTDIR}/StateMachine.o.d ${OBJECTDIR}/debug.o.d ${OBJECTDIR}/DriverConfigs.o.d ${OBJECTDIR}/EEprom.o.d ${OBJECTDIR}/Functions.o.d ${OBJECTDIR}/ThrottleBrakeControl.o.d ${OBJECTDIR}/pwm.o.d ${OBJECTDIR}/I2C.o.d ${OBJECTDIR}/Timers.o.d ${OBJECTDIR}/UART3.o.d ${OBJECTDIR}/UART2.o.d ${OBJECTDIR}/UART1.o.d ${OBJECTDIR}/UART.o.d ${OBJECTDIR}/main.o.d ${OBJECTDIR}/ConfigBits.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/DDSComms.o ${OBJECTDIR}/BMMComms.o ${OBJECTDIR}/MCSComms.o ${OBJECTDIR}/PDUComms.o ${OBJECTDIR}/SASComms.o ${OBJECTDIR}/Communications.o ${OBJECTDIR}/SScomms.o ${OBJECTDIR}/CarDataDictionary.o ${OBJECTDIR}/Horn.o ${OBJECTDIR}/StoppedState.o ${OBJECTDIR}/StateMachine.o ${OBJECTDIR}/debug.o ${OBJECTDIR}/DriverConfigs.o ${OBJECTDIR}/EEprom.o ${OBJECTDIR}/Functions.o ${OBJECTDIR}/ThrottleBrakeControl.o ${OBJECTDIR}/pwm.o ${OBJECTDIR}/I2C.o ${OBJECTDIR}/Timers.o ${OBJECTDIR}/COBS.o ${OBJECTDIR}/CarCom_PDU_MCS_BMM.o ${OBJECTDIR}/CarCom_SAS_DDS_SS.o ${OBJECTDIR}/UART3.o ${OBJECTDIR}/UART2.o ${OBJECTDIR}/UART1.o ${OBJECTDIR}/UART.o ${OBJECTDIR}/main.o ${OBJECTDIR}/ConfigBits.o
+OBJECTFILES=${OBJECTDIR}/COBS.o ${OBJECTDIR}/CarCom_PDU_MCS_BMM.o ${OBJECTDIR}/CarCom_SAS_DDS_SS.o ${OBJECTDIR}/DDSComms.o ${OBJECTDIR}/BMMComms.o ${OBJECTDIR}/MCSComms.o ${OBJECTDIR}/PDUComms.o ${OBJECTDIR}/SASComms.o ${OBJECTDIR}/Communications.o ${OBJECTDIR}/SScomms.o ${OBJECTDIR}/CarDataDictionary.o ${OBJECTDIR}/Horn.o ${OBJECTDIR}/StoppedState.o ${OBJECTDIR}/StateMachine.o ${OBJECTDIR}/debug.o ${OBJECTDIR}/DriverConfigs.o ${OBJECTDIR}/EEprom.o ${OBJECTDIR}/Functions.o ${OBJECTDIR}/ThrottleBrakeControl.o ${OBJECTDIR}/pwm.o ${OBJECTDIR}/I2C.o ${OBJECTDIR}/Timers.o ${OBJECTDIR}/UART3.o ${OBJECTDIR}/UART2.o ${OBJECTDIR}/UART1.o ${OBJECTDIR}/UART.o ${OBJECTDIR}/main.o ${OBJECTDIR}/ConfigBits.o
 
 # Source Files
-SOURCEFILES=DDSComms.c BMMComms.c MCSComms.c PDUComms.c SASComms.c Communications.c SScomms.c CarDataDictionary.c Horn.c StoppedState.c StateMachine.c debug.c DriverConfigs.c EEprom.c Functions.c ThrottleBrakeControl.c pwm.c I2C.c Timers.c COBS.c CarCom_PDU_MCS_BMM.c CarCom_SAS_DDS_SS.c UART3.c UART2.c UART1.c UART.c main.c ConfigBits.c
+SOURCEFILES=COBS.c CarCom_PDU_MCS_BMM.c CarCom_SAS_DDS_SS.c DDSComms.c BMMComms.c MCSComms.c PDUComms.c SASComms.c Communications.c SScomms.c CarDataDictionary.c Horn.c StoppedState.c StateMachine.c debug.c DriverConfigs.c EEprom.c Functions.c ThrottleBrakeControl.c pwm.c I2C.c Timers.c UART3.c UART2.c UART1.c UART.c main.c ConfigBits.c
 
 
 CFLAGS=
@@ -94,6 +94,27 @@ MP_LINKER_FILE_OPTION=,--script=p33EP256GM306.gld
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: compile
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
+${OBJECTDIR}/COBS.o: COBS.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/COBS.o.d 
+	@${RM} ${OBJECTDIR}/COBS.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  COBS.c  -o ${OBJECTDIR}/COBS.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/COBS.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -mno-eds-warn  -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mlarge-data -O0 -msmart-io=1 -Wall -msfr-warn=off  
+	@${FIXDEPS} "${OBJECTDIR}/COBS.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/CarCom_PDU_MCS_BMM.o: CarCom_PDU_MCS_BMM.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/CarCom_PDU_MCS_BMM.o.d 
+	@${RM} ${OBJECTDIR}/CarCom_PDU_MCS_BMM.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  CarCom_PDU_MCS_BMM.c  -o ${OBJECTDIR}/CarCom_PDU_MCS_BMM.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/CarCom_PDU_MCS_BMM.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -mno-eds-warn  -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mlarge-data -O0 -msmart-io=1 -Wall -msfr-warn=off  
+	@${FIXDEPS} "${OBJECTDIR}/CarCom_PDU_MCS_BMM.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/CarCom_SAS_DDS_SS.o: CarCom_SAS_DDS_SS.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/CarCom_SAS_DDS_SS.o.d 
+	@${RM} ${OBJECTDIR}/CarCom_SAS_DDS_SS.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  CarCom_SAS_DDS_SS.c  -o ${OBJECTDIR}/CarCom_SAS_DDS_SS.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/CarCom_SAS_DDS_SS.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -mno-eds-warn  -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mlarge-data -O0 -msmart-io=1 -Wall -msfr-warn=off  
+	@${FIXDEPS} "${OBJECTDIR}/CarCom_SAS_DDS_SS.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
 ${OBJECTDIR}/DDSComms.o: DDSComms.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/DDSComms.o.d 
@@ -227,27 +248,6 @@ ${OBJECTDIR}/Timers.o: Timers.c  nbproject/Makefile-${CND_CONF}.mk
 	${MP_CC} $(MP_EXTRA_CC_PRE)  Timers.c  -o ${OBJECTDIR}/Timers.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/Timers.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -mno-eds-warn  -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mlarge-data -O0 -msmart-io=1 -Wall -msfr-warn=off  
 	@${FIXDEPS} "${OBJECTDIR}/Timers.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
-${OBJECTDIR}/COBS.o: COBS.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/COBS.o.d 
-	@${RM} ${OBJECTDIR}/COBS.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  COBS.c  -o ${OBJECTDIR}/COBS.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/COBS.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -mno-eds-warn  -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mlarge-data -O0 -msmart-io=1 -Wall -msfr-warn=off  
-	@${FIXDEPS} "${OBJECTDIR}/COBS.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/CarCom_PDU_MCS_BMM.o: CarCom_PDU_MCS_BMM.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/CarCom_PDU_MCS_BMM.o.d 
-	@${RM} ${OBJECTDIR}/CarCom_PDU_MCS_BMM.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  CarCom_PDU_MCS_BMM.c  -o ${OBJECTDIR}/CarCom_PDU_MCS_BMM.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/CarCom_PDU_MCS_BMM.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -mno-eds-warn  -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mlarge-data -O0 -msmart-io=1 -Wall -msfr-warn=off  
-	@${FIXDEPS} "${OBJECTDIR}/CarCom_PDU_MCS_BMM.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/CarCom_SAS_DDS_SS.o: CarCom_SAS_DDS_SS.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/CarCom_SAS_DDS_SS.o.d 
-	@${RM} ${OBJECTDIR}/CarCom_SAS_DDS_SS.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  CarCom_SAS_DDS_SS.c  -o ${OBJECTDIR}/CarCom_SAS_DDS_SS.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/CarCom_SAS_DDS_SS.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -mno-eds-warn  -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mlarge-data -O0 -msmart-io=1 -Wall -msfr-warn=off  
-	@${FIXDEPS} "${OBJECTDIR}/CarCom_SAS_DDS_SS.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
-	
 ${OBJECTDIR}/UART3.o: UART3.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/UART3.o.d 
@@ -291,6 +291,27 @@ ${OBJECTDIR}/ConfigBits.o: ConfigBits.c  nbproject/Makefile-${CND_CONF}.mk
 	@${FIXDEPS} "${OBJECTDIR}/ConfigBits.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
 else
+${OBJECTDIR}/COBS.o: COBS.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/COBS.o.d 
+	@${RM} ${OBJECTDIR}/COBS.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  COBS.c  -o ${OBJECTDIR}/COBS.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/COBS.o.d"      -mno-eds-warn  -g -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mlarge-data -O0 -msmart-io=1 -Wall -msfr-warn=off  
+	@${FIXDEPS} "${OBJECTDIR}/COBS.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/CarCom_PDU_MCS_BMM.o: CarCom_PDU_MCS_BMM.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/CarCom_PDU_MCS_BMM.o.d 
+	@${RM} ${OBJECTDIR}/CarCom_PDU_MCS_BMM.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  CarCom_PDU_MCS_BMM.c  -o ${OBJECTDIR}/CarCom_PDU_MCS_BMM.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/CarCom_PDU_MCS_BMM.o.d"      -mno-eds-warn  -g -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mlarge-data -O0 -msmart-io=1 -Wall -msfr-warn=off  
+	@${FIXDEPS} "${OBJECTDIR}/CarCom_PDU_MCS_BMM.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/CarCom_SAS_DDS_SS.o: CarCom_SAS_DDS_SS.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/CarCom_SAS_DDS_SS.o.d 
+	@${RM} ${OBJECTDIR}/CarCom_SAS_DDS_SS.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  CarCom_SAS_DDS_SS.c  -o ${OBJECTDIR}/CarCom_SAS_DDS_SS.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/CarCom_SAS_DDS_SS.o.d"      -mno-eds-warn  -g -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mlarge-data -O0 -msmart-io=1 -Wall -msfr-warn=off  
+	@${FIXDEPS} "${OBJECTDIR}/CarCom_SAS_DDS_SS.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
 ${OBJECTDIR}/DDSComms.o: DDSComms.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/DDSComms.o.d 
@@ -423,27 +444,6 @@ ${OBJECTDIR}/Timers.o: Timers.c  nbproject/Makefile-${CND_CONF}.mk
 	@${RM} ${OBJECTDIR}/Timers.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  Timers.c  -o ${OBJECTDIR}/Timers.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/Timers.o.d"      -mno-eds-warn  -g -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mlarge-data -O0 -msmart-io=1 -Wall -msfr-warn=off  
 	@${FIXDEPS} "${OBJECTDIR}/Timers.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/COBS.o: COBS.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/COBS.o.d 
-	@${RM} ${OBJECTDIR}/COBS.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  COBS.c  -o ${OBJECTDIR}/COBS.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/COBS.o.d"      -mno-eds-warn  -g -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mlarge-data -O0 -msmart-io=1 -Wall -msfr-warn=off  
-	@${FIXDEPS} "${OBJECTDIR}/COBS.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/CarCom_PDU_MCS_BMM.o: CarCom_PDU_MCS_BMM.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/CarCom_PDU_MCS_BMM.o.d 
-	@${RM} ${OBJECTDIR}/CarCom_PDU_MCS_BMM.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  CarCom_PDU_MCS_BMM.c  -o ${OBJECTDIR}/CarCom_PDU_MCS_BMM.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/CarCom_PDU_MCS_BMM.o.d"      -mno-eds-warn  -g -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mlarge-data -O0 -msmart-io=1 -Wall -msfr-warn=off  
-	@${FIXDEPS} "${OBJECTDIR}/CarCom_PDU_MCS_BMM.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/CarCom_SAS_DDS_SS.o: CarCom_SAS_DDS_SS.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/CarCom_SAS_DDS_SS.o.d 
-	@${RM} ${OBJECTDIR}/CarCom_SAS_DDS_SS.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  CarCom_SAS_DDS_SS.c  -o ${OBJECTDIR}/CarCom_SAS_DDS_SS.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/CarCom_SAS_DDS_SS.o.d"      -mno-eds-warn  -g -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mlarge-data -O0 -msmart-io=1 -Wall -msfr-warn=off  
-	@${FIXDEPS} "${OBJECTDIR}/CarCom_SAS_DDS_SS.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
 ${OBJECTDIR}/UART3.o: UART3.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
