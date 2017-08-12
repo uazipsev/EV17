@@ -63,14 +63,14 @@
         <itemPath>Timers.h</itemPath>
       </logicalFolder>
       <logicalFolder name="f1" displayName="FastTransfer" projectFiles="true">
-        <itemPath>FastTransfer.c</itemPath>
-        <itemPath>FastTransfer1.c</itemPath>
         <itemPath>FastTransfer2.c</itemPath>
         <itemPath>FastTransfer2.h</itemPath>
-        <itemPath>FastTransfer1.h</itemPath>
-        <itemPath>FastTransfer.h</itemPath>
         <itemPath>COBS.c</itemPath>
         <itemPath>COBS.h</itemPath>
+        <itemPath>CarCom_PDU_MCS_BMM.c</itemPath>
+        <itemPath>CarCom_PDU_MCS_BMM.h</itemPath>
+        <itemPath>CarCom_SAS_DDS_SS.c</itemPath>
+        <itemPath>CarCom_SAS_DDS_SS.h</itemPath>
       </logicalFolder>
       <logicalFolder name="f2" displayName="UART" projectFiles="true">
         <itemPath>UART3.c</itemPath>

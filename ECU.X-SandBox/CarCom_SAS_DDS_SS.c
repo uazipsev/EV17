@@ -1,5 +1,5 @@
 /*
- * File:   FastTransfer.c
+ * File:   FastTransfer1.c
  * Author: Zac Kilburn
  *
  * Created on May 31, 2015
@@ -8,47 +8,17 @@
 #include <xc.h>
 #include <stdbool.h>
 #include <stdlib.h>
-#include "FastTransfer.h"
-#include "UART.h"
+#include "CarCom_SAS_DDS_SS.h"
+#include "UART1.h"
 #include "ADDRESSING.h"
-#include "COBS.h"
 #include "PinDef.h"
-#include "Functions.h"
 
-volatile int receiveArray[100];
+#include "COBS.h"
+
+unsigned char CRC81(const unsigned char * data, unsigned char len);
 
 
-#define polynomial 0x8C  //polynomial used to calculate crc
-
-unsigned char CRC8(const unsigned char * data, unsigned char len);
-
-//CRC Calculator
-
-unsigned char CRC8(const unsigned char * data, unsigned char len) {
-    unsigned char crc = 0x00;
-    while (len--) {
-        unsigned char extract = *data++;
-        unsigned char tempI;
-        for (tempI = 8; tempI; tempI--) {
-            unsigned char sum = (crc ^ extract) & 0x01;
-            crc >>= 1;
-            if (sum) {
-                crc ^= polynomial;
-            }
-            extract >>= 1;
-        }
-    }
-    return crc;
-}
-
-#define NUMOFEXTBYTES 4
-
-COBS_ENCODE_DST_BUF_LEN_MAX = 30;
-COBS_DECODE_DST_BUF_LEN_MAX = 30; 
-
-//Sends out send buffer with a 2 start bytes, where the packet is going, where it came from, the size of the data packet, the data and the crc.
-
-void sendData(unsigned char whereToSend, unsigned char ComandByte, unsigned char DataTable, unsigned char DataTableIndex, unsigned char *DTS, unsigned int lenth) {
+void sendData1(unsigned char whereToSend, unsigned char ComandByte, unsigned char DataTable, unsigned char DataTableIndex, unsigned char *DTS, unsigned int lenth) {
 
     
     //calculate the crc
@@ -92,22 +62,23 @@ void sendData(unsigned char whereToSend, unsigned char ComandByte, unsigned char
         SendArray[i] = COBSArray[i-1];
     }
     
+    
     for(i = 0;i<result.out_len+2;i++){
-        Send_put(SendArray[i]);
+        Send_put1(SendArray[i]);
     }
 }
 
- char ReciveArray[30];
- char ProcessArray[30];
+ unsigned char ReciveArray1[30];
+ unsigned char ProcessArray1[30];
 
-bool receiveData() {
+bool receiveData1() {
     if(Receive_available1()>5){
         if(Receive_get1() == ECU_ADDRESS){
             int i = 0;
             unsigned char Data = 0;
             do{
                 Data = Receive_get1();
-                ReciveArray[i] = Data;
+                ReciveArray1[i] = Data;
                 DelayUS(200);
                 //printf("%u ",Data);
                 i++;
@@ -119,13 +90,13 @@ bool receiveData() {
             
             cobs_decode_result result;
 
-            result = cobs_decode(ProcessArray, sizeof(ProcessArray), ReciveArray, i);
+            result = cobs_decode(ProcessArray1, sizeof(ProcessArray1), ReciveArray1, i);
             
-            unsigned char CS = CRC8(ProcessArray, result.out_len-2);
+            unsigned char CS = CRC8(ProcessArray1, result.out_len-2);
             
-            if(ProcessArray[result.out_len-2] == CS){
-                //INDICATOR ^= 1;
-                ComController(ProcessArray,result.out_len);
+            if(ProcessArray1[result.out_len-2] == CS){
+                INDICATOR ^= 1;
+                ComController1(ProcessArray1,result.out_len);
                 return true;
             }
         }
@@ -141,16 +112,32 @@ bool receiveData() {
 }
 
 #define READ_TABLE 1
-#define WRITE_TABLE 2
 
-void ComController(unsigned char *DTI, unsigned int lenth){
+void ComController1(unsigned char *DTI, unsigned int lenth){
     if(DTI[1] == READ_TABLE){
         unsigned char DataToSend[4];
         GetDataDict(DTI[2], DTI[3], DataToSend, DTI[4]);
-        RS485_1_Direction = TALK;// = TALK;  //RS485 set to talk
+        RS485_2_Direction = TALK;  //RS485 set to talk
         Delay(5);
         sendData(ECU_ADDRESS, 1, 1, 1, DataToSend, DTI[4]);
         Delay(3);
-        RS485_1_Direction = LISTEN;  ///RS485 set to listen
+        RS485_2_Direction = LISTEN;   ///RS485 set to listen
     }
+}
+
+unsigned char CRC81(const unsigned char * data, unsigned char len) {
+    unsigned char crc = 0x00;
+    while (len--) {
+        unsigned char extract = *data++;
+        unsigned char tempI;
+        for (tempI = 8; tempI; tempI--) {
+            unsigned char sum = (crc ^ extract) & 0x01;
+            crc >>= 1;
+            if (sum) {
+                crc ^= polynomial;
+            }
+            extract >>= 1;
+        }
+    }
+    return crc;
 }
