@@ -75,7 +75,7 @@ void ComStart(){
     UART1_init();
     UART2_init();
     UART3_init();   
-    StartFastTransfer();
+    //StartFastTransfer();
     //StartFastTransfer1();
     //StartFastTransfer3();
 }
@@ -93,7 +93,7 @@ void updateComms() {
 
 void Run(){
             RS485_Direction1(TALK);
-            sendData1(SS_ADDRESS, 1, 1, 0);
+            //sendData1(SS_ADDRESS, 1, 1, 0);
             Delay(3);
             RS485_Direction1(LISTEN);
 }

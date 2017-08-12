@@ -31,6 +31,8 @@
         <itemPath>Communications.h</itemPath>
         <itemPath>SScomms.c</itemPath>
         <itemPath>SScomms.h</itemPath>
+        <itemPath>CarDataDictionary.c</itemPath>
+        <itemPath>CarDataDictionary.h</itemPath>
       </logicalFolder>
       <logicalFolder name="f4" displayName="Control" projectFiles="true">
         <logicalFolder name="f1" displayName="Horn" projectFiles="true">
@@ -64,15 +66,11 @@
         <itemPath>FastTransfer.c</itemPath>
         <itemPath>FastTransfer1.c</itemPath>
         <itemPath>FastTransfer2.c</itemPath>
-        <itemPath>FastTransfer3.c</itemPath>
         <itemPath>FastTransfer2.h</itemPath>
         <itemPath>FastTransfer1.h</itemPath>
         <itemPath>FastTransfer.h</itemPath>
-        <itemPath>FastTransfer3.h</itemPath>
         <itemPath>COBS.c</itemPath>
         <itemPath>COBS.h</itemPath>
-        <itemPath>OBJDict.c</itemPath>
-        <itemPath>OBJDict.h</itemPath>
       </logicalFolder>
       <logicalFolder name="f2" displayName="UART" projectFiles="true">
         <itemPath>UART3.c</itemPath>

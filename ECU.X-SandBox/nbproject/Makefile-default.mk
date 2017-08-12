@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=DDSComms.c BMMComms.c MCSComms.c PDUComms.c SASComms.c Communications.c SScomms.c Horn.c StoppedState.c StateMachine.c debug.c DriverConfigs.c EEprom.c Functions.c ThrottleBrakeControl.c pwm.c I2C.c Timers.c FastTransfer.c FastTransfer1.c FastTransfer2.c FastTransfer3.c COBS.c OBJDict.c UART3.c UART2.c UART1.c UART.c main.c ConfigBits.c
+SOURCEFILES_QUOTED_IF_SPACED=DDSComms.c BMMComms.c MCSComms.c PDUComms.c SASComms.c Communications.c SScomms.c Horn.c StoppedState.c StateMachine.c debug.c DriverConfigs.c EEprom.c Functions.c ThrottleBrakeControl.c pwm.c I2C.c Timers.c FastTransfer.c FastTransfer1.c FastTransfer2.c COBS.c UART3.c UART2.c UART1.c UART.c main.c ConfigBits.c CarDataDictionary.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/DDSComms.o ${OBJECTDIR}/BMMComms.o ${OBJECTDIR}/MCSComms.o ${OBJECTDIR}/PDUComms.o ${OBJECTDIR}/SASComms.o ${OBJECTDIR}/Communications.o ${OBJECTDIR}/SScomms.o ${OBJECTDIR}/Horn.o ${OBJECTDIR}/StoppedState.o ${OBJECTDIR}/StateMachine.o ${OBJECTDIR}/debug.o ${OBJECTDIR}/DriverConfigs.o ${OBJECTDIR}/EEprom.o ${OBJECTDIR}/Functions.o ${OBJECTDIR}/ThrottleBrakeControl.o ${OBJECTDIR}/pwm.o ${OBJECTDIR}/I2C.o ${OBJECTDIR}/Timers.o ${OBJECTDIR}/FastTransfer.o ${OBJECTDIR}/FastTransfer1.o ${OBJECTDIR}/FastTransfer2.o ${OBJECTDIR}/FastTransfer3.o ${OBJECTDIR}/COBS.o ${OBJECTDIR}/OBJDict.o ${OBJECTDIR}/UART3.o ${OBJECTDIR}/UART2.o ${OBJECTDIR}/UART1.o ${OBJECTDIR}/UART.o ${OBJECTDIR}/main.o ${OBJECTDIR}/ConfigBits.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/DDSComms.o.d ${OBJECTDIR}/BMMComms.o.d ${OBJECTDIR}/MCSComms.o.d ${OBJECTDIR}/PDUComms.o.d ${OBJECTDIR}/SASComms.o.d ${OBJECTDIR}/Communications.o.d ${OBJECTDIR}/SScomms.o.d ${OBJECTDIR}/Horn.o.d ${OBJECTDIR}/StoppedState.o.d ${OBJECTDIR}/StateMachine.o.d ${OBJECTDIR}/debug.o.d ${OBJECTDIR}/DriverConfigs.o.d ${OBJECTDIR}/EEprom.o.d ${OBJECTDIR}/Functions.o.d ${OBJECTDIR}/ThrottleBrakeControl.o.d ${OBJECTDIR}/pwm.o.d ${OBJECTDIR}/I2C.o.d ${OBJECTDIR}/Timers.o.d ${OBJECTDIR}/FastTransfer.o.d ${OBJECTDIR}/FastTransfer1.o.d ${OBJECTDIR}/FastTransfer2.o.d ${OBJECTDIR}/FastTransfer3.o.d ${OBJECTDIR}/COBS.o.d ${OBJECTDIR}/OBJDict.o.d ${OBJECTDIR}/UART3.o.d ${OBJECTDIR}/UART2.o.d ${OBJECTDIR}/UART1.o.d ${OBJECTDIR}/UART.o.d ${OBJECTDIR}/main.o.d ${OBJECTDIR}/ConfigBits.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/DDSComms.o ${OBJECTDIR}/BMMComms.o ${OBJECTDIR}/MCSComms.o ${OBJECTDIR}/PDUComms.o ${OBJECTDIR}/SASComms.o ${OBJECTDIR}/Communications.o ${OBJECTDIR}/SScomms.o ${OBJECTDIR}/Horn.o ${OBJECTDIR}/StoppedState.o ${OBJECTDIR}/StateMachine.o ${OBJECTDIR}/debug.o ${OBJECTDIR}/DriverConfigs.o ${OBJECTDIR}/EEprom.o ${OBJECTDIR}/Functions.o ${OBJECTDIR}/ThrottleBrakeControl.o ${OBJECTDIR}/pwm.o ${OBJECTDIR}/I2C.o ${OBJECTDIR}/Timers.o ${OBJECTDIR}/FastTransfer.o ${OBJECTDIR}/FastTransfer1.o ${OBJECTDIR}/FastTransfer2.o ${OBJECTDIR}/COBS.o ${OBJECTDIR}/UART3.o ${OBJECTDIR}/UART2.o ${OBJECTDIR}/UART1.o ${OBJECTDIR}/UART.o ${OBJECTDIR}/main.o ${OBJECTDIR}/ConfigBits.o ${OBJECTDIR}/CarDataDictionary.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/DDSComms.o.d ${OBJECTDIR}/BMMComms.o.d ${OBJECTDIR}/MCSComms.o.d ${OBJECTDIR}/PDUComms.o.d ${OBJECTDIR}/SASComms.o.d ${OBJECTDIR}/Communications.o.d ${OBJECTDIR}/SScomms.o.d ${OBJECTDIR}/Horn.o.d ${OBJECTDIR}/StoppedState.o.d ${OBJECTDIR}/StateMachine.o.d ${OBJECTDIR}/debug.o.d ${OBJECTDIR}/DriverConfigs.o.d ${OBJECTDIR}/EEprom.o.d ${OBJECTDIR}/Functions.o.d ${OBJECTDIR}/ThrottleBrakeControl.o.d ${OBJECTDIR}/pwm.o.d ${OBJECTDIR}/I2C.o.d ${OBJECTDIR}/Timers.o.d ${OBJECTDIR}/FastTransfer.o.d ${OBJECTDIR}/FastTransfer1.o.d ${OBJECTDIR}/FastTransfer2.o.d ${OBJECTDIR}/COBS.o.d ${OBJECTDIR}/UART3.o.d ${OBJECTDIR}/UART2.o.d ${OBJECTDIR}/UART1.o.d ${OBJECTDIR}/UART.o.d ${OBJECTDIR}/main.o.d ${OBJECTDIR}/ConfigBits.o.d ${OBJECTDIR}/CarDataDictionary.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/DDSComms.o ${OBJECTDIR}/BMMComms.o ${OBJECTDIR}/MCSComms.o ${OBJECTDIR}/PDUComms.o ${OBJECTDIR}/SASComms.o ${OBJECTDIR}/Communications.o ${OBJECTDIR}/SScomms.o ${OBJECTDIR}/Horn.o ${OBJECTDIR}/StoppedState.o ${OBJECTDIR}/StateMachine.o ${OBJECTDIR}/debug.o ${OBJECTDIR}/DriverConfigs.o ${OBJECTDIR}/EEprom.o ${OBJECTDIR}/Functions.o ${OBJECTDIR}/ThrottleBrakeControl.o ${OBJECTDIR}/pwm.o ${OBJECTDIR}/I2C.o ${OBJECTDIR}/Timers.o ${OBJECTDIR}/FastTransfer.o ${OBJECTDIR}/FastTransfer1.o ${OBJECTDIR}/FastTransfer2.o ${OBJECTDIR}/FastTransfer3.o ${OBJECTDIR}/COBS.o ${OBJECTDIR}/OBJDict.o ${OBJECTDIR}/UART3.o ${OBJECTDIR}/UART2.o ${OBJECTDIR}/UART1.o ${OBJECTDIR}/UART.o ${OBJECTDIR}/main.o ${OBJECTDIR}/ConfigBits.o
+OBJECTFILES=${OBJECTDIR}/DDSComms.o ${OBJECTDIR}/BMMComms.o ${OBJECTDIR}/MCSComms.o ${OBJECTDIR}/PDUComms.o ${OBJECTDIR}/SASComms.o ${OBJECTDIR}/Communications.o ${OBJECTDIR}/SScomms.o ${OBJECTDIR}/Horn.o ${OBJECTDIR}/StoppedState.o ${OBJECTDIR}/StateMachine.o ${OBJECTDIR}/debug.o ${OBJECTDIR}/DriverConfigs.o ${OBJECTDIR}/EEprom.o ${OBJECTDIR}/Functions.o ${OBJECTDIR}/ThrottleBrakeControl.o ${OBJECTDIR}/pwm.o ${OBJECTDIR}/I2C.o ${OBJECTDIR}/Timers.o ${OBJECTDIR}/FastTransfer.o ${OBJECTDIR}/FastTransfer1.o ${OBJECTDIR}/FastTransfer2.o ${OBJECTDIR}/COBS.o ${OBJECTDIR}/UART3.o ${OBJECTDIR}/UART2.o ${OBJECTDIR}/UART1.o ${OBJECTDIR}/UART.o ${OBJECTDIR}/main.o ${OBJECTDIR}/ConfigBits.o ${OBJECTDIR}/CarDataDictionary.o
 
 # Source Files
-SOURCEFILES=DDSComms.c BMMComms.c MCSComms.c PDUComms.c SASComms.c Communications.c SScomms.c Horn.c StoppedState.c StateMachine.c debug.c DriverConfigs.c EEprom.c Functions.c ThrottleBrakeControl.c pwm.c I2C.c Timers.c FastTransfer.c FastTransfer1.c FastTransfer2.c FastTransfer3.c COBS.c OBJDict.c UART3.c UART2.c UART1.c UART.c main.c ConfigBits.c
+SOURCEFILES=DDSComms.c BMMComms.c MCSComms.c PDUComms.c SASComms.c Communications.c SScomms.c Horn.c StoppedState.c StateMachine.c debug.c DriverConfigs.c EEprom.c Functions.c ThrottleBrakeControl.c pwm.c I2C.c Timers.c FastTransfer.c FastTransfer1.c FastTransfer2.c COBS.c UART3.c UART2.c UART1.c UART.c main.c ConfigBits.c CarDataDictionary.c
 
 
 CFLAGS=
@@ -241,26 +241,12 @@ ${OBJECTDIR}/FastTransfer2.o: FastTransfer2.c  nbproject/Makefile-${CND_CONF}.mk
 	${MP_CC} $(MP_EXTRA_CC_PRE)  FastTransfer2.c  -o ${OBJECTDIR}/FastTransfer2.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/FastTransfer2.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -mno-eds-warn  -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mlarge-data -O0 -msmart-io=1 -Wall -msfr-warn=off  
 	@${FIXDEPS} "${OBJECTDIR}/FastTransfer2.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
-${OBJECTDIR}/FastTransfer3.o: FastTransfer3.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/FastTransfer3.o.d 
-	@${RM} ${OBJECTDIR}/FastTransfer3.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  FastTransfer3.c  -o ${OBJECTDIR}/FastTransfer3.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/FastTransfer3.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -mno-eds-warn  -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mlarge-data -O0 -msmart-io=1 -Wall -msfr-warn=off  
-	@${FIXDEPS} "${OBJECTDIR}/FastTransfer3.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
-	
 ${OBJECTDIR}/COBS.o: COBS.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/COBS.o.d 
 	@${RM} ${OBJECTDIR}/COBS.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  COBS.c  -o ${OBJECTDIR}/COBS.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/COBS.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -mno-eds-warn  -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mlarge-data -O0 -msmart-io=1 -Wall -msfr-warn=off  
 	@${FIXDEPS} "${OBJECTDIR}/COBS.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/OBJDict.o: OBJDict.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/OBJDict.o.d 
-	@${RM} ${OBJECTDIR}/OBJDict.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  OBJDict.c  -o ${OBJECTDIR}/OBJDict.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/OBJDict.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -mno-eds-warn  -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mlarge-data -O0 -msmart-io=1 -Wall -msfr-warn=off  
-	@${FIXDEPS} "${OBJECTDIR}/OBJDict.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
 ${OBJECTDIR}/UART3.o: UART3.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
@@ -303,6 +289,13 @@ ${OBJECTDIR}/ConfigBits.o: ConfigBits.c  nbproject/Makefile-${CND_CONF}.mk
 	@${RM} ${OBJECTDIR}/ConfigBits.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  ConfigBits.c  -o ${OBJECTDIR}/ConfigBits.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/ConfigBits.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -mno-eds-warn  -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mlarge-data -O0 -msmart-io=1 -Wall -msfr-warn=off  
 	@${FIXDEPS} "${OBJECTDIR}/ConfigBits.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/CarDataDictionary.o: CarDataDictionary.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/CarDataDictionary.o.d 
+	@${RM} ${OBJECTDIR}/CarDataDictionary.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  CarDataDictionary.c  -o ${OBJECTDIR}/CarDataDictionary.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/CarDataDictionary.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -mno-eds-warn  -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mlarge-data -O0 -msmart-io=1 -Wall -msfr-warn=off  
+	@${FIXDEPS} "${OBJECTDIR}/CarDataDictionary.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
 else
 ${OBJECTDIR}/DDSComms.o: DDSComms.c  nbproject/Makefile-${CND_CONF}.mk
@@ -452,26 +445,12 @@ ${OBJECTDIR}/FastTransfer2.o: FastTransfer2.c  nbproject/Makefile-${CND_CONF}.mk
 	${MP_CC} $(MP_EXTRA_CC_PRE)  FastTransfer2.c  -o ${OBJECTDIR}/FastTransfer2.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/FastTransfer2.o.d"      -mno-eds-warn  -g -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mlarge-data -O0 -msmart-io=1 -Wall -msfr-warn=off  
 	@${FIXDEPS} "${OBJECTDIR}/FastTransfer2.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
-${OBJECTDIR}/FastTransfer3.o: FastTransfer3.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/FastTransfer3.o.d 
-	@${RM} ${OBJECTDIR}/FastTransfer3.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  FastTransfer3.c  -o ${OBJECTDIR}/FastTransfer3.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/FastTransfer3.o.d"      -mno-eds-warn  -g -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mlarge-data -O0 -msmart-io=1 -Wall -msfr-warn=off  
-	@${FIXDEPS} "${OBJECTDIR}/FastTransfer3.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
-	
 ${OBJECTDIR}/COBS.o: COBS.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/COBS.o.d 
 	@${RM} ${OBJECTDIR}/COBS.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  COBS.c  -o ${OBJECTDIR}/COBS.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/COBS.o.d"      -mno-eds-warn  -g -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mlarge-data -O0 -msmart-io=1 -Wall -msfr-warn=off  
 	@${FIXDEPS} "${OBJECTDIR}/COBS.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/OBJDict.o: OBJDict.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/OBJDict.o.d 
-	@${RM} ${OBJECTDIR}/OBJDict.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  OBJDict.c  -o ${OBJECTDIR}/OBJDict.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/OBJDict.o.d"      -mno-eds-warn  -g -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mlarge-data -O0 -msmart-io=1 -Wall -msfr-warn=off  
-	@${FIXDEPS} "${OBJECTDIR}/OBJDict.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
 ${OBJECTDIR}/UART3.o: UART3.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
@@ -514,6 +493,13 @@ ${OBJECTDIR}/ConfigBits.o: ConfigBits.c  nbproject/Makefile-${CND_CONF}.mk
 	@${RM} ${OBJECTDIR}/ConfigBits.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  ConfigBits.c  -o ${OBJECTDIR}/ConfigBits.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/ConfigBits.o.d"      -mno-eds-warn  -g -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mlarge-data -O0 -msmart-io=1 -Wall -msfr-warn=off  
 	@${FIXDEPS} "${OBJECTDIR}/ConfigBits.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/CarDataDictionary.o: CarDataDictionary.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/CarDataDictionary.o.d 
+	@${RM} ${OBJECTDIR}/CarDataDictionary.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  CarDataDictionary.c  -o ${OBJECTDIR}/CarDataDictionary.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/CarDataDictionary.o.d"      -mno-eds-warn  -g -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mlarge-data -O0 -msmart-io=1 -Wall -msfr-warn=off  
+	@${FIXDEPS} "${OBJECTDIR}/CarDataDictionary.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
 endif
 
