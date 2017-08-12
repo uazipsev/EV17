@@ -106,12 +106,9 @@ bool receiveData() {
             do{
                 Data = Receive_get1();
                 ReciveArray[i] = Data;
-                DelayUS(200);
-                //printf("%u ",Data);
+                DelayUS(200);;
                 i++;
             }while(Data != 0x00);
-            
-            //printf("\n\r ");
             
             ClearBuffer();
             
@@ -122,7 +119,6 @@ bool receiveData() {
             unsigned char CS = CRC8(ProcessArray, result.out_len-2);
             
             if(ProcessArray[result.out_len-2] == CS){
-                //INDICATOR ^= 1;
                 ComController(ProcessArray,result.out_len);
                 return true;
             }
