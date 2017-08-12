@@ -40,18 +40,18 @@ void main(void) {
 
     // Disable the Peripheral Interrupts
     //INTERRUPT_PeripheralInterruptDisable();
-    DATAEE_WriteByte(0, 0x03);
-    DATAEE_WriteByte(1, 0xE8);
-    DATAEE_WriteByte(2, 0x03);
-    DATAEE_WriteByte(3, 0xE8);
-    DATAEE_WriteByte(4, 0x03);
-    DATAEE_WriteByte(5, 0xE8);
-    DATAEE_WriteByte(6, 0x03);
-    DATAEE_WriteByte(7, 0xE8);
-    DATAEE_WriteByte(8, 0x03);
-    DATAEE_WriteByte(9, 0xE8);
-    DATAEE_WriteByte(10, 0x03);
-    DATAEE_WriteByte(11, 0xE8);
+//    DATAEE_WriteByte(0, 0x03);
+//    DATAEE_WriteByte(1, 0xE8);
+//    DATAEE_WriteByte(2, 0x03);
+//    DATAEE_WriteByte(3, 0xE8);
+//    DATAEE_WriteByte(4, 0x03);
+//    DATAEE_WriteByte(5, 0xE8);
+//    DATAEE_WriteByte(6, 0x03);
+//    DATAEE_WriteByte(7, 0xE8);
+//    DATAEE_WriteByte(8, 0x03);
+//    DATAEE_WriteByte(9, 0xE8);
+//    DATAEE_WriteByte(10, 0x03);
+//    DATAEE_WriteByte(11, 0xE8);
             
     PotSetpoint(0);
     PWM4_LoadDutyValue(0);

@@ -49,7 +49,7 @@ COBS_ENCODE_OK 0
 COBS_ENCODE_NULL_POINTER 1
 COBS_ENCODE_OUT_BUFFER_OVERFLOW 2
 ]
-"119
+"103
 [e E7111 . `uc
 COBS_DECODE_OK 0
 COBS_DECODE_NULL_POINTER 1
@@ -99,16 +99,16 @@ COBS_DECODE_INPUT_TOO_SHORT 8
 [v _CRC8 CRC8 `(uc  1 e 1 0 ]
 "39
 [v _sendData sendData `(v  1 e 1 0 ]
-"94
+"86
 [v _receiveData receiveData `(uc  1 e 1 0 ]
-"155
+"128
 [v _ComController ComController `(v  1 e 1 0 ]
 "7 D:\EV17.git\trunk\PDU.X\CarDataDictionary.c
 [v _GetDataDict GetDataDict `(uc  1 e 1 0 ]
 "41 D:\EV17.git\trunk\PDU.X\COBS.h
-[s S1544 . 3 `ui 1 out_len 2 0 `E7102 1 status 1 2 ]
+[s S1542 . 3 `ui 1 out_len 2 0 `E7102 1 status 1 2 ]
 "29 D:\EV17.git\trunk\PDU.X\COBS.c
-[v _cobs_encode cobs_encode `(S1544  1 e 3 0 ]
+[v _cobs_encode cobs_encode `(S1542  1 e 3 0 ]
 "57 D:\EV17.git\trunk\PDU.X\COBS.h
 [s S1565 . 3 `ui 1 out_len 2 0 `E7111 1 status 1 2 ]
 "115 D:\EV17.git\trunk\PDU.X\COBS.c
@@ -148,8 +148,6 @@ COBS_DECODE_INPUT_TOO_SHORT 8
 [v _FLASH_WriteBlock FLASH_WriteBlock `(c  1 e 1 0 ]
 "98
 [v _FLASH_EraseBlock FLASH_EraseBlock `(v  1 e 1 0 ]
-"121
-[v _DATAEE_WriteByte DATAEE_WriteByte `(v  1 e 1 0 ]
 "143
 [v _DATAEE_ReadByte DATAEE_ReadByte `(uc  1 e 1 0 ]
 "50 D:\EV17.git\trunk\PDU.X\mcc_generated_files/pin_manager.c
@@ -225,6 +223,8 @@ COBS_DECODE_INPUT_TOO_SHORT 8
 [v _EUSART1_Receive_ISR EUSART1_Receive_ISR `(v  1 e 1 0 ]
 "149
 [v _EUSART1_Transmit_ISR EUSART1_Transmit_ISR `(v  1 e 1 0 ]
+"159
+[v _ClearBuffer ClearBuffer `(v  1 e 1 0 ]
 "50 C:\Program Files (x86)\Microchip\xc8\v1.42\include\pic18f45k22.h
 [v _ANSELA ANSELA `VEuc  1 e 1 @3896 ]
 "95
@@ -694,8 +694,6 @@ COBS_DECODE_INPUT_TOO_SHORT 8
 [v _ANSB4 ANSB4 `VEb  1 e 0 @31180 ]
 "17564
 [v _ANSD7 ANSD7 `VEb  1 e 0 @31199 ]
-"18264
-[v _LATA3 LATA3 `VEb  1 e 0 @31819 ]
 "18274
 [v _LATB0 LATB0 `VEb  1 e 0 @31824 ]
 "18280
@@ -720,14 +718,14 @@ COBS_DECODE_INPUT_TOO_SHORT 8
 [v _TRISB4 TRISB4 `VEb  1 e 0 @31900 ]
 "19422
 [v _TRISB5 TRISB5 `VEb  1 e 0 @31901 ]
-"91 D:\EV17.git\trunk\PDU.X\CarCom.c
+"83 D:\EV17.git\trunk\PDU.X\CarCom.c
 [v _ReciveArray ReciveArray `[30]uc  1 e 30 0 ]
-"92
+"84
 [v _ProcessArray ProcessArray `[30]uc  1 e 30 0 ]
 "4 D:\EV17.git\trunk\PDU.X\CarDataDictionary.c
 [v _DataTableArrayOne DataTableArrayOne `[10]uc  1 e 10 0 ]
 "5
-[v _DataTableArrayTwo DataTableArrayTwo `[3]uc  1 e 3 0 ]
+[v _DataTableArrayFour DataTableArrayFour `[3]uc  1 e 3 0 ]
 "17 D:\EV17.git\trunk\PDU.X\DigiPot.c
 [v _prev_pos prev_pos `i  1 e 2 0 ]
 "59 D:\EV17.git\trunk\PDU.X\mcc_generated_files/tmr1.c
@@ -759,11 +757,11 @@ COBS_DECODE_INPUT_TOO_SHORT 8
 [v _main main `(v  1 e 1 0 ]
 {
 "59
-[v main@i i `i  1 a 2 20 ]
+[v main@i i `i  1 a 2 14 ]
 "63
-[v main@j j `i  1 a 2 18 ]
+[v main@j j `i  1 a 2 12 ]
 "60
-[v main@UP UP `uc  1 a 1 22 ]
+[v main@UP UP `uc  1 a 1 16 ]
 "81
 } 0
 "22 D:\EV17.git\trunk\PDU.X\Communications.c
@@ -771,21 +769,19 @@ COBS_DECODE_INPUT_TOO_SHORT 8
 {
 "26
 } 0
-"94 D:\EV17.git\trunk\PDU.X\CarCom.c
+"86 D:\EV17.git\trunk\PDU.X\CarCom.c
 [v _receiveData receiveData `(uc  1 e 1 0 ]
 {
 [s S1565 . 3 `ui 1 out_len 2 0 `E7111 1 status 1 2 ]
-"119
-[v receiveData@result result `S1565  1 a 3 15 ]
-"98
-[v receiveData@i i `i  1 a 2 12 ]
-"110
-[v receiveData@j j `i  1 a 2 9 ]
-"99
-[v receiveData@Data Data `uc  1 a 1 14 ]
-"121
-[v receiveData@CS CS `uc  1 a 1 11 ]
-"151
+"103
+[v receiveData@result result `S1565  1 a 3 9 ]
+"89
+[v receiveData@i i `i  1 a 2 6 ]
+"90
+[v receiveData@Data Data `uc  1 a 1 8 ]
+"105
+[v receiveData@CS CS `uc  1 a 1 5 ]
+"124
 } 0
 "57 D:\EV17.git\trunk\PDU.X\COBS.h
 [s S1565 . 3 `ui 1 out_len 2 0 `E7111 1 status 1 2 ]
@@ -834,35 +830,37 @@ COBS_DECODE_INPUT_TOO_SHORT 8
 [v UART_buff_size@_this _this `*.39S183  1 p 2 28 ]
 "103
 } 0
-"155 D:\EV17.git\trunk\PDU.X\CarCom.c
+"128 D:\EV17.git\trunk\PDU.X\CarCom.c
 [v _ComController ComController `(v  1 e 1 0 ]
 {
-"157
-[v ComController@DataToSend DataToSend `[4]uc  1 a 4 0 ]
-"155
+"139
+[v ComController@DataToSend_1637 DataToSend `[4]uc  1 a 4 94 ]
+"130
+[v ComController@DataToSend DataToSend `[4]uc  1 a 4 98 ]
+"128
 [v ComController@DTI DTI `*.39uc  1 p 2 90 ]
 [v ComController@lenth lenth `ui  1 p 2 92 ]
-"165
+"151
 } 0
 "39
 [v _sendData sendData `(v  1 e 1 0 ]
 {
 [v sendData@whereToSend whereToSend `uc  1 a 1 wreg ]
-"44
+"40
 [v sendData@SendArray SendArray `[30]uc  1 a 30 50 ]
-"45
+"41
 [v sendData@COBSArray COBSArray `[30]uc  1 a 30 20 ]
-[s S1544 . 3 `ui 1 out_len 2 0 `E7102 1 status 1 2 ]
+[s S1542 . 3 `ui 1 out_len 2 0 `E7102 1 status 1 2 ]
 "49
-[v sendData@result result `S1544  1 a 3 85 ]
-"60
-[v sendData@i i `ui  1 a 2 88 ]
-"61
-[v sendData@count count `i  1 a 2 82 ]
-"66
-[v sendData@CS CS `uc  1 a 1 84 ]
-"47
-[v sendData@DataLenth DataLenth `uc  1 a 1 80 ]
+[v sendData@result result `S1542  1 a 3 82 ]
+"58
+[v sendData@count count `i  1 a 2 87 ]
+"43
+[v sendData@j j `i  1 a 2 85 ]
+"57
+[v sendData@i i `uc  1 a 1 89 ]
+"63
+[v sendData@CS CS `uc  1 a 1 81 ]
 "39
 [v sendData@whereToSend whereToSend `uc  1 a 1 wreg ]
 [v sendData@ComandByte ComandByte `uc  1 p 1 13 ]
@@ -870,17 +868,17 @@ COBS_DECODE_INPUT_TOO_SHORT 8
 [v sendData@DataTableIndex DataTableIndex `uc  1 p 1 15 ]
 [v sendData@DTS DTS `*.39uc  1 p 2 16 ]
 [v sendData@lenth lenth `ui  1 p 2 18 ]
-"47
-[v sendData@whereToSend whereToSend `uc  1 a 1 81 ]
-"86
+"43
+[v sendData@whereToSend whereToSend `uc  1 a 1 80 ]
+"78
 } 0
 "41 D:\EV17.git\trunk\PDU.X\COBS.h
-[s S1544 . 3 `ui 1 out_len 2 0 `E7102 1 status 1 2 ]
+[s S1542 . 3 `ui 1 out_len 2 0 `E7102 1 status 1 2 ]
 "29 D:\EV17.git\trunk\PDU.X\COBS.c
-[v _cobs_encode cobs_encode `(S1544  1 e 3 0 ]
+[v _cobs_encode cobs_encode `(S1542  1 e 3 0 ]
 {
 "31
-[v cobs_encode@result result `S1544  1 a 3 10 ]
+[v cobs_encode@result result `S1542  1 a 3 10 ]
 "35
 [v cobs_encode@dst_write_ptr dst_write_ptr `*.39uc  1 a 2 8 ]
 "34
@@ -899,7 +897,7 @@ COBS_DECODE_INPUT_TOO_SHORT 8
 [v cobs_encode@src_ptr src_ptr `*.39Cuc  1 p 2 32 ]
 [v cobs_encode@src_len src_len `ui  1 p 2 34 ]
 "31
-[v cobs_encode@F180 F180 `S1544  1 s 3 F180 ]
+[v cobs_encode@F180 F180 `S1542  1 s 3 F180 ]
 "112
 } 0
 "129 D:\EV17.git\trunk\PDU.X\UART.c
@@ -971,6 +969,19 @@ COBS_DECODE_INPUT_TOO_SHORT 8
 [v GetDataDict@numbofbytes numbofbytes `uc  1 p 1 31 ]
 [v GetDataDict@DataTable DataTable `uc  1 a 1 33 ]
 "30
+} 0
+"159 D:\EV17.git\trunk\PDU.X\UART.c
+[v _ClearBuffer ClearBuffer `(v  1 e 1 0 ]
+{
+"161
+} 0
+"92
+[v _UART_buff_flush UART_buff_flush `(v  1 e 1 0 ]
+{
+[s S183 UART_ring_buff 106 `[100]uc 1 buf 100 0 `i 1 head 2 100 `i 1 tail 2 102 `i 1 count 2 104 ]
+[v UART_buff_flush@_this _this `*.39S183  1 p 2 36 ]
+[v UART_buff_flush@clearBuffer clearBuffer `Ci  1 p 2 38 ]
+"99
 } 0
 "113 D:\EV17.git\trunk\PDU.X\mcc_generated_files/mcc.c
 [v _SYSTEM_Initialize SYSTEM_Initialize `(v  1 e 1 0 ]
@@ -1108,19 +1119,6 @@ COBS_DECODE_INPUT_TOO_SHORT 8
 "145
 [v DATAEE_ReadByte@bAdd bAdd `uc  1 a 1 28 ]
 "153
-} 0
-"121
-[v _DATAEE_WriteByte DATAEE_WriteByte `(v  1 e 1 0 ]
-{
-[v DATAEE_WriteByte@bAdd bAdd `uc  1 a 1 wreg ]
-"123
-[v DATAEE_WriteByte@GIEBitValue GIEBitValue `uc  1 a 1 30 ]
-"121
-[v DATAEE_WriteByte@bAdd bAdd `uc  1 a 1 wreg ]
-[v DATAEE_WriteByte@bData bData `uc  1 p 1 28 ]
-"123
-[v DATAEE_WriteByte@bAdd bAdd `uc  1 a 1 29 ]
-"141
 } 0
 "30 D:\EV17.git\trunk\PDU.X\CoolingControl.c
 [v _CoolingStop CoolingStop `(v  1 e 1 0 ]

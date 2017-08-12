@@ -21,8 +21,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S817 . . . . ]
 "16922
 [v _INTCONbits `VS817 ~T0 @X0 0 e@4082 ]
-"205 mcc_generated_files/memory.h
-[v _DATAEE_WriteByte `(v ~T0 @X0 0 ef2`uc`uc ]
 "11 DigiPot.h
 [v _PotSetpoint `(v ~T0 @X0 0 ef1`i ]
 "124 mcc_generated_files/../pwm4.h
@@ -6868,42 +6866,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 36: (INTCONbits.PEIE = 1);
 "36
 [e = . . _INTCONbits 1 6 -> -> 1 `i `uc ]
-[; ;main.c: 43: DATAEE_WriteByte(0, 0x03);
-"43
-[e ( _DATAEE_WriteByte (2 , -> -> 0 `i `uc -> -> 3 `i `uc ]
-[; ;main.c: 44: DATAEE_WriteByte(1, 0xE8);
-"44
-[e ( _DATAEE_WriteByte (2 , -> -> 1 `i `uc -> -> 232 `i `uc ]
-[; ;main.c: 45: DATAEE_WriteByte(2, 0x03);
-"45
-[e ( _DATAEE_WriteByte (2 , -> -> 2 `i `uc -> -> 3 `i `uc ]
-[; ;main.c: 46: DATAEE_WriteByte(3, 0xE8);
-"46
-[e ( _DATAEE_WriteByte (2 , -> -> 3 `i `uc -> -> 232 `i `uc ]
-[; ;main.c: 47: DATAEE_WriteByte(4, 0x03);
-"47
-[e ( _DATAEE_WriteByte (2 , -> -> 4 `i `uc -> -> 3 `i `uc ]
-[; ;main.c: 48: DATAEE_WriteByte(5, 0xE8);
-"48
-[e ( _DATAEE_WriteByte (2 , -> -> 5 `i `uc -> -> 232 `i `uc ]
-[; ;main.c: 49: DATAEE_WriteByte(6, 0x03);
-"49
-[e ( _DATAEE_WriteByte (2 , -> -> 6 `i `uc -> -> 3 `i `uc ]
-[; ;main.c: 50: DATAEE_WriteByte(7, 0xE8);
-"50
-[e ( _DATAEE_WriteByte (2 , -> -> 7 `i `uc -> -> 232 `i `uc ]
-[; ;main.c: 51: DATAEE_WriteByte(8, 0x03);
-"51
-[e ( _DATAEE_WriteByte (2 , -> -> 8 `i `uc -> -> 3 `i `uc ]
-[; ;main.c: 52: DATAEE_WriteByte(9, 0xE8);
-"52
-[e ( _DATAEE_WriteByte (2 , -> -> 9 `i `uc -> -> 232 `i `uc ]
-[; ;main.c: 53: DATAEE_WriteByte(10, 0x03);
-"53
-[e ( _DATAEE_WriteByte (2 , -> -> 10 `i `uc -> -> 3 `i `uc ]
-[; ;main.c: 54: DATAEE_WriteByte(11, 0xE8);
-"54
-[e ( _DATAEE_WriteByte (2 , -> -> 11 `i `uc -> -> 232 `i `uc ]
 [; ;main.c: 56: PotSetpoint(0);
 "56
 [e ( _PotSetpoint (1 -> 0 `i ]

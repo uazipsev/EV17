@@ -8898,43 +8898,35 @@ return crc;
 
 
 void sendData(unsigned char whereToSend, unsigned char ComandByte, unsigned char DataTable, unsigned char DataTableIndex, unsigned char *DTS, unsigned int lenth) {
-
-
-
-
 unsigned char SendArray[30];
 unsigned char COBSArray[30];
 
-unsigned char DataLenth = 1;
+int j = 0;
+for(j;j<sizeof(SendArray);j++){
+SendArray[j] = 0;
+}
+
 
 cobs_encode_result result;
 
-SendArray[0] = 4+1;
+SendArray[0] = 5+lenth;
 SendArray[1] = ComandByte;
 SendArray[2] = DataTable;
 SendArray[3] = DataTableIndex;
 SendArray[4] = lenth;
 
-
-
-
-unsigned int i;
+unsigned char i = 0;
 int count = 5;
-i = count;
 
-SendArray[5] = DTS[0];
+for(i;i<lenth;i++){
+SendArray[i+5] = DTS[i];
+count++;
+}
 
-SendArray[6] = DTS[1];
-
-
-unsigned char CS = CRC8(SendArray, 7);
-
-
-
-SendArray[7] = CS;
-
-result = cobs_encode(COBSArray, sizeof(COBSArray), SendArray, 8);
-
+unsigned char CS = CRC8(SendArray, count);
+SendArray[count] = CS;
+count++;
+result = cobs_encode(COBSArray, sizeof(COBSArray), SendArray, count);
 SendArray[0] = whereToSend;
 
 for(i = 1;i<result.out_len+1;i++){
@@ -8953,40 +8945,32 @@ char ReciveArray[30];
 char ProcessArray[30];
 
 bool receiveData(){
-
 if(Receive_available()>5){
 if(Receive_get() == 5){
 int i = 0;
-char Data = 0;
+unsigned char Data = 0;
 do{
 Data = Receive_get();
 ReciveArray[i] = Data;
+_delay((unsigned long)((200)*(8000000/4000000.0)));
 
-Delay(1);
 i++;
 }while(Data != 0x00);
 
 
 
-int j = 0;
+ClearBuffer();
 
-# 119
 cobs_decode_result result;
 
 result = cobs_decode(ProcessArray, sizeof(ProcessArray), ReciveArray, i);
 
-char CS = CRC8(ProcessArray, result.out_len-1);
+unsigned char CS = CRC8(ProcessArray, result.out_len-2);
 
+if(ProcessArray[result.out_len-2] == CS){
 
-
-if(ProcessArray[result.out_len-1] == CS){
-do { LATA3 = ~LATA3; } while(0);
 ComController(ProcessArray,result.out_len);
 return 1;
-}
-else{
-
-# 140
 }
 }
 else{
@@ -9010,6 +8994,19 @@ do { LATC5 = 1; } while(0);
 Delay(5);
 sendData(1, 2, 1, 1, DataToSend, DTI[4]);
 Delay(3);
+do { LATC5 = 0; } while(0);
+}
+if(DTI[1] == 2){
+unsigned char DataToSend[4];
+unsigned char DataRecived[4];
+
+
+
+
+do { LATC5 = 1; } while(0);
+Delay(2);
+sendData(1, 2, 4, 2, DataToSend, 2);
+Delay(5);
 do { LATC5 = 0; } while(0);
 }
 }

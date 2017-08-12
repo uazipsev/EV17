@@ -2,7 +2,7 @@
 #include "UART.h"
 
 unsigned char DataTableArrayOne[10];
-unsigned char DataTableArrayTwo[3];
+unsigned char DataTableArrayFour[3];
 
 unsigned char GetDataDict(unsigned char DataTable, unsigned char DataTableIndex, unsigned char *DataArray, unsigned char numbofbytes){
     unsigned char Error = 0;
@@ -16,10 +16,10 @@ unsigned char GetDataDict(unsigned char DataTable, unsigned char DataTableIndex,
                 ReturnCounter++;
             }
             break;
-        case 1:
+        case 4:
             DataCount = DataTableIndex + numbofbytes;
             for(DataTableIndex;DataTableIndex<DataCount;DataTableIndex++){
-                DataArray[ReturnCounter] = DataTableArrayTwo[DataTableIndex];
+                DataArray[ReturnCounter] = DataTableArrayFour[DataTableIndex];
                 ReturnCounter++;
             }
             break;
@@ -41,10 +41,10 @@ unsigned char SetDataDict(unsigned char DataTable, unsigned char DataTableIndex,
                 ReturnCounter++;
             }
             break;
-        case 1:
+        case 4:
             DataCount = DataTableIndex + numbofbytes;
             for(DataTableIndex;DataTableIndex<DataCount;DataTableIndex++){
-                DataTableArrayTwo[DataTableIndex] = DataArray[ReturnCounter];
+                DataTableArrayFour[DataTableIndex] = DataArray[ReturnCounter];
                 ReturnCounter++;
             }
             break;

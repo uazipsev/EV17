@@ -61,6 +61,8 @@
 #define BUS_1_ERROR_DEBUG       1
 #define BUS_2_ERROR_DEBUG       2
 
+#define NUMOFEXTBYTES 5
+
 #define TALK 1
 #define LISTEN 0
 

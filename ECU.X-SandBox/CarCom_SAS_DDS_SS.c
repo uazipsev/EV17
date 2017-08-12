@@ -22,6 +22,11 @@ void sendData1(unsigned char whereToSend, unsigned char ComandByte, unsigned cha
     unsigned char SendArray[30];
     unsigned char COBSArray[30];
     
+    int j = 0;
+    for(j;j<sizeof(SendArray);j++){
+        SendArray[j] = 0;
+    }
+    
     cobs_encode_result  result;
     
     SendArray[0] = NUMOFEXTBYTES+lenth;//ring_buffer.count;

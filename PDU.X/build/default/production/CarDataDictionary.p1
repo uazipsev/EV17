@@ -6697,8 +6697,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _DataTableArrayOne `uc ~T0 @X0 -> 10 `i e ]
 [; ;CarDataDictionary.c: 4: unsigned char DataTableArrayOne[10];
 "5
-[v _DataTableArrayTwo `uc ~T0 @X0 -> 3 `i e ]
-[; ;CarDataDictionary.c: 5: unsigned char DataTableArrayTwo[3];
+[v _DataTableArrayFour `uc ~T0 @X0 -> 3 `i e ]
+[; ;CarDataDictionary.c: 5: unsigned char DataTableArrayFour[3];
 "7
 [v _GetDataDict `(uc ~T0 @X0 1 ef4`uc`uc`*uc`uc ]
 {
@@ -6757,7 +6757,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;CarDataDictionary.c: 18: break;
 "18
 [e $U 853  ]
-[; ;CarDataDictionary.c: 19: case 1:
+[; ;CarDataDictionary.c: 19: case 4:
 "19
 [e :U 860 ]
 [; ;CarDataDictionary.c: 20: DataCount = DataTableIndex + numbofbytes;
@@ -6770,9 +6770,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $U 864  ]
 [e :U 861 ]
 {
-[; ;CarDataDictionary.c: 22: DataArray[ReturnCounter] = DataTableArrayTwo[DataTableIndex];
+[; ;CarDataDictionary.c: 22: DataArray[ReturnCounter] = DataTableArrayFour[DataTableIndex];
 "22
-[e = *U + _DataArray * -> _ReturnCounter `ux -> -> # *U _DataArray `ui `ux *U + &U _DataTableArrayTwo * -> _DataTableIndex `ux -> -> # *U &U _DataTableArrayTwo `ui `ux ]
+[e = *U + _DataArray * -> _ReturnCounter `ux -> -> # *U _DataArray `ui `ux *U + &U _DataTableArrayFour * -> _DataTableIndex `ux -> -> # *U &U _DataTableArrayFour `ui `ux ]
 [; ;CarDataDictionary.c: 23: ReturnCounter++;
 "23
 [e ++ _ReturnCounter -> -> 1 `i `uc ]
@@ -6802,7 +6802,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 "11
 [e :U 854 ]
 [e [\ _DataTable , $ -> -> 0 `i `uc 855
- , $ -> -> 1 `i `uc 860
+ , $ -> -> 4 `i `uc 860
  865 ]
 "28
 [e :U 853 ]
@@ -6872,7 +6872,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;CarDataDictionary.c: 43: break;
 "43
 [e $U 867  ]
-[; ;CarDataDictionary.c: 44: case 1:
+[; ;CarDataDictionary.c: 44: case 4:
 "44
 [e :U 874 ]
 [; ;CarDataDictionary.c: 45: DataCount = DataTableIndex + numbofbytes;
@@ -6885,9 +6885,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $U 878  ]
 [e :U 875 ]
 {
-[; ;CarDataDictionary.c: 47: DataTableArrayTwo[DataTableIndex] = DataArray[ReturnCounter];
+[; ;CarDataDictionary.c: 47: DataTableArrayFour[DataTableIndex] = DataArray[ReturnCounter];
 "47
-[e = *U + &U _DataTableArrayTwo * -> _DataTableIndex `ux -> -> # *U &U _DataTableArrayTwo `ui `ux *U + _DataArray * -> _ReturnCounter `ux -> -> # *U _DataArray `ui `ux ]
+[e = *U + &U _DataTableArrayFour * -> _DataTableIndex `ux -> -> # *U &U _DataTableArrayFour `ui `ux *U + _DataArray * -> _ReturnCounter `ux -> -> # *U _DataArray `ui `ux ]
 [; ;CarDataDictionary.c: 48: ReturnCounter++;
 "48
 [e ++ _ReturnCounter -> -> 1 `i `uc ]
@@ -6917,7 +6917,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 "36
 [e :U 868 ]
 [e [\ _DataTable , $ -> -> 0 `i `uc 869
- , $ -> -> 1 `i `uc 874
+ , $ -> -> 4 `i `uc 874
  879 ]
 "53
 [e :U 867 ]
