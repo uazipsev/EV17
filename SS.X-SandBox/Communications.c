@@ -15,14 +15,14 @@ void ComStart(){
 
 void updateComms() {
     if (receiveData()) {  // If data is here for us 
-        respondECU();     //respond with Falt data
+        INDICATOR ^= 1;
     }
 }
 
 void respondECU() {
     RS485_TSS_Direction = TALK;  //RS485 set to talk
     Delay(5);
-    sendData(ECU_ADDRESS, 1, 1, 1);
+    //sendData(ECU_ADDRESS, 1, 1, 1);
     Delay(3);
     RS485_TSS_Direction = LISTEN;  ///RS485 set to listen
 }

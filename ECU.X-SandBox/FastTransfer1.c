@@ -136,7 +136,7 @@ void sendData1(unsigned char whereToSend, unsigned char ComandByte, unsigned cha
     unsigned char SendArray[30];
     unsigned char COBSArray[30];
     
-    unsigned char DataLenth = 1;
+    unsigned char DataLenth = 2;
     
     cobs_encode_result  result;
     

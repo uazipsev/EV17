@@ -8528,8 +8528,9 @@ extern char * ultoa(char * buf, unsigned long val, int base);
 extern char * ftoa(float f, int * status);
 
 # 12 "CarCom.h"
-void sendData(unsigned char whereToSend, unsigned char ComandByte, unsigned char DataTable, unsigned char DataTableIndex);
+void sendData(unsigned char whereToSend, unsigned char ComandByte, unsigned char DataTable, unsigned char DataTableIndex, unsigned char *DTS, unsigned int lenth);
 bool receiveData();
+void ComController(unsigned char *DTS, unsigned int lenth);
 
 # 13 "C:\Program Files (x86)\Microchip\xc8\v1.42\include\stdint.h"
 typedef signed char int8_t;
@@ -8750,7 +8751,11 @@ void ReadFaults();
 char GetFaults(char num);
 void Delay(int wait);
 
-# 20 "CarCom.c"
+# 8 "CarDataDictionary.h"
+unsigned char GetDataDict(unsigned char DataTable, unsigned char DataTableIndex, unsigned char *DataArray, unsigned char numbofbytes);
+unsigned char SetDataDict(unsigned char DataTable, unsigned char DataTableIndex, unsigned char *DataArray, unsigned char numbofbytes);
+
+# 21 "CarCom.c"
 unsigned char CRC8(const unsigned char * data, unsigned char len) {
 unsigned char crc = 0x00;
 while (len--) {
@@ -8770,7 +8775,7 @@ return crc;
 
 
 
-void sendData(unsigned char whereToSend, unsigned char ComandByte, unsigned char DataTable, unsigned char DataTableIndex) {
+void sendData(unsigned char whereToSend, unsigned char ComandByte, unsigned char DataTable, unsigned char DataTableIndex, unsigned char *DTS, unsigned int lenth) {
 
 
 
@@ -8786,18 +8791,18 @@ SendArray[0] = 4+1;
 SendArray[1] = ComandByte;
 SendArray[2] = DataTable;
 SendArray[3] = DataTableIndex;
-SendArray[4] = DataLenth;
+SendArray[4] = lenth;
 
 
 
 
-int i;
+unsigned int i;
 int count = 5;
 i = count;
 
-SendArray[5] = GetFaults(0);
+SendArray[5] = DTS[0];
 
-SendArray[6] = GetFaults(1);
+SendArray[6] = DTS[1];
 
 
 unsigned char CS = CRC8(SendArray, 7);
@@ -8845,7 +8850,7 @@ result = cobs_decode(ProcessArray, sizeof(ProcessArray), ReciveArray, i);
 char CS = CRC8(ProcessArray, result.out_len-1);
 
 if(ProcessArray[result.out_len-1] == CS){
-LATAbits.LATA3 ^= 1;
+ComController(ProcessArray,result.out_len);
 return 1;
 }
 }
@@ -8858,4 +8863,18 @@ else{
 }
 
 return 0;
+}
+
+
+
+void ComController(unsigned char *DTI, unsigned int lenth){
+if(DTI[1] == 1){
+unsigned char DataToSend[4];
+GetDataDict(DTI[2], DTI[3], DataToSend, DTI[4]);
+LATDbits.LATD4 = 1;
+Delay(5);
+sendData(1, 1, 1, 1, DataToSend, DTI[4]);
+Delay(3);
+LATDbits.LATD4 = 0;
+}
 }

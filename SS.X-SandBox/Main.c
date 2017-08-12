@@ -18,6 +18,7 @@
 #include <xc.h>
 #include "PinDef.h"
 #include "Function.h"
+#include "tmr0.h"
 
 
 void main(void) {
@@ -27,8 +28,14 @@ void main(void) {
         updateComms(); //Read UART ring buffer and look if packet is here for us!
         //if(BPD_FAULT == 1){  //read ticker and if it greater than one second
            //INDICATOR = 1;    //blink LED
-           ReadFaults();      //Read ports and load data into bytes
-           SetTime();         // Clear timer
+        if(GetTime() > 5){
+            ReadFaults();
+            SetTime();
+        }
+        //Delay(500);
+
+           //ReadFaults();      //Read ports and load data into bytes
+                    // Clear timer
         //}
         //else{
            //INDICATOR = 0;

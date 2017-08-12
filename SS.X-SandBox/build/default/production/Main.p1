@@ -15,6 +15,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _LATDbits `VS383 ~T0 @X0 0 e@3980 ]
 "12 Communications.h
 [v _updateComms `(v ~T0 @X0 0 ef ]
+"315 tmr0.h
+[v _GetTime `(l ~T0 @X0 0 ef ]
 "13 Function.h
 [v _ReadFaults `(v ~T0 @X0 0 ef ]
 "316 tmr0.h
@@ -6608,39 +6610,47 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;Function.h: 14: char GetFaults(char num);
 [; ;Function.h: 15: void Delay(int wait);
 [v $root$_main `(v ~T0 @X0 0 e ]
-"23 Main.c
+"24 Main.c
 [v _main `(v ~T0 @X0 1 ef ]
 {
-[; ;Main.c: 23: void main(void) {
+[; ;Main.c: 24: void main(void) {
 [e :U _main ]
 [f ]
-[; ;Main.c: 24: Start();
-"24
-[e ( _Start ..  ]
-[; ;Main.c: 25: LATDbits.LATD4 = 0;
+[; ;Main.c: 25: Start();
 "25
-[e = . . _LATDbits 0 4 -> -> 0 `i `uc ]
-[; ;Main.c: 26: while (1) {
+[e ( _Start ..  ]
+[; ;Main.c: 26: LATDbits.LATD4 = 0;
 "26
+[e = . . _LATDbits 0 4 -> -> 0 `i `uc ]
+[; ;Main.c: 27: while (1) {
+"27
 [e :U 848 ]
 {
-[; ;Main.c: 27: updateComms();
-"27
+[; ;Main.c: 28: updateComms();
+"28
 [e ( _updateComms ..  ]
-[; ;Main.c: 30: ReadFaults();
-"30
-[e ( _ReadFaults ..  ]
-[; ;Main.c: 31: SetTime();
+[; ;Main.c: 31: if(GetTime() > 5){
 "31
+[e $ ! > ( _GetTime ..  -> -> 5 `i `l 850  ]
+{
+[; ;Main.c: 32: ReadFaults();
+"32
+[e ( _ReadFaults ..  ]
+[; ;Main.c: 33: SetTime();
+"33
 [e ( _SetTime ..  ]
-"36
+"34
+}
+[e :U 850 ]
+"43
 }
 [e :U 847 ]
-"26
+"27
 [e $U 848  ]
 [e :U 849 ]
-[; ;Main.c: 36: }
-[; ;Main.c: 37: }
-"37
+[; ;Main.c: 34: }
+[; ;Main.c: 43: }
+[; ;Main.c: 44: }
+"44
 [e :UE 846 ]
 }

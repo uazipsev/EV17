@@ -92,7 +92,7 @@ void updateComms() {
 }
 
 void Run(){
-                RS485_Direction1(TALK);
+            RS485_Direction1(TALK);
             sendData1(SS_ADDRESS, 1, 1, 0);
             Delay(3);
             RS485_Direction1(LISTEN);

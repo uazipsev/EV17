@@ -1,9 +1,12 @@
 #include "CarDataDictionary.h"
+#include "PinDef.h"
+#include "UART.h"
+#include "Function.h"
 
 unsigned char DataTableArrayOne[10];
 unsigned char DataTableArrayTwo[3];
 
-unsigned char GetData(unsigned char DataTable, unsigned char DataTableIndex, unsigned char *DataArray, unsigned char numbofbytes){
+unsigned char GetDataDict(unsigned char DataTable, unsigned char DataTableIndex, unsigned char *DataArray, unsigned char numbofbytes){
     unsigned char Error = 0;
     unsigned char DataCount = 0;
     unsigned char ReturnCounter = 0;
@@ -28,7 +31,7 @@ unsigned char GetData(unsigned char DataTable, unsigned char DataTableIndex, uns
     return Error;
 }
 
-unsigned char SetData(unsigned char DataTable, unsigned char DataTableIndex, unsigned char *DataArray, unsigned char numbofbytes){
+unsigned char SetDataDict(unsigned char DataTable, unsigned char DataTableIndex, unsigned char *DataArray, unsigned char numbofbytes){
     unsigned char Error = 0;
     unsigned char DataCount = 0;
     unsigned char ReturnCounter = 0;
@@ -36,14 +39,14 @@ unsigned char SetData(unsigned char DataTable, unsigned char DataTableIndex, uns
         case 0:
             DataCount = DataTableIndex + numbofbytes;
             for(DataTableIndex;DataTableIndex<DataCount;DataTableIndex++){
-                DataTableArrayOne[DataTableIndex] = &DataArray[ReturnCounter];
+                DataTableArrayOne[DataTableIndex] = DataArray[ReturnCounter];
                 ReturnCounter++;
             }
             break;
         case 1:
             DataCount = DataTableIndex + numbofbytes;
             for(DataTableIndex;DataTableIndex<DataCount;DataTableIndex++){
-                DataTableArrayTwo[DataTableIndex] = &DataArray[ReturnCounter];
+                DataTableArrayTwo[DataTableIndex] = DataArray[ReturnCounter];
                 ReturnCounter++;
             }
             break;

@@ -32,7 +32,7 @@
 /*
  *   Safty inputs
  */
-#define ECU_FAULT PORTCbits.RC5
+#define ECU_FAULT PORTCbits.RC2
 #define ECU_FAULT_TRIS TRISCbits.TRISC5
 #define BOTS_FAULT PORTCbits.RC4
 #define BOTS_FAULT_TRIS TRISCbits.TRISC4

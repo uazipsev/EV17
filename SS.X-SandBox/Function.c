@@ -4,34 +4,36 @@
 #include "PinDef.h"
 #include "UART.h"
 #include "Communications.h"
+#include "CarDataDictionary.h"
 
 
-char ByteHigh, ByteLow = 0;
+unsigned char ByteHigh, ByteLow = 0;
+long Count = 0;
 
 void ReadFaults(){
     
-    ByteHigh = ByteHigh | ((BPD_FAULT & 0x01) << 0);
-    ByteHigh = ByteHigh | ((BOTS_FAULT & 0x01) << 1);
-    ByteHigh = ByteHigh | ((AMD_FAULT & 0x01) << 2);
-    ByteHigh = ByteHigh | ((STOP_L_FAULT & 0x01) << 3);
-    ByteHigh = ByteHigh | ((STOP_R_FAULT & 0x01) << 4);
-    ByteHigh = ByteHigh | ((STOP_C_FAULT & 0x01) << 5);
-    ByteHigh = ByteHigh | ((IMD_FAULT & 0x01) << 6);
-    ByteHigh = ByteHigh | ((ECU_FAULT & 0x01) << 7);
+//    ByteHigh = ByteHigh | ((BPD_FAULT & 0x01) << 0);
+//    ByteHigh = ByteHigh | ((BOTS_FAULT & 0x01) << 1);
+//    ByteHigh = ByteHigh | ((AMD_FAULT & 0x01) << 2);
+//    ByteHigh = ByteHigh | ((STOP_L_FAULT & 0x01) << 3);
+//    ByteHigh = ByteHigh | ((STOP_R_FAULT & 0x01) << 4);
+//    ByteHigh = ByteHigh | ((STOP_C_FAULT & 0x01) << 5);
+//    ByteHigh = ByteHigh | ((IMD_FAULT & 0x01) << 6);
+    ByteHigh = ECU_FAULT;//ByteHigh | ((ECU_FAULT) << 7);
     ByteLow = ByteLow | ((BPD_FAULT & 0x01) << 0);
     ByteLow = ByteLow | ((IS_FAULT & 0x01) << 1);
     ByteLow = ByteLow | ((AUX_FAULT & 0x01) << 2);
-//    ByteHigh = ByteHigh | (0 << 0);
-//    ByteHigh = ByteHigh | (0 << 1);
-//    ByteHigh = ByteHigh | (1 << 2);
-//    ByteHigh = ByteHigh | (0 << 3);
-//    ByteHigh = ByteHigh | (1 << 4);
-//    ByteHigh = ByteHigh | (0 << 5);
-//    ByteHigh = ByteHigh | (1 << 6);
-//    ByteHigh = ByteHigh | (1 << 7);
-//    ByteLow = ByteLow | (1 << 0);
-//    ByteLow = ByteLow | (0 << 1);
-//    ByteLow = ByteLow | (1 << 2);
+    
+    //INDICATOR ^= 1;
+    unsigned char Data[4];
+    Data[0] = ByteHigh;
+    Data[1] = ByteLow;
+    
+    SetDataDict(1,0,Data,2);
+    
+    
+    
+
 }
 
 
@@ -123,6 +125,8 @@ void Start(){
     RTG_INPUT_TRIS = INPUT;
     IMD_INPUT_TRIS = INPUT;
     
+    ANSELCbits.ANSC2 = 1;
+    
     //LED for activity
     INDICATOR_TRIS = OUTPUT;
     RS485_TSS_Direction_Tris = OUTPUT;
@@ -148,6 +152,9 @@ void Start(){
     ComStart();  //Set up usart and FastTransfer
     INTERRUPT_Initialize(); //Set up ISR for timer and USART TX / RX
     TMR0_Initialize(); //Set up TMR0 to use as a tmr counter
+    
+    unsigned char Data[5] = {4,2};
+    SetDataDict(0, 0,Data,2);
 }
 
 void  INTERRUPT_Initialize (void)

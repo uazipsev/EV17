@@ -9,8 +9,9 @@
 #define	CARCOM_H
 
 
-void sendData(unsigned char whereToSend, unsigned char ComandByte, unsigned char DataTable, unsigned char DataTableIndex);
+void sendData(unsigned char whereToSend, unsigned char ComandByte, unsigned char DataTable, unsigned char DataTableIndex, unsigned char *DTS, unsigned int lenth);
 bool receiveData();
+void ComController(unsigned char *DTS, unsigned int lenth);
 
 #endif	/* FASTTRANSFER_H */
 
