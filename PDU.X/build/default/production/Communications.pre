@@ -8496,7 +8496,13 @@ void sendData(unsigned char whereToSend, unsigned char ComandByte, unsigned char
 bool receiveData();
 void ComController(unsigned char *DTS, unsigned int lenth);
 
-# 19 "Communications.c"
+# 311 "mcc_generated_files/pin_manager.h"
+void PIN_MANAGER_Initialize (void);
+
+# 323
+void PIN_MANAGER_IOC(void);
+
+# 20 "Communications.c"
 void processPowerRequest(int powerSet);
 
 void updateComms() {

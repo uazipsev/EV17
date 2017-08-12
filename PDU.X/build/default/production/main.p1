@@ -1,6 +1,6 @@
 Version 3.2 HI-TECH Software Intermediate Code
 "102 mcc_generated_files/..\UART.h
-[s S851 `uc -> 200 `i `i 1 `i 1 `i 1 ]
+[s S851 `uc -> 100 `i `i 1 `i 1 `i 1 ]
 [n S851 UART_ring_buff buf head tail count ]
 [p mainexit ]
 "74 mcc_generated_files/mcc.h
@@ -6711,7 +6711,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;..\UART.h: 99: extern volatile unsigned int talkTime;
 [; ;..\UART.h: 100: void *memset(void *s, int c, size_t n);
 [; ;..\UART.h: 102: struct UART_ring_buff {
-[; ;..\UART.h: 103: unsigned char buf[200];
+[; ;..\UART.h: 103: unsigned char buf[100];
 [; ;..\UART.h: 104: int head;
 [; ;..\UART.h: 105: int tail;
 [; ;..\UART.h: 106: int count;
@@ -6740,6 +6740,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;..\UART.h: 124: int Receive_available(void);
 [; ;..\UART.h: 125: unsigned char Receive_get(void);
 [; ;..\UART.h: 126: void Send_put(unsigned char _data);
+[; ;..\UART.h: 127: void ClearBuffer();
 [; ;adc.h: 72: typedef uint16_t adc_result_t;
 [; ;adc.h: 86: typedef enum
 [; ;adc.h: 87: {

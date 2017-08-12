@@ -8732,7 +8732,7 @@ extern volatile unsigned int talkTime;
 void *memset(void *s, int c, size_t n);
 
 struct UART_ring_buff {
-unsigned char buf[200];
+unsigned char buf[100];
 int head;
 int tail;
 int count;
@@ -8756,6 +8756,7 @@ unsigned char Receive_peek(void);
 int Receive_available(void);
 unsigned char Receive_get(void);
 void Send_put(unsigned char _data);
+void ClearBuffer();
 
 # 72 "mcc_generated_files/adc.h"
 typedef uint16_t adc_result_t;
@@ -8877,7 +8878,7 @@ extern void Delay(long int wait);
 unsigned char GetDataDict(unsigned char DataTable, unsigned char DataTableIndex, unsigned char *DataArray, unsigned char numbofbytes);
 unsigned char SetDataDict(unsigned char DataTable, unsigned char DataTableIndex, unsigned char *DataArray, unsigned char numbofbytes);
 
-# 23 "CarCom.c"
+# 21 "CarCom.c"
 unsigned char CRC8(const unsigned char * data, unsigned char len) {
 unsigned char crc = 0x00;
 while (len--) {
@@ -8960,19 +8961,32 @@ char Data = 0;
 do{
 Data = Receive_get();
 ReciveArray[i] = Data;
-_delay((unsigned long)((100)*(8000000/4000000.0)));
+
+Delay(1);
 i++;
 }while(Data != 0x00);
 
+
+
+int j = 0;
+
+# 119
 cobs_decode_result result;
 
 result = cobs_decode(ProcessArray, sizeof(ProcessArray), ReciveArray, i);
 
 char CS = CRC8(ProcessArray, result.out_len-1);
 
+
+
 if(ProcessArray[result.out_len-1] == CS){
+do { LATA3 = ~LATA3; } while(0);
 ComController(ProcessArray,result.out_len);
 return 1;
+}
+else{
+
+# 140
 }
 }
 else{
@@ -8994,7 +9008,7 @@ unsigned char DataToSend[4];
 GetDataDict(DTI[2], DTI[3], DataToSend, DTI[4]);
 do { LATC5 = 1; } while(0);
 Delay(5);
-sendData(1, 1, 1, 1, DataToSend, DTI[4]);
+sendData(1, 2, 1, 1, DataToSend, DTI[4]);
 Delay(3);
 do { LATC5 = 0; } while(0);
 }

@@ -1,7 +1,7 @@
 Version 3.2 HI-TECH Software Intermediate Code
 "16 CarCom.h
 [v _receiveData `(uc ~T0 @X0 0 ef ]
-"30 Communications.c
+"31 Communications.c
 [c E6949 1 2 3 4 5 6 1 0 .. ]
 [n E6949 . DDS MCS SAS BMM TSS AUX ON OFF  ]
 "32 PDU.h
@@ -6616,128 +6616,130 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;CarCom.h: 15: void sendData(unsigned char whereToSend, unsigned char ComandByte, unsigned char DataTable, unsigned char DataTableIndex, unsigned char *DTS, unsigned int lenth);
 [; ;CarCom.h: 16: bool receiveData();
 [; ;CarCom.h: 17: void ComController(unsigned char *DTS, unsigned int lenth);
-[; ;Communications.c: 19: void processPowerRequest(int powerSet);
-"21 Communications.c
+[; ;pin_manager.h: 311: void PIN_MANAGER_Initialize (void);
+[; ;pin_manager.h: 323: void PIN_MANAGER_IOC(void);
+[; ;Communications.c: 20: void processPowerRequest(int powerSet);
+"22 Communications.c
 [v _updateComms `(v ~T0 @X0 1 ef ]
 {
-[; ;Communications.c: 21: void updateComms() {
+[; ;Communications.c: 22: void updateComms() {
 [e :U _updateComms ]
 [f ]
-[; ;Communications.c: 22: if (receiveData()) {
-"22
+[; ;Communications.c: 23: if (receiveData()) {
+"23
 [e $ ! != -> ( _receiveData ..  `i -> -> -> 0 `i `uc `i 847  ]
 {
-"24
+"25
 }
 [e :U 847 ]
-[; ;Communications.c: 24: }
 [; ;Communications.c: 25: }
-"25
+[; ;Communications.c: 26: }
+"26
 [e :UE 846 ]
 }
-"28
+"29
 [v _processPowerRequest `(v ~T0 @X0 1 ef1`i ]
 {
-[; ;Communications.c: 28: void processPowerRequest(int powerSet) {
+[; ;Communications.c: 29: void processPowerRequest(int powerSet) {
 [e :U _processPowerRequest ]
 [v _powerSet `i ~T0 @X0 1 r1 ]
 [f ]
-[; ;Communications.c: 30: if (powerSet & 0x01) EnableSlavePower(BMM, ON);
-"30
+[; ;Communications.c: 31: if (powerSet & 0x01) EnableSlavePower(BMM, ON);
+"31
 [e $ ! != & _powerSet -> 1 `i -> 0 `i 849  ]
 [e ( _EnableSlavePower (2 , . `E6949 3 -> . `E6949 6 `i ]
 [e $U 850  ]
-"31
+"32
 [e :U 849 ]
-[; ;Communications.c: 31: else EnableSlavePower(BMM, OFF);
+[; ;Communications.c: 32: else EnableSlavePower(BMM, OFF);
 [e ( _EnableSlavePower (2 , . `E6949 3 -> . `E6949 7 `i ]
 [e :U 850 ]
-[; ;Communications.c: 32: if (powerSet & 0x02) EnableSlavePower(MCS, ON);
-"32
+[; ;Communications.c: 33: if (powerSet & 0x02) EnableSlavePower(MCS, ON);
+"33
 [e $ ! != & _powerSet -> 2 `i -> 0 `i 851  ]
 [e ( _EnableSlavePower (2 , . `E6949 1 -> . `E6949 6 `i ]
 [e $U 852  ]
-"33
+"34
 [e :U 851 ]
-[; ;Communications.c: 33: else EnableSlavePower(MCS,OFF);
+[; ;Communications.c: 34: else EnableSlavePower(MCS,OFF);
 [e ( _EnableSlavePower (2 , . `E6949 1 -> . `E6949 7 `i ]
 [e :U 852 ]
-[; ;Communications.c: 34: if (powerSet & 0x04) EnableSlavePower(DDS,ON);
-"34
+[; ;Communications.c: 35: if (powerSet & 0x04) EnableSlavePower(DDS,ON);
+"35
 [e $ ! != & _powerSet -> 4 `i -> 0 `i 853  ]
 [e ( _EnableSlavePower (2 , . `E6949 0 -> . `E6949 6 `i ]
 [e $U 854  ]
-"35
+"36
 [e :U 853 ]
-[; ;Communications.c: 35: else EnableSlavePower(DDS,OFF);
+[; ;Communications.c: 36: else EnableSlavePower(DDS,OFF);
 [e ( _EnableSlavePower (2 , . `E6949 0 -> . `E6949 7 `i ]
 [e :U 854 ]
-[; ;Communications.c: 36: if(powerSet & 0x08) EnableSlavePower(SAS,ON);
-"36
+[; ;Communications.c: 37: if(powerSet & 0x08) EnableSlavePower(SAS,ON);
+"37
 [e $ ! != & _powerSet -> 8 `i -> 0 `i 855  ]
 [e ( _EnableSlavePower (2 , . `E6949 2 -> . `E6949 6 `i ]
 [e $U 856  ]
-"37
+"38
 [e :U 855 ]
-[; ;Communications.c: 37: else EnableSlavePower(SAS,OFF);
+[; ;Communications.c: 38: else EnableSlavePower(SAS,OFF);
 [e ( _EnableSlavePower (2 , . `E6949 2 -> . `E6949 7 `i ]
 [e :U 856 ]
-[; ;Communications.c: 38: if(powerSet & 0x10) EnableSlavePower(TSS, ON);
-"38
+[; ;Communications.c: 39: if(powerSet & 0x10) EnableSlavePower(TSS, ON);
+"39
 [e $ ! != & _powerSet -> 16 `i -> 0 `i 857  ]
 [e ( _EnableSlavePower (2 , . `E6949 4 -> . `E6949 6 `i ]
 [e $U 858  ]
-"39
+"40
 [e :U 857 ]
-[; ;Communications.c: 39: else EnableSlavePower(TSS,OFF);
+[; ;Communications.c: 40: else EnableSlavePower(TSS,OFF);
 [e ( _EnableSlavePower (2 , . `E6949 4 -> . `E6949 7 `i ]
 [e :U 858 ]
-[; ;Communications.c: 40: Update();
-"40
-[e ( _Update ..  ]
-[; ;Communications.c: 41: }
+[; ;Communications.c: 41: Update();
 "41
+[e ( _Update ..  ]
+[; ;Communications.c: 42: }
+"42
 [e :UE 848 ]
 }
-"43
+"44
 [v _FaultsCollector `(ui ~T0 @X0 1 ef ]
 {
-[; ;Communications.c: 43: unsigned int FaultsCollector() {
+[; ;Communications.c: 44: unsigned int FaultsCollector() {
 [e :U _FaultsCollector ]
 [f ]
-"44
-[v _sendVal `ui ~T0 @X0 1 a ]
-[; ;Communications.c: 44: unsigned int sendVal = 0;
-[e = _sendVal -> -> 0 `i `ui ]
 "45
-[v _i `i ~T0 @X0 1 a ]
-[; ;Communications.c: 45: int i = 0;
-[e = _i -> 0 `i ]
-[; ;Communications.c: 46: for (i = 0; i < 5; i++) {
+[v _sendVal `ui ~T0 @X0 1 a ]
+[; ;Communications.c: 45: unsigned int sendVal = 0;
+[e = _sendVal -> -> 0 `i `ui ]
 "46
+[v _i `i ~T0 @X0 1 a ]
+[; ;Communications.c: 46: int i = 0;
+[e = _i -> 0 `i ]
+[; ;Communications.c: 47: for (i = 0; i < 5; i++) {
+"47
 {
 [e = _i -> 0 `i ]
 [e $ < _i -> 5 `i 860  ]
 [e $U 861  ]
 [e :U 860 ]
 {
-[; ;Communications.c: 47: sendVal = sendVal | ((GetPDUFault(i)&0x01) << i);
-"47
-[e = _sendVal | _sendVal -> << & -> ( _GetPDUFault (1 -> _i `uc `i -> 1 `i _i `ui ]
+[; ;Communications.c: 48: sendVal = sendVal | ((GetPDUFault(i)&0x01) << i);
 "48
+[e = _sendVal | _sendVal -> << & -> ( _GetPDUFault (1 -> _i `uc `i -> 1 `i _i `ui ]
+"49
 }
-"46
+"47
 [e ++ _i -> 1 `i ]
 [e $ < _i -> 5 `i 860  ]
 [e :U 861 ]
-"48
-}
-[; ;Communications.c: 48: }
-[; ;Communications.c: 49: return sendVal;
 "49
+}
+[; ;Communications.c: 49: }
+[; ;Communications.c: 50: return sendVal;
+"50
 [e ) _sendVal ]
 [e $UE 859  ]
-[; ;Communications.c: 50: }
-"50
+[; ;Communications.c: 51: }
+"51
 [e :UE 859 ]
 }

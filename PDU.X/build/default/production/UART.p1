@@ -1,6 +1,6 @@
 Version 3.2 HI-TECH Software Intermediate Code
 "102 UART.h
-[s S851 `uc -> 200 `i `i 1 `i 1 `i 1 ]
+[s S851 `uc -> 100 `i `i 1 `i 1 `i 1 ]
 [n S851 UART_ring_buff buf head tail count ]
 "9418 C:\Program Files (x86)\Microchip\xc8\v1.42\include\pic18f45k22.h
 [s S433 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -6715,7 +6715,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;UART.h: 99: extern volatile unsigned int talkTime;
 [; ;UART.h: 100: void *memset(void *s, int c, size_t n);
 [; ;UART.h: 102: struct UART_ring_buff {
-[; ;UART.h: 103: unsigned char buf[200];
+[; ;UART.h: 103: unsigned char buf[100];
 [; ;UART.h: 104: int head;
 [; ;UART.h: 105: int tail;
 [; ;UART.h: 106: int count;
@@ -6744,414 +6744,423 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;UART.h: 124: int Receive_available(void);
 [; ;UART.h: 125: unsigned char Receive_get(void);
 [; ;UART.h: 126: void Send_put(unsigned char _data);
-[; ;pin_manager.h: 311: void PIN_MANAGER_Initialize (void);
-[; ;pin_manager.h: 323: void PIN_MANAGER_IOC(void);
-"23 UART.c
+[; ;UART.h: 127: void ClearBuffer();
+"20 UART.c
 [v _EUSART1_Initialize `(v ~T0 @X0 1 ef ]
 {
-[; ;UART.c: 23: void EUSART1_Initialize(void) {
+[; ;UART.c: 20: void EUSART1_Initialize(void) {
 [e :U _EUSART1_Initialize ]
 [f ]
-[; ;UART.c: 25: PIE1bits.RC1IE = 0;
-"25
+[; ;UART.c: 22: PIE1bits.RC1IE = 0;
+"22
 [e = . . _PIE1bits 0 5 -> -> 0 `i `uc ]
-[; ;UART.c: 26: PIE1bits.TX1IE = 0;
-"26
+[; ;UART.c: 23: PIE1bits.TX1IE = 0;
+"23
 [e = . . _PIE1bits 0 4 -> -> 0 `i `uc ]
-[; ;UART.c: 31: BAUD1CON = 0x48;
-"31
+[; ;UART.c: 28: BAUD1CON = 0x48;
+"28
 [e = _BAUD1CON -> -> 72 `i `uc ]
-[; ;UART.c: 34: RC1STA = 0x98;
-"34
+[; ;UART.c: 31: RC1STA = 0x98;
+"31
 [e = _RC1STA -> -> 152 `i `uc ]
-[; ;UART.c: 37: TX1STA = 0x26;
-"37
+[; ;UART.c: 34: TX1STA = 0x26;
+"34
 [e = _TX1STA -> -> 38 `i `uc ]
-[; ;UART.c: 40: SPBRG1 = (((16000000/38400)/4)-1);
-"40
+[; ;UART.c: 37: SPBRG1 = (((16000000/38400)/4)-1);
+"37
 [e = _SPBRG1 -> - / / -> 16000000 `l -> 38400 `l -> -> 4 `i `l -> -> 1 `i `l `uc ]
-[; ;UART.c: 43: SPBRGH1 = 0x00;
-"43
+[; ;UART.c: 40: SPBRGH1 = 0x00;
+"40
 [e = _SPBRGH1 -> -> 0 `i `uc ]
-[; ;UART.c: 46: TXREG1 = 0x00;
-"46
+[; ;UART.c: 43: TXREG1 = 0x00;
+"43
 [e = _TXREG1 -> -> 0 `i `uc ]
-[; ;UART.c: 49: RCREG1 = 0x00;
-"49
+[; ;UART.c: 46: RCREG1 = 0x00;
+"46
 [e = _RCREG1 -> -> 0 `i `uc ]
-[; ;UART.c: 51: UART_buff_init(&input_buffer);
-"51
+[; ;UART.c: 48: UART_buff_init(&input_buffer);
+"48
 [e ( _UART_buff_init (1 &U _input_buffer ]
-[; ;UART.c: 52: UART_buff_init(&output_buffer);
-"52
+[; ;UART.c: 49: UART_buff_init(&output_buffer);
+"49
 [e ( _UART_buff_init (1 &U _output_buffer ]
-[; ;UART.c: 54: PIE1bits.RC1IE = 1;
-"54
+[; ;UART.c: 51: PIE1bits.RC1IE = 1;
+"51
 [e = . . _PIE1bits 0 5 -> -> 1 `i `uc ]
-[; ;UART.c: 56: }
-"56
+[; ;UART.c: 53: }
+"53
 [e :UE 852 ]
 }
-"58
+"55
 [v _UART_buff_init `(v ~T0 @X0 1 ef1`*S851 ]
 {
-[; ;UART.c: 58: void UART_buff_init(struct UART_ring_buff* _this) {
+[; ;UART.c: 55: void UART_buff_init(struct UART_ring_buff* _this) {
 [e :U _UART_buff_init ]
 [v __this `*S851 ~T0 @X0 1 r1 ]
 [f ]
-[; ;UART.c: 67: memset(_this, 0, sizeof (*_this));
-"67
+[; ;UART.c: 64: memset(_this, 0, sizeof (*_this));
+"64
 [e ( _memset (3 , , -> __this `*v -> 0 `i -> # *U __this `ui ]
-[; ;UART.c: 68: }
-"68
+[; ;UART.c: 65: }
+"65
 [e :UE 853 ]
 }
-"70
+"67
 [v _UART_buff_put `(v ~T0 @X0 1 ef2`*S851`Cuc ]
 {
-[; ;UART.c: 70: void UART_buff_put(struct UART_ring_buff* _this, const unsigned char c) {
+[; ;UART.c: 67: void UART_buff_put(struct UART_ring_buff* _this, const unsigned char c) {
 [e :U _UART_buff_put ]
 [v __this `*S851 ~T0 @X0 1 r1 ]
 [v _c `Cuc ~T0 @X0 1 r2 ]
 [f ]
-[; ;UART.c: 71: if (_this->count < 200) {
-"71
-[e $ ! < . *U __this 3 -> 200 `i 855  ]
+[; ;UART.c: 68: if (_this->count < 100) {
+"68
+[e $ ! < . *U __this 3 -> 100 `i 855  ]
 {
-[; ;UART.c: 72: _this->buf[_this->head] = c;
-"72
+[; ;UART.c: 69: _this->buf[_this->head] = c;
+"69
 [e = *U + &U . *U __this 0 * -> -> . *U __this 1 `ui `ux -> -> # *U &U . *U __this 0 `ui `ux _c ]
-[; ;UART.c: 73: _this->head = UART_buff_modulo_inc(_this->head, 200);
-"73
-[e = . *U __this 1 -> ( _UART_buff_modulo_inc (2 , -> . *U __this 1 `ui -> -> 200 `i `ui `i ]
-[; ;UART.c: 74: ++_this->count;
-"74
+[; ;UART.c: 70: _this->head = UART_buff_modulo_inc(_this->head, 100);
+"70
+[e = . *U __this 1 -> ( _UART_buff_modulo_inc (2 , -> . *U __this 1 `ui -> -> 100 `i `ui `i ]
+[; ;UART.c: 71: ++_this->count;
+"71
 [e =+ . *U __this 3 -> 1 `i ]
-"75
+"72
 }
-[; ;UART.c: 75: } else {
+[; ;UART.c: 72: } else {
 [e $U 856  ]
 [e :U 855 ]
 {
-[; ;UART.c: 76: _this->buf[_this->head] = c;
-"76
+[; ;UART.c: 73: _this->buf[_this->head] = c;
+"73
 [e = *U + &U . *U __this 0 * -> -> . *U __this 1 `ui `ux -> -> # *U &U . *U __this 0 `ui `ux _c ]
-[; ;UART.c: 77: _this->head = UART_buff_modulo_inc(_this->head, 200);
+[; ;UART.c: 74: _this->head = UART_buff_modulo_inc(_this->head, 100);
+"74
+[e = . *U __this 1 -> ( _UART_buff_modulo_inc (2 , -> . *U __this 1 `ui -> -> 100 `i `ui `i ]
+[; ;UART.c: 75: _this->tail = UART_buff_modulo_inc(_this->tail, 100);
+"75
+[e = . *U __this 2 -> ( _UART_buff_modulo_inc (2 , -> . *U __this 2 `ui -> -> 100 `i `ui `i ]
 "77
-[e = . *U __this 1 -> ( _UART_buff_modulo_inc (2 , -> . *U __this 1 `ui -> -> 200 `i `ui `i ]
-[; ;UART.c: 78: _this->tail = UART_buff_modulo_inc(_this->tail, 200);
-"78
-[e = . *U __this 2 -> ( _UART_buff_modulo_inc (2 , -> . *U __this 2 `ui -> -> 200 `i `ui `i ]
-"80
 }
 [e :U 856 ]
-[; ;UART.c: 80: }
-[; ;UART.c: 81: }
-"81
+[; ;UART.c: 77: }
+[; ;UART.c: 78: }
+"78
 [e :UE 854 ]
 }
-"83
+"80
 [v _UART_buff_get `(uc ~T0 @X0 1 ef1`*S851 ]
 {
-[; ;UART.c: 83: unsigned char UART_buff_get(struct UART_ring_buff* _this) {
+[; ;UART.c: 80: unsigned char UART_buff_get(struct UART_ring_buff* _this) {
 [e :U _UART_buff_get ]
 [v __this `*S851 ~T0 @X0 1 r1 ]
 [f ]
-"84
+"81
 [v _c `uc ~T0 @X0 1 a ]
-[; ;UART.c: 84: unsigned char c;
-[; ;UART.c: 85: if (_this->count > 0) {
-"85
+[; ;UART.c: 81: unsigned char c;
+[; ;UART.c: 82: if (_this->count > 0) {
+"82
 [e $ ! > . *U __this 3 -> 0 `i 858  ]
 {
-[; ;UART.c: 86: c = _this->buf[_this->tail];
-"86
+[; ;UART.c: 83: c = _this->buf[_this->tail];
+"83
 [e = _c *U + &U . *U __this 0 * -> -> . *U __this 2 `ui `ux -> -> # *U &U . *U __this 0 `ui `ux ]
-[; ;UART.c: 87: _this->tail = UART_buff_modulo_inc(_this->tail, 200);
-"87
-[e = . *U __this 2 -> ( _UART_buff_modulo_inc (2 , -> . *U __this 2 `ui -> -> 200 `i `ui `i ]
-[; ;UART.c: 88: --_this->count;
-"88
+[; ;UART.c: 84: _this->tail = UART_buff_modulo_inc(_this->tail, 100);
+"84
+[e = . *U __this 2 -> ( _UART_buff_modulo_inc (2 , -> . *U __this 2 `ui -> -> 100 `i `ui `i ]
+[; ;UART.c: 85: --_this->count;
+"85
 [e =- . *U __this 3 -> 1 `i ]
-"89
+"86
 }
-[; ;UART.c: 89: } else {
+[; ;UART.c: 86: } else {
 [e $U 859  ]
 [e :U 858 ]
 {
-[; ;UART.c: 90: c = 0;
-"90
+[; ;UART.c: 87: c = 0;
+"87
 [e = _c -> -> 0 `i `uc ]
-"91
+"88
 }
 [e :U 859 ]
-[; ;UART.c: 91: }
-[; ;UART.c: 92: return (c);
-"92
+[; ;UART.c: 88: }
+[; ;UART.c: 89: return (c);
+"89
 [e ) _c ]
 [e $UE 857  ]
-[; ;UART.c: 93: }
-"93
+[; ;UART.c: 90: }
+"90
 [e :UE 857 ]
 }
-"95
+"92
 [v _UART_buff_flush `(v ~T0 @X0 1 ef2`*S851`Ci ]
 {
-[; ;UART.c: 95: void UART_buff_flush(struct UART_ring_buff* _this, const int clearBuffer) {
+[; ;UART.c: 92: void UART_buff_flush(struct UART_ring_buff* _this, const int clearBuffer) {
 [e :U _UART_buff_flush ]
 [v __this `*S851 ~T0 @X0 1 r1 ]
 [v _clearBuffer `Ci ~T0 @X0 1 r2 ]
 [f ]
-[; ;UART.c: 96: _this->count = 0;
-"96
+[; ;UART.c: 93: _this->count = 0;
+"93
 [e = . *U __this 3 -> 0 `i ]
-[; ;UART.c: 97: _this->head = 0;
-"97
+[; ;UART.c: 94: _this->head = 0;
+"94
 [e = . *U __this 1 -> 0 `i ]
-[; ;UART.c: 98: _this->tail = 0;
-"98
+[; ;UART.c: 95: _this->tail = 0;
+"95
 [e = . *U __this 2 -> 0 `i ]
-[; ;UART.c: 99: if (clearBuffer) {
-"99
+[; ;UART.c: 96: if (clearBuffer) {
+"96
 [e $ ! != _clearBuffer -> 0 `i 861  ]
 {
-[; ;UART.c: 100: memset(_this->buf, 0, sizeof (_this->buf));
-"100
-[e ( _memset (3 , , -> &U . *U __this 0 `*v -> 0 `i * -> # *U &U . *U __this 0 `ui -> -> 200 `i `ui ]
-"101
+[; ;UART.c: 97: memset(_this->buf, 0, sizeof (_this->buf));
+"97
+[e ( _memset (3 , , -> &U . *U __this 0 `*v -> 0 `i * -> # *U &U . *U __this 0 `ui -> -> 100 `i `ui ]
+"98
 }
 [e :U 861 ]
-[; ;UART.c: 101: }
-[; ;UART.c: 102: }
-"102
+[; ;UART.c: 98: }
+[; ;UART.c: 99: }
+"99
 [e :UE 860 ]
 }
-"104
+"101
 [v _UART_buff_size `(i ~T0 @X0 1 ef1`*S851 ]
 {
-[; ;UART.c: 104: int UART_buff_size(struct UART_ring_buff* _this) {
+[; ;UART.c: 101: int UART_buff_size(struct UART_ring_buff* _this) {
 [e :U _UART_buff_size ]
 [v __this `*S851 ~T0 @X0 1 r1 ]
 [f ]
-[; ;UART.c: 105: return (_this->count);
-"105
+[; ;UART.c: 102: return (_this->count);
+"102
 [e ) . *U __this 3 ]
 [e $UE 862  ]
-[; ;UART.c: 106: }
-"106
+[; ;UART.c: 103: }
+"103
 [e :UE 862 ]
 }
-"108
+"105
 [v _UART_buff_modulo_inc `(ui ~T0 @X0 1 ef2`Cui`Cui ]
 {
-[; ;UART.c: 108: unsigned int UART_buff_modulo_inc(const unsigned int value, const unsigned int modulus) {
+[; ;UART.c: 105: unsigned int UART_buff_modulo_inc(const unsigned int value, const unsigned int modulus) {
 [e :U _UART_buff_modulo_inc ]
 [v _value `Cui ~T0 @X0 1 r1 ]
 [v _modulus `Cui ~T0 @X0 1 r2 ]
 [f ]
-"109
+"106
 [v _my_value `ui ~T0 @X0 1 a ]
-[; ;UART.c: 109: unsigned int my_value = value + 1;
+[; ;UART.c: 106: unsigned int my_value = value + 1;
 [e = _my_value + _value -> -> 1 `i `ui ]
-[; ;UART.c: 110: if (my_value >= modulus) {
-"110
+[; ;UART.c: 107: if (my_value >= modulus) {
+"107
 [e $ ! >= _my_value _modulus 864  ]
 {
-[; ;UART.c: 111: my_value = 0;
-"111
+[; ;UART.c: 108: my_value = 0;
+"108
 [e = _my_value -> -> 0 `i `ui ]
-"112
+"109
 }
 [e :U 864 ]
-[; ;UART.c: 112: }
-[; ;UART.c: 113: return (my_value);
-"113
+[; ;UART.c: 109: }
+[; ;UART.c: 110: return (my_value);
+"110
 [e ) _my_value ]
 [e $UE 863  ]
-[; ;UART.c: 114: }
-"114
+[; ;UART.c: 111: }
+"111
 [e :UE 863 ]
 }
-"116
+"113
 [v _UART_buff_peek `(uc ~T0 @X0 1 ef1`*S851 ]
 {
-[; ;UART.c: 116: unsigned char UART_buff_peek(struct UART_ring_buff* _this) {
+[; ;UART.c: 113: unsigned char UART_buff_peek(struct UART_ring_buff* _this) {
 [e :U _UART_buff_peek ]
 [v __this `*S851 ~T0 @X0 1 r1 ]
 [f ]
-[; ;UART.c: 117: return _this->buf[_this->tail];
-"117
+[; ;UART.c: 114: return _this->buf[_this->tail];
+"114
 [e ) *U + &U . *U __this 0 * -> -> . *U __this 2 `ui `ux -> -> # *U &U . *U __this 0 `ui `ux ]
 [e $UE 865  ]
-[; ;UART.c: 118: }
-"118
+[; ;UART.c: 115: }
+"115
 [e :UE 865 ]
 }
-"120
+"117
 [v _Receive_peek `(uc ~T0 @X0 1 ef ]
 {
-[; ;UART.c: 120: unsigned char Receive_peek(void) {
+[; ;UART.c: 117: unsigned char Receive_peek(void) {
 [e :U _Receive_peek ]
 [f ]
-[; ;UART.c: 121: return UART_buff_peek(&input_buffer);
-"121
+[; ;UART.c: 118: return UART_buff_peek(&input_buffer);
+"118
 [e ) ( _UART_buff_peek (1 &U _input_buffer ]
 [e $UE 866  ]
-[; ;UART.c: 122: }
-"122
+[; ;UART.c: 119: }
+"119
 [e :UE 866 ]
 }
-"124
+"121
 [v _Receive_available `(i ~T0 @X0 1 ef ]
 {
-[; ;UART.c: 124: int Receive_available(void) {
+[; ;UART.c: 121: int Receive_available(void) {
 [e :U _Receive_available ]
 [f ]
-[; ;UART.c: 125: return UART_buff_size(&input_buffer);
-"125
+[; ;UART.c: 122: return UART_buff_size(&input_buffer);
+"122
 [e ) ( _UART_buff_size (1 &U _input_buffer ]
 [e $UE 867  ]
-[; ;UART.c: 126: }
-"126
+[; ;UART.c: 123: }
+"123
 [e :UE 867 ]
 }
-"128
+"125
 [v _Receive_get `(uc ~T0 @X0 1 ef ]
 {
-[; ;UART.c: 128: unsigned char Receive_get(void) {
+[; ;UART.c: 125: unsigned char Receive_get(void) {
 [e :U _Receive_get ]
 [f ]
-[; ;UART.c: 129: return UART_buff_get(&input_buffer);
-"129
+[; ;UART.c: 126: return UART_buff_get(&input_buffer);
+"126
 [e ) ( _UART_buff_get (1 &U _input_buffer ]
 [e $UE 868  ]
-[; ;UART.c: 130: }
-"130
+[; ;UART.c: 127: }
+"127
 [e :UE 868 ]
 }
-"132
+"129
 [v _Send_put `(v ~T0 @X0 1 ef1`uc ]
 {
-[; ;UART.c: 132: void Send_put(unsigned char _data) {
+[; ;UART.c: 129: void Send_put(unsigned char _data) {
 [e :U _Send_put ]
 [v __data `uc ~T0 @X0 1 r1 ]
 [f ]
-[; ;UART.c: 133: UART_buff_put(&output_buffer, _data);
-"133
+[; ;UART.c: 130: UART_buff_put(&output_buffer, _data);
+"130
 [e ( _UART_buff_put (2 , &U _output_buffer __data ]
-[; ;UART.c: 134: if (Transmit_stall == 1) {
-"134
+[; ;UART.c: 131: if (Transmit_stall == 1) {
+"131
 [e $ ! == -> _Transmit_stall `i -> 1 `i 870  ]
 {
-[; ;UART.c: 135: Transmit_stall = 0;
-"135
+[; ;UART.c: 132: Transmit_stall = 0;
+"132
 [e = _Transmit_stall -> -> 0 `i `uc ]
-[; ;UART.c: 136: TXREG1 = UART_buff_get(&output_buffer);
-"136
+[; ;UART.c: 133: TXREG1 = UART_buff_get(&output_buffer);
+"133
 [e = _TXREG1 ( _UART_buff_get (1 &U _output_buffer ]
-[; ;UART.c: 137: PIE1bits.TX1IE = 1;
-"137
+[; ;UART.c: 134: PIE1bits.TX1IE = 1;
+"134
 [e = . . _PIE1bits 0 4 -> -> 1 `i `uc ]
-"138
+"135
 }
 [e :U 870 ]
-[; ;UART.c: 138: }
-[; ;UART.c: 139: }
-"139
+[; ;UART.c: 135: }
+[; ;UART.c: 136: }
+"136
 [e :UE 869 ]
 }
-"141
+"138
 [v _EUSART1_Receive_ISR `(v ~T0 @X0 1 ef ]
 {
-[; ;UART.c: 141: void EUSART1_Receive_ISR(void) {
+[; ;UART.c: 138: void EUSART1_Receive_ISR(void) {
 [e :U _EUSART1_Receive_ISR ]
 [f ]
-[; ;UART.c: 142: if (1 == RC1STAbits.OERR) {
-"142
+[; ;UART.c: 139: if (1 == RC1STAbits.OERR) {
+"139
 [e $ ! == -> 1 `i -> . . _RC1STAbits 0 1 `i 872  ]
 {
-[; ;UART.c: 145: RC1STAbits.CREN = 0;
-"145
+[; ;UART.c: 142: RC1STAbits.CREN = 0;
+"142
 [e = . . _RC1STAbits 0 4 -> -> 0 `i `uc ]
-[; ;UART.c: 146: RC1STAbits.CREN = 1;
-"146
+[; ;UART.c: 143: RC1STAbits.CREN = 1;
+"143
 [e = . . _RC1STAbits 0 4 -> -> 1 `i `uc ]
-"147
+"144
 }
 [e :U 872 ]
-"148
+"145
 [v _data `uc ~T0 @X0 1 a ]
-[; ;UART.c: 147: }
-[; ;UART.c: 148: unsigned char data = RCREG1;
+[; ;UART.c: 144: }
+[; ;UART.c: 145: unsigned char data = RCREG1;
 [e = _data _RCREG1 ]
-[; ;UART.c: 149: UART_buff_put(&input_buffer, data);
-"149
+[; ;UART.c: 146: UART_buff_put(&input_buffer, data);
+"146
 [e ( _UART_buff_put (2 , &U _input_buffer _data ]
-[; ;UART.c: 150: PIE1bits.RC1IE == 0;
-"150
-[e == -> . . _PIE1bits 0 5 `i -> 0 `i ]
-[; ;UART.c: 151: }
-"151
+[; ;UART.c: 147: }
+"147
 [e :UE 871 ]
 }
-"153
+"149
 [v _EUSART1_Transmit_ISR `(v ~T0 @X0 1 ef ]
 {
-[; ;UART.c: 153: void EUSART1_Transmit_ISR(void) {
+[; ;UART.c: 149: void EUSART1_Transmit_ISR(void) {
 [e :U _EUSART1_Transmit_ISR ]
 [f ]
-[; ;UART.c: 154: if (UART_buff_size(&output_buffer) > 0) {
-"154
+[; ;UART.c: 151: if (UART_buff_size(&output_buffer) > 0) {
+"151
 [e $ ! > ( _UART_buff_size (1 &U _output_buffer -> 0 `i 874  ]
 {
-[; ;UART.c: 155: TXREG1 = UART_buff_get(&output_buffer);
-"155
+[; ;UART.c: 152: TXREG1 = UART_buff_get(&output_buffer);
+"152
 [e = _TXREG1 ( _UART_buff_get (1 &U _output_buffer ]
-"156
+"153
 }
-[; ;UART.c: 156: } else {
+[; ;UART.c: 153: } else {
 [e $U 875  ]
 [e :U 874 ]
 {
-[; ;UART.c: 157: Transmit_stall = 1;
-"157
+[; ;UART.c: 154: Transmit_stall = 1;
+"154
 [e = _Transmit_stall -> -> 1 `i `uc ]
-[; ;UART.c: 158: PIE1bits.TX1IE = 0;
-"158
+[; ;UART.c: 155: PIE1bits.TX1IE = 0;
+"155
 [e = . . _PIE1bits 0 4 -> -> 0 `i `uc ]
-"159
+"156
 }
 [e :U 875 ]
-[; ;UART.c: 159: }
-[; ;UART.c: 160: }
-"160
+[; ;UART.c: 156: }
+[; ;UART.c: 157: }
+"157
 [e :UE 873 ]
 }
-"162
-[v _getch `(uc ~T0 @X0 1 ef ]
+"159
+[v _ClearBuffer `(v ~T0 @X0 1 ef ]
 {
-[; ;UART.c: 162: char getch(void) {
-[e :U _getch ]
+[; ;UART.c: 159: void ClearBuffer(){
+[e :U _ClearBuffer ]
 [f ]
-[; ;UART.c: 163: return Receive_get();
-"163
-[e ) ( _Receive_get ..  ]
-[e $UE 876  ]
-[; ;UART.c: 164: }
-"164
+[; ;UART.c: 160: UART_buff_flush(&input_buffer, 1);
+"160
+[e ( _UART_buff_flush (2 , &U _input_buffer -> 1 `i ]
+[; ;UART.c: 161: }
+"161
 [e :UE 876 ]
 }
-"166
+"163
+[v _getch `(uc ~T0 @X0 1 ef ]
+{
+[; ;UART.c: 163: char getch(void) {
+[e :U _getch ]
+[f ]
+[; ;UART.c: 164: return Receive_get();
+"164
+[e ) ( _Receive_get ..  ]
+[e $UE 877  ]
+[; ;UART.c: 165: }
+"165
+[e :UE 877 ]
+}
+"167
 [v _putch `(v ~T0 @X0 1 ef1`uc ]
 {
-[; ;UART.c: 166: void putch(char txData) {
+[; ;UART.c: 167: void putch(char txData) {
 [e :U _putch ]
 [v _txData `uc ~T0 @X0 1 r1 ]
 [f ]
-[; ;UART.c: 167: Send_put(txData);
-"167
-[e ( _Send_put (1 _txData ]
-[; ;UART.c: 168: }
+[; ;UART.c: 168: Send_put(txData);
 "168
-[e :UE 877 ]
+[e ( _Send_put (1 _txData ]
+[; ;UART.c: 169: }
+"169
+[e :UE 878 ]
 }

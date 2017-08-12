@@ -8679,7 +8679,7 @@ extern volatile unsigned int talkTime;
 void *memset(void *s, int c, size_t n);
 
 struct UART_ring_buff {
-unsigned char buf[200];
+unsigned char buf[100];
 int head;
 int tail;
 int count;
@@ -8703,14 +8703,9 @@ unsigned char Receive_peek(void);
 int Receive_available(void);
 unsigned char Receive_get(void);
 void Send_put(unsigned char _data);
+void ClearBuffer();
 
-# 311 "mcc_generated_files/pin_manager.h"
-void PIN_MANAGER_Initialize (void);
-
-# 323
-void PIN_MANAGER_IOC(void);
-
-# 23 "UART.c"
+# 20 "UART.c"
 void EUSART1_Initialize(void) {
 
 PIE1bits.RC1IE = 0;
@@ -8748,19 +8743,19 @@ PIE1bits.RC1IE = 1;
 
 void UART_buff_init(struct UART_ring_buff* _this) {
 
-# 67
+# 64
 memset(_this, 0, sizeof (*_this));
 }
 
 void UART_buff_put(struct UART_ring_buff* _this, const unsigned char c) {
-if (_this->count < 200) {
+if (_this->count < 100) {
 _this->buf[_this->head] = c;
-_this->head = UART_buff_modulo_inc(_this->head, 200);
+_this->head = UART_buff_modulo_inc(_this->head, 100);
 ++_this->count;
 } else {
 _this->buf[_this->head] = c;
-_this->head = UART_buff_modulo_inc(_this->head, 200);
-_this->tail = UART_buff_modulo_inc(_this->tail, 200);
+_this->head = UART_buff_modulo_inc(_this->head, 100);
+_this->tail = UART_buff_modulo_inc(_this->tail, 100);
 
 }
 }
@@ -8769,7 +8764,7 @@ unsigned char UART_buff_get(struct UART_ring_buff* _this) {
 unsigned char c;
 if (_this->count > 0) {
 c = _this->buf[_this->tail];
-_this->tail = UART_buff_modulo_inc(_this->tail, 200);
+_this->tail = UART_buff_modulo_inc(_this->tail, 100);
 --_this->count;
 } else {
 c = 0;
@@ -8832,16 +8827,20 @@ RC1STAbits.CREN = 1;
 }
 unsigned char data = RCREG1;
 UART_buff_put(&input_buffer, data);
-PIE1bits.RC1IE == 0;
 }
 
 void EUSART1_Transmit_ISR(void) {
+
 if (UART_buff_size(&output_buffer) > 0) {
 TXREG1 = UART_buff_get(&output_buffer);
 } else {
 Transmit_stall = 1;
 PIE1bits.TX1IE = 0;
 }
+}
+
+void ClearBuffer(){
+UART_buff_flush(&input_buffer, 1);
 }
 
 char getch(void) {

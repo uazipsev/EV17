@@ -12,7 +12,7 @@ U5Multisense 16
 U8Multisense 22
 U10Multisense 23
 ]
-"30 D:\EV17.git\trunk\PDU.X\Communications.c
+"31 D:\EV17.git\trunk\PDU.X\Communications.c
 [e E6949 . `uc
 DDS 1
 MCS 2
@@ -43,13 +43,13 @@ U5Multisense 16
 U8Multisense 22
 U10Multisense 23
 ]
-"51 D:\EV17.git\trunk\PDU.X\CarCom.c
+"49 D:\EV17.git\trunk\PDU.X\CarCom.c
 [e E7102 . `uc
 COBS_ENCODE_OK 0
 COBS_ENCODE_NULL_POINTER 1
 COBS_ENCODE_OUT_BUFFER_OVERFLOW 2
 ]
-"109
+"119
 [e E7111 . `uc
 COBS_DECODE_OK 0
 COBS_DECODE_NULL_POINTER 1
@@ -95,25 +95,25 @@ COBS_DECODE_INPUT_TOO_SHORT 8
 [v ___wmul __wmul `(ui  1 e 2 0 ]
 "15 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\Umul32.c
 [v ___lmul __lmul `(ul  1 e 4 0 ]
-"23 D:\EV17.git\trunk\PDU.X\CarCom.c
+"21 D:\EV17.git\trunk\PDU.X\CarCom.c
 [v _CRC8 CRC8 `(uc  1 e 1 0 ]
-"41
+"39
 [v _sendData sendData `(v  1 e 1 0 ]
-"96
+"94
 [v _receiveData receiveData `(uc  1 e 1 0 ]
-"133
+"155
 [v _ComController ComController `(v  1 e 1 0 ]
 "7 D:\EV17.git\trunk\PDU.X\CarDataDictionary.c
 [v _GetDataDict GetDataDict `(uc  1 e 1 0 ]
 "41 D:\EV17.git\trunk\PDU.X\COBS.h
-[s S1542 . 3 `ui 1 out_len 2 0 `E7102 1 status 1 2 ]
+[s S1544 . 3 `ui 1 out_len 2 0 `E7102 1 status 1 2 ]
 "29 D:\EV17.git\trunk\PDU.X\COBS.c
-[v _cobs_encode cobs_encode `(S1542  1 e 3 0 ]
+[v _cobs_encode cobs_encode `(S1544  1 e 3 0 ]
 "57 D:\EV17.git\trunk\PDU.X\COBS.h
-[s S1564 . 3 `ui 1 out_len 2 0 `E7111 1 status 1 2 ]
+[s S1565 . 3 `ui 1 out_len 2 0 `E7111 1 status 1 2 ]
 "115 D:\EV17.git\trunk\PDU.X\COBS.c
-[v _cobs_decode cobs_decode `(S1564  1 e 3 0 ]
-"21 D:\EV17.git\trunk\PDU.X\Communications.c
+[v _cobs_decode cobs_decode `(S1565  1 e 3 0 ]
+"22 D:\EV17.git\trunk\PDU.X\Communications.c
 [v _updateComms updateComms `(v  1 e 1 0 ]
 "19 D:\EV17.git\trunk\PDU.X\CoolingControl.c
 [v _CoolingStart CoolingStart `(v  1 e 1 0 ]
@@ -195,33 +195,35 @@ COBS_DECODE_INPUT_TOO_SHORT 8
 "50
 [v _writeRegisters writeRegisters `(v  1 e 1 0 ]
 [v i2_writeRegisters writeRegisters `(v  1 e 1 0 ]
-"23 D:\EV17.git\trunk\PDU.X\UART.c
+"20 D:\EV17.git\trunk\PDU.X\UART.c
 [v _EUSART1_Initialize EUSART1_Initialize `(v  1 e 1 0 ]
-"58
+"55
 [v _UART_buff_init UART_buff_init `(v  1 e 1 0 ]
-"70
+"67
 [v _UART_buff_put UART_buff_put `(v  1 e 1 0 ]
 [v i2_UART_buff_put UART_buff_put `(v  1 e 1 0 ]
-"83
+"80
 [v _UART_buff_get UART_buff_get `(uc  1 e 1 0 ]
 [v i2_UART_buff_get UART_buff_get `(uc  1 e 1 0 ]
-"104
+"92
+[v _UART_buff_flush UART_buff_flush `(v  1 e 1 0 ]
+"101
 [v _UART_buff_size UART_buff_size `(i  1 e 2 0 ]
 [v i2_UART_buff_size UART_buff_size `(i  1 e 2 0 ]
-"108
+"105
 [v _UART_buff_modulo_inc UART_buff_modulo_inc `(ui  1 e 2 0 ]
 [v i2_UART_buff_modulo_inc UART_buff_modulo_inc `(ui  1 e 2 0 ]
-"116
+"113
 [v _UART_buff_peek UART_buff_peek `(uc  1 e 1 0 ]
-"124
+"121
 [v _Receive_available Receive_available `(i  1 e 2 0 ]
-"128
+"125
 [v _Receive_get Receive_get `(uc  1 e 1 0 ]
-"132
+"129
 [v _Send_put Send_put `(v  1 e 1 0 ]
-"141
+"138
 [v _EUSART1_Receive_ISR EUSART1_Receive_ISR `(v  1 e 1 0 ]
-"153
+"149
 [v _EUSART1_Transmit_ISR EUSART1_Transmit_ISR `(v  1 e 1 0 ]
 "50 C:\Program Files (x86)\Microchip\xc8\v1.42\include\pic18f45k22.h
 [v _ANSELA ANSELA `VEuc  1 e 1 @3896 ]
@@ -692,6 +694,8 @@ COBS_DECODE_INPUT_TOO_SHORT 8
 [v _ANSB4 ANSB4 `VEb  1 e 0 @31180 ]
 "17564
 [v _ANSD7 ANSD7 `VEb  1 e 0 @31199 ]
+"18264
+[v _LATA3 LATA3 `VEb  1 e 0 @31819 ]
 "18274
 [v _LATB0 LATB0 `VEb  1 e 0 @31824 ]
 "18280
@@ -716,9 +720,9 @@ COBS_DECODE_INPUT_TOO_SHORT 8
 [v _TRISB4 TRISB4 `VEb  1 e 0 @31900 ]
 "19422
 [v _TRISB5 TRISB5 `VEb  1 e 0 @31901 ]
-"93 D:\EV17.git\trunk\PDU.X\CarCom.c
+"91 D:\EV17.git\trunk\PDU.X\CarCom.c
 [v _ReciveArray ReciveArray `[30]uc  1 e 30 0 ]
-"94
+"92
 [v _ProcessArray ProcessArray `[30]uc  1 e 30 0 ]
 "4 D:\EV17.git\trunk\PDU.X\CarDataDictionary.c
 [v _DataTableArrayOne DataTableArrayOne `[10]uc  1 e 10 0 ]
@@ -744,50 +748,52 @@ COBS_DECODE_INPUT_TOO_SHORT 8
 [v _Current Current `[6]ui  1 e 12 0 ]
 "14 D:\EV17.git\trunk\PDU.X\Shift595.h
 [v _registers registers `[24]i  1 e 48 0 ]
-[s S183 UART_ring_buff 206 `[200]uc 1 buf 200 0 `i 1 head 2 200 `i 1 tail 2 202 `i 1 count 2 204 ]
+[s S183 UART_ring_buff 106 `[100]uc 1 buf 100 0 `i 1 head 2 100 `i 1 tail 2 102 `i 1 count 2 104 ]
 "109 D:\EV17.git\trunk\PDU.X\UART.h
-[v _input_buffer input_buffer `S183  1 e 206 0 ]
+[v _input_buffer input_buffer `S183  1 e 106 0 ]
 "110
-[v _output_buffer output_buffer `S183  1 e 206 0 ]
+[v _output_buffer output_buffer `S183  1 e 106 0 ]
 "112
 [v _Transmit_stall Transmit_stall `uc  1 e 1 0 ]
 "11 D:\EV17.git\trunk\PDU.X\main.c
 [v _main main `(v  1 e 1 0 ]
 {
 "59
-[v main@i i `i  1 a 2 18 ]
+[v main@i i `i  1 a 2 20 ]
 "63
-[v main@j j `i  1 a 2 16 ]
+[v main@j j `i  1 a 2 18 ]
 "60
-[v main@UP UP `uc  1 a 1 20 ]
+[v main@UP UP `uc  1 a 1 22 ]
 "81
 } 0
-"21 D:\EV17.git\trunk\PDU.X\Communications.c
+"22 D:\EV17.git\trunk\PDU.X\Communications.c
 [v _updateComms updateComms `(v  1 e 1 0 ]
 {
-"25
+"26
 } 0
-"96 D:\EV17.git\trunk\PDU.X\CarCom.c
+"94 D:\EV17.git\trunk\PDU.X\CarCom.c
 [v _receiveData receiveData `(uc  1 e 1 0 ]
 {
-[s S1564 . 3 `ui 1 out_len 2 0 `E7111 1 status 1 2 ]
-"109
-[v receiveData@result result `S1564  1 a 3 13 ]
-"100
-[v receiveData@i i `i  1 a 2 10 ]
-"101
-[v receiveData@Data Data `uc  1 a 1 12 ]
-"111
-[v receiveData@CS CS `uc  1 a 1 9 ]
-"129
+[s S1565 . 3 `ui 1 out_len 2 0 `E7111 1 status 1 2 ]
+"119
+[v receiveData@result result `S1565  1 a 3 15 ]
+"98
+[v receiveData@i i `i  1 a 2 12 ]
+"110
+[v receiveData@j j `i  1 a 2 9 ]
+"99
+[v receiveData@Data Data `uc  1 a 1 14 ]
+"121
+[v receiveData@CS CS `uc  1 a 1 11 ]
+"151
 } 0
 "57 D:\EV17.git\trunk\PDU.X\COBS.h
-[s S1564 . 3 `ui 1 out_len 2 0 `E7111 1 status 1 2 ]
+[s S1565 . 3 `ui 1 out_len 2 0 `E7111 1 status 1 2 ]
 "115 D:\EV17.git\trunk\PDU.X\COBS.c
-[v _cobs_decode cobs_decode `(S1564  1 e 3 0 ]
+[v _cobs_decode cobs_decode `(S1565  1 e 3 0 ]
 {
 "117
-[v cobs_decode@result result `S1564  1 a 3 11 ]
+[v cobs_decode@result result `S1565  1 a 3 11 ]
 "120
 [v cobs_decode@dst_write_ptr dst_write_ptr `*.39uc  1 a 2 8 ]
 "121
@@ -808,73 +814,73 @@ COBS_DECODE_INPUT_TOO_SHORT 8
 [v cobs_decode@src_ptr src_ptr `*.39Cuc  1 p 2 32 ]
 [v cobs_decode@src_len src_len `ui  1 p 2 34 ]
 "117
-[v cobs_decode@F192 F192 `S1564  1 s 3 F192 ]
+[v cobs_decode@F192 F192 `S1565  1 s 3 F192 ]
 "193
 } 0
-"128 D:\EV17.git\trunk\PDU.X\UART.c
+"125 D:\EV17.git\trunk\PDU.X\UART.c
 [v _Receive_get Receive_get `(uc  1 e 1 0 ]
 {
-"130
+"127
 } 0
-"124
+"121
 [v _Receive_available Receive_available `(i  1 e 2 0 ]
 {
-"126
+"123
 } 0
-"104
+"101
 [v _UART_buff_size UART_buff_size `(i  1 e 2 0 ]
 {
-[s S183 UART_ring_buff 206 `[200]uc 1 buf 200 0 `i 1 head 2 200 `i 1 tail 2 202 `i 1 count 2 204 ]
+[s S183 UART_ring_buff 106 `[100]uc 1 buf 100 0 `i 1 head 2 100 `i 1 tail 2 102 `i 1 count 2 104 ]
 [v UART_buff_size@_this _this `*.39S183  1 p 2 28 ]
-"106
+"103
 } 0
-"133 D:\EV17.git\trunk\PDU.X\CarCom.c
+"155 D:\EV17.git\trunk\PDU.X\CarCom.c
 [v _ComController ComController `(v  1 e 1 0 ]
 {
-"135
+"157
 [v ComController@DataToSend DataToSend `[4]uc  1 a 4 0 ]
-"133
+"155
 [v ComController@DTI DTI `*.39uc  1 p 2 90 ]
 [v ComController@lenth lenth `ui  1 p 2 92 ]
-"143
+"165
 } 0
-"41
+"39
 [v _sendData sendData `(v  1 e 1 0 ]
 {
 [v sendData@whereToSend whereToSend `uc  1 a 1 wreg ]
-"46
+"44
 [v sendData@SendArray SendArray `[30]uc  1 a 30 50 ]
-"47
+"45
 [v sendData@COBSArray COBSArray `[30]uc  1 a 30 20 ]
-[s S1542 . 3 `ui 1 out_len 2 0 `E7102 1 status 1 2 ]
-"51
-[v sendData@result result `S1542  1 a 3 85 ]
-"62
-[v sendData@i i `ui  1 a 2 88 ]
-"63
-[v sendData@count count `i  1 a 2 82 ]
-"68
-[v sendData@CS CS `uc  1 a 1 84 ]
+[s S1544 . 3 `ui 1 out_len 2 0 `E7102 1 status 1 2 ]
 "49
+[v sendData@result result `S1544  1 a 3 85 ]
+"60
+[v sendData@i i `ui  1 a 2 88 ]
+"61
+[v sendData@count count `i  1 a 2 82 ]
+"66
+[v sendData@CS CS `uc  1 a 1 84 ]
+"47
 [v sendData@DataLenth DataLenth `uc  1 a 1 80 ]
-"41
+"39
 [v sendData@whereToSend whereToSend `uc  1 a 1 wreg ]
 [v sendData@ComandByte ComandByte `uc  1 p 1 13 ]
 [v sendData@DataTable DataTable `uc  1 p 1 14 ]
 [v sendData@DataTableIndex DataTableIndex `uc  1 p 1 15 ]
 [v sendData@DTS DTS `*.39uc  1 p 2 16 ]
 [v sendData@lenth lenth `ui  1 p 2 18 ]
-"49
+"47
 [v sendData@whereToSend whereToSend `uc  1 a 1 81 ]
-"88
+"86
 } 0
 "41 D:\EV17.git\trunk\PDU.X\COBS.h
-[s S1542 . 3 `ui 1 out_len 2 0 `E7102 1 status 1 2 ]
+[s S1544 . 3 `ui 1 out_len 2 0 `E7102 1 status 1 2 ]
 "29 D:\EV17.git\trunk\PDU.X\COBS.c
-[v _cobs_encode cobs_encode `(S1542  1 e 3 0 ]
+[v _cobs_encode cobs_encode `(S1544  1 e 3 0 ]
 {
 "31
-[v cobs_encode@result result `S1542  1 a 3 10 ]
+[v cobs_encode@result result `S1544  1 a 3 10 ]
 "35
 [v cobs_encode@dst_write_ptr dst_write_ptr `*.39uc  1 a 2 8 ]
 "34
@@ -893,60 +899,60 @@ COBS_DECODE_INPUT_TOO_SHORT 8
 [v cobs_encode@src_ptr src_ptr `*.39Cuc  1 p 2 32 ]
 [v cobs_encode@src_len src_len `ui  1 p 2 34 ]
 "31
-[v cobs_encode@F180 F180 `S1542  1 s 3 F180 ]
+[v cobs_encode@F180 F180 `S1544  1 s 3 F180 ]
 "112
 } 0
-"132 D:\EV17.git\trunk\PDU.X\UART.c
+"129 D:\EV17.git\trunk\PDU.X\UART.c
 [v _Send_put Send_put `(v  1 e 1 0 ]
 {
 [v Send_put@_data _data `uc  1 a 1 wreg ]
 [v Send_put@_data _data `uc  1 a 1 wreg ]
 [v Send_put@_data _data `uc  1 a 1 39 ]
-"139
+"136
 } 0
-"70
+"67
 [v _UART_buff_put UART_buff_put `(v  1 e 1 0 ]
 {
-[s S183 UART_ring_buff 206 `[200]uc 1 buf 200 0 `i 1 head 2 200 `i 1 tail 2 202 `i 1 count 2 204 ]
+[s S183 UART_ring_buff 106 `[100]uc 1 buf 100 0 `i 1 head 2 100 `i 1 tail 2 102 `i 1 count 2 104 ]
 [v UART_buff_put@_this _this `*.39S183  1 p 2 34 ]
 [v UART_buff_put@c c `Cuc  1 p 1 36 ]
-"81
+"78
 } 0
-"83
+"80
 [v _UART_buff_get UART_buff_get `(uc  1 e 1 0 ]
 {
-"84
+"81
 [v UART_buff_get@c c `uc  1 a 1 38 ]
-[s S183 UART_ring_buff 206 `[200]uc 1 buf 200 0 `i 1 head 2 200 `i 1 tail 2 202 `i 1 count 2 204 ]
-"83
+[s S183 UART_ring_buff 106 `[100]uc 1 buf 100 0 `i 1 head 2 100 `i 1 tail 2 102 `i 1 count 2 104 ]
+"80
 [v UART_buff_get@_this _this `*.39S183  1 p 2 34 ]
-"93
+"90
 } 0
-"108
+"105
 [v _UART_buff_modulo_inc UART_buff_modulo_inc `(ui  1 e 2 0 ]
 {
-"109
+"106
 [v UART_buff_modulo_inc@my_value my_value `ui  1 a 2 32 ]
-"108
+"105
 [v UART_buff_modulo_inc@value value `Cui  1 p 2 28 ]
 [v UART_buff_modulo_inc@modulus modulus `Cui  1 p 2 30 ]
-"114
+"111
 } 0
-"23 D:\EV17.git\trunk\PDU.X\CarCom.c
+"21 D:\EV17.git\trunk\PDU.X\CarCom.c
 [v _CRC8 CRC8 `(uc  1 e 1 0 ]
 {
-"29
-[v CRC8@sum sum `uc  1 a 1 31 ]
 "27
+[v CRC8@sum sum `uc  1 a 1 31 ]
+"25
 [v CRC8@tempI tempI `uc  1 a 1 33 ]
-"26
-[v CRC8@extract extract `uc  1 a 1 32 ]
 "24
+[v CRC8@extract extract `uc  1 a 1 32 ]
+"22
 [v CRC8@crc crc `uc  1 a 1 34 ]
-"23
+"21
 [v CRC8@data data `*.39Cuc  1 p 2 28 ]
 [v CRC8@len len `uc  1 p 1 30 ]
-"38
+"36
 } 0
 "7 D:\EV17.git\trunk\PDU.X\CarDataDictionary.c
 [v _GetDataDict GetDataDict `(uc  1 e 1 0 ]
@@ -1011,17 +1017,17 @@ COBS_DECODE_INPUT_TOO_SHORT 8
 {
 "65
 } 0
-"23 D:\EV17.git\trunk\PDU.X\UART.c
+"20 D:\EV17.git\trunk\PDU.X\UART.c
 [v _EUSART1_Initialize EUSART1_Initialize `(v  1 e 1 0 ]
 {
-"56
+"53
 } 0
-"58
+"55
 [v _UART_buff_init UART_buff_init `(v  1 e 1 0 ]
 {
-[s S183 UART_ring_buff 206 `[200]uc 1 buf 200 0 `i 1 head 2 200 `i 1 tail 2 202 `i 1 count 2 204 ]
+[s S183 UART_ring_buff 106 `[100]uc 1 buf 100 0 `i 1 head 2 100 `i 1 tail 2 102 `i 1 count 2 104 ]
 [v UART_buff_init@_this _this `*.39S183  1 p 2 36 ]
-"68
+"65
 } 0
 "8 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\memset.c
 [v _memset memset `(*.39v  1 e 2 0 ]
@@ -1239,48 +1245,48 @@ COBS_DECODE_INPUT_TOO_SHORT 8
 [v ___wmul@multiplicand multiplicand `ui  1 p 2 2 ]
 "53
 } 0
-"153 D:\EV17.git\trunk\PDU.X\UART.c
+"149 D:\EV17.git\trunk\PDU.X\UART.c
 [v _EUSART1_Transmit_ISR EUSART1_Transmit_ISR `(v  1 e 1 0 ]
 {
-"160
+"157
 } 0
-"104
+"101
 [v i2_UART_buff_size UART_buff_size `(i  1 e 2 0 ]
 {
-[s S183 UART_ring_buff 206 `[200]uc 1 buf 200 0 `i 1 head 2 200 `i 1 tail 2 202 `i 1 count 2 204 ]
+[s S183 UART_ring_buff 106 `[100]uc 1 buf 100 0 `i 1 head 2 100 `i 1 tail 2 102 `i 1 count 2 104 ]
 [v i2UART_buff_size@_this _this `*.39S183  1 p 2 0 ]
-"106
+"103
 } 0
-"83
+"80
 [v i2_UART_buff_get UART_buff_get `(uc  1 e 1 0 ]
 {
 [v i2UART_buff_get@c UART_buff_get `uc  1 a 1 10 ]
-[s S183 UART_ring_buff 206 `[200]uc 1 buf 200 0 `i 1 head 2 200 `i 1 tail 2 202 `i 1 count 2 204 ]
+[s S183 UART_ring_buff 106 `[100]uc 1 buf 100 0 `i 1 head 2 100 `i 1 tail 2 102 `i 1 count 2 104 ]
 [v i2UART_buff_get@_this _this `*.39S183  1 p 2 6 ]
-"93
+"90
 } 0
-"141
+"138
 [v _EUSART1_Receive_ISR EUSART1_Receive_ISR `(v  1 e 1 0 ]
 {
-"148
+"145
 [v EUSART1_Receive_ISR@data data `uc  1 a 1 11 ]
-"151
+"147
 } 0
-"70
+"67
 [v i2_UART_buff_put UART_buff_put `(v  1 e 1 0 ]
 {
-[s S183 UART_ring_buff 206 `[200]uc 1 buf 200 0 `i 1 head 2 200 `i 1 tail 2 202 `i 1 count 2 204 ]
+[s S183 UART_ring_buff 106 `[100]uc 1 buf 100 0 `i 1 head 2 100 `i 1 tail 2 102 `i 1 count 2 104 ]
 [v i2UART_buff_put@_this _this `*.39S183  1 p 2 6 ]
 [v i2UART_buff_put@c c `Cuc  1 p 1 8 ]
-"81
+"78
 } 0
-"108
+"105
 [v i2_UART_buff_modulo_inc UART_buff_modulo_inc `(ui  1 e 2 0 ]
 {
 [v i2UART_buff_modulo_inc@my_value UART_buff_modulo_inc `ui  1 a 2 4 ]
 [v i2UART_buff_modulo_inc@value value `Cui  1 p 2 0 ]
 [v i2UART_buff_modulo_inc@modulus modulus `Cui  1 p 2 2 ]
-"114
+"111
 } 0
 "130 D:\EV17.git\trunk\PDU.X\mcc_generated_files/adc.c
 [v _ADC_ISR ADC_ISR `(v  1 e 1 0 ]

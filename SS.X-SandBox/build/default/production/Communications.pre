@@ -8731,15 +8731,7 @@ EUSART1_Initialize();
 
 void updateComms() {
 if (receiveData()) {
-LATAbits.LATA3 ^= 1;
-}
-}
 
-void respondECU() {
-LATDbits.LATD4 = 1;
-Delay(5);
-
-Delay(3);
-LATDbits.LATD4 = 0;
+}
 }
 

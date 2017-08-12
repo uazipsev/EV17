@@ -1,6 +1,7 @@
  build/default/production/CarCom.d  \
  build/default/production/CarCom.p1:  \
  CarCom.c  \
+UART.h  \
 mcc_generated_files/mcc.h  \
 mcc_generated_files/../UART.h  \
 CarDataDictionary.h  \

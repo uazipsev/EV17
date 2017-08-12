@@ -8776,43 +8776,29 @@ return crc;
 
 
 void sendData(unsigned char whereToSend, unsigned char ComandByte, unsigned char DataTable, unsigned char DataTableIndex, unsigned char *DTS, unsigned int lenth) {
-
-
-
-
 unsigned char SendArray[30];
 unsigned char COBSArray[30];
 
-unsigned char DataLenth = 1;
-
 cobs_encode_result result;
 
-SendArray[0] = 4+1;
+SendArray[0] = 5+lenth;
 SendArray[1] = ComandByte;
 SendArray[2] = DataTable;
 SendArray[3] = DataTableIndex;
 SendArray[4] = lenth;
 
-
-
-
-unsigned int i;
+unsigned char i = 0;
 int count = 5;
-i = count;
 
-SendArray[5] = DTS[0];
+for(i;i<lenth;i++){
+SendArray[i+5] = DTS[i];
+count++;
+}
 
-SendArray[6] = DTS[1];
-
-
-unsigned char CS = CRC8(SendArray, 7);
-
-
-
-SendArray[7] = CS;
-
-result = cobs_encode(COBSArray, sizeof(COBSArray), SendArray, 8);
-
+unsigned char CS = CRC8(SendArray, count);
+SendArray[count] = CS;
+count++;
+result = cobs_encode(COBSArray, sizeof(COBSArray), SendArray, count);
 SendArray[0] = whereToSend;
 
 for(i = 1;i<result.out_len+1;i++){
@@ -8822,20 +8808,21 @@ SendArray[i] = COBSArray[i-1];
 for(i = 0;i<result.out_len+2;i++){
 Send_put(SendArray[i]);
 }
+
 }
 
 COBS_ENCODE_DST_BUF_LEN_MAX = 30;
 COBS_DECODE_DST_BUF_LEN_MAX = 30;
 
-char ReciveArray[30];
-char ProcessArray[30];
+unsigned char ReciveArray[30];
+unsigned char ProcessArray[30];
 
 bool receiveData() {
 
 if(Receive_available()>5){
 if(Receive_get() == 8){
 int i = 0;
-char Data = 0;
+unsigned char Data = 0;
 do{
 Data = Receive_get();
 ReciveArray[i] = Data;
@@ -8847,14 +8834,16 @@ cobs_decode_result result;
 
 result = cobs_decode(ProcessArray, sizeof(ProcessArray), ReciveArray, i);
 
-char CS = CRC8(ProcessArray, result.out_len-1);
+unsigned char CS = CRC8(ProcessArray, result.out_len-1);
 
 if(ProcessArray[result.out_len-1] == CS){
+LATAbits.LATA3 ^= 1;
 ComController(ProcessArray,result.out_len);
 return 1;
 }
 }
 else{
+
 
 }
 }
@@ -8865,15 +8854,13 @@ else{
 return 0;
 }
 
-
-
 void ComController(unsigned char *DTI, unsigned int lenth){
 if(DTI[1] == 1){
 unsigned char DataToSend[4];
 GetDataDict(DTI[2], DTI[3], DataToSend, DTI[4]);
 LATDbits.LATD4 = 1;
 Delay(5);
-sendData(1, 1, 1, 1, DataToSend, DTI[4]);
+sendData(1, 2, 1, 1, DataToSend, DTI[4]);
 Delay(3);
 LATDbits.LATD4 = 0;
 }

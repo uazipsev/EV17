@@ -64,5 +64,19 @@
 #define TALK 1
 #define LISTEN 0
 
+#define READ_TABLE 1
+#define WRITE_TABLE 2
+
+#define TABLE_ZERO_DEBUG 0
+#define TABLE_ONE_SS 1
+#define TABLE_TWO_SAS 2
+#define TABLE_THREE_DDS 3
+#define TABLE_FOUR_PDU 4
+#define TABLE_FIVE_BMM 5
+#define TABLE_SIX_MCU 5
+
+#define PDU_POWER_CONTROL 0
+#define PDU_POWER_STATUS 2
+
 #endif	/* ADDRESSING_H */
 

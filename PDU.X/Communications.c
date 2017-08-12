@@ -15,12 +15,13 @@
 #include "Functions.h"
 #include "PDU.h"
 #include "CarCom.h"
+#include "mcc_generated_files/pin_manager.h" 
 
 void processPowerRequest(int powerSet);
 
 void updateComms() {
     if (receiveData()) {
-        
+        //LED1_Toggle;
     }
 }
 

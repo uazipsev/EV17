@@ -8,11 +8,8 @@
 #ifndef ADDRESSING_H
 #define	ADDRESSING_H
 
-#ifdef	__cplusplus
-extern "C" {
-#endif
 
-#define NUMOFEXTBYTES 4
+#define NUMOFEXTBYTES 5
 
 
 #define CLOSE_COMM_TIME 4
@@ -86,9 +83,22 @@ extern "C" {
 #define TALK 1
 #define LISTEN 0
 
-#ifdef	__cplusplus
-}
-#endif
+#define READ_TABLE 1
+#define WRITE_TABLE 2
+
+#define TABLE_ZERO_DEBUG 0
+#define TABLE_ONE_SS 1
+#define TABLE_TWO_SAS 2
+#define TABLE_THREE_DDS 3
+#define TABLE_FOUR_PDU 4
+#define TABLE_FIVE_BMM 5
+#define TABLE_SIX_MCU 5
+
+#define PDU_POWER_CONTROL 0
+#define PDU_POWER_STATUS 2
+
+#define SS_FAULT_STATUS 1
+#define SS_FAULT_STATUS_LENTH 2
 
 #endif	/* ADDRESSING_H */
 

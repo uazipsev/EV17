@@ -15,7 +15,7 @@
 #include "mcc_generated_files/mcc.h"
 #include "Functions.h"
 #include "CarDataDictionary.h"
-
+#include "UART.h"
 //CRC Calculator
 
 unsigned char CRC8(const unsigned char * data, unsigned char len) {
@@ -100,9 +100,21 @@ bool receiveData(){
             do{
                 Data = Receive_get();
                 ReciveArray[i] = Data;
-                __delay_us(100);
+                //Send_put(Data);
+                Delay(1);
                 i++;
             }while(Data != 0x00);
+            
+            //ClearBuffer();
+            
+            int j = 0;
+//            FLOW_CNTL_SetHigh();
+//            Delay(3);
+//            for(j = 0;j<i;j++){
+//                Send_put(ReciveArray[j]);
+//            }
+//            Delay(10);
+//            FLOW_CNTL_SetLow();
             
             cobs_decode_result result;
 
@@ -110,9 +122,21 @@ bool receiveData(){
 
             char CS = CRC8(ProcessArray, result.out_len-1);
             
+
+            
             if(ProcessArray[result.out_len-1] == CS){
+                LED1_Toggle();
                 ComController(ProcessArray,result.out_len);
                 return true;
+            }
+            else{
+//                FLOW_CNTL_SetHigh();
+//                Delay(3);
+//                for(j = 0;j<result.out_len;j++){
+//                    Send_put(ProcessArray[j]);
+//                }
+//                Delay(10);
+//                FLOW_CNTL_SetLow();
             }
         }
         else{
@@ -126,7 +150,7 @@ bool receiveData(){
     return false;
 }
 
-#define READ_TABLE 1
+
 
 void ComController(unsigned char *DTI, unsigned int lenth){
     if(DTI[1] == READ_TABLE){
@@ -134,7 +158,20 @@ void ComController(unsigned char *DTI, unsigned int lenth){
         GetDataDict(DTI[2], DTI[3], DataToSend, DTI[4]);
         FLOW_CNTL_SetHigh();// = TALK;  //RS485 set to talk
         Delay(5);
-        sendData(ECU_ADDRESS, 1, 1, 1, DataToSend, DTI[4]);
+        sendData(ECU_ADDRESS, 2, 1, 1, DataToSend, DTI[4]);
+        Delay(3);
+        FLOW_CNTL_SetLow();  ///RS485 set to listen
+    }
+    if(DTI[1] == WRITE_TABLE){
+        unsigned char DataToSend[4];
+        unsigned char DataRecived[4];
+        DataRecived[] = DTI[];
+        DataRecived[] = DTI[];
+        SetDataDict(DTI[2], DTI[3], DataRecived, DTI[4]);
+        GetDataDict(DTI[2], DTI[3], DataToSend, DTI[4]);
+        FLOW_CNTL_SetHigh();// = TALK;  //RS485 set to talk
+        Delay(5);
+        sendData(ECU_ADDRESS, 2, 1, 1, DataToSend, DTI[4]);
         Delay(3);
         FLOW_CNTL_SetLow();  ///RS485 set to listen
     }

@@ -2,7 +2,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 "102 UART.h
 [s S853 `uc -> 100 `i `i 1 `i 1 `i 1 ]
 [n S853 UART_ring_buff buf head tail count ]
-"50 CarCom.c
+"44 CarCom.c
 [c E7095 0 1 2 .. ]
 [n E7095 . COBS_ENCODE_OK COBS_ENCODE_NULL_POINTER COBS_ENCODE_OUT_BUFFER_OVERFLOW  ]
 "41 COBS.h
@@ -20,7 +20,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 "164 C:\Program Files (x86)\Microchip\xc8\v1.42\include\pic18.h
 [v __delay `JF6934 ~T0 @X0 0 e ]
 [p i __delay ]
-"108 CarCom.c
+"95 CarCom.c
 [c E7104 0 1 2 4 8 .. ]
 [n E7104 . COBS_DECODE_OK COBS_DECODE_NULL_POINTER COBS_DECODE_OUT_BUFFER_OVERFLOW COBS_DECODE_ZERO_BYTE_IN_INPUT COBS_DECODE_INPUT_TOO_SHORT  ]
 "57 COBS.h
@@ -28,6 +28,17 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S851 . out_len status ]
 "72
 [v _cobs_decode `(S851 ~T0 @X0 0 ef4`*uc`ui`*Cuc`ui ]
+"7564 C:\Program Files (x86)\Microchip\xc8\v1.42\include\pic18f45k22.h
+[s S375 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S375 . LATA0 LATA1 LATA2 LATA3 LATA4 LATA5 LATA6 LATA7 ]
+"7574
+[s S376 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S376 . LA0 LA1 LA2 LA3 LA4 LA5 LA6 LA7 ]
+"7563
+[u S374 `S375 1 `S376 1 ]
+[n S374 . . . ]
+"7585
+[v _LATAbits `VS374 ~T0 @X0 0 e@3977 ]
 "14 CarCom.h
 [v _ComController `(v ~T0 @X0 0 ef2`*uc`ui ]
 "8 CarDataDictionary.h
@@ -6859,263 +6870,280 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _DTS `*uc ~T0 @X0 1 r5 ]
 [v _lenth `ui ~T0 @X0 1 r6 ]
 [f ]
-"45
+"41
 [v _SendArray `uc ~T0 @X0 -> 30 `i a ]
-"46
+"42
 [v _COBSArray `uc ~T0 @X0 -> 30 `i a ]
-"48
-[v _DataLenth `uc ~T0 @X0 1 a ]
-[; ;CarCom.c: 45: unsigned char SendArray[30];
-[; ;CarCom.c: 46: unsigned char COBSArray[30];
-[; ;CarCom.c: 48: unsigned char DataLenth = 1;
-[e = _DataLenth -> -> 1 `i `uc ]
-"50
+"44
 [v _result `S850 ~T0 @X0 1 a ]
-[; ;CarCom.c: 50: cobs_encode_result result;
-[; ;CarCom.c: 52: SendArray[0] = 4+1;
-"52
-[e = *U + &U _SendArray * -> -> -> 0 `i `ui `ux -> -> # *U &U _SendArray `ui `ux -> + -> 4 `i -> 1 `i `uc ]
-[; ;CarCom.c: 53: SendArray[1] = ComandByte;
-"53
+[; ;CarCom.c: 41: unsigned char SendArray[30];
+[; ;CarCom.c: 42: unsigned char COBSArray[30];
+[; ;CarCom.c: 44: cobs_encode_result result;
+[; ;CarCom.c: 46: SendArray[0] = 5+lenth;
+"46
+[e = *U + &U _SendArray * -> -> -> 0 `i `ui `ux -> -> # *U &U _SendArray `ui `ux -> + -> -> 5 `i `ui _lenth `uc ]
+[; ;CarCom.c: 47: SendArray[1] = ComandByte;
+"47
 [e = *U + &U _SendArray * -> -> -> 1 `i `ui `ux -> -> # *U &U _SendArray `ui `ux _ComandByte ]
-[; ;CarCom.c: 54: SendArray[2] = DataTable;
-"54
+[; ;CarCom.c: 48: SendArray[2] = DataTable;
+"48
 [e = *U + &U _SendArray * -> -> -> 2 `i `ui `ux -> -> # *U &U _SendArray `ui `ux _DataTable ]
-[; ;CarCom.c: 55: SendArray[3] = DataTableIndex;
-"55
+[; ;CarCom.c: 49: SendArray[3] = DataTableIndex;
+"49
 [e = *U + &U _SendArray * -> -> -> 3 `i `ui `ux -> -> # *U &U _SendArray `ui `ux _DataTableIndex ]
-[; ;CarCom.c: 56: SendArray[4] = lenth;
-"56
+[; ;CarCom.c: 50: SendArray[4] = lenth;
+"50
 [e = *U + &U _SendArray * -> -> -> 4 `i `ui `ux -> -> # *U &U _SendArray `ui `ux -> _lenth `uc ]
-"61
-[v _i `ui ~T0 @X0 1 a ]
-"62
+"52
+[v _i `uc ~T0 @X0 1 a ]
+[; ;CarCom.c: 52: unsigned char i = 0;
+[e = _i -> -> 0 `i `uc ]
+"53
 [v _count `i ~T0 @X0 1 a ]
-[; ;CarCom.c: 61: unsigned int i;
-[; ;CarCom.c: 62: int count = 5;
+[; ;CarCom.c: 53: int count = 5;
 [e = _count -> 5 `i ]
-[; ;CarCom.c: 63: i = count;
-"63
-[e = _i -> _count `ui ]
-[; ;CarCom.c: 65: SendArray[5] = DTS[0];
-"65
-[e = *U + &U _SendArray * -> -> -> 5 `i `ui `ux -> -> # *U &U _SendArray `ui `ux *U + _DTS * -> -> 0 `i `x -> -> # *U _DTS `i `x ]
-[; ;CarCom.c: 67: SendArray[6] = DTS[1];
-"67
-[e = *U + &U _SendArray * -> -> -> 6 `i `ui `ux -> -> # *U &U _SendArray `ui `ux *U + _DTS * -> -> 1 `i `x -> -> # *U _DTS `i `x ]
-[v _CS `uc ~T0 @X0 1 a ]
-[; ;CarCom.c: 70: unsigned char CS = CRC8(SendArray, 7);
-"70
-[e = _CS ( _CRC8 (2 , -> &U _SendArray `*Cuc -> -> 7 `i `uc ]
-[; ;CarCom.c: 74: SendArray[7] = CS;
-"74
-[e = *U + &U _SendArray * -> -> -> 7 `i `ui `ux -> -> # *U &U _SendArray `ui `ux _CS ]
-[; ;CarCom.c: 76: result = cobs_encode(COBSArray, sizeof(COBSArray), SendArray, 8);
-"76
-[e = _result ( _cobs_encode (4 , , , &U _COBSArray -> # _COBSArray `ui -> &U _SendArray `*Cuc -> -> 8 `i `ui ]
-[; ;CarCom.c: 78: SendArray[0] = whereToSend;
-"78
-[e = *U + &U _SendArray * -> -> -> 0 `i `ui `ux -> -> # *U &U _SendArray `ui `ux _whereToSend ]
-[; ;CarCom.c: 80: for(i = 1;i<result.out_len+1;i++){
-"80
+[; ;CarCom.c: 55: for(i;i<lenth;i++){
+"55
 {
-[e = _i -> -> 1 `i `ui ]
+[e _i ]
 [e $U 867  ]
 [e :U 864 ]
 {
-[; ;CarCom.c: 81: SendArray[i] = COBSArray[i-1];
-"81
-[e = *U + &U _SendArray * -> _i `ux -> -> # *U &U _SendArray `ui `ux *U + &U _COBSArray * -> - _i -> -> 1 `i `ui `ux -> -> # *U &U _COBSArray `ui `ux ]
-"82
+[; ;CarCom.c: 56: SendArray[i+5] = DTS[i];
+"56
+[e = *U + &U _SendArray * -> -> + -> _i `i -> 5 `i `ui `ux -> -> # *U &U _SendArray `ui `ux *U + _DTS * -> _i `ux -> -> # *U _DTS `ui `ux ]
+[; ;CarCom.c: 57: count++;
+"57
+[e ++ _count -> 1 `i ]
+"58
 }
-"80
-[e ++ _i -> -> 1 `i `ui ]
+"55
+[e ++ _i -> -> 1 `i `uc ]
 [e :U 867 ]
-[e $ < _i + . _result 0 -> -> 1 `i `ui 864  ]
+[e $ < -> _i `ui _lenth 864  ]
 [e :U 865 ]
-"82
+"58
 }
-[; ;CarCom.c: 82: }
-[; ;CarCom.c: 84: for(i = 0;i<result.out_len+2;i++){
-"84
+[v _CS `uc ~T0 @X0 1 a ]
+[; ;CarCom.c: 58: }
+[; ;CarCom.c: 60: unsigned char CS = CRC8(SendArray, count);
+"60
+[e = _CS ( _CRC8 (2 , -> &U _SendArray `*Cuc -> _count `uc ]
+[; ;CarCom.c: 61: SendArray[count] = CS;
+"61
+[e = *U + &U _SendArray * -> -> _count `ui `ux -> -> # *U &U _SendArray `ui `ux _CS ]
+[; ;CarCom.c: 62: count++;
+"62
+[e ++ _count -> 1 `i ]
+[; ;CarCom.c: 63: result = cobs_encode(COBSArray, sizeof(COBSArray), SendArray, count);
+"63
+[e = _result ( _cobs_encode (4 , , , &U _COBSArray -> # _COBSArray `ui -> &U _SendArray `*Cuc -> _count `ui ]
+[; ;CarCom.c: 64: SendArray[0] = whereToSend;
+"64
+[e = *U + &U _SendArray * -> -> -> 0 `i `ui `ux -> -> # *U &U _SendArray `ui `ux _whereToSend ]
+[; ;CarCom.c: 66: for(i = 1;i<result.out_len+1;i++){
+"66
 {
-[e = _i -> -> 0 `i `ui ]
+[e = _i -> -> 1 `i `uc ]
 [e $U 871  ]
 [e :U 868 ]
 {
-[; ;CarCom.c: 85: Send_put(SendArray[i]);
-"85
-[e ( _Send_put (1 *U + &U _SendArray * -> _i `ux -> -> # *U &U _SendArray `ui `ux ]
-"86
+[; ;CarCom.c: 67: SendArray[i] = COBSArray[i-1];
+"67
+[e = *U + &U _SendArray * -> _i `ux -> -> # *U &U _SendArray `ui `ux *U + &U _COBSArray * -> -> - -> _i `i -> 1 `i `ui `ux -> -> # *U &U _COBSArray `ui `ux ]
+"68
 }
-"84
-[e ++ _i -> -> 1 `i `ui ]
+"66
+[e ++ _i -> -> 1 `i `uc ]
 [e :U 871 ]
-[e $ < _i + . _result 0 -> -> 2 `i `ui 868  ]
+[e $ < -> _i `ui + . _result 0 -> -> 1 `i `ui 868  ]
 [e :U 869 ]
-"86
+"68
 }
-[; ;CarCom.c: 86: }
-[; ;CarCom.c: 87: }
-"87
+[; ;CarCom.c: 68: }
+[; ;CarCom.c: 70: for(i = 0;i<result.out_len+2;i++){
+"70
+{
+[e = _i -> -> 0 `i `uc ]
+[e $U 875  ]
+[e :U 872 ]
+{
+[; ;CarCom.c: 71: Send_put(SendArray[i]);
+"71
+[e ( _Send_put (1 *U + &U _SendArray * -> _i `ux -> -> # *U &U _SendArray `ui `ux ]
+"72
+}
+"70
+[e ++ _i -> -> 1 `i `uc ]
+[e :U 875 ]
+[e $ < -> _i `ui + . _result 0 -> -> 2 `i `ui 872  ]
+[e :U 873 ]
+"72
+}
+[; ;CarCom.c: 72: }
+[; ;CarCom.c: 74: }
+"74
 [e :UE 863 ]
 }
-"89
+"76
 [v _COBS_ENCODE_DST_BUF_LEN_MAX `i ~T0 @X0 1 e ]
 [i _COBS_ENCODE_DST_BUF_LEN_MAX
 -> 30 `i
 ]
-[; ;CarCom.c: 89: COBS_ENCODE_DST_BUF_LEN_MAX = 30;
-"90
+[; ;CarCom.c: 76: COBS_ENCODE_DST_BUF_LEN_MAX = 30;
+"77
 [v _COBS_DECODE_DST_BUF_LEN_MAX `i ~T0 @X0 1 e ]
 [i _COBS_DECODE_DST_BUF_LEN_MAX
 -> 30 `i
 ]
-[; ;CarCom.c: 90: COBS_DECODE_DST_BUF_LEN_MAX = 30;
-"92
+[; ;CarCom.c: 77: COBS_DECODE_DST_BUF_LEN_MAX = 30;
+"79
 [v _ReciveArray `uc ~T0 @X0 -> 30 `i e ]
-[; ;CarCom.c: 92: char ReciveArray[30];
-"93
+[; ;CarCom.c: 79: unsigned char ReciveArray[30];
+"80
 [v _ProcessArray `uc ~T0 @X0 -> 30 `i e ]
-[; ;CarCom.c: 93: char ProcessArray[30];
-"95
+[; ;CarCom.c: 80: unsigned char ProcessArray[30];
+"82
 [v _receiveData `(uc ~T0 @X0 1 ef ]
 {
-[; ;CarCom.c: 95: bool receiveData() {
+[; ;CarCom.c: 82: bool receiveData() {
 [e :U _receiveData ]
 [f ]
-[; ;CarCom.c: 97: if(Receive_available()>5){
-"97
-[e $ ! > ( _Receive_available ..  -> 5 `i 873  ]
+[; ;CarCom.c: 84: if(Receive_available()>5){
+"84
+[e $ ! > ( _Receive_available ..  -> 5 `i 877  ]
 {
-[; ;CarCom.c: 98: if(Receive_get() == 8){
-"98
-[e $ ! == -> ( _Receive_get ..  `i -> 8 `i 874  ]
+[; ;CarCom.c: 85: if(Receive_get() == 8){
+"85
+[e $ ! == -> ( _Receive_get ..  `i -> 8 `i 878  ]
 {
-"99
+"86
 [v _i `i ~T0 @X0 1 a ]
-[; ;CarCom.c: 99: int i = 0;
+[; ;CarCom.c: 86: int i = 0;
 [e = _i -> 0 `i ]
-"100
+"87
 [v _Data `uc ~T0 @X0 1 a ]
-[; ;CarCom.c: 100: char Data = 0;
+[; ;CarCom.c: 87: unsigned char Data = 0;
 [e = _Data -> -> 0 `i `uc ]
-[; ;CarCom.c: 101: do{
-"101
-[e :U 877 ]
+[; ;CarCom.c: 88: do{
+"88
+[e :U 881 ]
 {
-[; ;CarCom.c: 102: Data = Receive_get();
-"102
+[; ;CarCom.c: 89: Data = Receive_get();
+"89
 [e = _Data ( _Receive_get ..  ]
-[; ;CarCom.c: 103: ReciveArray[i] = Data;
-"103
+[; ;CarCom.c: 90: ReciveArray[i] = Data;
+"90
 [e = *U + &U _ReciveArray * -> -> _i `ui `ux -> -> # *U &U _ReciveArray `ui `ux _Data ]
-[; ;CarCom.c: 104: _delay((unsigned long)((100)*(16000000/4000000.0)));
-"104
+[; ;CarCom.c: 91: _delay((unsigned long)((100)*(16000000/4000000.0)));
+"91
 [e ( __delay (1 -> * -> -> 100 `i `d / -> -> 16000000 `l `d .4000000.0 `ul ]
-[; ;CarCom.c: 105: i++;
-"105
+[; ;CarCom.c: 92: i++;
+"92
 [e ++ _i -> 1 `i ]
-"106
+"93
 }
-[; ;CarCom.c: 106: }while(Data != 0x00);
-[e $ != -> _Data `i -> 0 `i 877  ]
-[e :U 876 ]
-"108
+[; ;CarCom.c: 93: }while(Data != 0x00);
+[e $ != -> _Data `i -> 0 `i 881  ]
+[e :U 880 ]
+"95
 [v _result `S851 ~T0 @X0 1 a ]
-[; ;CarCom.c: 108: cobs_decode_result result;
-[; ;CarCom.c: 110: result = cobs_decode(ProcessArray, sizeof(ProcessArray), ReciveArray, i);
-"110
+[; ;CarCom.c: 95: cobs_decode_result result;
+[; ;CarCom.c: 97: result = cobs_decode(ProcessArray, sizeof(ProcessArray), ReciveArray, i);
+"97
 [e = _result ( _cobs_decode (4 , , , &U _ProcessArray -> # _ProcessArray `ui -> &U _ReciveArray `*Cuc -> _i `ui ]
 [v _CS `uc ~T0 @X0 1 a ]
-[; ;CarCom.c: 112: char CS = CRC8(ProcessArray, result.out_len-1);
-"112
+[; ;CarCom.c: 99: unsigned char CS = CRC8(ProcessArray, result.out_len-1);
+"99
 [e = _CS ( _CRC8 (2 , -> &U _ProcessArray `*Cuc -> - . _result 0 -> -> 1 `i `ui `uc ]
-[; ;CarCom.c: 114: if(ProcessArray[result.out_len-1] == CS){
-"114
-[e $ ! == -> *U + &U _ProcessArray * -> - . _result 0 -> -> 1 `i `ui `ux -> -> # *U &U _ProcessArray `ui `ux `i -> _CS `i 878  ]
+[; ;CarCom.c: 101: if(ProcessArray[result.out_len-1] == CS){
+"101
+[e $ ! == -> *U + &U _ProcessArray * -> - . _result 0 -> -> 1 `i `ui `ux -> -> # *U &U _ProcessArray `ui `ux `i -> _CS `i 882  ]
 {
-[; ;CarCom.c: 115: ComController(ProcessArray,result.out_len);
-"115
+[; ;CarCom.c: 102: LATAbits.LATA3 ^= 1;
+"102
+[e =^ . . _LATAbits 0 3 -> -> 1 `i `uc ]
+[; ;CarCom.c: 103: ComController(ProcessArray,result.out_len);
+"103
 [e ( _ComController (2 , &U _ProcessArray . _result 0 ]
-[; ;CarCom.c: 116: return 1;
-"116
+[; ;CarCom.c: 104: return 1;
+"104
 [e ) -> -> 1 `i `uc ]
-[e $UE 872  ]
-"117
+[e $UE 876  ]
+"105
 }
+[e :U 882 ]
+"106
+}
+[; ;CarCom.c: 105: }
+[; ;CarCom.c: 106: }
+[e $U 883  ]
+"107
 [e :U 878 ]
-"118
-}
-[; ;CarCom.c: 117: }
-[; ;CarCom.c: 118: }
-[e $U 879  ]
-"119
-[e :U 874 ]
-[; ;CarCom.c: 119: else{
+[; ;CarCom.c: 107: else{
 {
-"121
+"110
 }
-[e :U 879 ]
-"122
+[e :U 883 ]
+"111
 }
-[; ;CarCom.c: 121: }
-[; ;CarCom.c: 122: }
-[e $U 880  ]
-"123
-[e :U 873 ]
-[; ;CarCom.c: 123: else{
+[; ;CarCom.c: 110: }
+[; ;CarCom.c: 111: }
+[e $U 884  ]
+"112
+[e :U 877 ]
+[; ;CarCom.c: 112: else{
 {
-"125
+"114
 }
-[e :U 880 ]
-[; ;CarCom.c: 125: }
-[; ;CarCom.c: 127: return 0;
-"127
+[e :U 884 ]
+[; ;CarCom.c: 114: }
+[; ;CarCom.c: 116: return 0;
+"116
 [e ) -> -> 0 `i `uc ]
-[e $UE 872  ]
-[; ;CarCom.c: 128: }
-"128
-[e :UE 872 ]
+[e $UE 876  ]
+[; ;CarCom.c: 117: }
+"117
+[e :UE 876 ]
 }
-"132
+"119
 [v _ComController `(v ~T0 @X0 1 ef2`*uc`ui ]
 {
-[; ;CarCom.c: 132: void ComController(unsigned char *DTI, unsigned int lenth){
+[; ;CarCom.c: 119: void ComController(unsigned char *DTI, unsigned int lenth){
 [e :U _ComController ]
 [v _DTI `*uc ~T0 @X0 1 r1 ]
 [v _lenth `ui ~T0 @X0 1 r2 ]
 [f ]
-[; ;CarCom.c: 133: if(DTI[1] == 1){
-"133
-[e $ ! == -> *U + _DTI * -> -> 1 `i `x -> -> # *U _DTI `i `x `i -> 1 `i 882  ]
+[; ;CarCom.c: 120: if(DTI[1] == 1){
+"120
+[e $ ! == -> *U + _DTI * -> -> 1 `i `x -> -> # *U _DTI `i `x `i -> 1 `i 886  ]
 {
-"134
+"121
 [v _DataToSend `uc ~T0 @X0 -> 4 `i a ]
-[; ;CarCom.c: 134: unsigned char DataToSend[4];
-[; ;CarCom.c: 135: GetDataDict(DTI[2], DTI[3], DataToSend, DTI[4]);
-"135
+[; ;CarCom.c: 121: unsigned char DataToSend[4];
+[; ;CarCom.c: 122: GetDataDict(DTI[2], DTI[3], DataToSend, DTI[4]);
+"122
 [e ( _GetDataDict (4 , , , *U + _DTI * -> -> 2 `i `x -> -> # *U _DTI `i `x *U + _DTI * -> -> 3 `i `x -> -> # *U _DTI `i `x &U _DataToSend *U + _DTI * -> -> 4 `i `x -> -> # *U _DTI `i `x ]
-[; ;CarCom.c: 136: LATDbits.LATD4 = 1;
-"136
+[; ;CarCom.c: 123: LATDbits.LATD4 = 1;
+"123
 [e = . . _LATDbits 0 4 -> -> 1 `i `uc ]
-[; ;CarCom.c: 137: Delay(5);
-"137
+[; ;CarCom.c: 124: Delay(5);
+"124
 [e ( _Delay (1 -> 5 `i ]
-[; ;CarCom.c: 138: sendData(1, 1, 1, 1, DataToSend, DTI[4]);
-"138
-[e ( _sendData (4 , , , , , -> -> 1 `i `uc -> -> 1 `i `uc -> -> 1 `i `uc -> -> 1 `i `uc &U _DataToSend -> *U + _DTI * -> -> 4 `i `x -> -> # *U _DTI `i `x `ui ]
-[; ;CarCom.c: 139: Delay(3);
-"139
+[; ;CarCom.c: 125: sendData(1, 2, 1, 1, DataToSend, DTI[4]);
+"125
+[e ( _sendData (4 , , , , , -> -> 1 `i `uc -> -> 2 `i `uc -> -> 1 `i `uc -> -> 1 `i `uc &U _DataToSend -> *U + _DTI * -> -> 4 `i `x -> -> # *U _DTI `i `x `ui ]
+[; ;CarCom.c: 126: Delay(3);
+"126
 [e ( _Delay (1 -> 3 `i ]
-[; ;CarCom.c: 140: LATDbits.LATD4 = 0;
-"140
+[; ;CarCom.c: 127: LATDbits.LATD4 = 0;
+"127
 [e = . . _LATDbits 0 4 -> -> 0 `i `uc ]
-"141
+"128
 }
-[e :U 882 ]
-[; ;CarCom.c: 141: }
-[; ;CarCom.c: 142: }
-"142
-[e :UE 881 ]
+[e :U 886 ]
+[; ;CarCom.c: 128: }
+[; ;CarCom.c: 129: }
+"129
+[e :UE 885 ]
 }

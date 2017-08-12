@@ -34,6 +34,7 @@
 #include "UART3.h"
 #include "horn.h"
 #include "CarCom_SAS_DDS_SS.h"
+#include "CarCom_PDU_MCS_BMM.h"
 #include "Functions.h"
 #include "DriverConfigs.h"
 
@@ -91,10 +92,18 @@ void updateComms() {
 
 void Run(){
             unsigned char Data[2];
+            Data[0] = 0x11;
+            Data[1] = 0x22;
             RS485_Direction1(TALK);         
-            sendData1(SS_ADDRESS, 1, 1, 0, Data, 2);
+            sendData1(SS_ADDRESS, READ_TABLE, TABLE_ONE_SS, SS_FAULT_STATUS, Data, SS_FAULT_STATUS_LENTH);
             Delay(3);
             RS485_Direction1(LISTEN);
+//            Delay(1);
+//            Data[0] = constructPowerSet();
+//            RS485_Direction2(TALK);         
+//            sendData(PDU_ADDRESS, WRITE_TABLE, TABLE_FOUR_PDU, PDU_POWER_CONTROL, Data, 1);
+//            Delay(3);
+//            RS485_Direction2(LISTEN);
 }
 
 bool SASTx = false;

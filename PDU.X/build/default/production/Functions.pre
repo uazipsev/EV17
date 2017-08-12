@@ -8694,7 +8694,7 @@ extern volatile unsigned int talkTime;
 void *memset(void *s, int c, size_t n);
 
 struct UART_ring_buff {
-unsigned char buf[200];
+unsigned char buf[100];
 int head;
 int tail;
 int count;
@@ -8718,6 +8718,7 @@ unsigned char Receive_peek(void);
 int Receive_available(void);
 unsigned char Receive_get(void);
 void Send_put(unsigned char _data);
+void ClearBuffer();
 
 # 72 "mcc_generated_files/adc.h"
 typedef uint16_t adc_result_t;

@@ -1,4 +1,3 @@
-
 /*
  * File:   UART.c
  * Author: Zac Kilburn
@@ -15,8 +14,6 @@
  */
 
 #include "UART.h"
-#include "mcc_generated_files/pin_manager.h"
-#include <xc.h>
 #define ON         0
 #define OFF        1
 
@@ -147,16 +144,20 @@ void EUSART1_Receive_ISR(void) {
     }
     unsigned char data = RCREG1;
     UART_buff_put(&input_buffer, data);
-    PIE1bits.RC1IE == 0;
 }
 
 void EUSART1_Transmit_ISR(void) {
+    //LED ^= 1;
     if (UART_buff_size(&output_buffer) > 0) {
         TXREG1 = UART_buff_get(&output_buffer);
     } else {
         Transmit_stall = 1;
         PIE1bits.TX1IE = 0;
     }
+}
+
+void ClearBuffer(){
+    UART_buff_flush(&input_buffer, 1);
 }
 
 char getch(void) {

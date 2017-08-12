@@ -17,13 +17,13 @@ COBS_DECODE_OUT_BUFFER_OVERFLOW 2
 COBS_DECODE_ZERO_BYTE_IN_INPUT 4
 COBS_DECODE_INPUT_TOO_SHORT 8
 ]
-"50 D:\EV17.git\trunk\SS.X-SandBox\CarCom.c
+"44 D:\EV17.git\trunk\SS.X-SandBox\CarCom.c
 [e E7095 . `uc
 COBS_ENCODE_OK 0
 COBS_ENCODE_NULL_POINTER 1
 COBS_ENCODE_OUT_BUFFER_OVERFLOW 2
 ]
-"108
+"95
 [e E7104 . `uc
 COBS_DECODE_OK 0
 COBS_DECODE_NULL_POINTER 1
@@ -57,22 +57,22 @@ COBS_DECODE_INPUT_TOO_SHORT 8
 [v _CRC8 CRC8 `(uc  1 e 1 0 ]
 "40
 [v _sendData sendData `(v  1 e 1 0 ]
-"95
+"82
 [v _receiveData receiveData `(uc  1 e 1 0 ]
-"132
+"119
 [v _ComController ComController `(v  1 e 1 0 ]
 "9 D:\EV17.git\trunk\SS.X-SandBox\CarDataDictionary.c
 [v _GetDataDict GetDataDict `(uc  1 e 1 0 ]
 "34
 [v _SetDataDict SetDataDict `(uc  1 e 1 0 ]
 "41 D:\EV17.git\trunk\SS.X-SandBox\COBS.h
-[s S1281 . 3 `ui 1 out_len 2 0 `E145 1 status 1 2 ]
+[s S1205 . 3 `ui 1 out_len 2 0 `E145 1 status 1 2 ]
 "29 D:\EV17.git\trunk\SS.X-SandBox\COBS.c
-[v _cobs_encode cobs_encode `(S1281  1 e 3 0 ]
+[v _cobs_encode cobs_encode `(S1205  1 e 3 0 ]
 "57 D:\EV17.git\trunk\SS.X-SandBox\COBS.h
-[s S1290 . 3 `ui 1 out_len 2 0 `E154 1 status 1 2 ]
+[s S1214 . 3 `ui 1 out_len 2 0 `E154 1 status 1 2 ]
 "115 D:\EV17.git\trunk\SS.X-SandBox\COBS.c
-[v _cobs_decode cobs_decode `(S1290  1 e 3 0 ]
+[v _cobs_decode cobs_decode `(S1214  1 e 3 0 ]
 "12 D:\EV17.git\trunk\SS.X-SandBox\Communications.c
 [v _ComStart ComStart `(v  1 e 1 0 ]
 "16
@@ -133,7 +133,7 @@ COBS_DECODE_INPUT_TOO_SHORT 8
 [v _ANSELB ANSELB `VEuc  1 e 1 @3897 ]
 "145
 [v _ANSELC ANSELC `VEuc  1 e 1 @3898 ]
-[s S914 . 1 `uc 1 . 1 0 :2:0 
+[s S838 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 ANSC2 1 0 :1:2 
 `uc 1 ANSC3 1 0 :1:3 
 `uc 1 ANSC4 1 0 :1:4 
@@ -142,13 +142,13 @@ COBS_DECODE_INPUT_TOO_SHORT 8
 `uc 1 ANSC7 1 0 :1:7 
 ]
 "161
-[u S922 . 1 `S914 1 . 1 0 ]
-[v _ANSELCbits ANSELCbits `VES922  1 e 1 @3898 ]
+[u S846 . 1 `S838 1 . 1 0 ]
+[v _ANSELCbits ANSELCbits `VES846  1 e 1 @3898 ]
 "196
 [v _ANSELD ANSELD `VEuc  1 e 1 @3899 ]
 "258
 [v _ANSELE ANSELE `VEuc  1 e 1 @3900 ]
-[s S641 . 1 `uc 1 RA0 1 0 :1:0 
+[s S565 . 1 `uc 1 RA0 1 0 :1:0 
 `uc 1 RA1 1 0 :1:1 
 `uc 1 RA2 1 0 :1:2 
 `uc 1 RA3 1 0 :1:3 
@@ -158,65 +158,65 @@ COBS_DECODE_INPUT_TOO_SHORT 8
 `uc 1 RA7 1 0 :1:7 
 ]
 "6363
-[s S650 . 1 `uc 1 AN0 1 0 :1:0 
+[s S574 . 1 `uc 1 AN0 1 0 :1:0 
 `uc 1 AN1 1 0 :1:1 
 `uc 1 AN2 1 0 :1:2 
 `uc 1 AN3 1 0 :1:3 
 `uc 1 . 1 0 :1:4 
 `uc 1 AN4 1 0 :1:5 
 ]
-[s S657 . 1 `uc 1 C12IN0M 1 0 :1:0 
+[s S581 . 1 `uc 1 C12IN0M 1 0 :1:0 
 `uc 1 C12IN1M 1 0 :1:1 
 `uc 1 C2INP 1 0 :1:2 
 `uc 1 C1INP 1 0 :1:3 
 `uc 1 C1OUT 1 0 :1:4 
 `uc 1 C2OUT 1 0 :1:5 
 ]
-[s S664 . 1 `uc 1 C12IN0N 1 0 :1:0 
+[s S588 . 1 `uc 1 C12IN0N 1 0 :1:0 
 `uc 1 C12IN1N 1 0 :1:1 
 `uc 1 VREFM 1 0 :1:2 
 `uc 1 VREFP 1 0 :1:3 
 `uc 1 T0CKI 1 0 :1:4 
 `uc 1 SS 1 0 :1:5 
 ]
-[s S671 . 1 `uc 1 . 1 0 :5:0 
+[s S595 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 NOT_SS 1 0 :1:5 
 ]
-[s S674 . 1 `uc 1 . 1 0 :2:0 
+[s S598 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 VREFN 1 0 :1:2 
 `uc 1 . 1 0 :1:3 
 `uc 1 SRQ 1 0 :1:4 
 `uc 1 nSS 1 0 :1:5 
 ]
-[s S680 . 1 `uc 1 . 1 0 :2:0 
+[s S604 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 CVREF 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 LVDIN 1 0 :1:5 
 ]
-[s S685 . 1 `uc 1 . 1 0 :2:0 
+[s S609 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 DACOUT 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 HLVDIN 1 0 :1:5 
 ]
-[s S690 . 1 `uc 1 . 1 0 :5:0 
+[s S614 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 SS1 1 0 :1:5 
 ]
-[s S693 . 1 `uc 1 . 1 0 :5:0 
+[s S617 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 NOT_SS1 1 0 :1:5 
 ]
-[s S696 . 1 `uc 1 . 1 0 :5:0 
+[s S620 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 nSS1 1 0 :1:5 
 ]
-[s S699 . 1 `uc 1 . 1 0 :5:0 
+[s S623 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 SRNQ 1 0 :1:5 
 ]
-[s S702 . 1 `uc 1 ULPWUIN 1 0 :1:0 
+[s S626 . 1 `uc 1 ULPWUIN 1 0 :1:0 
 `uc 1 . 1 0 :6:1 
 `uc 1 RJPU 1 0 :1:7 
 ]
-[u S706 . 1 `S641 1 . 1 0 `S650 1 . 1 0 `S657 1 . 1 0 `S664 1 . 1 0 `S671 1 . 1 0 `S674 1 . 1 0 `S680 1 . 1 0 `S685 1 . 1 0 `S690 1 . 1 0 `S693 1 . 1 0 `S696 1 . 1 0 `S699 1 . 1 0 `S702 1 . 1 0 ]
-[v _PORTAbits PORTAbits `VES706  1 e 1 @3968 ]
-[s S516 . 1 `uc 1 RC0 1 0 :1:0 
+[u S630 . 1 `S565 1 . 1 0 `S574 1 . 1 0 `S581 1 . 1 0 `S588 1 . 1 0 `S595 1 . 1 0 `S598 1 . 1 0 `S604 1 . 1 0 `S609 1 . 1 0 `S614 1 . 1 0 `S617 1 . 1 0 `S620 1 . 1 0 `S623 1 . 1 0 `S626 1 . 1 0 ]
+[v _PORTAbits PORTAbits `VES630  1 e 1 @3968 ]
+[s S440 . 1 `uc 1 RC0 1 0 :1:0 
 `uc 1 RC1 1 0 :1:1 
 `uc 1 RC2 1 0 :1:2 
 `uc 1 RC3 1 0 :1:3 
@@ -226,7 +226,7 @@ COBS_DECODE_INPUT_TOO_SHORT 8
 `uc 1 RC7 1 0 :1:7 
 ]
 "6905
-[s S525 . 1 `uc 1 T1OSO 1 0 :1:0 
+[s S449 . 1 `uc 1 T1OSO 1 0 :1:0 
 `uc 1 T1OSI 1 0 :1:1 
 `uc 1 T5CKI 1 0 :1:2 
 `uc 1 SCK 1 0 :1:3 
@@ -235,7 +235,7 @@ COBS_DECODE_INPUT_TOO_SHORT 8
 `uc 1 TX 1 0 :1:6 
 `uc 1 RX 1 0 :1:7 
 ]
-[s S534 . 1 `uc 1 P2B 1 0 :1:0 
+[s S458 . 1 `uc 1 P2B 1 0 :1:0 
 `uc 1 P2A 1 0 :1:1 
 `uc 1 P1A 1 0 :1:2 
 `uc 1 SCL 1 0 :1:3 
@@ -244,7 +244,7 @@ COBS_DECODE_INPUT_TOO_SHORT 8
 `uc 1 CK 1 0 :1:6 
 `uc 1 DT 1 0 :1:7 
 ]
-[s S543 . 1 `uc 1 T1CKI 1 0 :1:0 
+[s S467 . 1 `uc 1 T1CKI 1 0 :1:0 
 `uc 1 CCP2 1 0 :1:1 
 `uc 1 CCP1 1 0 :1:2 
 `uc 1 SCK1 1 0 :1:3 
@@ -253,7 +253,7 @@ COBS_DECODE_INPUT_TOO_SHORT 8
 `uc 1 TX1 1 0 :1:6 
 `uc 1 RX1 1 0 :1:7 
 ]
-[s S552 . 1 `uc 1 T3CKI 1 0 :1:0 
+[s S476 . 1 `uc 1 T3CKI 1 0 :1:0 
 `uc 1 . 1 0 :1:1 
 `uc 1 CTPLS 1 0 :1:2 
 `uc 1 SCL1 1 0 :1:3 
@@ -262,7 +262,7 @@ COBS_DECODE_INPUT_TOO_SHORT 8
 `uc 1 CK1 1 0 :1:6 
 `uc 1 DT1 1 0 :1:7 
 ]
-[s S561 . 1 `uc 1 T3G 1 0 :1:0 
+[s S485 . 1 `uc 1 T3G 1 0 :1:0 
 `uc 1 . 1 0 :1:1 
 `uc 1 AN14 1 0 :1:2 
 `uc 1 AN15 1 0 :1:3 
@@ -271,13 +271,13 @@ COBS_DECODE_INPUT_TOO_SHORT 8
 `uc 1 AN18 1 0 :1:6 
 `uc 1 AN19 1 0 :1:7 
 ]
-[s S570 . 1 `uc 1 . 1 0 :1:0 
+[s S494 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 PA2 1 0 :1:1 
 `uc 1 PA1 1 0 :1:2 
 ]
-[u S574 . 1 `S516 1 . 1 0 `S525 1 . 1 0 `S534 1 . 1 0 `S543 1 . 1 0 `S552 1 . 1 0 `S561 1 . 1 0 `S570 1 . 1 0 ]
-[v _PORTCbits PORTCbits `VES574  1 e 1 @3970 ]
-[s S34 . 1 `uc 1 LATA0 1 0 :1:0 
+[u S498 . 1 `S440 1 . 1 0 `S449 1 . 1 0 `S458 1 . 1 0 `S467 1 . 1 0 `S476 1 . 1 0 `S485 1 . 1 0 `S494 1 . 1 0 ]
+[v _PORTCbits PORTCbits `VES498  1 e 1 @3970 ]
+[s S1308 . 1 `uc 1 LATA0 1 0 :1:0 
 `uc 1 LATA1 1 0 :1:1 
 `uc 1 LATA2 1 0 :1:2 
 `uc 1 LATA3 1 0 :1:3 
@@ -287,7 +287,7 @@ COBS_DECODE_INPUT_TOO_SHORT 8
 `uc 1 LATA7 1 0 :1:7 
 ]
 "7585
-[s S43 . 1 `uc 1 LA0 1 0 :1:0 
+[s S1317 . 1 `uc 1 LA0 1 0 :1:0 
 `uc 1 LA1 1 0 :1:1 
 `uc 1 LA2 1 0 :1:2 
 `uc 1 LA3 1 0 :1:3 
@@ -296,9 +296,9 @@ COBS_DECODE_INPUT_TOO_SHORT 8
 `uc 1 LA6 1 0 :1:6 
 `uc 1 LA7 1 0 :1:7 
 ]
-[u S52 . 1 `S34 1 . 1 0 `S43 1 . 1 0 ]
-[v _LATAbits LATAbits `VES52  1 e 1 @3977 ]
-[s S74 . 1 `uc 1 LATD0 1 0 :1:0 
+[u S1326 . 1 `S1308 1 . 1 0 `S1317 1 . 1 0 ]
+[v _LATAbits LATAbits `VES1326  1 e 1 @3977 ]
+[s S52 . 1 `uc 1 LATD0 1 0 :1:0 
 `uc 1 LATD1 1 0 :1:1 
 `uc 1 LATD2 1 0 :1:2 
 `uc 1 LATD3 1 0 :1:3 
@@ -308,7 +308,7 @@ COBS_DECODE_INPUT_TOO_SHORT 8
 `uc 1 LATD7 1 0 :1:7 
 ]
 "7921
-[s S83 . 1 `uc 1 LD0 1 0 :1:0 
+[s S61 . 1 `uc 1 LD0 1 0 :1:0 
 `uc 1 LD1 1 0 :1:1 
 `uc 1 LD2 1 0 :1:2 
 `uc 1 LD3 1 0 :1:3 
@@ -317,9 +317,9 @@ COBS_DECODE_INPUT_TOO_SHORT 8
 `uc 1 LD6 1 0 :1:6 
 `uc 1 LD7 1 0 :1:7 
 ]
-[u S92 . 1 `S74 1 . 1 0 `S83 1 . 1 0 ]
-[v _LATDbits LATDbits `VES92  1 e 1 @3980 ]
-[s S874 . 1 `uc 1 TRISA0 1 0 :1:0 
+[u S70 . 1 `S52 1 . 1 0 `S61 1 . 1 0 ]
+[v _LATDbits LATDbits `VES70  1 e 1 @3980 ]
+[s S798 . 1 `uc 1 TRISA0 1 0 :1:0 
 `uc 1 TRISA1 1 0 :1:1 
 `uc 1 TRISA2 1 0 :1:2 
 `uc 1 TRISA3 1 0 :1:3 
@@ -329,9 +329,9 @@ COBS_DECODE_INPUT_TOO_SHORT 8
 `uc 1 TRISA7 1 0 :1:7 
 ]
 "8090
-[u S892 . 1 `S874 1 . 1 0 `S641 1 . 1 0 ]
-[v _TRISAbits TRISAbits `VES892  1 e 1 @3986 ]
-[s S794 . 1 `uc 1 TRISC0 1 0 :1:0 
+[u S816 . 1 `S798 1 . 1 0 `S565 1 . 1 0 ]
+[v _TRISAbits TRISAbits `VES816  1 e 1 @3986 ]
+[s S718 . 1 `uc 1 TRISC0 1 0 :1:0 
 `uc 1 TRISC1 1 0 :1:1 
 `uc 1 TRISC2 1 0 :1:2 
 `uc 1 TRISC3 1 0 :1:3 
@@ -341,9 +341,9 @@ COBS_DECODE_INPUT_TOO_SHORT 8
 `uc 1 TRISC7 1 0 :1:7 
 ]
 "8534
-[u S812 . 1 `S794 1 . 1 0 `S516 1 . 1 0 ]
-[v _TRISCbits TRISCbits `VES812  1 e 1 @3988 ]
-[s S834 . 1 `uc 1 TRISD0 1 0 :1:0 
+[u S736 . 1 `S718 1 . 1 0 `S440 1 . 1 0 ]
+[v _TRISCbits TRISCbits `VES736  1 e 1 @3988 ]
+[s S758 . 1 `uc 1 TRISD0 1 0 :1:0 
 `uc 1 TRISD1 1 0 :1:1 
 `uc 1 TRISD2 1 0 :1:2 
 `uc 1 TRISD3 1 0 :1:3 
@@ -353,7 +353,7 @@ COBS_DECODE_INPUT_TOO_SHORT 8
 `uc 1 TRISD7 1 0 :1:7 
 ]
 "8756
-[s S843 . 1 `uc 1 RD0 1 0 :1:0 
+[s S767 . 1 `uc 1 RD0 1 0 :1:0 
 `uc 1 RD1 1 0 :1:1 
 `uc 1 RD2 1 0 :1:2 
 `uc 1 RD3 1 0 :1:3 
@@ -362,11 +362,11 @@ COBS_DECODE_INPUT_TOO_SHORT 8
 `uc 1 RD6 1 0 :1:6 
 `uc 1 RD7 1 0 :1:7 
 ]
-[u S852 . 1 `S834 1 . 1 0 `S843 1 . 1 0 ]
-[v _TRISDbits TRISDbits `VES852  1 e 1 @3989 ]
+[u S776 . 1 `S758 1 . 1 0 `S767 1 . 1 0 ]
+[v _TRISDbits TRISDbits `VES776  1 e 1 @3989 ]
 "9062
 [v _OSCTUNE OSCTUNE `VEuc  1 e 1 @3995 ]
-[s S200 . 1 `uc 1 TMR1IE 1 0 :1:0 
+[s S124 . 1 `uc 1 TMR1IE 1 0 :1:0 
 `uc 1 TMR2IE 1 0 :1:1 
 `uc 1 CCP1IE 1 0 :1:2 
 `uc 1 SSP1IE 1 0 :1:3 
@@ -375,14 +375,14 @@ COBS_DECODE_INPUT_TOO_SHORT 8
 `uc 1 ADIE 1 0 :1:6 
 ]
 "9434
-[s S208 . 1 `uc 1 . 1 0 :3:0 
+[s S132 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 SSPIE 1 0 :1:3 
 `uc 1 TXIE 1 0 :1:4 
 `uc 1 RCIE 1 0 :1:5 
 ]
-[u S213 . 1 `S200 1 . 1 0 `S208 1 . 1 0 ]
-[v _PIE1bits PIE1bits `VES213  1 e 1 @3997 ]
-[s S1125 . 1 `uc 1 TMR1IF 1 0 :1:0 
+[u S137 . 1 `S124 1 . 1 0 `S132 1 . 1 0 ]
+[v _PIE1bits PIE1bits `VES137  1 e 1 @3997 ]
+[s S1049 . 1 `uc 1 TMR1IF 1 0 :1:0 
 `uc 1 TMR2IF 1 0 :1:1 
 `uc 1 CCP1IF 1 0 :1:2 
 `uc 1 SSP1IF 1 0 :1:3 
@@ -391,14 +391,14 @@ COBS_DECODE_INPUT_TOO_SHORT 8
 `uc 1 ADIF 1 0 :1:6 
 ]
 "9511
-[s S1133 . 1 `uc 1 . 1 0 :3:0 
+[s S1057 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 SSPIF 1 0 :1:3 
 `uc 1 TXIF 1 0 :1:4 
 `uc 1 RCIF 1 0 :1:5 
 ]
-[u S1138 . 1 `S1125 1 . 1 0 `S1133 1 . 1 0 ]
-[v _PIR1bits PIR1bits `VES1138  1 e 1 @3998 ]
-[s S1041 . 1 `uc 1 TMR1IP 1 0 :1:0 
+[u S1062 . 1 `S1049 1 . 1 0 `S1057 1 . 1 0 ]
+[v _PIR1bits PIR1bits `VES1062  1 e 1 @3998 ]
+[s S965 . 1 `uc 1 TMR1IP 1 0 :1:0 
 `uc 1 TMR2IP 1 0 :1:1 
 `uc 1 CCP1IP 1 0 :1:2 
 `uc 1 SSP1IP 1 0 :1:3 
@@ -407,14 +407,14 @@ COBS_DECODE_INPUT_TOO_SHORT 8
 `uc 1 ADIP 1 0 :1:6 
 ]
 "9588
-[s S1049 . 1 `uc 1 . 1 0 :3:0 
+[s S973 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 SSPIP 1 0 :1:3 
 `uc 1 TXIP 1 0 :1:4 
 `uc 1 RCIP 1 0 :1:5 
 ]
-[u S1054 . 1 `S1041 1 . 1 0 `S1049 1 . 1 0 ]
-[v _IPR1bits IPR1bits `VES1054  1 e 1 @3999 ]
-[s S1071 . 1 `uc 1 CCP2IP 1 0 :1:0 
+[u S978 . 1 `S965 1 . 1 0 `S973 1 . 1 0 ]
+[v _IPR1bits IPR1bits `VES978  1 e 1 @3999 ]
+[s S995 . 1 `uc 1 CCP2IP 1 0 :1:0 
 `uc 1 TMR3IP 1 0 :1:1 
 `uc 1 HLVDIP 1 0 :1:2 
 `uc 1 BCL1IP 1 0 :1:3 
@@ -424,18 +424,18 @@ COBS_DECODE_INPUT_TOO_SHORT 8
 `uc 1 OSCFIP 1 0 :1:7 
 ]
 "9841
-[s S1080 . 1 `uc 1 . 1 0 :2:0 
+[s S1004 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 LVDIP 1 0 :1:2 
 `uc 1 BCLIP 1 0 :1:3 
 ]
-[s S1084 . 1 `uc 1 . 1 0 :6:0 
+[s S1008 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 CMIP 1 0 :1:6 
 ]
-[u S1087 . 1 `S1071 1 . 1 0 `S1080 1 . 1 0 `S1084 1 . 1 0 ]
-[v _IPR2bits IPR2bits `VES1087  1 e 1 @4002 ]
+[u S1011 . 1 `S995 1 . 1 0 `S1004 1 . 1 0 `S1008 1 . 1 0 ]
+[v _IPR2bits IPR2bits `VES1011  1 e 1 @4002 ]
 "10352
 [v _RC1STA RC1STA `VEuc  1 e 1 @4011 ]
-[s S255 . 1 `uc 1 RX9D 1 0 :1:0 
+[s S179 . 1 `uc 1 RX9D 1 0 :1:0 
 `uc 1 OERR 1 0 :1:1 
 `uc 1 FERR 1 0 :1:2 
 `uc 1 ADDEN 1 0 :1:3 
@@ -445,10 +445,10 @@ COBS_DECODE_INPUT_TOO_SHORT 8
 `uc 1 SPEN 1 0 :1:7 
 ]
 "10689
-[s S264 . 1 `uc 1 . 1 0 :3:0 
+[s S188 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 ADEN 1 0 :1:3 
 ]
-[s S267 . 1 `uc 1 RX9D1 1 0 :1:0 
+[s S191 . 1 `uc 1 RX9D1 1 0 :1:0 
 `uc 1 OERR1 1 0 :1:1 
 `uc 1 FERR1 1 0 :1:2 
 `uc 1 ADDEN1 1 0 :1:3 
@@ -457,18 +457,18 @@ COBS_DECODE_INPUT_TOO_SHORT 8
 `uc 1 RX91 1 0 :1:6 
 `uc 1 SPEN1 1 0 :1:7 
 ]
-[s S276 . 1 `uc 1 RCD8 1 0 :1:0 
+[s S200 . 1 `uc 1 RCD8 1 0 :1:0 
 `uc 1 . 1 0 :5:1 
 `uc 1 RC8_9 1 0 :1:6 
 ]
-[s S280 . 1 `uc 1 . 1 0 :6:0 
+[s S204 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 RC9 1 0 :1:6 
 ]
-[s S283 . 1 `uc 1 . 1 0 :5:0 
+[s S207 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 SRENA 1 0 :1:5 
 ]
-[u S286 . 1 `S255 1 . 1 0 `S264 1 . 1 0 `S267 1 . 1 0 `S276 1 . 1 0 `S280 1 . 1 0 `S283 1 . 1 0 ]
-[v _RC1STAbits RC1STAbits `VES286  1 e 1 @4011 ]
+[u S210 . 1 `S179 1 . 1 0 `S188 1 . 1 0 `S191 1 . 1 0 `S200 1 . 1 0 `S204 1 . 1 0 `S207 1 . 1 0 ]
+[v _RC1STAbits RC1STAbits `VES210  1 e 1 @4011 ]
 "10808
 [v _TX1STA TX1STA `VEuc  1 e 1 @4012 ]
 "11174
@@ -481,22 +481,22 @@ COBS_DECODE_INPUT_TOO_SHORT 8
 [v _SPBRGH1 SPBRGH1 `VEuc  1 e 1 @4016 ]
 "12385
 [v _BAUD1CON BAUD1CON `VEuc  1 e 1 @4024 ]
-[s S974 . 1 `uc 1 NOT_BOR 1 0 :1:0 
+[s S898 . 1 `uc 1 NOT_BOR 1 0 :1:0 
 ]
 "15835
-[s S976 . 1 `uc 1 . 1 0 :1:0 
+[s S900 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 NOT_POR 1 0 :1:1 
 ]
-[s S979 . 1 `uc 1 . 1 0 :2:0 
+[s S903 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 NOT_PD 1 0 :1:2 
 ]
-[s S982 . 1 `uc 1 . 1 0 :3:0 
+[s S906 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 NOT_TO 1 0 :1:3 
 ]
-[s S985 . 1 `uc 1 . 1 0 :4:0 
+[s S909 . 1 `uc 1 . 1 0 :4:0 
 `uc 1 NOT_RI 1 0 :1:4 
 ]
-[s S988 . 1 `uc 1 nBOR 1 0 :1:0 
+[s S912 . 1 `uc 1 nBOR 1 0 :1:0 
 `uc 1 nPOR 1 0 :1:1 
 `uc 1 nPD 1 0 :1:2 
 `uc 1 nTO 1 0 :1:3 
@@ -505,21 +505,21 @@ COBS_DECODE_INPUT_TOO_SHORT 8
 `uc 1 SBOREN 1 0 :1:6 
 `uc 1 IPEN 1 0 :1:7 
 ]
-[s S997 . 1 `uc 1 BOR 1 0 :1:0 
+[s S921 . 1 `uc 1 BOR 1 0 :1:0 
 `uc 1 POR 1 0 :1:1 
 `uc 1 PD 1 0 :1:2 
 `uc 1 TO 1 0 :1:3 
 `uc 1 RI 1 0 :1:4 
 ]
-[u S1003 . 1 `S974 1 . 1 0 `S976 1 . 1 0 `S979 1 . 1 0 `S982 1 . 1 0 `S985 1 . 1 0 `S988 1 . 1 0 `S997 1 . 1 0 ]
-[v _RCONbits RCONbits `VES1003  1 e 1 @4048 ]
+[u S927 . 1 `S898 1 . 1 0 `S900 1 . 1 0 `S903 1 . 1 0 `S906 1 . 1 0 `S909 1 . 1 0 `S912 1 . 1 0 `S921 1 . 1 0 ]
+[v _RCONbits RCONbits `VES927  1 e 1 @4048 ]
 "15953
 [v _OSCCON2 OSCCON2 `VEuc  1 e 1 @4050 ]
 "16010
 [v _OSCCON OSCCON `VEuc  1 e 1 @4051 ]
 "16093
 [v _T0CON T0CON `VEuc  1 e 1 @4053 ]
-[s S456 . 1 `uc 1 T0PS 1 0 :3:0 
+[s S380 . 1 `uc 1 T0PS 1 0 :3:0 
 `uc 1 PSA 1 0 :1:3 
 `uc 1 T0SE 1 0 :1:4 
 `uc 1 T0CS 1 0 :1:5 
@@ -527,17 +527,17 @@ COBS_DECODE_INPUT_TOO_SHORT 8
 `uc 1 TMR0ON 1 0 :1:7 
 ]
 "16113
-[s S463 . 1 `uc 1 T0PS0 1 0 :1:0 
+[s S387 . 1 `uc 1 T0PS0 1 0 :1:0 
 `uc 1 T0PS1 1 0 :1:1 
 `uc 1 T0PS2 1 0 :1:2 
 ]
-[u S467 . 1 `S456 1 . 1 0 `S463 1 . 1 0 ]
-[v _T0CONbits T0CONbits `VES467  1 e 1 @4053 ]
+[u S391 . 1 `S380 1 . 1 0 `S387 1 . 1 0 ]
+[v _T0CONbits T0CONbits `VES391  1 e 1 @4053 ]
 "16170
 [v _TMR0L TMR0L `VEuc  1 e 1 @4054 ]
 "16190
 [v _TMR0H TMR0H `VEuc  1 e 1 @4055 ]
-[s S403 . 1 `uc 1 RBIF 1 0 :1:0 
+[s S327 . 1 `uc 1 RBIF 1 0 :1:0 
 `uc 1 INT0IF 1 0 :1:1 
 `uc 1 TMR0IF 1 0 :1:2 
 `uc 1 RBIE 1 0 :1:3 
@@ -547,7 +547,7 @@ COBS_DECODE_INPUT_TOO_SHORT 8
 `uc 1 GIE_GIEH 1 0 :1:7 
 ]
 "16922
-[s S412 . 1 `uc 1 . 1 0 :1:0 
+[s S336 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 INT0F 1 0 :1:1 
 `uc 1 T0IF 1 0 :1:2 
 `uc 1 . 1 0 :1:3 
@@ -556,15 +556,15 @@ COBS_DECODE_INPUT_TOO_SHORT 8
 `uc 1 PEIE 1 0 :1:6 
 `uc 1 GIE 1 0 :1:7 
 ]
-[s S421 . 1 `uc 1 . 1 0 :6:0 
+[s S345 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 GIEL 1 0 :1:6 
 `uc 1 GIEH 1 0 :1:7 
 ]
-[u S425 . 1 `S403 1 . 1 0 `S412 1 . 1 0 `S421 1 . 1 0 ]
-[v _INTCONbits INTCONbits `VES425  1 e 1 @4082 ]
-"92 D:\EV17.git\trunk\SS.X-SandBox\CarCom.c
+[u S349 . 1 `S327 1 . 1 0 `S336 1 . 1 0 `S345 1 . 1 0 ]
+[v _INTCONbits INTCONbits `VES349  1 e 1 @4082 ]
+"79 D:\EV17.git\trunk\SS.X-SandBox\CarCom.c
 [v _ReciveArray ReciveArray `[30]uc  1 e 30 0 ]
-"93
+"80
 [v _ProcessArray ProcessArray `[30]uc  1 e 30 0 ]
 "6 D:\EV17.git\trunk\SS.X-SandBox\CarDataDictionary.c
 [v _DataTableArrayOne DataTableArrayOne `[10]uc  1 e 10 0 ]
@@ -594,27 +594,27 @@ COBS_DECODE_INPUT_TOO_SHORT 8
 {
 "20
 } 0
-"95 D:\EV17.git\trunk\SS.X-SandBox\CarCom.c
+"82 D:\EV17.git\trunk\SS.X-SandBox\CarCom.c
 [v _receiveData receiveData `(uc  1 e 1 0 ]
 {
-[s S1290 . 3 `ui 1 out_len 2 0 `E154 1 status 1 2 ]
-"108
-[v receiveData@result result `S1290  1 a 3 4 ]
-"99
+[s S1214 . 3 `ui 1 out_len 2 0 `E154 1 status 1 2 ]
+"95
+[v receiveData@result result `S1214  1 a 3 4 ]
+"86
 [v receiveData@i i `i  1 a 2 1 ]
-"100
+"87
 [v receiveData@Data Data `uc  1 a 1 3 ]
-"110
+"97
 [v receiveData@CS CS `uc  1 a 1 0 ]
-"128
+"117
 } 0
 "57 D:\EV17.git\trunk\SS.X-SandBox\COBS.h
-[s S1290 . 3 `ui 1 out_len 2 0 `E154 1 status 1 2 ]
+[s S1214 . 3 `ui 1 out_len 2 0 `E154 1 status 1 2 ]
 "115 D:\EV17.git\trunk\SS.X-SandBox\COBS.c
-[v _cobs_decode cobs_decode `(S1290  1 e 3 0 ]
+[v _cobs_decode cobs_decode `(S1214  1 e 3 0 ]
 {
 "117
-[v cobs_decode@result result `S1290  1 a 3 11 ]
+[v cobs_decode@result result `S1214  1 a 3 11 ]
 "120
 [v cobs_decode@dst_write_ptr dst_write_ptr `*.39uc  1 a 2 8 ]
 "121
@@ -635,7 +635,7 @@ COBS_DECODE_INPUT_TOO_SHORT 8
 [v cobs_decode@src_ptr src_ptr `*.39Cuc  1 p 2 30 ]
 [v cobs_decode@src_len src_len `ui  1 p 2 32 ]
 "117
-[v cobs_decode@F192 F192 `S1290  1 s 3 F192 ]
+[v cobs_decode@F192 F192 `S1214  1 s 3 F192 ]
 "193
 } 0
 "125 D:\EV17.git\trunk\SS.X-SandBox\UART.c
@@ -655,35 +655,33 @@ COBS_DECODE_INPUT_TOO_SHORT 8
 [v UART_buff_size@_this _this `*.39S21  1 p 2 26 ]
 "103
 } 0
-"132 D:\EV17.git\trunk\SS.X-SandBox\CarCom.c
+"119 D:\EV17.git\trunk\SS.X-SandBox\CarCom.c
 [v _ComController ComController `(v  1 e 1 0 ]
 {
-"134
-[v ComController@DataToSend DataToSend `[4]uc  1 a 4 95 ]
-"132
-[v ComController@DTI DTI `*.39uc  1 p 2 90 ]
-[v ComController@lenth lenth `ui  1 p 2 92 ]
-"142
+"121
+[v ComController@DataToSend DataToSend `[4]uc  1 a 4 93 ]
+"119
+[v ComController@DTI DTI `*.39uc  1 p 2 88 ]
+[v ComController@lenth lenth `ui  1 p 2 90 ]
+"129
 } 0
 "40
 [v _sendData sendData `(v  1 e 1 0 ]
 {
 [v sendData@whereToSend whereToSend `uc  1 a 1 wreg ]
-"45
+"41
 [v sendData@SendArray SendArray `[30]uc  1 a 30 50 ]
-"46
+"42
 [v sendData@COBSArray COBSArray `[30]uc  1 a 30 20 ]
-[s S1281 . 3 `ui 1 out_len 2 0 `E145 1 status 1 2 ]
-"50
-[v sendData@result result `S1281  1 a 3 85 ]
-"61
-[v sendData@i i `ui  1 a 2 88 ]
-"62
-[v sendData@count count `i  1 a 2 82 ]
-"67
-[v sendData@CS CS `uc  1 a 1 84 ]
-"48
-[v sendData@DataLenth DataLenth `uc  1 a 1 80 ]
+[s S1205 . 3 `ui 1 out_len 2 0 `E145 1 status 1 2 ]
+"44
+[v sendData@result result `S1205  1 a 3 82 ]
+"53
+[v sendData@count count `i  1 a 2 85 ]
+"52
+[v sendData@i i `uc  1 a 1 87 ]
+"58
+[v sendData@CS CS `uc  1 a 1 81 ]
 "40
 [v sendData@whereToSend whereToSend `uc  1 a 1 wreg ]
 [v sendData@ComandByte ComandByte `uc  1 p 1 13 ]
@@ -691,17 +689,17 @@ COBS_DECODE_INPUT_TOO_SHORT 8
 [v sendData@DataTableIndex DataTableIndex `uc  1 p 1 15 ]
 [v sendData@DTS DTS `*.39uc  1 p 2 16 ]
 [v sendData@lenth lenth `ui  1 p 2 18 ]
-"48
-[v sendData@whereToSend whereToSend `uc  1 a 1 81 ]
-"87
+"46
+[v sendData@whereToSend whereToSend `uc  1 a 1 80 ]
+"74
 } 0
 "41 D:\EV17.git\trunk\SS.X-SandBox\COBS.h
-[s S1281 . 3 `ui 1 out_len 2 0 `E145 1 status 1 2 ]
+[s S1205 . 3 `ui 1 out_len 2 0 `E145 1 status 1 2 ]
 "29 D:\EV17.git\trunk\SS.X-SandBox\COBS.c
-[v _cobs_encode cobs_encode `(S1281  1 e 3 0 ]
+[v _cobs_encode cobs_encode `(S1205  1 e 3 0 ]
 {
 "31
-[v cobs_encode@result result `S1281  1 a 3 10 ]
+[v cobs_encode@result result `S1205  1 a 3 10 ]
 "35
 [v cobs_encode@dst_write_ptr dst_write_ptr `*.39uc  1 a 2 8 ]
 "34
@@ -720,7 +718,7 @@ COBS_DECODE_INPUT_TOO_SHORT 8
 [v cobs_encode@src_ptr src_ptr `*.39Cuc  1 p 2 30 ]
 [v cobs_encode@src_len src_len `ui  1 p 2 32 ]
 "31
-[v cobs_encode@F180 F180 `S1281  1 s 3 F180 ]
+[v cobs_encode@F180 F180 `S1205  1 s 3 F180 ]
 "112
 } 0
 "129 D:\EV17.git\trunk\SS.X-SandBox\UART.c

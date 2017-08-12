@@ -47,18 +47,13 @@ COBS_DECODE_DST_BUF_LEN_MAX = 30;
 //Sends out send buffer with a 2 start bytes, where the packet is going, where it came from, the size of the data packet, the data and the crc.
 
 void sendData(unsigned char whereToSend, unsigned char ComandByte, unsigned char DataTable, unsigned char DataTableIndex, unsigned char *DTS, unsigned int lenth) {
-
-    
-    //calculate the crc
     
     unsigned char SendArray[30];
     unsigned char COBSArray[30];
     
-    unsigned char DataLenth = 1;
-    
     cobs_encode_result  result;
     
-    SendArray[0] = 4+1;//ring_buffer.count;
+    SendArray[0] = 4+1+lenth;//ring_buffer.count;
     SendArray[1] = ComandByte;
     SendArray[2] = DataTable;
     SendArray[3] = DataTableIndex;
@@ -71,18 +66,20 @@ void sendData(unsigned char whereToSend, unsigned char ComandByte, unsigned char
     int count = 5;
     i = count;
 
-        SendArray[5] = DTS[0];//ring_buffer.buf[i];
+    for(i;i<lenth;i++){
+        SendArray[i] = DTS[i];//ring_buffer.buf[i];
+    }
         //count++;
-        SendArray[6] = DTS[1];//ring_buffer.buf[i];
-        //count++;
+        //SendArray[6] = DTS[1];//ring_buffer.buf[i];
+        count++;
 
-    unsigned char CS = CRC8(SendArray, 7);
+    unsigned char CS = CRC8(SendArray, count);
     //send the crc
     //printf("CRC = %x\n",CS);
     
-    SendArray[7] = CS;
+    SendArray[count] = CS;
     
-    result = cobs_encode(COBSArray, sizeof(COBSArray), SendArray, 8);
+    result = cobs_encode(COBSArray, sizeof(COBSArray), SendArray, count);
     
     SendArray[0] = whereToSend;
     
@@ -90,7 +87,7 @@ void sendData(unsigned char whereToSend, unsigned char ComandByte, unsigned char
         SendArray[i] = COBSArray[i-1];
     }
     
-    for(i = 0;i<result.out_len+2;i++){
+    for(i = 0;i<result.out_len+3;i++){
         Send_put(SendArray[i]);
     }
 }
@@ -140,11 +137,11 @@ bool receiveData() {
 void ComController(unsigned char *DTI, unsigned int lenth){
     if(DTI[1] == READ_TABLE){
         unsigned char DataToSend[4];
-        GetDataDict(DTI[2], DTI[3], DataToSend, DTI[4]);
-        RS485_1_Direction = TALK;// = TALK;  //RS485 set to talk
-        Delay(5);
-        sendData(ECU_ADDRESS, 1, 1, 1, DataToSend, DTI[4]);
-        Delay(3);
-        RS485_1_Direction = LISTEN;  ///RS485 set to listen
+        //GetDataDict(DTI[2], DTI[3], DataToSend, DTI[4]);
+        //RS485_1_Direction = TALK;// = TALK;  //RS485 set to talk
+        //Delay(5);
+        //sendData(ECU_ADDRESS, 1, 1, 1, DataToSend, DTI[4]);
+        //Delay(3);
+        //RS485_1_Direction = LISTEN;  ///RS485 set to listen
     }
 }
