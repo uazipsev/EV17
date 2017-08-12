@@ -47,47 +47,42 @@ COBS_DECODE_DST_BUF_LEN_MAX = 30;
 //Sends out send buffer with a 2 start bytes, where the packet is going, where it came from, the size of the data packet, the data and the crc.
 
 void sendData(unsigned char whereToSend, unsigned char ComandByte, unsigned char DataTable, unsigned char DataTableIndex, unsigned char *DTS, unsigned int lenth) {
-    
     unsigned char SendArray[30];
     unsigned char COBSArray[30];
     
+    int j = 0;
+    for(j;j<sizeof(SendArray);j++){
+        SendArray[j] = 0;
+    }
+    
     cobs_encode_result  result;
     
-    SendArray[0] = 4+1+lenth;//ring_buffer.count;
+    SendArray[0] = NUMOFEXTBYTES+lenth;//ring_buffer.count;
     SendArray[1] = ComandByte;
     SendArray[2] = DataTable;
     SendArray[3] = DataTableIndex;
     SendArray[4] = lenth;
 
-    //ring_buffer.count = 1;
+    unsigned char i = 0;
+    int count = NUMOFEXTBYTES;
     
-    //send the rest of the packet
-    unsigned int i;
-    int count = 5;
-    i = count;
-
     for(i;i<lenth;i++){
-        SendArray[i] = DTS[i];//ring_buffer.buf[i];
-    }
-        //count++;
-        //SendArray[6] = DTS[1];//ring_buffer.buf[i];
+        SendArray[i+NUMOFEXTBYTES] = DTS[i];
         count++;
-
-    unsigned char CS = CRC8(SendArray, count);
-    //send the crc
-    //printf("CRC = %x\n",CS);
+    }
     
+    unsigned char CS = CRC8(SendArray, count);
     SendArray[count] = CS;
+    count++;
     
     result = cobs_encode(COBSArray, sizeof(COBSArray), SendArray, count);
-    
     SendArray[0] = whereToSend;
-    
+     
     for(i = 1;i<result.out_len+1;i++){
         SendArray[i] = COBSArray[i-1];
     }
     
-    for(i = 0;i<result.out_len+3;i++){
+    for(i = 0;i<result.out_len+2;i++){
         Send_put(SendArray[i]);
     }
 }

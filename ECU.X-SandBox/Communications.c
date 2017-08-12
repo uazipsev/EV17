@@ -98,12 +98,12 @@ void Run(){
             sendData1(SS_ADDRESS, READ_TABLE, TABLE_ONE_SS, SS_FAULT_STATUS, Data, SS_FAULT_STATUS_LENTH);
             Delay(3);
             RS485_Direction1(LISTEN);
-//            Delay(1);
-//            Data[0] = constructPowerSet();
-//            RS485_Direction2(TALK);         
-//            sendData(PDU_ADDRESS, WRITE_TABLE, TABLE_FOUR_PDU, PDU_POWER_CONTROL, Data, 1);
-//            Delay(3);
-//            RS485_Direction2(LISTEN);
+            Delay(1);
+            Data[0] = constructPowerSet();
+            RS485_Direction2(TALK);         
+            sendData(PDU_ADDRESS, WRITE_TABLE, TABLE_FOUR_PDU, PDU_POWER_CONTROL, Data, 1);
+            Delay(3);
+            RS485_Direction2(LISTEN);
 }
 
 bool SASTx = false;
