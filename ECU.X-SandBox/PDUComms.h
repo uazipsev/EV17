@@ -14,7 +14,7 @@
 bool requestPDUData();
 bool receiveCommPDU();
 bool powerChange();
-int constructPowerSet();
+unsigned char constructPowerSet();
 void ClearPDUTalk();
 
 #endif	/* PDUCOMMS_H */

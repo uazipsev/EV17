@@ -90,6 +90,23 @@ void updateComms() {
     receiveData_SAS_DDS_SS();
 }
 
+void printBits(size_t const size, void const * const ptr)
+{
+    unsigned char *b = (unsigned char*) ptr;
+    unsigned char byte;
+    int i, j;
+
+    for (i=size-1;i>=0;i--)
+    {
+        for (j=7;j>=0;j--)
+        {
+            byte = (b[i] >> j) & 1;
+            printf("%u", byte);
+        }
+    }
+    printf("\n\r");
+}
+
 void Run(){
             unsigned char Data[2];
             Data[0] = 0x11;
@@ -104,6 +121,12 @@ void Run(){
             sendData_PDU_MCS_BMM(PDU_ADDRESS, WRITE_TABLE, TABLE_FOUR_PDU, PDU_POWER_CONTROL, Data, 1);
             Delay(3);
             RS485_Direction2(LISTEN);
+            
+            unsigned char g = 4;
+            printBits(sizeof(g), &g);
+            g = g ^ (1<<3);
+            printBits(sizeof(g), &g);
+            
 }
 
 bool SASTx = false;

@@ -58,6 +58,12 @@ void processPowerRequest(unsigned char powerSet) {
     else{
         EnableSlavePower(TSS,OFF);
     }
+    if(((powerSet >> 6)  & 0x01)){
+        EnableSlavePower(AUX, ON);
+    }
+    else{
+        EnableSlavePower(AUX,OFF);
+    }
     Update();
 }
 

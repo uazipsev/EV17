@@ -68,8 +68,8 @@ bool powerChange() {
     return returnable;
 }
 
-int constructPowerSet() {
-    static int powerSettings = 0;
+unsigned char  constructPowerSet() {
+    static unsigned char powerSettings = 0;
     if (powerSet.BMM) {
         powerSettings = powerSettings | 0x0001;
     } else
@@ -86,7 +86,7 @@ int constructPowerSet() {
         powerSettings = powerSettings | 0x0008;
     } else
         powerSettings = powerSettings & 0xFFF7;
-    return powerSettings;
+    return powerSettings = 0x02;
 }
 
 void ClearPDUTalk(){

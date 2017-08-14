@@ -138,7 +138,7 @@ void ComController(unsigned char *DTI, unsigned int lenth){
         unsigned char DataToSend[4];
         unsigned char DataRecived[4];
         for(char k = 0;k<DTI[4];k++){
-            DataRecived[k] = DTI[4+k];
+            DataRecived[k] = DTI[5+k];
         }
         SetDataDict(DTI[2], DTI[3], DataRecived, DTI[4]);
         GetDataDict(TABLE_FOUR_PDU, PDU_POWER_STATUS, DataToSend, 1);

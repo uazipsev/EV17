@@ -7230,9 +7230,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $U 903  ]
 [e :U 900 ]
 {
-[; ;CarCom.c: 141: DataRecived[k] = DTI[4+k];
+[; ;CarCom.c: 141: DataRecived[k] = DTI[5+k];
 "141
-[e = *U + &U _DataRecived * -> _k `ux -> -> # *U &U _DataRecived `ui `ux *U + _DTI * -> + -> 4 `i -> _k `i `x -> -> # *U _DTI `i `x ]
+[e = *U + &U _DataRecived * -> _k `ux -> -> # *U &U _DataRecived `ui `ux *U + _DTI * -> + -> 5 `i -> _k `i `x -> -> # *U _DTI `i `x ]
 "142
 }
 "140

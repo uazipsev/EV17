@@ -6779,52 +6779,74 @@ Version 3.2 HI-TECH Software Intermediate Code
 }
 [e :U 858 ]
 [; ;Communications.c: 60: }
-[; ;Communications.c: 61: Update();
+[; ;Communications.c: 61: if(((powerSet >> 6) & 0x01)){
 "61
-[e ( _Update ..  ]
-[; ;Communications.c: 62: }
+[e $ ! != & >> -> _powerSet `i -> 6 `i -> 1 `i -> 0 `i 859  ]
+{
+[; ;Communications.c: 62: EnableSlavePower(AUX, ON);
 "62
+[e ( _EnableSlavePower (2 , . `E6953 5 -> . `E6953 6 `i ]
+"63
+}
+[; ;Communications.c: 63: }
+[e $U 860  ]
+"64
+[e :U 859 ]
+[; ;Communications.c: 64: else{
+{
+[; ;Communications.c: 65: EnableSlavePower(AUX,OFF);
+"65
+[e ( _EnableSlavePower (2 , . `E6953 5 -> . `E6953 7 `i ]
+"66
+}
+[e :U 860 ]
+[; ;Communications.c: 66: }
+[; ;Communications.c: 67: Update();
+"67
+[e ( _Update ..  ]
+[; ;Communications.c: 68: }
+"68
 [e :UE 848 ]
 }
-"64
+"70
 [v _FaultsCollector `(uc ~T0 @X0 1 ef ]
 {
-[; ;Communications.c: 64: unsigned char FaultsCollector() {
+[; ;Communications.c: 70: unsigned char FaultsCollector() {
 [e :U _FaultsCollector ]
 [f ]
-"65
-[v _sendVal `ui ~T0 @X0 1 a ]
-[; ;Communications.c: 65: unsigned int sendVal = 0;
-[e = _sendVal -> -> 0 `i `ui ]
-"66
-[v _i `i ~T0 @X0 1 a ]
-[; ;Communications.c: 66: int i = 0;
-[e = _i -> 0 `i ]
-[; ;Communications.c: 67: for (i = 0; i < 5; i++) {
-"67
-{
-[e = _i -> 0 `i ]
-[e $ < _i -> 5 `i 860  ]
-[e $U 861  ]
-[e :U 860 ]
-{
-[; ;Communications.c: 68: sendVal = sendVal | ((GetPDUFault(i)&0x01) << i);
-"68
-[e = _sendVal | _sendVal -> << & -> ( _GetPDUFault (1 -> _i `uc `i -> 1 `i _i `ui ]
-"69
-}
-"67
-[e ++ _i -> 1 `i ]
-[e $ < _i -> 5 `i 860  ]
-[e :U 861 ]
-"69
-}
-[; ;Communications.c: 69: }
-[; ;Communications.c: 70: return sendVal;
-"70
-[e ) -> _sendVal `uc ]
-[e $UE 859  ]
-[; ;Communications.c: 71: }
 "71
-[e :UE 859 ]
+[v _sendVal `ui ~T0 @X0 1 a ]
+[; ;Communications.c: 71: unsigned int sendVal = 0;
+[e = _sendVal -> -> 0 `i `ui ]
+"72
+[v _i `i ~T0 @X0 1 a ]
+[; ;Communications.c: 72: int i = 0;
+[e = _i -> 0 `i ]
+[; ;Communications.c: 73: for (i = 0; i < 5; i++) {
+"73
+{
+[e = _i -> 0 `i ]
+[e $ < _i -> 5 `i 862  ]
+[e $U 863  ]
+[e :U 862 ]
+{
+[; ;Communications.c: 74: sendVal = sendVal | ((GetPDUFault(i)&0x01) << i);
+"74
+[e = _sendVal | _sendVal -> << & -> ( _GetPDUFault (1 -> _i `uc `i -> 1 `i _i `ui ]
+"75
+}
+"73
+[e ++ _i -> 1 `i ]
+[e $ < _i -> 5 `i 862  ]
+[e :U 863 ]
+"75
+}
+[; ;Communications.c: 75: }
+[; ;Communications.c: 76: return sendVal;
+"76
+[e ) -> _sendVal `uc ]
+[e $UE 861  ]
+[; ;Communications.c: 77: }
+"77
+[e :UE 861 ]
 }
