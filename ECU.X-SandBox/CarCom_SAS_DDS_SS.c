@@ -15,6 +15,7 @@
 
 #include "COBS.h"
 
+bool PacketRecived_SAS_DDS_SS = false;
 
 void sendData_SAS_DDS_SS(unsigned char whereToSend, unsigned char ComandByte, unsigned char DataTable, unsigned char DataTableIndex, unsigned char *DTS, unsigned int lenth) {
     unsigned char SendArray[30];
@@ -51,6 +52,8 @@ void sendData_SAS_DDS_SS(unsigned char whereToSend, unsigned char ComandByte, un
         SendArray[i] = COBSArray[i-1];
     }
     
+    PacketRecived_SAS_DDS_SS = false;
+    
     for(i = 0;i<result.out_len+2;i++){
         Send_put1(SendArray[i]);
     }
@@ -84,7 +87,8 @@ bool receiveData_SAS_DDS_SS() {
             unsigned char CS = CRC8_SAS_DDS_SS(ProcessArray1, result.out_len-2);
             
             if(ProcessArray1[result.out_len-2] == CS){
-                INDICATOR ^= 1;
+                //INDICATOR ^= 1;
+                PacketRecived_SAS_DDS_SS = true;
                 ComController_SAS_DDS_SS(ProcessArray1,result.out_len);
                 return true;
             }
@@ -127,4 +131,8 @@ unsigned char CRC8_SAS_DDS_SS(const unsigned char * data, unsigned char len) {
         }
     }
     return crc;
+}
+
+bool RecivedValidPacket_SAS_DDS_SS(void){
+    return PacketRecived_SAS_DDS_SS;
 }

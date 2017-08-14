@@ -100,5 +100,12 @@
 #define SS_FAULT_STATUS 1
 #define SS_FAULT_STATUS_LENTH 2
 
+#define DDS_FAULT_STATUS 1
+
+#define SAS_THROTTLE_1 1
+#define SAS_THROTTLE_2 2
+#define SAS_BRAKE_1 3
+#define SAS_BRAKE_2 4
+#define SS_FAULT_STATUS_LENTH 2
 #endif	/* ADDRESSING_H */
 

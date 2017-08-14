@@ -68,9 +68,10 @@ bool receiveData() {
             do{
                 Data = Receive_get();
                 ReciveArray[i] = Data;
-                delay_us(200);
+                delay_us(100);
                 i++;
             }while(Data != 0x00);
+            
             
             //ClearBuffer();
             
@@ -78,9 +79,10 @@ bool receiveData() {
 
             result = cobs_decode(ProcessArray, sizeof(ProcessArray), ReciveArray, i);
             
-            unsigned char CS = CRC8(ProcessArray, result.out_len-2);
+            unsigned char CS = CRC8(ProcessArray, result.out_len-1);
             
-            if(ProcessArray[result.out_len-2] == CS){
+            if(ProcessArray[result.out_len-1] == CS){
+                LED ^= 1;
                 ComController(ProcessArray,result.out_len);
                 return true;
             }
@@ -101,13 +103,13 @@ bool receiveData() {
 
 void ComController(unsigned char *DTI, unsigned int lenth){
     if(DTI[1] == READ_TABLE){
-        unsigned char DataToSend[8];
-        GetDataDict(DTI[2], DTI[3], DataToSend, DTI[4]);
-        RS485_1_Port = TALK;// = TALK;  //RS485 set to talk
-        Delay(5);
-        sendData(ECU_ADDRESS, WRITE_TABLE, TABLE_TWO_SAS, SAS_THROTTLE_1, DataToSend, DTI[4]);
-        Delay(3);
-        RS485_1_Port = LISTEN;  ///RS485 set to listen
+//        unsigned char DataToSend[8];
+//        GetDataDict(DTI[2], DTI[3], DataToSend, DTI[4]);
+//        RS485_1_Port = TALK;// = TALK;  //RS485 set to talk
+//        Delay(5);
+//        sendData(ECU_ADDRESS, WRITE_TABLE, TABLE_TWO_SAS, SAS_THROTTLE_1, DataToSend, DTI[4]);
+//        Delay(3);
+//        RS485_1_Port = LISTEN;  ///RS485 set to listen
     }
 }
 

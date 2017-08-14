@@ -15,10 +15,7 @@
 #include "PinDef.h"
 #include "Functions.h"
 
-//COBS_ENCODE_DST_BUF_LEN_MAX = 30;
-//COBS_DECODE_DST_BUF_LEN_MAX = 30; 
-
-//Sends out send buffer with a 2 start bytes, where the packet is going, where it came from, the size of the data packet, the data and the crc.
+bool PacketRecived_PDU_MCS_BMM = false;
 
 void sendData_PDU_MCS_BMM(unsigned char whereToSend, unsigned char ComandByte, unsigned char DataTable, unsigned char DataTableIndex, unsigned char *DTS, unsigned int lenth) {
     unsigned char SendArray[30];
@@ -56,6 +53,8 @@ void sendData_PDU_MCS_BMM(unsigned char whereToSend, unsigned char ComandByte, u
         SendArray[i] = COBSArray[i-1];
     }
     
+    PacketRecived_PDU_MCS_BMM = false;
+    
     for(i = 0;i<result.out_len+2;i++){
         Send_put(SendArray[i]);
     }
@@ -85,6 +84,7 @@ bool receiveData_PDU_MCS_BMM() {
             unsigned char CS = CRC8_PDU_MCS_BMM(ProcessArray, result.out_len-2);
             
             if(ProcessArray[result.out_len-2] == CS){
+                PacketRecived_PDU_MCS_BMM = true;
                 ComController_PDU_MCS_BMM(ProcessArray,result.out_len);
                 return true;
             }
@@ -127,4 +127,8 @@ unsigned char CRC8_PDU_MCS_BMM(const unsigned char * data, unsigned char len) {
         }
     }
     return crc;
+}
+
+bool RecivedValidPacket_PDU_MCS_BMM(void){
+    return PacketRecived_PDU_MCS_BMM;
 }

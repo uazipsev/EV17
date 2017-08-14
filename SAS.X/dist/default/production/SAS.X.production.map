@@ -100,12 +100,12 @@ Program Memory  [Origin = 0x200, Length = 0x15600]
 section                    address   length (PC units)   length (bytes) (dec)
 -------                    -------   -----------------   --------------------
 .text                        0x200                0xfc           0x17a  (378)
-.text                        0x2fc               0x9ce           0xeb5  (3765)
-.dinit                       0xcca                0x58            0x84  (132)
-.text                        0xd22                0x78            0xb4  (180)
-.init.delay32                0xd9a                0x1c            0x2a  (42)
+.text                        0x2fc               0x9a2           0xe73  (3699)
+.dinit                       0xc9e                0x58            0x84  (132)
+.text                        0xcf6                0x60            0x90  (144)
+.init.delay32                0xd56                0x1c            0x2a  (42)
 
-                 Total program memory used (bytes):         0x1191  (4497) 3%
+                 Total program memory used (bytes):         0x112b  (4395) 3%
 
 
 Ivt Memory  [Origin = 0x4, Length = 0xfc]
@@ -206,101 +206,101 @@ External Symbols in Program Memory (by address):
 
                   0x000200                  __resetPRI
                   0x00023c                  __psv_init
-                  0x000252                  __data_init
                   0x000252                  __data_init_standard
+                  0x000252                  __data_init
                   0x0002c8                  __T1Interrupt
                   0x0002e0                  __T2Interrupt
                   0x0002e8                  __DefaultInterrupt
                   0x0002ee                  _memset
-                  0x0002fc                  _sendData
-                  0x0003f0                  _receiveData
-                  0x00045e                  _ComController
-                  0x0004ac                  _CRC8
-                  0x000510                  _cobs_encode
-                  0x00060c                  _cobs_decode
-                  0x00071a                  _UART_init
-                  0x000756                  _UART_buff_init
-                  0x000766                  _UART_buff_put
-                  0x0007c4                  _UART_buff_get
-                  0x0007fc                  _UART_buff_flush
-                  0x000826                  _UART_buff_size
-                  0x000832                  _UART_buff_modulo_inc
-                  0x00084e                  _UART_buff_peek
-                  0x00085e                  _Receive_peek
-                  0x000868                  _Receive_available
-                  0x000872                  _Receive_get
-                  0x00087c                  _Send_put
-                  0x000892                  __U1RXInterrupt
-                  0x0008ca                  __U1TXInterrupt
-                  0x0008f6                  _Setup
-                  0x00095e                  _timerOne
-                  0x00097c                  _timerTwo
-                  0x00099c                  _PinSetMode
-                  0x000a06                  _Delay
-                  0x000a24                  _initADC
-                  0x000a8e                  __ADC1Interrupt
-                  0x000adc                  _FilterADC
-                  0x000b1a                  _GetADC
-                  0x000b48                  _GetDataDict
-                  0x000bda                  _SetDataDict
-                  0x000c6c                  _updateComms
-                  0x000d22                  _main
-                  0x000d3e                  _ledDebug
-                  0x000d66                  _UART1_init
-                  0x000d9a                  ___delay32
+                  0x0002fc                  _cobs_encode
+                  0x0003f8                  _cobs_decode
+                  0x000506                  _sendData
+                  0x0005fa                  _receiveData
+                  0x000680                  _ComController
+                  0x00068a                  _CRC8
+                  0x0006ee                  _UART_init
+                  0x00072a                  _UART_buff_init
+                  0x00073a                  _UART_buff_put
+                  0x000798                  _UART_buff_get
+                  0x0007d0                  _UART_buff_flush
+                  0x0007fa                  _UART_buff_size
+                  0x000806                  _UART_buff_modulo_inc
+                  0x000822                  _UART_buff_peek
+                  0x000832                  _Receive_peek
+                  0x00083c                  _Receive_available
+                  0x000846                  _Receive_get
+                  0x000850                  _Send_put
+                  0x000866                  __U1RXInterrupt
+                  0x00089e                  __U1TXInterrupt
+                  0x0008ca                  _Setup
+                  0x000932                  _timerOne
+                  0x000950                  _timerTwo
+                  0x000970                  _PinSetMode
+                  0x0009da                  _Delay
+                  0x0009f8                  _initADC
+                  0x000a62                  __ADC1Interrupt
+                  0x000ab0                  _FilterADC
+                  0x000aee                  _GetADC
+                  0x000b1c                  _GetDataDict
+                  0x000bae                  _SetDataDict
+                  0x000c40                  _updateComms
+                  0x000cf6                  _UART1_init
+                  0x000d2a                  _main
+                  0x000d46                  _ledDebug
+                  0x000d56                  ___delay32
                   0xf80000                  __FBS.sec
                   0xf80002                  __FSS.sec
                   0xf80004                  __FGS.sec
 
 External Symbols in Program Memory (by name):
 
-                  0x0004ac                  _CRC8
-                  0x00045e                  _ComController
-                  0x000a06                  _Delay
-                  0x000adc                  _FilterADC
-                  0x000b1a                  _GetADC
-                  0x000b48                  _GetDataDict
-                  0x00099c                  _PinSetMode
-                  0x000868                  _Receive_available
-                  0x000872                  _Receive_get
-                  0x00085e                  _Receive_peek
-                  0x00087c                  _Send_put
-                  0x000bda                  _SetDataDict
-                  0x0008f6                  _Setup
-                  0x000d66                  _UART1_init
-                  0x0007fc                  _UART_buff_flush
-                  0x0007c4                  _UART_buff_get
-                  0x000756                  _UART_buff_init
-                  0x000832                  _UART_buff_modulo_inc
-                  0x00084e                  _UART_buff_peek
-                  0x000766                  _UART_buff_put
-                  0x000826                  _UART_buff_size
-                  0x00071a                  _UART_init
-                  0x000a8e                  __ADC1Interrupt
+                  0x00068a                  _CRC8
+                  0x000680                  _ComController
+                  0x0009da                  _Delay
+                  0x000ab0                  _FilterADC
+                  0x000aee                  _GetADC
+                  0x000b1c                  _GetDataDict
+                  0x000970                  _PinSetMode
+                  0x00083c                  _Receive_available
+                  0x000846                  _Receive_get
+                  0x000832                  _Receive_peek
+                  0x000850                  _Send_put
+                  0x000bae                  _SetDataDict
+                  0x0008ca                  _Setup
+                  0x000cf6                  _UART1_init
+                  0x0007d0                  _UART_buff_flush
+                  0x000798                  _UART_buff_get
+                  0x00072a                  _UART_buff_init
+                  0x000806                  _UART_buff_modulo_inc
+                  0x000822                  _UART_buff_peek
+                  0x00073a                  _UART_buff_put
+                  0x0007fa                  _UART_buff_size
+                  0x0006ee                  _UART_init
+                  0x000a62                  __ADC1Interrupt
                   0x0002e8                  __DefaultInterrupt
                   0xf80000                  __FBS.sec
                   0xf80004                  __FGS.sec
                   0xf80002                  __FSS.sec
                   0x0002c8                  __T1Interrupt
                   0x0002e0                  __T2Interrupt
-                  0x000892                  __U1RXInterrupt
-                  0x0008ca                  __U1TXInterrupt
-                  0x000d9a                  ___delay32
+                  0x000866                  __U1RXInterrupt
+                  0x00089e                  __U1TXInterrupt
+                  0x000d56                  ___delay32
                   0x000252                  __data_init
                   0x000252                  __data_init_standard
                   0x00023c                  __psv_init
                   0x000200                  __resetPRI
-                  0x00060c                  _cobs_decode
-                  0x000510                  _cobs_encode
-                  0x000a24                  _initADC
-                  0x000d3e                  _ledDebug
-                  0x000d22                  _main
+                  0x0003f8                  _cobs_decode
+                  0x0002fc                  _cobs_encode
+                  0x0009f8                  _initADC
+                  0x000d46                  _ledDebug
+                  0x000d2a                  _main
                   0x0002ee                  _memset
-                  0x0003f0                  _receiveData
-                  0x0002fc                  _sendData
-                  0x00095e                  _timerOne
-                  0x00097c                  _timerTwo
-                  0x000c6c                  _updateComms
+                  0x0005fa                  _receiveData
+                  0x000506                  _sendData
+                  0x000932                  _timerOne
+                  0x000950                  _timerTwo
+                  0x000c40                  _updateComms
 
 Memory Configuration
 
@@ -445,7 +445,7 @@ __FUID3
 .comment
  *(.comment)
 
-.debug_info       0x000000       0x4fb4
+.debug_info       0x000000       0x5003
  *(.debug_info)
  .debug_info      0x000000        0x2c8 build/default/production/interrupt_handler.o
  .debug_info      0x0002c8        0x461 build/default/production/main.o
@@ -455,9 +455,9 @@ __FUID3
  .debug_info      0x002e05        0xb36 build/default/production/UART.o
  .debug_info      0x00393b        0x738 build/default/production/UART1.o
  .debug_info      0x004073        0x15c build/default/production/Communications.o
- .debug_info      0x0041cf        0x71c build/default/production/CarCom.o
- .debug_info      0x0048eb        0x4ae build/default/production/COBS.o
- .debug_info      0x004d99        0x21b build/default/production/CarDataDictionary.o
+ .debug_info      0x0041cf        0x76b build/default/production/CarCom.o
+ .debug_info      0x00493a        0x4ae build/default/production/COBS.o
+ .debug_info      0x004de8        0x21b build/default/production/CarDataDictionary.o
  *(.gnu.linkonce.wi.*)
 
 .debug_abbrev     0x000000        0xa3a
@@ -474,19 +474,19 @@ __FUID3
  .debug_abbrev    0x0008be         0xda build/default/production/COBS.o
  .debug_abbrev    0x000998         0xa2 build/default/production/CarDataDictionary.o
 
-.debug_line       0x000000        0x80f
+.debug_line       0x000000        0x808
  *(.debug_line)
  .debug_line      0x000000         0xbc build/default/production/interrupt_handler.o
- .debug_line      0x0000bc         0xb1 build/default/production/main.o
- .debug_line      0x00016d         0xd9 build/default/production/Functions.o
- .debug_line      0x000246         0x1a build/default/production/ConfigBit.o
- .debug_line      0x000260         0xd1 build/default/production/ADC.o
- .debug_line      0x000331         0xe6 build/default/production/UART.o
- .debug_line      0x000417        0x105 build/default/production/UART1.o
- .debug_line      0x00051c         0x4f build/default/production/Communications.o
- .debug_line      0x00056b        0x140 build/default/production/CarCom.o
- .debug_line      0x0006ab         0xfa build/default/production/COBS.o
- .debug_line      0x0007a5         0x6a build/default/production/CarDataDictionary.o
+ .debug_line      0x0000bc         0xaf build/default/production/main.o
+ .debug_line      0x00016b         0xd9 build/default/production/Functions.o
+ .debug_line      0x000244         0x1a build/default/production/ConfigBit.o
+ .debug_line      0x00025e         0xd1 build/default/production/ADC.o
+ .debug_line      0x00032f         0xe6 build/default/production/UART.o
+ .debug_line      0x000415        0x105 build/default/production/UART1.o
+ .debug_line      0x00051a         0x4f build/default/production/Communications.o
+ .debug_line      0x000569        0x13b build/default/production/CarCom.o
+ .debug_line      0x0006a4         0xfa build/default/production/COBS.o
+ .debug_line      0x00079e         0x6a build/default/production/CarDataDictionary.o
 
 .debug_frame      0x000000        0x536
  *(.debug_frame)
@@ -1724,57 +1724,57 @@ __c30_signature
  .ivt._U1TXInterrupt
                   0x00002c          0x2 build/default/production/UART.o
 
-.text             0x0002fc        0x9ce
- .text            0x0002fc        0x214 build/default/production/CarCom.o
-                  0x0002fc                  _sendData
-                  0x0003f0                  _receiveData
-                  0x00045e                  _ComController
-                  0x0004ac                  _CRC8
- .text            0x000510        0x20a build/default/production/COBS.o
-                  0x000510                  _cobs_encode
-                  0x00060c                  _cobs_decode
- .text            0x00071a        0x1dc build/default/production/UART.o
-                  0x00071a                  _UART_init
-                  0x000756                  _UART_buff_init
-                  0x000766                  _UART_buff_put
-                  0x0007c4                  _UART_buff_get
-                  0x0007fc                  _UART_buff_flush
-                  0x000826                  _UART_buff_size
-                  0x000832                  _UART_buff_modulo_inc
-                  0x00084e                  _UART_buff_peek
-                  0x00085e                  _Receive_peek
-                  0x000868                  _Receive_available
-                  0x000872                  _Receive_get
-                  0x00087c                  _Send_put
-                  0x000892                  __U1RXInterrupt
-                  0x0008ca                  __U1TXInterrupt
- .text            0x0008f6        0x12e build/default/production/Functions.o
-                  0x0008f6                  _Setup
-                  0x00095e                  _timerOne
-                  0x00097c                  _timerTwo
-                  0x00099c                  _PinSetMode
-                  0x000a06                  _Delay
- .text            0x000a24        0x124 build/default/production/ADC.o
-                  0x000a24                  _initADC
-                  0x000a8e                  __ADC1Interrupt
-                  0x000adc                  _FilterADC
-                  0x000b1a                  _GetADC
- .text            0x000b48        0x124 build/default/production/CarDataDictionary.o
-                  0x000b48                  _GetDataDict
-                  0x000bda                  _SetDataDict
- .text            0x000c6c         0x5e build/default/production/Communications.o
-                  0x000c6c                  _updateComms
+.text             0x0002fc        0x9a2
+ .text            0x0002fc        0x20a build/default/production/COBS.o
+                  0x0002fc                  _cobs_encode
+                  0x0003f8                  _cobs_decode
+ .text            0x000506        0x1e8 build/default/production/CarCom.o
+                  0x000506                  _sendData
+                  0x0005fa                  _receiveData
+                  0x000680                  _ComController
+                  0x00068a                  _CRC8
+ .text            0x0006ee        0x1dc build/default/production/UART.o
+                  0x0006ee                  _UART_init
+                  0x00072a                  _UART_buff_init
+                  0x00073a                  _UART_buff_put
+                  0x000798                  _UART_buff_get
+                  0x0007d0                  _UART_buff_flush
+                  0x0007fa                  _UART_buff_size
+                  0x000806                  _UART_buff_modulo_inc
+                  0x000822                  _UART_buff_peek
+                  0x000832                  _Receive_peek
+                  0x00083c                  _Receive_available
+                  0x000846                  _Receive_get
+                  0x000850                  _Send_put
+                  0x000866                  __U1RXInterrupt
+                  0x00089e                  __U1TXInterrupt
+ .text            0x0008ca        0x12e build/default/production/Functions.o
+                  0x0008ca                  _Setup
+                  0x000932                  _timerOne
+                  0x000950                  _timerTwo
+                  0x000970                  _PinSetMode
+                  0x0009da                  _Delay
+ .text            0x0009f8        0x124 build/default/production/ADC.o
+                  0x0009f8                  _initADC
+                  0x000a62                  __ADC1Interrupt
+                  0x000ab0                  _FilterADC
+                  0x000aee                  _GetADC
+ .text            0x000b1c        0x124 build/default/production/CarDataDictionary.o
+                  0x000b1c                  _GetDataDict
+                  0x000bae                  _SetDataDict
+ .text            0x000c40         0x5e build/default/production/Communications.o
+                  0x000c40                  _updateComms
 
-.dinit            0x000cca         0x58
- .dinit           0x000cca         0x58 data_init
+.dinit            0x000c9e         0x58
+ .dinit           0x000c9e         0x58 data_init
 
-.text             0x000d22         0x78
- .text            0x000d22         0x44 build/default/production/main.o
-                  0x000d22                  _main
-                  0x000d3e                  _ledDebug
- .text            0x000d66         0x34 build/default/production/UART1.o
-                  0x000d66                  _UART1_init
+.text             0x000cf6         0x60
+ .text            0x000cf6         0x34 build/default/production/UART1.o
+                  0x000cf6                  _UART1_init
+ .text            0x000d2a         0x2c build/default/production/main.o
+                  0x000d2a                  _main
+                  0x000d46                  _ledDebug
 
-.init.delay32     0x000d9a         0x1c
- .init.delay32    0x000d9a         0x1c c:/program files (x86)/microchip/xc16/v1.31/bin/bin/../../lib\libpic30-elf.a(delay32.eo)
-                  0x000d9a                  ___delay32
+.init.delay32     0x000d56         0x1c
+ .init.delay32    0x000d56         0x1c c:/program files (x86)/microchip/xc16/v1.31/bin/bin/../../lib\libpic30-elf.a(delay32.eo)
+                  0x000d56                  ___delay32

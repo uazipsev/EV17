@@ -157,11 +157,11 @@ bool m = 0;
  *******************************************************************/
 void ledDebug(){
     if (GetTime(TIME) > 250) {
-            //INDICATOR ^= 1;
+            INDICATOR ^= 1;
             // HORN_EN ^=1;
             // BRAKELT ^= 1;
             //SS_RELAY ^= 1;
-            Run();
+            //Run();
             SetTime(TIME);            
         }
     }
