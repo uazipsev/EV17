@@ -16,6 +16,7 @@
 #include "DriverConfigs.h"
 #include "ThrottleBrakeControl.h"
 #include "Communications.h"
+#include "debug.h"
 
 #include "SlaveAddressing.h"
 
@@ -76,7 +77,7 @@ void Setup(void) {
     //This sets up all non constants from external EEPROM 
     SetUpDataSets();
     //Set up IO from DDS
-    SetUpDDSIO();
+    //SetUpDDSIO();
     //This controls the timing system to control communication rates  
     initTimerOne();
     

@@ -15,38 +15,12 @@
 #include "PinDef.h"
 #include "Functions.h"
 
-
-#define polynomial 0x8C  //polynomial used to calculate crc
-
-unsigned char CRC8(const unsigned char * data, unsigned char len);
-
-//CRC Calculator
-
-unsigned char CRC8(const unsigned char * data, unsigned char len) {
-    unsigned char crc = 0x00;
-    while (len--) {
-        unsigned char extract = *data++;
-        unsigned char tempI;
-        for (tempI = 8; tempI; tempI--) {
-            unsigned char sum = (crc ^ extract) & 0x01;
-            crc >>= 1;
-            if (sum) {
-                crc ^= polynomial;
-            }
-            extract >>= 1;
-        }
-    }
-    return crc;
-}
-
-#define NUMOFEXTBYTES 4
-
-COBS_ENCODE_DST_BUF_LEN_MAX = 30;
-COBS_DECODE_DST_BUF_LEN_MAX = 30; 
+//COBS_ENCODE_DST_BUF_LEN_MAX = 30;
+//COBS_DECODE_DST_BUF_LEN_MAX = 30; 
 
 //Sends out send buffer with a 2 start bytes, where the packet is going, where it came from, the size of the data packet, the data and the crc.
 
-void sendData(unsigned char whereToSend, unsigned char ComandByte, unsigned char DataTable, unsigned char DataTableIndex, unsigned char *DTS, unsigned int lenth) {
+void sendData_PDU_MCS_BMM(unsigned char whereToSend, unsigned char ComandByte, unsigned char DataTable, unsigned char DataTableIndex, unsigned char *DTS, unsigned int lenth) {
     unsigned char SendArray[30];
     unsigned char COBSArray[30];
     
@@ -66,12 +40,12 @@ void sendData(unsigned char whereToSend, unsigned char ComandByte, unsigned char
     unsigned char i = 0;
     int count = NUMOFEXTBYTES;
     
-    for(i;i<lenth;i++){
+    for(i=0;i<lenth;i++){
         SendArray[i+NUMOFEXTBYTES] = DTS[i];
         count++;
     }
     
-    unsigned char CS = CRC8(SendArray, count);
+    unsigned char CS = CRC8_PDU_MCS_BMM(SendArray, count);
     SendArray[count] = CS;
     count++;
     
@@ -90,13 +64,13 @@ void sendData(unsigned char whereToSend, unsigned char ComandByte, unsigned char
  char ReciveArray[30];
  char ProcessArray[30];
 
-bool receiveData() {
-    if(Receive_available1()>5){
-        if(Receive_get1() == ECU_ADDRESS){
+bool receiveData_PDU_MCS_BMM() {
+    if(Receive_available()>5){
+        if(Receive_get() == ECU_ADDRESS){
             int i = 0;
             unsigned char Data = 0;
             do{
-                Data = Receive_get1();
+                Data = Receive_get();
                 ReciveArray[i] = Data;
                 DelayUS(200);;
                 i++;
@@ -108,10 +82,10 @@ bool receiveData() {
 
             result = cobs_decode(ProcessArray, sizeof(ProcessArray), ReciveArray, i);
             
-            unsigned char CS = CRC8(ProcessArray, result.out_len-2);
+            unsigned char CS = CRC8_PDU_MCS_BMM(ProcessArray, result.out_len-2);
             
             if(ProcessArray[result.out_len-2] == CS){
-                ComController(ProcessArray,result.out_len);
+                ComController_PDU_MCS_BMM(ProcessArray,result.out_len);
                 return true;
             }
         }
@@ -126,10 +100,7 @@ bool receiveData() {
     return false;
 }
 
-#define READ_TABLE 1
-#define WRITE_TABLE 2
-
-void ComController(unsigned char *DTI, unsigned int lenth){
+void ComController_PDU_MCS_BMM(unsigned char *DTI, unsigned int lenth){
     if(DTI[1] == READ_TABLE){
         unsigned char DataToSend[4];
         //GetDataDict(DTI[2], DTI[3], DataToSend, DTI[4]);
@@ -139,4 +110,21 @@ void ComController(unsigned char *DTI, unsigned int lenth){
         //Delay(3);
         //RS485_1_Direction = LISTEN;  ///RS485 set to listen
     }
+}
+
+unsigned char CRC8_PDU_MCS_BMM(const unsigned char * data, unsigned char len) {
+    unsigned char crc = 0x00;
+    while (len--) {
+        unsigned char extract = *data++;
+        unsigned char tempI;
+        for (tempI = 8; tempI; tempI--) {
+            unsigned char sum = (crc ^ extract) & 0x01;
+            crc >>= 1;
+            if (sum) {
+                crc ^= polynomial;
+            }
+            extract >>= 1;
+        }
+    }
+    return crc;
 }

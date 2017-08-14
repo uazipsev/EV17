@@ -6834,8 +6834,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;PDU.h: 37: bool CoolingCheck();
 [; ;PDU.h: 38: void SavePDUFault(char loc, bool data);
 [; ;PDU.h: 39: bool GetPDUFault(char loc);
-[; ;PDU.h: 40: unsigned int FaultsCollector();
 [; ;Communications.h: 11: void updateComms();
+[; ;Communications.h: 12: void processPowerRequest(unsigned char powerSet);
+[; ;Communications.h: 13: unsigned char FaultsCollector(void);
 [; ;CoolingControl.h: 18: void CoolingStart(void);
 [; ;CoolingControl.h: 19: void CoolingStop(void);
 [; ;DigiPot.h: 11: void PotSetpoint(int new_point);
@@ -6924,32 +6925,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 "73
 }
 [e :U 857 ]
-[; ;main.c: 73: }
-[; ;main.c: 74: i++;
 "74
-[e ++ _i -> 1 `i ]
-[; ;main.c: 75: PWM4_LoadDutyValue(i);
-"75
-[e ( _PWM4_LoadDutyValue (1 -> _i `ui ]
-[; ;main.c: 76: if(i>500){
-"76
-[e $ ! > _i -> 500 `i 858  ]
-{
-[; ;main.c: 77: i = 0;
-"77
-[e = _i -> 0 `i ]
-"79
-}
-[e :U 858 ]
-"80
 }
 [e :U 853 ]
 "64
 [e $U 854  ]
 [e :U 855 ]
-[; ;main.c: 79: }
-[; ;main.c: 80: }
-[; ;main.c: 81: }
-"81
+[; ;main.c: 73: }
+[; ;main.c: 74: }
+[; ;main.c: 75: }
+"75
 [e :UE 852 ]
 }

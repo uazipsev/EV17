@@ -92,6 +92,9 @@ bool GetFaultBool(char val){
         case AUX_FAULT:
             return ((FaultsLow >> (AUX_FAULT-9))  & 0x01);
             break;
+        default:
+            return -1;
+            break;
     }
 }
 

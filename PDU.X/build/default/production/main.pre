@@ -8859,10 +8859,11 @@ void Update(void);
 bool CoolingCheck();
 void SavePDUFault(char loc, bool data);
 bool GetPDUFault(char loc);
-unsigned int FaultsCollector();
 
 # 11 "Communications.h"
 void updateComms();
+void processPowerRequest(unsigned char powerSet);
+unsigned char FaultsCollector(void);
 
 # 18 "CoolingControl.h"
 void CoolingStart(void);
@@ -8910,12 +8911,6 @@ CoolingStart();
 if(!CoolingCheck() && UP == 1){
 UP = 0;
 CoolingStop();
-}
-i++;
-PWM4_LoadDutyValue(i);
-if(i>500){
-i = 0;
-
 }
 }
 }

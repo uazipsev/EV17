@@ -30,7 +30,6 @@ void Setup(void) {
     timerOne();
     initADC();
     //timerTwo();
-    begin(receiveArray, sizeof (receiveArray), SAS_ADDRESS, false, Send_put, Receive_get, Receive_available, Receive_peek);
     UART_init();
     UART1_init();
     //begin(receiveArray1, sizeof (receiveArray1), SAS_ADDRESS, false, Send_put1, Receive_get1, Receive_available1, Receive_peek1);

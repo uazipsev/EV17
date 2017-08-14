@@ -3,4 +3,5 @@ main.c  \
 PinDef.h  \
 main.h  \
 ADDRESSING.h  \
- ADC.h 
+ ADC.h  \
+Communications.h 

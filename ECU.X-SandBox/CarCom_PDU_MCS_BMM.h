@@ -8,9 +8,10 @@
 #ifndef FASTTRANSFER_H
 #define	FASTTRANSFER_H
 
-void sendData(unsigned char whereToSend, unsigned char ComandByte, unsigned char DataTable, unsigned char DataTableIndex, unsigned char *DTS, unsigned int lenth);
-bool receiveData();
-void ComController(unsigned char *DTI, unsigned int lenth);
+unsigned char CRC8_PDU_MCS_BMM(const unsigned char * data, unsigned char len);
+void sendData_PDU_MCS_BMM(unsigned char whereToSend, unsigned char ComandByte, unsigned char DataTable, unsigned char DataTableIndex, unsigned char *DTS, unsigned int lenth);
+bool receiveData_PDU_MCS_BMM();
+void ComController_PDU_MCS_BMM(unsigned char *DTI, unsigned int lenth);
 
 #endif	/* FASTTRANSFER_H */
 

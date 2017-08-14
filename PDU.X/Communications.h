@@ -9,6 +9,8 @@
 #define	COMMUNICATIONS_H
 
 void updateComms();
+void processPowerRequest(unsigned char powerSet);
+unsigned char FaultsCollector(void);
 
 #endif	/* COMMUNICATIONS_H */
 

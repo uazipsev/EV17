@@ -20,10 +20,6 @@
 
 #define WEAK_PULL_UP 1
 
-extern bool receiveData();
-extern void sendData(unsigned char whereToSend);
-extern void ToSend(const unsigned char where, const unsigned int what);
-
 #define LED LATBbits.LATB9
 #define LED_Tris TRISBbits.TRISB9
 #define LED_Port PORTBbits.RB9

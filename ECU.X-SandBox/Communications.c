@@ -87,7 +87,7 @@ void updateComms() {
     //checkCommDirection();
     //checkCommDirection1();
     //RS485_Direction1(TALK);
-    receiveData1();
+    receiveData_SAS_DDS_SS();
 }
 
 void Run(){
@@ -95,13 +95,13 @@ void Run(){
             Data[0] = 0x11;
             Data[1] = 0x22;
             RS485_Direction1(TALK);         
-            sendData1(SS_ADDRESS, READ_TABLE, TABLE_ONE_SS, SS_FAULT_STATUS, Data, SS_FAULT_STATUS_LENTH);
+            sendData_SAS_DDS_SS(SS_ADDRESS, READ_TABLE, TABLE_ONE_SS, SS_FAULT_STATUS, Data, SS_FAULT_STATUS_LENTH);
             Delay(3);
             RS485_Direction1(LISTEN);
             Delay(1);
             Data[0] = constructPowerSet();
             RS485_Direction2(TALK);         
-            sendData(PDU_ADDRESS, WRITE_TABLE, TABLE_FOUR_PDU, PDU_POWER_CONTROL, Data, 1);
+            sendData_PDU_MCS_BMM(PDU_ADDRESS, WRITE_TABLE, TABLE_FOUR_PDU, PDU_POWER_CONTROL, Data, 1);
             Delay(3);
             RS485_Direction2(LISTEN);
 }

@@ -15,15 +15,13 @@
 
 #include "COBS.h"
 
-unsigned char CRC81(const unsigned char * data, unsigned char len);
 
-
-void sendData1(unsigned char whereToSend, unsigned char ComandByte, unsigned char DataTable, unsigned char DataTableIndex, unsigned char *DTS, unsigned int lenth) {
+void sendData_SAS_DDS_SS(unsigned char whereToSend, unsigned char ComandByte, unsigned char DataTable, unsigned char DataTableIndex, unsigned char *DTS, unsigned int lenth) {
     unsigned char SendArray[30];
     unsigned char COBSArray[30];
     
     int j = 0;
-    for(j;j<sizeof(SendArray);j++){
+    for(j=0;j<sizeof(SendArray);j++){
         SendArray[j] = 0;
     }
     
@@ -38,12 +36,12 @@ void sendData1(unsigned char whereToSend, unsigned char ComandByte, unsigned cha
     unsigned char i = 0;
     int count = NUMOFEXTBYTES;
 
-    for(i;i<lenth;i++){
+    for(i=0;i<lenth;i++){
         SendArray[i+NUMOFEXTBYTES] = DTS[i];
         count++;
     }
     
-    unsigned char CS = CRC8(SendArray, count);
+    unsigned char CS = CRC8_SAS_DDS_SS(SendArray, count);
     SendArray[count] = CS;
     count++;
     result = cobs_encode(COBSArray, sizeof(COBSArray), SendArray, count);
@@ -62,7 +60,7 @@ void sendData1(unsigned char whereToSend, unsigned char ComandByte, unsigned cha
  unsigned char ReciveArray1[30];
  unsigned char ProcessArray1[30];
 
-bool receiveData1() {
+bool receiveData_SAS_DDS_SS() {
     if(Receive_available1()>5){
         if(Receive_get1() == ECU_ADDRESS){
             int i = 0;
@@ -83,11 +81,11 @@ bool receiveData1() {
 
             result = cobs_decode(ProcessArray1, sizeof(ProcessArray1), ReciveArray1, i);
             
-            unsigned char CS = CRC8(ProcessArray1, result.out_len-2);
+            unsigned char CS = CRC8_SAS_DDS_SS(ProcessArray1, result.out_len-2);
             
             if(ProcessArray1[result.out_len-2] == CS){
                 INDICATOR ^= 1;
-                ComController1(ProcessArray1,result.out_len);
+                ComController_SAS_DDS_SS(ProcessArray1,result.out_len);
                 return true;
             }
         }
@@ -102,9 +100,7 @@ bool receiveData1() {
     return false;
 }
 
-#define READ_TABLE 1
-
-void ComController1(unsigned char *DTI, unsigned int lenth){
+void ComController_SAS_DDS_SS(unsigned char *DTI, unsigned int lenth){
     if(DTI[1] == READ_TABLE){
         //unsigned char DataToSend[4];
         //GetDataDict(DTI[2], DTI[3], DataToSend, DTI[4]);
@@ -116,7 +112,7 @@ void ComController1(unsigned char *DTI, unsigned int lenth){
     }
 }
 
-unsigned char CRC81(const unsigned char * data, unsigned char len) {
+unsigned char CRC8_SAS_DDS_SS(const unsigned char * data, unsigned char len) {
     unsigned char crc = 0x00;
     while (len--) {
         unsigned char extract = *data++;

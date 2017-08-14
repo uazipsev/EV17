@@ -77,7 +77,7 @@
 #define TABLE_FIVE_BMM 5
 #define TABLE_SIX_MCU 5
 
-#define PDU_POWER_CONTROL 0
+#define PDU_POWER_CONTROL 1
 #define PDU_POWER_STATUS 2
 
 #endif	/* ADDRESSING_H */

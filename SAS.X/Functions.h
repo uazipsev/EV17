@@ -26,27 +26,6 @@ void Setup(void);
 void PinSetMode(void);
 void timerOne(void);
 void timerTwo(void);
-extern void PWM_Init(void);
-extern void initADC(void);
-extern void UART_init(void);
-extern void UART1_init(void);
-
-extern volatile int receiveArray[20];
-extern volatile int receiveArray1[20];
-
-extern void begin(volatile int * ptr, unsigned char maxSize, unsigned char givenAddress, bool error, void (*stufftosend)(unsigned char), unsigned char (*stufftoreceive)(void), int (*stuffavailable)(void), unsigned char (*stuffpeek)(void));
-
-extern unsigned char Receive_peek(void);
-extern int Receive_available(void);
-extern unsigned char Receive_get(void);
-extern void Send_put(unsigned char _data);
-
-extern unsigned char Receive_peek1(void);
-extern int Receive_available1(void);
-extern unsigned char Receive_get1(void);
-extern void Send_put1(unsigned char _data);
-
-
 
 #endif	/* FUNCTIONS_H */
 

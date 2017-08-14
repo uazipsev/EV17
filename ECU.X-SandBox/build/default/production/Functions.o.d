@@ -8,4 +8,5 @@ Timers.h  \
 DriverConfigs.h  \
 ThrottleBrakeControl.h  \
  Communications.h  \
+debug.h  \
 SlaveAddressing.h 

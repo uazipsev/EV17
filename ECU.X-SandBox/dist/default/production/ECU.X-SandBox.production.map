@@ -181,12 +181,12 @@ section                    address   length (PC units)   length (bytes) (dec)
 -------                    -------   -----------------   --------------------
 .text                        0x200              0x10f8          0x1974  (6516)
 .const                      0x12f8               0xc8a          0x12cf  (4815)
-.text                       0x1f82              0x3398          0x4d64  (19812)
-.dinit                      0x531a               0x172           0x22b  (555)
-.text                       0x548c               0x726           0xab9  (2745)
-.init.delay32               0x5bb2                0x1c            0x2a  (42)
+.text                       0x1f82              0x33d8          0x4dc4  (19908)
+.dinit                      0x535a               0x168           0x21c  (540)
+.text                       0x54c2               0x728           0xabc  (2748)
+.init.delay32               0x5bea                0x1c            0x2a  (42)
 
-                 Total program memory used (bytes):         0x86b5  (34485) 13%
+                 Total program memory used (bytes):         0x8709  (34569) 13%
 
 
 Ivt Memory  [Origin = 0x4, Length = 0x1fc]
@@ -216,21 +216,21 @@ section                    address      alignment gaps    total length  (dec)
 .bss                        0x19c8                   0            0x28  (40)
 .data                       0x19f0                   0            0x26  (38)
 .bss                        0x1a16                   0            0xe0  (224)
-.data                       0x1af6                   0            0x18  (24)
-.bss                        0x1b0e                   0             0x4  (4)
-.heap                       0x1b12                   0           0x100  (256)
+.data                       0x1af6                   0            0x14  (20)
+.bss                        0x1b0a                   0             0x4  (4)
+.heap                       0x1b0e                   0           0x100  (256)
 
-                 Total data memory used (bytes):          0xc12  (3090) 9%
+                 Total data memory used (bytes):          0xc0e  (3086) 9%
 
 
 Dynamic Memory Usage
 
 region                     address                      maximum length  (dec)
 ------                     -------                      ---------------------
-heap                        0x1b12                               0x100  (256)
-stack                       0x1c12                              0x63ee  (25582)
+heap                        0x1b0e                               0x100  (256)
+stack                       0x1c0e                              0x63f2  (25586)
 
-                 Maximum dynamic memory (bytes):         0x64ee  (25838)
+                 Maximum dynamic memory (bytes):         0x64f2  (25842)
 
 
 External Symbols in Data Memory (by address):
@@ -385,18 +385,16 @@ External Symbols in Data Memory (by address):
                     0x1af0                  __outdone
                     0x1af1                  __sibuf
                     0x1af3                  __sobuf
-                    0x1af6                  _COBS_ENCODE_DST_BUF_LEN_MAX
-                    0x1af8                  _COBS_DECODE_DST_BUF_LEN_MAX
-                    0x1afa                  _readyToSendDDS
-                    0x1afc                  _readyToSendBMM
-                    0x1afe                  _readyToSendMCS
-                    0x1b00                  _readyToSendPDU
-                    0x1b02                  _readyToSendSAS
-                    0x1b06                  _Transmit_stall3
-                    0x1b08                  _Transmit_stall2
-                    0x1b0a                  _Transmit_stall1
-                    0x1b0c                  _Transmit_stall
-                    0x1b10                  ___curbrk
+                    0x1af6                  _readyToSendDDS
+                    0x1af8                  _readyToSendBMM
+                    0x1afa                  _readyToSendMCS
+                    0x1afc                  _readyToSendPDU
+                    0x1afe                  _readyToSendSAS
+                    0x1b02                  _Transmit_stall3
+                    0x1b04                  _Transmit_stall2
+                    0x1b06                  _Transmit_stall1
+                    0x1b08                  _Transmit_stall
+                    0x1b0c                  ___curbrk
 
 External Symbols in Data Memory (by name):
 
@@ -411,8 +409,6 @@ External Symbols in Data Memory (by name):
                     0x1a1a                  _BoardTimeOutCounterBus2
                     0x1a48                  _BootTimerTime
                     0x1aea                  _BrakeLightThreshold
-                    0x1af8                  _COBS_DECODE_DST_BUF_LEN_MAX
-                    0x1af6                  _COBS_ENCODE_DST_BUF_LEN_MAX
                     0x1978                  _CellMaxTemp
                     0x1972                  _CellMaxVolt
                     0x1976                  _CellMinTemp
@@ -489,10 +485,10 @@ External Symbols in Data Memory (by name):
                     0x1a38                  _TimeOut
                     0x1a3c                  _TimeOutActive
                     0x19ea                  _TimeOutMenu
-                    0x1b0c                  _Transmit_stall
-                    0x1b0a                  _Transmit_stall1
-                    0x1b08                  _Transmit_stall2
-                    0x1b06                  _Transmit_stall3
+                    0x1b08                  _Transmit_stall
+                    0x1b06                  _Transmit_stall1
+                    0x1b04                  _Transmit_stall2
+                    0x1b02                  _Transmit_stall3
                     0x1ab2                  _TripBrake
                     0x1ab0                  _TripThrottle
                     0x19c6                  _VerboseEn
@@ -501,7 +497,7 @@ External Symbols in Data Memory (by name):
                     0x1ab8                  ___allocs
                     0x1ac2                  ___alloct
                     0x1ac4                  ___allocx
-                    0x1b10                  ___curbrk
+                    0x1b0c                  ___curbrk
                     0x19f0                  __iob
                     0x1af0                  __outdone
                     0x1af1                  __sibuf
@@ -544,11 +540,11 @@ External Symbols in Data Memory (by name):
                     0x13fa                  _output_buffer3
                     0x1a76                  _powerSet
                     0x1aec                  _read
-                    0x1afc                  _readyToSendBMM
-                    0x1afa                  _readyToSendDDS
-                    0x1afe                  _readyToSendMCS
-                    0x1b00                  _readyToSendPDU
-                    0x1b02                  _readyToSendSAS
+                    0x1af8                  _readyToSendBMM
+                    0x1af6                  _readyToSendDDS
+                    0x1afa                  _readyToSendMCS
+                    0x1afc                  _readyToSendPDU
+                    0x1afe                  _readyToSendSAS
                     0x1a92                  _readyToSendSS
                     0x199c                  _state
                     0x1ac8                  _t1Raw
@@ -586,8 +582,8 @@ External Symbols in Program Memory (by address):
                   0x000520                  __fbopReturnNaN
                   0x000526                  __sscanf_cdnopuxX
                   0x0005a6                  __vfscanf_cdnopuxX
-                  0x000894                  __printf_cdnopsuxX
                   0x000894                  __printf_cdnopuxX
+                  0x000894                  __printf_cdnopsuxX
                   0x0008a2                  _atoi
                   0x0008e0                  _fgetc
                   0x000942                  __filbuf
@@ -601,13 +597,13 @@ External Symbols in Program Memory (by address):
                   0x000bce                  _strlen
                   0x000bda                  _ungetc
                   0x000c18                  _putchar
-                  0x000c2e                  __vfprintf_cdnopuxX
                   0x000c2e                  __vfprintf_cdnopsuxX
+                  0x000c2e                  __vfprintf_cdnopuxX
                   0x001174                  _fflush
                   0x0012cc                  ___udivsi3
-                  0x0012ec                  ___mulp32eds3
-                  0x0012ec                  ___mulsi3
                   0x0012ec                  ___mulp32peds3
+                  0x0012ec                  ___mulsi3
+                  0x0012ec                  ___mulp32eds3
                   0x001f82                  _write
                   0x001fac                  _handleDebugRequests
                   0x002b8e                  _MenuPrint
@@ -778,123 +774,123 @@ External Symbols in Program Memory (by address):
                   0x004bae                  _Send_put2
                   0x004bd4                  __U3RXInterrupt
                   0x004c04                  __U3TXInterrupt
-                  0x004c40                  _CRC8
-                  0x004ca4                  _sendData
-                  0x004d96                  _receiveData
-                  0x004e06                  _ComController
-                  0x004e10                  _initTimerOne
-                  0x004e2c                  __T1Interrupt
-                  0x004eb8                  _TimeOutSet
-                  0x004ece                  _GetTime
-                  0x004f46                  _SetTime
-                  0x004fc4                  __T2Interrupt
-                  0x004fcc                  _sendData1
-                  0x00508a                  _receiveData1
-                  0x00510e                  _ComController1
-                  0x005118                  _CRC81
-                  0x00517c                  _Setup
-                  0x00525e                  _Delay
-                  0x00527c                  _DelayUS
-                  0x00529a                  _PinSetMode
-                  0x0052c2                  _ledDebug
-                  0x0052d8                  _updateBrakeLight
-                  0x0052fa                  _ReadReset
-                  0x005306                  _GetResetValue
-                  0x00530e                  _SetBrakeLightValue
-                  0x00548c                  _requestSSData
-                  0x005494                  _receiveCommSS
-                  0x00549c                  _GetFaultChar
-                  0x0054b0                  _GetFaultBool
-                  0x0055aa                  _ClearSSTalk
-                  0x0055b6                  _InitI2C
-                  0x0055d4                  _StartI2C
-                  0x0055e6                  _RestartI2C
-                  0x0055f8                  _StopI2C
-                  0x005610                  _WriteI2C
-                  0x005626                  _IdleI2C
-                  0x005638                  _ACKStatus
-                  0x005646                  _NotAckI2C
-                  0x00565c                  _AckI2C
-                  0x005670                  _getsI2C
-                  0x0056b0                  _getI2C
-                  0x0056c8                  _i2c_wait
-                  0x0056de                  _requestPDUData
-                  0x0056e6                  _receiveCommPDU
-                  0x0056ee                  _powerChange
-                  0x00575a                  _constructPowerSet
-                  0x0057ba                  _ClearPDUTalk
-                  0x0057c6                  _CheckThrotleConsistency
-                  0x00582a                  _DeltaThrottle
-                  0x005842                  _GetThrottleBrakeValue
-                  0x005874                  _GetSASFalts
-                  0x00587e                  _SetThrotteMax
-                  0x00588a                  _requestDDSData
-                  0x005890                  _receiveCommDDS
-                  0x005898                  _seekButtonChange
-                  0x0058ec                  _changeLEDState
-                  0x005924                  _GetDDSerrorCounter
-                  0x00592c                  _ClearDDSTalk
-                  0x005938                  _SetUpDDSIO
-                  0x00593e                  _PWM_Init
-                  0x00596c                  _Timmer2Init
-                  0x00598a                  _PWMupdate
-                  0x0059b4                  _PERupdate
-                  0x0059c2                  _PWMoff
-                  0x0059ca                  _PWMon
-                  0x0059d2                  _requestBMMData
-                  0x0059da                  _receiveCommBMM
-                  0x0059e2                  _ClearBMMTalk
-                  0x0059ee                  _GetVolt
-                  0x005a14                  _GetTemp
-                  0x005a3a                  _GetCurrent
-                  0x005a62                  _updateStoppedState
-                  0x005a90                  _Display
-                  0x005ae6                  _requestSASData
-                  0x005aee                  _receiveCommSAS
-                  0x005af6                  _GetSASError
-                  0x005afe                  _ClearSASTalk
-                  0x005b0a                  _GetSASRaw
-                  0x005b3c                  _RTD
-                  0x005b4c                  _Boot
-                  0x005b5c                  _Fault
-                  0x005b6c                  _requestMCSData
-                  0x005b74                  _receiveCommMCS
-                  0x005b7c                  _GetMCSFault
-                  0x005b86                  _ClearMCSTalk
-                  0x005b92                  _main
-                  0x005bb2                  ___delay32
+                  0x004c40                  _sendData_SAS_DDS_SS
+                  0x004d3a                  _receiveData_SAS_DDS_SS
+                  0x004dc0                  _ComController_SAS_DDS_SS
+                  0x004dca                  _CRC8_SAS_DDS_SS
+                  0x004e2e                  _sendData_PDU_MCS_BMM
+                  0x004f24                  _receiveData_PDU_MCS_BMM
+                  0x004f94                  _ComController_PDU_MCS_BMM
+                  0x004f9e                  _CRC8_PDU_MCS_BMM
+                  0x005002                  _initTimerOne
+                  0x00501e                  __T1Interrupt
+                  0x0050aa                  _TimeOutSet
+                  0x0050c0                  _GetTime
+                  0x005138                  _SetTime
+                  0x0051b6                  __T2Interrupt
+                  0x0051be                  _Setup
+                  0x00529e                  _Delay
+                  0x0052bc                  _DelayUS
+                  0x0052da                  _PinSetMode
+                  0x005302                  _ledDebug
+                  0x005318                  _updateBrakeLight
+                  0x00533a                  _ReadReset
+                  0x005346                  _GetResetValue
+                  0x00534e                  _SetBrakeLightValue
+                  0x0054c2                  _requestSSData
+                  0x0054ca                  _receiveCommSS
+                  0x0054d2                  _GetFaultChar
+                  0x0054e6                  _GetFaultBool
+                  0x0055e0                  _ClearSSTalk
+                  0x0055ec                  _InitI2C
+                  0x00560a                  _StartI2C
+                  0x00561c                  _RestartI2C
+                  0x00562e                  _StopI2C
+                  0x005646                  _WriteI2C
+                  0x00565c                  _IdleI2C
+                  0x00566e                  _ACKStatus
+                  0x00567c                  _NotAckI2C
+                  0x005692                  _AckI2C
+                  0x0056a6                  _getsI2C
+                  0x0056e6                  _getI2C
+                  0x0056fe                  _i2c_wait
+                  0x005714                  _requestPDUData
+                  0x00571c                  _receiveCommPDU
+                  0x005724                  _powerChange
+                  0x005790                  _constructPowerSet
+                  0x0057f0                  _ClearPDUTalk
+                  0x0057fc                  _CheckThrotleConsistency
+                  0x005860                  _DeltaThrottle
+                  0x005878                  _GetThrottleBrakeValue
+                  0x0058aa                  _GetSASFalts
+                  0x0058b4                  _SetThrotteMax
+                  0x0058c0                  _requestDDSData
+                  0x0058c8                  _receiveCommDDS
+                  0x0058d0                  _seekButtonChange
+                  0x005924                  _changeLEDState
+                  0x00595c                  _GetDDSerrorCounter
+                  0x005964                  _ClearDDSTalk
+                  0x005970                  _SetUpDDSIO
+                  0x005976                  _PWM_Init
+                  0x0059a4                  _Timmer2Init
+                  0x0059c2                  _PWMupdate
+                  0x0059ec                  _PERupdate
+                  0x0059fa                  _PWMoff
+                  0x005a02                  _PWMon
+                  0x005a0a                  _requestBMMData
+                  0x005a12                  _receiveCommBMM
+                  0x005a1a                  _ClearBMMTalk
+                  0x005a26                  _GetVolt
+                  0x005a4c                  _GetTemp
+                  0x005a72                  _GetCurrent
+                  0x005a9a                  _updateStoppedState
+                  0x005ac8                  _Display
+                  0x005b1e                  _requestSASData
+                  0x005b26                  _receiveCommSAS
+                  0x005b2e                  _GetSASError
+                  0x005b36                  _ClearSASTalk
+                  0x005b42                  _GetSASRaw
+                  0x005b74                  _RTD
+                  0x005b84                  _Boot
+                  0x005b94                  _Fault
+                  0x005ba4                  _requestMCSData
+                  0x005bac                  _receiveCommMCS
+                  0x005bb4                  _GetMCSFault
+                  0x005bbe                  _ClearMCSTalk
+                  0x005bca                  _main
+                  0x005bea                  ___delay32
                   0x02abfa                  __FGS.sec
 
 External Symbols in Program Memory (by name):
 
-                  0x005638                  _ACKStatus
-                  0x00565c                  _AckI2C
+                  0x00566e                  _ACKStatus
+                  0x005692                  _AckI2C
                   0x002dbe                  _BatteryMenu
-                  0x005b4c                  _Boot
+                  0x005b84                  _Boot
                   0x002c76                  _BrakeMenu
-                  0x004c40                  _CRC8
-                  0x005118                  _CRC81
-                  0x0057c6                  _CheckThrotleConsistency
+                  0x004f9e                  _CRC8_PDU_MCS_BMM
+                  0x004dca                  _CRC8_SAS_DDS_SS
+                  0x0057fc                  _CheckThrotleConsistency
                   0x004642                  _Clear
-                  0x0059e2                  _ClearBMMTalk
+                  0x005a1a                  _ClearBMMTalk
                   0x004436                  _ClearBuffer
-                  0x00592c                  _ClearDDSTalk
-                  0x005b86                  _ClearMCSTalk
-                  0x0057ba                  _ClearPDUTalk
-                  0x005afe                  _ClearSASTalk
-                  0x0055aa                  _ClearSSTalk
+                  0x005964                  _ClearDDSTalk
+                  0x005bbe                  _ClearMCSTalk
+                  0x0057f0                  _ClearPDUTalk
+                  0x005b36                  _ClearSASTalk
+                  0x0055e0                  _ClearSSTalk
                   0x003000                  _ClearScreen
                   0x0041e2                  _ComCheck
-                  0x004e06                  _ComController
-                  0x00510e                  _ComController1
+                  0x004f94                  _ComController_PDU_MCS_BMM
+                  0x004dc0                  _ComController_SAS_DDS_SS
                   0x002e16                  _ComMenu
                   0x003f86                  _ComStart
                   0x003cc4                  _CurrentDriverName
                   0x002f58                  _DebugMenu
-                  0x00525e                  _Delay
-                  0x00527c                  _DelayUS
-                  0x00582a                  _DeltaThrottle
-                  0x005a90                  _Display
+                  0x00529e                  _Delay
+                  0x0052bc                  _DelayUS
+                  0x005860                  _DeltaThrottle
+                  0x005ac8                  _Display
                   0x003d6c                  _DriverActive
                   0x003cba                  _DriverCount
                   0x003e26                  _DriverDebugEn
@@ -909,10 +905,10 @@ External Symbols in Program Memory (by name):
                   0x003df6                  _DriverRamp
                   0x003e1a                  _DriverRegenInput
                   0x003016                  _EEpromInit
-                  0x005b5c                  _Fault
+                  0x005b94                  _Fault
                   0x003ed2                  _GetCarLock
-                  0x005a3a                  _GetCurrent
-                  0x005924                  _GetDDSerrorCounter
+                  0x005a72                  _GetCurrent
+                  0x00595c                  _GetDDSerrorCounter
                   0x0038ec                  _GetDataDict
                   0x003db4                  _GetDriverDebugEn
                   0x003da0                  _GetDriverFW_RW_EN
@@ -922,22 +918,22 @@ External Symbols in Program Memory (by name):
                   0x003d76                  _GetDriverMaxThrottle
                   0x003d8e                  _GetDriverRamp
                   0x003daa                  _GetDriverRegenInput
-                  0x0054b0                  _GetFaultBool
-                  0x00549c                  _GetFaultChar
+                  0x0054e6                  _GetFaultBool
+                  0x0054d2                  _GetFaultChar
                   0x003f32                  _GetLight
-                  0x005b7c                  _GetMCSFault
+                  0x005bb4                  _GetMCSFault
                   0x003eec                  _GetPIN
-                  0x005306                  _GetResetValue
-                  0x005af6                  _GetSASError
-                  0x005874                  _GetSASFalts
-                  0x005b0a                  _GetSASRaw
+                  0x005346                  _GetResetValue
+                  0x005b2e                  _GetSASError
+                  0x0058aa                  _GetSASFalts
+                  0x005b42                  _GetSASRaw
                   0x003ef4                  _GetSwitch
-                  0x005a14                  _GetTemp
-                  0x005842                  _GetThrottleBrakeValue
-                  0x004ece                  _GetTime
-                  0x0059ee                  _GetVolt
-                  0x005626                  _IdleI2C
-                  0x0055b6                  _InitI2C
+                  0x005a4c                  _GetTemp
+                  0x005878                  _GetThrottleBrakeValue
+                  0x0050c0                  _GetTime
+                  0x005a26                  _GetVolt
+                  0x00565c                  _IdleI2C
+                  0x0055ec                  _InitI2C
                   0x002fba                  _MenuBrakeLightValue
                   0x002ff4                  _MenuClearFlag
                   0x002b8e                  _MenuPrint
@@ -951,16 +947,16 @@ External Symbols in Program Memory (by name):
                   0x003e6a                  _NewDriverRamp
                   0x003e8e                  _NewDriverRegenInput
                   0x003ea6                  _NewDriverSave
-                  0x005646                  _NotAckI2C
-                  0x0059b4                  _PERupdate
-                  0x00593e                  _PWM_Init
-                  0x0059c2                  _PWMoff
-                  0x0059ca                  _PWMon
-                  0x00598a                  _PWMupdate
-                  0x00529a                  _PinSetMode
+                  0x00567c                  _NotAckI2C
+                  0x0059ec                  _PERupdate
+                  0x005976                  _PWM_Init
+                  0x0059fa                  _PWMoff
+                  0x005a02                  _PWMon
+                  0x0059c2                  _PWMupdate
+                  0x0052da                  _PinSetMode
                   0x00416a                  _RS485_Direction1
                   0x0041ae                  _RS485_Direction2
-                  0x005b3c                  _RTD
+                  0x005b74                  _RTD
                   0x00314a                  _ReadBrakeLightTrigger
                   0x003128                  _ReadBrakeTrigger
                   0x00324c                  _ReadCarACTLight
@@ -974,7 +970,7 @@ External Symbols in Program Memory (by name):
                   0x003268                  _ReadDriverConfig
                   0x0034aa                  _ReadDriverNames
                   0x003170                  _ReadPinCode
-                  0x0052fa                  _ReadReset
+                  0x00533a                  _ReadReset
                   0x0030e4                  _ReadThrottlePrecent
                   0x003106                  _ReadThrottleTrigger
                   0x004590                  _Receive_available
@@ -989,7 +985,7 @@ External Symbols in Program Memory (by name):
                   0x004378                  _Receive_peek1
                   0x004b90                  _Receive_peek2
                   0x00499c                  _Receive_peek3
-                  0x0055e6                  _RestartI2C
+                  0x00561c                  _RestartI2C
                   0x003f9c                  _Run
                   0x003158                  _SaveBrakeLightTrigger
                   0x003136                  _SaveBrakeTrigger
@@ -1011,24 +1007,24 @@ External Symbols in Program Memory (by name):
                   0x004396                  _Send_put1
                   0x004bae                  _Send_put2
                   0x0049ba                  _Send_put3
-                  0x00530e                  _SetBrakeLightValue
+                  0x00534e                  _SetBrakeLightValue
                   0x003edc                  _SetCarLock
                   0x003aa0                  _SetDataDict
                   0x003ca2                  _SetDriver
-                  0x00587e                  _SetThrotteMax
-                  0x004f46                  _SetTime
-                  0x005938                  _SetUpDDSIO
+                  0x0058b4                  _SetThrotteMax
+                  0x005138                  _SetTime
+                  0x005970                  _SetUpDDSIO
                   0x003c54                  _SetUpDataSets
                   0x002ca8                  _SettingMenu
-                  0x00517c                  _Setup
-                  0x0055d4                  _StartI2C
+                  0x0051be                  _Setup
+                  0x00560a                  _StartI2C
                   0x003788                  _StartSequenceCompleted
-                  0x0055f8                  _StopI2C
+                  0x00562e                  _StopI2C
                   0x004638                  _TXStallGet
                   0x00442c                  _TXStallGet1
                   0x002c32                  _ThrottleMenu
-                  0x004eb8                  _TimeOutSet
-                  0x00596c                  _Timmer2Init
+                  0x0050aa                  _TimeOutSet
+                  0x0059a4                  _Timmer2Init
                   0x004314                  _UART1_buff_flush
                   0x0042da                  _UART1_buff_get
                   0x004268                  _UART1_buff_init
@@ -1061,11 +1057,11 @@ External Symbols in Program Memory (by name):
                   0x004486                  _UART_buff_put
                   0x00454c                  _UART_buff_size
                   0x004442                  _UART_init
-                  0x005610                  _WriteI2C
+                  0x005646                  _WriteI2C
                   0x0002fa                  __DefaultInterrupt
                   0x02abfa                  __FGS.sec
-                  0x004e2c                  __T1Interrupt
-                  0x004fc4                  __T2Interrupt
+                  0x00501e                  __T1Interrupt
+                  0x0051b6                  __T2Interrupt
                   0x0045cc                  __U1RXInterrupt
                   0x0045fc                  __U1TXInterrupt
                   0x0043bc                  __U2RXInterrupt
@@ -1074,7 +1070,7 @@ External Symbols in Program Memory (by name):
                   0x004c04                  __U3TXInterrupt
                   0x0049e0                  __U4RXInterrupt
                   0x004a10                  __U4TXInterrupt
-                  0x005bb2                  ___delay32
+                  0x005bea                  ___delay32
                   0x000380                  ___fixunssfsi
                   0x00044c                  ___floatundisf
                   0x0003b6                  ___floatunsisf
@@ -1104,66 +1100,66 @@ External Symbols in Program Memory (by name):
                   0x00379c                  _bootSequenceCompleted
                   0x003fe8                  _bus1Update
                   0x00418a                  _bus2Update
-                  0x0058ec                  _changeLEDState
+                  0x005924                  _changeLEDState
                   0x004148                  _checkCommDirection
                   0x004196                  _checkCommDirection1
                   0x0037b8                  _checkForBootupTimeout
                   0x00474a                  _cobs_decode
                   0x00464e                  _cobs_encode
-                  0x00575a                  _constructPowerSet
+                  0x005790                  _constructPowerSet
                   0x003744                  _faultChecker
                   0x001174                  _fflush
                   0x0008e0                  _fgetc
                   0x000b9e                  _fputs
                   0x000aea                  _free
-                  0x0056b0                  _getI2C
+                  0x0056e6                  _getI2C
                   0x0041ce                  _getch
-                  0x005670                  _getsI2C
+                  0x0056a6                  _getsI2C
                   0x0034da                  _getstate
                   0x0034e2                  _getstatefault
                   0x001fac                  _handleDebugRequests
-                  0x0056c8                  _i2c_wait
-                  0x004e10                  _initTimerOne
+                  0x0056fe                  _i2c_wait
+                  0x005002                  _initTimerOne
                   0x003d2c                  _insert
                   0x0002fe                  _isalpha
                   0x000312                  _isspace
                   0x000322                  _isupper
-                  0x0052c2                  _ledDebug
-                  0x005b92                  _main
+                  0x005302                  _ledDebug
+                  0x005bca                  _main
                   0x0009da                  _malloc
                   0x000b82                  _memcpy
                   0x000b90                  _memset
-                  0x0056ee                  _powerChange
+                  0x005724                  _powerChange
                   0x0041d6                  _putch
                   0x000c18                  _putchar
                   0x000bba                  _puts
                   0x00305c                  _readRegister
                   0x000b00                  _realloc
-                  0x0059da                  _receiveCommBMM
-                  0x005890                  _receiveCommDDS
-                  0x005b74                  _receiveCommMCS
-                  0x0056e6                  _receiveCommPDU
-                  0x005aee                  _receiveCommSAS
-                  0x005494                  _receiveCommSS
-                  0x004d96                  _receiveData
-                  0x00508a                  _receiveData1
-                  0x0059d2                  _requestBMMData
-                  0x00588a                  _requestDDSData
-                  0x005b6c                  _requestMCSData
-                  0x0056de                  _requestPDUData
-                  0x005ae6                  _requestSASData
-                  0x00548c                  _requestSSData
+                  0x005a12                  _receiveCommBMM
+                  0x0058c8                  _receiveCommDDS
+                  0x005bac                  _receiveCommMCS
+                  0x00571c                  _receiveCommPDU
+                  0x005b26                  _receiveCommSAS
+                  0x0054ca                  _receiveCommSS
+                  0x004f24                  _receiveData_PDU_MCS_BMM
+                  0x004d3a                  _receiveData_SAS_DDS_SS
+                  0x005a0a                  _requestBMMData
+                  0x0058c0                  _requestDDSData
+                  0x005ba4                  _requestMCSData
+                  0x005714                  _requestPDUData
+                  0x005b1e                  _requestSASData
+                  0x0054c2                  _requestSSData
                   0x004164                  _resetCommTimers
-                  0x005898                  _seekButtonChange
-                  0x004ca4                  _sendData
-                  0x004fcc                  _sendData1
+                  0x0058d0                  _seekButtonChange
+                  0x004e2e                  _sendData_PDU_MCS_BMM
+                  0x004c40                  _sendData_SAS_DDS_SS
                   0x000bce                  _strlen
                   0x00032e                  _tolower
                   0x000bda                  _ungetc
-                  0x0052d8                  _updateBrakeLight
+                  0x005318                  _updateBrakeLight
                   0x003f94                  _updateComms
                   0x0034ea                  _updateECUState
-                  0x005a62                  _updateStoppedState
+                  0x005a9a                  _updateStoppedState
                   0x001f82                  _write
                   0x00301e                  _writeRegister
 
@@ -1398,99 +1394,99 @@ __FUID3
 .comment
  *(.comment)
 
-.debug_info       0x000000       0xb8cf
+.debug_info       0x000000       0xb83d
  *(.debug_info)
  .debug_info      0x000000        0x4b6 build/default/production/COBS.o
- .debug_info      0x0004b6        0x654 build/default/production/CarCom_PDU_MCS_BMM.o
- .debug_info      0x000b0a        0x659 build/default/production/CarCom_SAS_DDS_SS.o
- .debug_info      0x001163        0x2bf build/default/production/DDSComms.o
- .debug_info      0x001422        0x3bd build/default/production/BMMComms.o
- .debug_info      0x0017df        0x193 build/default/production/MCSComms.o
- .debug_info      0x001972        0x266 build/default/production/PDUComms.o
- .debug_info      0x001bd8        0x244 build/default/production/SASComms.o
- .debug_info      0x001e1c        0x7b4 build/default/production/Communications.o
- .debug_info      0x0025d0        0x20e build/default/production/SScomms.o
- .debug_info      0x0027de        0x2ee build/default/production/CarDataDictionary.o
- .debug_info      0x002acc        0x2a1 build/default/production/Horn.o
- .debug_info      0x002d6d        0x1ab build/default/production/StoppedState.o
- .debug_info      0x002f18        0x691 build/default/production/StateMachine.o
- .debug_info      0x0035a9        0x81b build/default/production/debug.o
- .debug_info      0x003dc4        0xb61 build/default/production/DriverConfigs.o
- .debug_info      0x004925        0x7ed build/default/production/EEprom.o
- .debug_info      0x005112       0x1db0 build/default/production/Functions.o
- .debug_info      0x006ec2        0x2e8 build/default/production/ThrottleBrakeControl.o
- .debug_info      0x0071aa        0x50f build/default/production/pwm.o
- .debug_info      0x0076b9        0xa1f build/default/production/I2C.o
- .debug_info      0x0080d8        0x800 build/default/production/Timers.o
- .debug_info      0x0088d8        0xad7 build/default/production/UART3.o
- .debug_info      0x0093af        0xaee build/default/production/UART2.o
- .debug_info      0x009e9d        0xc11 build/default/production/UART1.o
- .debug_info      0x00aaae        0xbba build/default/production/UART.o
- .debug_info      0x00b668        0x1d0 build/default/production/main.o
- .debug_info      0x00b838         0x97 build/default/production/ConfigBits.o
+ .debug_info      0x0004b6        0x5e8 build/default/production/CarCom_PDU_MCS_BMM.o
+ .debug_info      0x000a9e        0x669 build/default/production/CarCom_SAS_DDS_SS.o
+ .debug_info      0x001107        0x2bf build/default/production/DDSComms.o
+ .debug_info      0x0013c6        0x3bd build/default/production/BMMComms.o
+ .debug_info      0x001783        0x193 build/default/production/MCSComms.o
+ .debug_info      0x001916        0x266 build/default/production/PDUComms.o
+ .debug_info      0x001b7c        0x244 build/default/production/SASComms.o
+ .debug_info      0x001dc0        0x7b4 build/default/production/Communications.o
+ .debug_info      0x002574        0x20e build/default/production/SScomms.o
+ .debug_info      0x002782        0x2ee build/default/production/CarDataDictionary.o
+ .debug_info      0x002a70        0x2a1 build/default/production/Horn.o
+ .debug_info      0x002d11        0x1ab build/default/production/StoppedState.o
+ .debug_info      0x002ebc        0x691 build/default/production/StateMachine.o
+ .debug_info      0x00354d        0x81b build/default/production/debug.o
+ .debug_info      0x003d68        0xb61 build/default/production/DriverConfigs.o
+ .debug_info      0x0048c9        0x7ed build/default/production/EEprom.o
+ .debug_info      0x0050b6       0x1d7a build/default/production/Functions.o
+ .debug_info      0x006e30        0x2e8 build/default/production/ThrottleBrakeControl.o
+ .debug_info      0x007118        0x50f build/default/production/pwm.o
+ .debug_info      0x007627        0xa1f build/default/production/I2C.o
+ .debug_info      0x008046        0x800 build/default/production/Timers.o
+ .debug_info      0x008846        0xad7 build/default/production/UART3.o
+ .debug_info      0x00931d        0xaee build/default/production/UART2.o
+ .debug_info      0x009e0b        0xc11 build/default/production/UART1.o
+ .debug_info      0x00aa1c        0xbba build/default/production/UART.o
+ .debug_info      0x00b5d6        0x1d0 build/default/production/main.o
+ .debug_info      0x00b7a6         0x97 build/default/production/ConfigBits.o
  *(.gnu.linkonce.wi.*)
 
-.debug_abbrev     0x000000       0x1dca
+.debug_abbrev     0x000000       0x1d93
  *(.debug_abbrev)
  .debug_abbrev    0x000000         0xda build/default/production/COBS.o
- .debug_abbrev    0x0000da        0x139 build/default/production/CarCom_PDU_MCS_BMM.o
- .debug_abbrev    0x000213        0x182 build/default/production/CarCom_SAS_DDS_SS.o
- .debug_abbrev    0x000395         0xf2 build/default/production/DDSComms.o
- .debug_abbrev    0x000487         0xb4 build/default/production/BMMComms.o
- .debug_abbrev    0x00053b         0x89 build/default/production/MCSComms.o
- .debug_abbrev    0x0005c4         0xbe build/default/production/PDUComms.o
- .debug_abbrev    0x000682         0xb3 build/default/production/SASComms.o
- .debug_abbrev    0x000735        0x1ba build/default/production/Communications.o
- .debug_abbrev    0x0008ef         0xb4 build/default/production/SScomms.o
- .debug_abbrev    0x0009a3         0xa2 build/default/production/CarDataDictionary.o
- .debug_abbrev    0x000a45         0x8e build/default/production/Horn.o
- .debug_abbrev    0x000ad3         0x6d build/default/production/StoppedState.o
- .debug_abbrev    0x000b40        0x151 build/default/production/StateMachine.o
- .debug_abbrev    0x000c91        0x140 build/default/production/debug.o
- .debug_abbrev    0x000dd1        0x183 build/default/production/DriverConfigs.o
- .debug_abbrev    0x000f54        0x160 build/default/production/EEprom.o
- .debug_abbrev    0x0010b4        0x1a0 build/default/production/Functions.o
- .debug_abbrev    0x001254         0xe4 build/default/production/ThrottleBrakeControl.o
- .debug_abbrev    0x001338         0xf1 build/default/production/pwm.o
- .debug_abbrev    0x001429        0x113 build/default/production/I2C.o
- .debug_abbrev    0x00153c        0x14e build/default/production/Timers.o
- .debug_abbrev    0x00168a        0x18e build/default/production/UART3.o
- .debug_abbrev    0x001818        0x18e build/default/production/UART2.o
- .debug_abbrev    0x0019a6        0x1b6 build/default/production/UART1.o
- .debug_abbrev    0x001b5c        0x1b6 build/default/production/UART.o
- .debug_abbrev    0x001d12         0x99 build/default/production/main.o
- .debug_abbrev    0x001dab         0x1f build/default/production/ConfigBits.o
+ .debug_abbrev    0x0000da        0x128 build/default/production/CarCom_PDU_MCS_BMM.o
+ .debug_abbrev    0x000202        0x16f build/default/production/CarCom_SAS_DDS_SS.o
+ .debug_abbrev    0x000371         0xf2 build/default/production/DDSComms.o
+ .debug_abbrev    0x000463         0xb4 build/default/production/BMMComms.o
+ .debug_abbrev    0x000517         0x89 build/default/production/MCSComms.o
+ .debug_abbrev    0x0005a0         0xbe build/default/production/PDUComms.o
+ .debug_abbrev    0x00065e         0xb3 build/default/production/SASComms.o
+ .debug_abbrev    0x000711        0x1ba build/default/production/Communications.o
+ .debug_abbrev    0x0008cb         0xb4 build/default/production/SScomms.o
+ .debug_abbrev    0x00097f         0xa2 build/default/production/CarDataDictionary.o
+ .debug_abbrev    0x000a21         0x8e build/default/production/Horn.o
+ .debug_abbrev    0x000aaf         0x6d build/default/production/StoppedState.o
+ .debug_abbrev    0x000b1c        0x151 build/default/production/StateMachine.o
+ .debug_abbrev    0x000c6d        0x140 build/default/production/debug.o
+ .debug_abbrev    0x000dad        0x183 build/default/production/DriverConfigs.o
+ .debug_abbrev    0x000f30        0x160 build/default/production/EEprom.o
+ .debug_abbrev    0x001090        0x18d build/default/production/Functions.o
+ .debug_abbrev    0x00121d         0xe4 build/default/production/ThrottleBrakeControl.o
+ .debug_abbrev    0x001301         0xf1 build/default/production/pwm.o
+ .debug_abbrev    0x0013f2        0x113 build/default/production/I2C.o
+ .debug_abbrev    0x001505        0x14e build/default/production/Timers.o
+ .debug_abbrev    0x001653        0x18e build/default/production/UART3.o
+ .debug_abbrev    0x0017e1        0x18e build/default/production/UART2.o
+ .debug_abbrev    0x00196f        0x1b6 build/default/production/UART1.o
+ .debug_abbrev    0x001b25        0x1b6 build/default/production/UART.o
+ .debug_abbrev    0x001cdb         0x99 build/default/production/main.o
+ .debug_abbrev    0x001d74         0x1f build/default/production/ConfigBits.o
 
-.debug_line       0x000000       0x16ff
+.debug_line       0x000000       0x1706
  *(.debug_line)
  .debug_line      0x000000         0xfa build/default/production/COBS.o
- .debug_line      0x0000fa         0xe8 build/default/production/CarCom_PDU_MCS_BMM.o
- .debug_line      0x0001e2        0x13e build/default/production/CarCom_SAS_DDS_SS.o
- .debug_line      0x000320         0x5a build/default/production/DDSComms.o
- .debug_line      0x00037a         0x5b build/default/production/BMMComms.o
- .debug_line      0x0003d5         0x46 build/default/production/MCSComms.o
- .debug_line      0x00041b         0x75 build/default/production/PDUComms.o
- .debug_line      0x000490         0x53 build/default/production/SASComms.o
- .debug_line      0x0004e3        0x13c build/default/production/Communications.o
- .debug_line      0x00061f         0x5f build/default/production/SScomms.o
- .debug_line      0x00067e         0xb6 build/default/production/CarDataDictionary.o
- .debug_line      0x000734         0x9f build/default/production/Horn.o
- .debug_line      0x0007d3         0x6d build/default/production/StoppedState.o
- .debug_line      0x000840        0x183 build/default/production/StateMachine.o
- .debug_line      0x0009c3        0x303 build/default/production/debug.o
- .debug_line      0x000cc6         0xee build/default/production/DriverConfigs.o
- .debug_line      0x000db4         0xf7 build/default/production/EEprom.o
- .debug_line      0x000eab         0xeb build/default/production/Functions.o
- .debug_line      0x000f96         0x66 build/default/production/ThrottleBrakeControl.o
- .debug_line      0x000ffc         0xb6 build/default/production/pwm.o
- .debug_line      0x0010b2         0xee build/default/production/I2C.o
- .debug_line      0x0011a0         0xea build/default/production/Timers.o
- .debug_line      0x00128a         0xec build/default/production/UART3.o
- .debug_line      0x001376         0xec build/default/production/UART2.o
- .debug_line      0x001462         0xf3 build/default/production/UART1.o
- .debug_line      0x001555         0xf2 build/default/production/UART.o
- .debug_line      0x001647         0x9e build/default/production/main.o
- .debug_line      0x0016e5         0x1a build/default/production/ConfigBits.o
+ .debug_line      0x0000fa         0xe6 build/default/production/CarCom_PDU_MCS_BMM.o
+ .debug_line      0x0001e0        0x146 build/default/production/CarCom_SAS_DDS_SS.o
+ .debug_line      0x000326         0x5b build/default/production/DDSComms.o
+ .debug_line      0x000381         0x5b build/default/production/BMMComms.o
+ .debug_line      0x0003dc         0x46 build/default/production/MCSComms.o
+ .debug_line      0x000422         0x75 build/default/production/PDUComms.o
+ .debug_line      0x000497         0x53 build/default/production/SASComms.o
+ .debug_line      0x0004ea        0x13c build/default/production/Communications.o
+ .debug_line      0x000626         0x60 build/default/production/SScomms.o
+ .debug_line      0x000686         0xb6 build/default/production/CarDataDictionary.o
+ .debug_line      0x00073c         0x9f build/default/production/Horn.o
+ .debug_line      0x0007db         0x6d build/default/production/StoppedState.o
+ .debug_line      0x000848        0x183 build/default/production/StateMachine.o
+ .debug_line      0x0009cb        0x303 build/default/production/debug.o
+ .debug_line      0x000cce         0xee build/default/production/DriverConfigs.o
+ .debug_line      0x000dbc         0xf7 build/default/production/EEprom.o
+ .debug_line      0x000eb3         0xea build/default/production/Functions.o
+ .debug_line      0x000f9d         0x66 build/default/production/ThrottleBrakeControl.o
+ .debug_line      0x001003         0xb6 build/default/production/pwm.o
+ .debug_line      0x0010b9         0xee build/default/production/I2C.o
+ .debug_line      0x0011a7         0xea build/default/production/Timers.o
+ .debug_line      0x001291         0xec build/default/production/UART3.o
+ .debug_line      0x00137d         0xec build/default/production/UART2.o
+ .debug_line      0x001469         0xf3 build/default/production/UART1.o
+ .debug_line      0x00155c         0xf2 build/default/production/UART.o
+ .debug_line      0x00164e         0x9e build/default/production/main.o
+ .debug_line      0x0016ec         0x1a build/default/production/ConfigBits.o
 
 .debug_frame      0x000000       0x222e
  *(.debug_frame)
@@ -1559,62 +1555,62 @@ __FUID3
  *(.debug_macinfo)
 
 .debug_pubnames
-                  0x000000       0x1d0d
+                  0x000000       0x1d25
  *(.debug_pubnames)
  .debug_pubnames
                   0x000000         0x32 build/default/production/COBS.o
  .debug_pubnames
-                  0x000032         0xab build/default/production/CarCom_PDU_MCS_BMM.o
+                  0x000032         0x9b build/default/production/CarCom_PDU_MCS_BMM.o
  .debug_pubnames
-                  0x0000dd         0x71 build/default/production/CarCom_SAS_DDS_SS.o
+                  0x0000cd         0x99 build/default/production/CarCom_SAS_DDS_SS.o
  .debug_pubnames
-                  0x00014e         0xfd build/default/production/DDSComms.o
+                  0x000166         0xfd build/default/production/DDSComms.o
  .debug_pubnames
-                  0x00024b        0x173 build/default/production/BMMComms.o
+                  0x000263        0x173 build/default/production/BMMComms.o
  .debug_pubnames
-                  0x0003be         0x87 build/default/production/MCSComms.o
+                  0x0003d6         0x87 build/default/production/MCSComms.o
  .debug_pubnames
-                  0x000445         0x96 build/default/production/PDUComms.o
+                  0x00045d         0x96 build/default/production/PDUComms.o
  .debug_pubnames
-                  0x0004db         0xca build/default/production/SASComms.o
+                  0x0004f3         0xca build/default/production/SASComms.o
  .debug_pubnames
-                  0x0005a5        0x18c build/default/production/Communications.o
+                  0x0005bd        0x18c build/default/production/Communications.o
  .debug_pubnames
-                  0x000731         0xb8 build/default/production/SScomms.o
+                  0x000749         0xb8 build/default/production/SScomms.o
  .debug_pubnames
-                  0x0007e9         0xe8 build/default/production/CarDataDictionary.o
+                  0x000801         0xe8 build/default/production/CarDataDictionary.o
  .debug_pubnames
-                  0x0008d1         0x2d build/default/production/Horn.o
+                  0x0008e9         0x2d build/default/production/Horn.o
  .debug_pubnames
-                  0x0008fe         0x35 build/default/production/StoppedState.o
+                  0x000916         0x35 build/default/production/StoppedState.o
  .debug_pubnames
-                  0x000933        0x16b build/default/production/StateMachine.o
+                  0x00094b        0x16b build/default/production/StateMachine.o
  .debug_pubnames
-                  0x000a9e        0x1f3 build/default/production/debug.o
+                  0x000ab6        0x1f3 build/default/production/debug.o
  .debug_pubnames
-                  0x000c91        0x3e4 build/default/production/DriverConfigs.o
+                  0x000ca9        0x3e4 build/default/production/DriverConfigs.o
  .debug_pubnames
-                  0x001075        0x2ad build/default/production/EEprom.o
+                  0x00108d        0x2ad build/default/production/EEprom.o
  .debug_pubnames
-                  0x001322         0xc1 build/default/production/Functions.o
+                  0x00133a         0xc1 build/default/production/Functions.o
  .debug_pubnames
-                  0x0013e3        0x103 build/default/production/ThrottleBrakeControl.o
+                  0x0013fb        0x103 build/default/production/ThrottleBrakeControl.o
  .debug_pubnames
-                  0x0014e6         0x60 build/default/production/pwm.o
+                  0x0014fe         0x60 build/default/production/pwm.o
  .debug_pubnames
-                  0x001546         0xaa build/default/production/I2C.o
+                  0x00155e         0xaa build/default/production/I2C.o
  .debug_pubnames
-                  0x0015f0        0x174 build/default/production/Timers.o
+                  0x001608        0x174 build/default/production/Timers.o
  .debug_pubnames
-                  0x001764        0x159 build/default/production/UART3.o
+                  0x00177c        0x159 build/default/production/UART3.o
  .debug_pubnames
-                  0x0018bd        0x159 build/default/production/UART2.o
+                  0x0018d5        0x159 build/default/production/UART2.o
  .debug_pubnames
-                  0x001a16        0x179 build/default/production/UART1.o
+                  0x001a2e        0x179 build/default/production/UART1.o
  .debug_pubnames
-                  0x001b8f        0x163 build/default/production/UART.o
+                  0x001ba7        0x163 build/default/production/UART.o
  .debug_pubnames
-                  0x001cf2         0x1b build/default/production/main.o
+                  0x001d0a         0x1b build/default/production/main.o
 
 .debug_ranges
  *(.debug_ranges)
@@ -3879,37 +3875,34 @@ __c30_signature
                     0x1af1                  __sibuf
                     0x1af3                  __sobuf
 
-.data               0x1af6         0x18
- .data              0x1af6          0x4 build/default/production/CarCom_PDU_MCS_BMM.o
-                    0x1af6                  _COBS_ENCODE_DST_BUF_LEN_MAX
-                    0x1af8                  _COBS_DECODE_DST_BUF_LEN_MAX
- .data              0x1afa          0x2 build/default/production/DDSComms.o
-                    0x1afa                  _readyToSendDDS
- .data              0x1afc          0x2 build/default/production/BMMComms.o
-                    0x1afc                  _readyToSendBMM
- .data              0x1afe          0x2 build/default/production/MCSComms.o
-                    0x1afe                  _readyToSendMCS
- .data              0x1b00          0x2 build/default/production/PDUComms.o
-                    0x1b00                  _readyToSendPDU
- .data              0x1b02          0x2 build/default/production/SASComms.o
-                    0x1b02                  _readyToSendSAS
- .data              0x1b04          0x2 build/default/production/StateMachine.o
- .data              0x1b06          0x2 build/default/production/UART3.o
-                    0x1b06                  _Transmit_stall3
- .data              0x1b08          0x2 build/default/production/UART2.o
-                    0x1b08                  _Transmit_stall2
- .data              0x1b0a          0x2 build/default/production/UART1.o
-                    0x1b0a                  _Transmit_stall1
- .data              0x1b0c          0x2 build/default/production/UART.o
-                    0x1b0c                  _Transmit_stall
+.data               0x1af6         0x14
+ .data              0x1af6          0x2 build/default/production/DDSComms.o
+                    0x1af6                  _readyToSendDDS
+ .data              0x1af8          0x2 build/default/production/BMMComms.o
+                    0x1af8                  _readyToSendBMM
+ .data              0x1afa          0x2 build/default/production/MCSComms.o
+                    0x1afa                  _readyToSendMCS
+ .data              0x1afc          0x2 build/default/production/PDUComms.o
+                    0x1afc                  _readyToSendPDU
+ .data              0x1afe          0x2 build/default/production/SASComms.o
+                    0x1afe                  _readyToSendSAS
+ .data              0x1b00          0x2 build/default/production/StateMachine.o
+ .data              0x1b02          0x2 build/default/production/UART3.o
+                    0x1b02                  _Transmit_stall3
+ .data              0x1b04          0x2 build/default/production/UART2.o
+                    0x1b04                  _Transmit_stall2
+ .data              0x1b06          0x2 build/default/production/UART1.o
+                    0x1b06                  _Transmit_stall1
+ .data              0x1b08          0x2 build/default/production/UART.o
+                    0x1b08                  _Transmit_stall
 
-.bss                0x1b0e          0x4
- .bss               0x1b0e          0x2 c:/program files (x86)/microchip/xc16/v1.31/bin/bin/../../lib\libc-elf.a(doscan_cdnopuxX.EPeo)
- .bss               0x1b10          0x2 c:/program files (x86)/microchip/xc16/v1.31/bin/bin/../../lib\libpic30-elf.a(brkep.elo)
-                    0x1b10                  ___curbrk
+.bss                0x1b0a          0x4
+ .bss               0x1b0a          0x2 c:/program files (x86)/microchip/xc16/v1.31/bin/bin/../../lib\libc-elf.a(doscan_cdnopuxX.EPeo)
+ .bss               0x1b0c          0x2 c:/program files (x86)/microchip/xc16/v1.31/bin/bin/../../lib\libpic30-elf.a(brkep.elo)
+                    0x1b0c                  ___curbrk
 
-.heap               0x1b12        0x100
- .heap              0x1b12        0x100 heap
+.heap               0x1b0e        0x100
+ .heap              0x1b0e        0x100 heap
 
 .ivt._T1Interrupt
                   0x00001a          0x2
@@ -3984,7 +3977,7 @@ __c30_signature
  .const             0x9e74        0x10a build/default/production/StoppedState.o
  .const             0x9f7e          0x4 build/default/production/DriverConfigs.o
 
-.text             0x001f82       0x3398
+.text             0x001f82       0x33d8
  .text            0x001f82       0x1094 build/default/production/debug.o
                   0x001f82                  _write
                   0x001fac                  _handleDebugRequests
@@ -4166,112 +4159,112 @@ __c30_signature
                   0x004bae                  _Send_put2
                   0x004bd4                  __U3RXInterrupt
                   0x004c04                  __U3TXInterrupt
- .text            0x004c40        0x1d0 build/default/production/CarCom_PDU_MCS_BMM.o
-                  0x004c40                  _CRC8
-                  0x004ca4                  _sendData
-                  0x004d96                  _receiveData
-                  0x004e06                  _ComController
- .text            0x004e10        0x1bc build/default/production/Timers.o
-                  0x004e10                  _initTimerOne
-                  0x004e2c                  __T1Interrupt
-                  0x004eb8                  _TimeOutSet
-                  0x004ece                  _GetTime
-                  0x004f46                  _SetTime
-                  0x004fc4                  __T2Interrupt
- .text            0x004fcc        0x1b0 build/default/production/CarCom_SAS_DDS_SS.o
-                  0x004fcc                  _sendData1
-                  0x00508a                  _receiveData1
-                  0x00510e                  _ComController1
-                  0x005118                  _CRC81
- .text            0x00517c        0x19e build/default/production/Functions.o
-                  0x00517c                  _Setup
-                  0x00525e                  _Delay
-                  0x00527c                  _DelayUS
-                  0x00529a                  _PinSetMode
-                  0x0052c2                  _ledDebug
-                  0x0052d8                  _updateBrakeLight
-                  0x0052fa                  _ReadReset
-                  0x005306                  _GetResetValue
-                  0x00530e                  _SetBrakeLightValue
+ .text            0x004c40        0x1ee build/default/production/CarCom_SAS_DDS_SS.o
+                  0x004c40                  _sendData_SAS_DDS_SS
+                  0x004d3a                  _receiveData_SAS_DDS_SS
+                  0x004dc0                  _ComController_SAS_DDS_SS
+                  0x004dca                  _CRC8_SAS_DDS_SS
+ .text            0x004e2e        0x1d4 build/default/production/CarCom_PDU_MCS_BMM.o
+                  0x004e2e                  _sendData_PDU_MCS_BMM
+                  0x004f24                  _receiveData_PDU_MCS_BMM
+                  0x004f94                  _ComController_PDU_MCS_BMM
+                  0x004f9e                  _CRC8_PDU_MCS_BMM
+ .text            0x005002        0x1bc build/default/production/Timers.o
+                  0x005002                  _initTimerOne
+                  0x00501e                  __T1Interrupt
+                  0x0050aa                  _TimeOutSet
+                  0x0050c0                  _GetTime
+                  0x005138                  _SetTime
+                  0x0051b6                  __T2Interrupt
+ .text            0x0051be        0x19c build/default/production/Functions.o
+                  0x0051be                  _Setup
+                  0x00529e                  _Delay
+                  0x0052bc                  _DelayUS
+                  0x0052da                  _PinSetMode
+                  0x005302                  _ledDebug
+                  0x005318                  _updateBrakeLight
+                  0x00533a                  _ReadReset
+                  0x005346                  _GetResetValue
+                  0x00534e                  _SetBrakeLightValue
 
-.dinit            0x00531a        0x172
- .dinit           0x00531a        0x172 data_init
+.dinit            0x00535a        0x168
+ .dinit           0x00535a        0x168 data_init
 
-.text             0x00548c        0x726
- .text            0x00548c        0x12a build/default/production/SScomms.o
-                  0x00548c                  _requestSSData
-                  0x005494                  _receiveCommSS
-                  0x00549c                  _GetFaultChar
-                  0x0054b0                  _GetFaultBool
-                  0x0055aa                  _ClearSSTalk
- .text            0x0055b6        0x128 build/default/production/I2C.o
-                  0x0055b6                  _InitI2C
-                  0x0055d4                  _StartI2C
-                  0x0055e6                  _RestartI2C
-                  0x0055f8                  _StopI2C
-                  0x005610                  _WriteI2C
-                  0x005626                  _IdleI2C
-                  0x005638                  _ACKStatus
-                  0x005646                  _NotAckI2C
-                  0x00565c                  _AckI2C
-                  0x005670                  _getsI2C
-                  0x0056b0                  _getI2C
-                  0x0056c8                  _i2c_wait
- .text            0x0056de         0xe8 build/default/production/PDUComms.o
-                  0x0056de                  _requestPDUData
-                  0x0056e6                  _receiveCommPDU
-                  0x0056ee                  _powerChange
-                  0x00575a                  _constructPowerSet
-                  0x0057ba                  _ClearPDUTalk
- .text            0x0057c6         0xc4 build/default/production/ThrottleBrakeControl.o
-                  0x0057c6                  _CheckThrotleConsistency
-                  0x00582a                  _DeltaThrottle
-                  0x005842                  _GetThrottleBrakeValue
-                  0x005874                  _GetSASFalts
-                  0x00587e                  _SetThrotteMax
- .text            0x00588a         0xb4 build/default/production/DDSComms.o
-                  0x00588a                  _requestDDSData
-                  0x005890                  _receiveCommDDS
-                  0x005898                  _seekButtonChange
-                  0x0058ec                  _changeLEDState
-                  0x005924                  _GetDDSerrorCounter
-                  0x00592c                  _ClearDDSTalk
-                  0x005938                  _SetUpDDSIO
- .text            0x00593e         0x94 build/default/production/pwm.o
-                  0x00593e                  _PWM_Init
-                  0x00596c                  _Timmer2Init
-                  0x00598a                  _PWMupdate
-                  0x0059b4                  _PERupdate
-                  0x0059c2                  _PWMoff
-                  0x0059ca                  _PWMon
- .text            0x0059d2         0x90 build/default/production/BMMComms.o
-                  0x0059d2                  _requestBMMData
-                  0x0059da                  _receiveCommBMM
-                  0x0059e2                  _ClearBMMTalk
-                  0x0059ee                  _GetVolt
-                  0x005a14                  _GetTemp
-                  0x005a3a                  _GetCurrent
- .text            0x005a62         0x84 build/default/production/StoppedState.o
-                  0x005a62                  _updateStoppedState
-                  0x005a90                  _Display
- .text            0x005ae6         0x56 build/default/production/SASComms.o
-                  0x005ae6                  _requestSASData
-                  0x005aee                  _receiveCommSAS
-                  0x005af6                  _GetSASError
-                  0x005afe                  _ClearSASTalk
-                  0x005b0a                  _GetSASRaw
- .text            0x005b3c         0x30 build/default/production/Horn.o
-                  0x005b3c                  _RTD
-                  0x005b4c                  _Boot
-                  0x005b5c                  _Fault
- .text            0x005b6c         0x26 build/default/production/MCSComms.o
-                  0x005b6c                  _requestMCSData
-                  0x005b74                  _receiveCommMCS
-                  0x005b7c                  _GetMCSFault
-                  0x005b86                  _ClearMCSTalk
- .text            0x005b92         0x20 build/default/production/main.o
-                  0x005b92                  _main
+.text             0x0054c2        0x728
+ .text            0x0054c2        0x12a build/default/production/SScomms.o
+                  0x0054c2                  _requestSSData
+                  0x0054ca                  _receiveCommSS
+                  0x0054d2                  _GetFaultChar
+                  0x0054e6                  _GetFaultBool
+                  0x0055e0                  _ClearSSTalk
+ .text            0x0055ec        0x128 build/default/production/I2C.o
+                  0x0055ec                  _InitI2C
+                  0x00560a                  _StartI2C
+                  0x00561c                  _RestartI2C
+                  0x00562e                  _StopI2C
+                  0x005646                  _WriteI2C
+                  0x00565c                  _IdleI2C
+                  0x00566e                  _ACKStatus
+                  0x00567c                  _NotAckI2C
+                  0x005692                  _AckI2C
+                  0x0056a6                  _getsI2C
+                  0x0056e6                  _getI2C
+                  0x0056fe                  _i2c_wait
+ .text            0x005714         0xe8 build/default/production/PDUComms.o
+                  0x005714                  _requestPDUData
+                  0x00571c                  _receiveCommPDU
+                  0x005724                  _powerChange
+                  0x005790                  _constructPowerSet
+                  0x0057f0                  _ClearPDUTalk
+ .text            0x0057fc         0xc4 build/default/production/ThrottleBrakeControl.o
+                  0x0057fc                  _CheckThrotleConsistency
+                  0x005860                  _DeltaThrottle
+                  0x005878                  _GetThrottleBrakeValue
+                  0x0058aa                  _GetSASFalts
+                  0x0058b4                  _SetThrotteMax
+ .text            0x0058c0         0xb6 build/default/production/DDSComms.o
+                  0x0058c0                  _requestDDSData
+                  0x0058c8                  _receiveCommDDS
+                  0x0058d0                  _seekButtonChange
+                  0x005924                  _changeLEDState
+                  0x00595c                  _GetDDSerrorCounter
+                  0x005964                  _ClearDDSTalk
+                  0x005970                  _SetUpDDSIO
+ .text            0x005976         0x94 build/default/production/pwm.o
+                  0x005976                  _PWM_Init
+                  0x0059a4                  _Timmer2Init
+                  0x0059c2                  _PWMupdate
+                  0x0059ec                  _PERupdate
+                  0x0059fa                  _PWMoff
+                  0x005a02                  _PWMon
+ .text            0x005a0a         0x90 build/default/production/BMMComms.o
+                  0x005a0a                  _requestBMMData
+                  0x005a12                  _receiveCommBMM
+                  0x005a1a                  _ClearBMMTalk
+                  0x005a26                  _GetVolt
+                  0x005a4c                  _GetTemp
+                  0x005a72                  _GetCurrent
+ .text            0x005a9a         0x84 build/default/production/StoppedState.o
+                  0x005a9a                  _updateStoppedState
+                  0x005ac8                  _Display
+ .text            0x005b1e         0x56 build/default/production/SASComms.o
+                  0x005b1e                  _requestSASData
+                  0x005b26                  _receiveCommSAS
+                  0x005b2e                  _GetSASError
+                  0x005b36                  _ClearSASTalk
+                  0x005b42                  _GetSASRaw
+ .text            0x005b74         0x30 build/default/production/Horn.o
+                  0x005b74                  _RTD
+                  0x005b84                  _Boot
+                  0x005b94                  _Fault
+ .text            0x005ba4         0x26 build/default/production/MCSComms.o
+                  0x005ba4                  _requestMCSData
+                  0x005bac                  _receiveCommMCS
+                  0x005bb4                  _GetMCSFault
+                  0x005bbe                  _ClearMCSTalk
+ .text            0x005bca         0x20 build/default/production/main.o
+                  0x005bca                  _main
 
-.init.delay32     0x005bb2         0x1c
- .init.delay32    0x005bb2         0x1c c:/program files (x86)/microchip/xc16/v1.31/bin/bin/../../lib\libpic30-elf.a(delay32ep.eo)
-                  0x005bb2                  ___delay32
+.init.delay32     0x005bea         0x1c
+ .init.delay32    0x005bea         0x1c c:/program files (x86)/microchip/xc16/v1.31/bin/bin/../../lib\libpic30-elf.a(delay32ep.eo)
+                  0x005bea                  ___delay32

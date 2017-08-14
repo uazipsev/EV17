@@ -30,7 +30,6 @@ void Update(void);
 bool CoolingCheck();
 void SavePDUFault(char loc, bool data);
 bool GetPDUFault(char loc);
-unsigned int FaultsCollector();
 
 # 14 "Shift595.h"
 int registers[3 * 8];

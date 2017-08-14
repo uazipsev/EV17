@@ -8457,6 +8457,8 @@ extern __nonreentrant void _delay3(unsigned char);
 
 # 11 "Communications.h"
 void updateComms();
+void processPowerRequest(unsigned char powerSet);
+unsigned char FaultsCollector(void);
 
 # 11 "Functions.h"
 extern void Delay(long int wait);
@@ -8487,7 +8489,6 @@ void Update(void);
 bool CoolingCheck();
 void SavePDUFault(char loc, bool data);
 bool GetPDUFault(char loc);
-unsigned int FaultsCollector();
 
 # 13 "CarCom.h"
 unsigned char CRC8(const unsigned char * data, unsigned char len);
@@ -8502,32 +8503,58 @@ void PIN_MANAGER_Initialize (void);
 # 323
 void PIN_MANAGER_IOC(void);
 
-# 20 "Communications.c"
-void processPowerRequest(int powerSet);
+# 8 "CarDataDictionary.h"
+unsigned char GetDataDict(unsigned char DataTable, unsigned char DataTableIndex, unsigned char *DataArray, unsigned char numbofbytes);
+unsigned char SetDataDict(unsigned char DataTable, unsigned char DataTableIndex, unsigned char *DataArray, unsigned char numbofbytes);
 
+# 18 "Communications.c"
 void updateComms() {
-if (receiveData()) {
-
+if (receiveData()){
+unsigned char DataGet[2];
+GetDataDict(4, 1, DataGet, 1);
+processPowerRequest(DataGet[0]);
+DataGet[0] = FaultsCollector();
+SetDataDict(4, 2, DataGet, 1);
 }
 }
 
 
-void processPowerRequest(int powerSet) {
+void processPowerRequest(unsigned char powerSet) {
 
-if (powerSet & 0x01) EnableSlavePower(BMM, ON);
-else EnableSlavePower(BMM, OFF);
-if (powerSet & 0x02) EnableSlavePower(MCS, ON);
-else EnableSlavePower(MCS,OFF);
-if (powerSet & 0x04) EnableSlavePower(DDS,ON);
-else EnableSlavePower(DDS,OFF);
-if(powerSet & 0x08) EnableSlavePower(SAS,ON);
-else EnableSlavePower(SAS,OFF);
-if(powerSet & 0x10) EnableSlavePower(TSS, ON);
-else EnableSlavePower(TSS,OFF);
+if (((powerSet >> 1) & 0x01)){
+EnableSlavePower(BMM, ON);
+}
+else{
+EnableSlavePower(BMM, OFF);
+}
+if (((powerSet >> 2) & 0x01)){
+EnableSlavePower(MCS, ON);
+}
+else{
+EnableSlavePower(MCS,OFF);
+}
+if (((powerSet >> 3) & 0x01)){
+EnableSlavePower(DDS,ON);
+}
+else{
+EnableSlavePower(DDS,OFF);
+}
+if(((powerSet >> 4) & 0x01)){
+EnableSlavePower(SAS,ON);
+}
+else{
+EnableSlavePower(SAS,OFF);
+}
+if(((powerSet >> 5) & 0x01)){
+EnableSlavePower(TSS, ON);
+}
+else{
+EnableSlavePower(TSS,OFF);
+}
 Update();
 }
 
-unsigned int FaultsCollector() {
+unsigned char FaultsCollector() {
 unsigned int sendVal = 0;
 int i = 0;
 for (i = 0; i < 5; i++) {

@@ -15,49 +15,49 @@ unsigned char GetDataDict(unsigned char DataTable, unsigned char DataTableIndex,
     switch(DataTable){
         case 0:
             DataCount = DataTableIndex + numbofbytes;
-            for(DataTableIndex;DataTableIndex<DataCount;DataTableIndex++){
+            for(;DataTableIndex<DataCount;DataTableIndex++){
                 DataArray[ReturnCounter] = DataTableArrayZeroConfig[DataTableIndex];
                 ReturnCounter++;
             }
             break;
         case 1:
             DataCount = DataTableIndex + numbofbytes;
-            for(DataTableIndex;DataTableIndex<DataCount;DataTableIndex++){
+            for(;DataTableIndex<DataCount;DataTableIndex++){
                 DataArray[ReturnCounter] = DataTableArrayOneSS[DataTableIndex];
                 ReturnCounter++;
             }
             break;
         case 2:
             DataCount = DataTableIndex + numbofbytes;
-            for(DataTableIndex;DataTableIndex<DataCount;DataTableIndex++){
+            for(;DataTableIndex<DataCount;DataTableIndex++){
                 DataArray[ReturnCounter] = DataTableArrayTwoSAS[DataTableIndex];
                 ReturnCounter++;
             }
             break;
         case 3:
             DataCount = DataTableIndex + numbofbytes;
-            for(DataTableIndex;DataTableIndex<DataCount;DataTableIndex++){
+            for(;DataTableIndex<DataCount;DataTableIndex++){
                 DataArray[ReturnCounter] = DataTableArrayThreeDDS[DataTableIndex];
                 ReturnCounter++;
             }
             break;
         case 4:
             DataCount = DataTableIndex + numbofbytes;
-            for(DataTableIndex;DataTableIndex<DataCount;DataTableIndex++){
+            for(;DataTableIndex<DataCount;DataTableIndex++){
                 DataArray[ReturnCounter] = DataTableArrayFourPDU[DataTableIndex];
                 ReturnCounter++;
             }
             break;
         case 5:
             DataCount = DataTableIndex + numbofbytes;
-            for(DataTableIndex;DataTableIndex<DataCount;DataTableIndex++){
+            for(;DataTableIndex<DataCount;DataTableIndex++){
                 DataArray[ReturnCounter] = DataTableArrayFiveBMM[DataTableIndex];
                 ReturnCounter++;
             }
             break;
         case 6:
             DataCount = DataTableIndex + numbofbytes;
-            for(DataTableIndex;DataTableIndex<DataCount;DataTableIndex++){
+            for(;DataTableIndex<DataCount;DataTableIndex++){
                 DataArray[ReturnCounter] = DataTableArraySixMCU[DataTableIndex];
                 ReturnCounter++;
             }
@@ -75,49 +75,49 @@ unsigned char SetDataDict(unsigned char DataTable, unsigned char DataTableIndex,
     switch(DataTable){
         case 0:
             DataCount = DataTableIndex + numbofbytes;
-            for(DataTableIndex;DataTableIndex<DataCount;DataTableIndex++){
+            for(;DataTableIndex<DataCount;DataTableIndex++){
                 DataTableArrayZeroConfig[DataTableIndex] = DataArray[ReturnCounter];
                 ReturnCounter++;
             }
             break;
         case 1:
             DataCount = DataTableIndex + numbofbytes;
-            for(DataTableIndex;DataTableIndex<DataCount;DataTableIndex++){
+            for(;DataTableIndex<DataCount;DataTableIndex++){
                 DataTableArrayOneSS[DataTableIndex] = DataArray[ReturnCounter];
                 ReturnCounter++;
             }
             break;
         case 2:
             DataCount = DataTableIndex + numbofbytes;
-            for(DataTableIndex;DataTableIndex<DataCount;DataTableIndex++){
+            for(;DataTableIndex<DataCount;DataTableIndex++){
                 DataTableArrayTwoSAS[DataTableIndex] = DataArray[ReturnCounter];
                 ReturnCounter++;
             }
             break;
         case 3:
             DataCount = DataTableIndex + numbofbytes;
-            for(DataTableIndex;DataTableIndex<DataCount;DataTableIndex++){
+            for(;DataTableIndex<DataCount;DataTableIndex++){
                 DataTableArrayThreeDDS[DataTableIndex] = DataArray[ReturnCounter];
                 ReturnCounter++;
             }
             break;
         case 4:
             DataCount = DataTableIndex + numbofbytes;
-            for(DataTableIndex;DataTableIndex<DataCount;DataTableIndex++){
+            for(;DataTableIndex<DataCount;DataTableIndex++){
                 DataTableArrayFourPDU[DataTableIndex] = DataArray[ReturnCounter];
                 ReturnCounter++;
             }
             break;
         case 5:
             DataCount = DataTableIndex + numbofbytes;
-            for(DataTableIndex;DataTableIndex<DataCount;DataTableIndex++){
+            for(;DataTableIndex<DataCount;DataTableIndex++){
                 DataTableArrayFiveBMM[DataTableIndex] = DataArray[ReturnCounter];
                 ReturnCounter++;
             }
             break;
         case 6:
             DataCount = DataTableIndex + numbofbytes;
-            for(DataTableIndex;DataTableIndex<DataCount;DataTableIndex++){
+            for(;DataTableIndex<DataCount;DataTableIndex++){
                 DataTableArraySixMCU[DataTableIndex] = DataArray[ReturnCounter];
                 ReturnCounter++;
             }

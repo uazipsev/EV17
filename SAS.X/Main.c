@@ -8,6 +8,7 @@
 #include "ADC.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include "Communications.h"
 
 void ledDebug();
 
@@ -16,7 +17,6 @@ int main(void) {
     LED = 1;
     while (1) {
         ledDebug();
-        //Comms handling
         updateComms();
         if(ADCDataReady) {
             FilterADC();

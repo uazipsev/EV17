@@ -9,15 +9,8 @@
 #define	COMMUNICATIONS_H
 
 #include <xc.h>
-#include <stdbool.h>
-#include "PinDef.h"
-#include "ADDRESSING.h"
 
-
-extern bool Transmit_stall;
-extern volatile unsigned int talkTime;
 void updateComms();
-void prepAndSendData();
-void checkCommDirection();
+
 #endif	/* COMMUNICATIONS_H */
 

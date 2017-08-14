@@ -71,12 +71,6 @@ void main(void) {
             UP = 0;
             CoolingStop();
         }
-        i++;
-        PWM4_LoadDutyValue(i);
-        if(i>500){
-            i = 0;
-
-        }
     }
 }
 /**

@@ -10,7 +10,7 @@
 
 
 #define NUMOFEXTBYTES 5
-
+#define polynomial 0x8C  //polynomial used to calculate crc
 
 #define CLOSE_COMM_TIME 4
 #define BOARD_RESEND_MIN 40

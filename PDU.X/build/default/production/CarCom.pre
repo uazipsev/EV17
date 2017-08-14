@@ -8906,7 +8906,6 @@ for(j;j<sizeof(SendArray);j++){
 SendArray[j] = 0;
 }
 
-
 cobs_encode_result result;
 
 SendArray[0] = 5+lenth;
@@ -8968,7 +8967,7 @@ result = cobs_decode(ProcessArray, sizeof(ProcessArray), ReciveArray, i);
 unsigned char CS = CRC8(ProcessArray, result.out_len-2);
 
 if(ProcessArray[result.out_len-2] == CS){
-
+do { LATA3 = ~LATA3; } while(0);
 ComController(ProcessArray,result.out_len);
 return 1;
 }
@@ -8999,13 +8998,14 @@ do { LATC5 = 0; } while(0);
 if(DTI[1] == 2){
 unsigned char DataToSend[4];
 unsigned char DataRecived[4];
-
-
-
-
+for(char k = 0;k<DTI[4];k++){
+DataRecived[k] = DTI[4+k];
+}
+SetDataDict(DTI[2], DTI[3], DataRecived, DTI[4]);
+GetDataDict(4, 2, DataToSend, 1);
 do { LATC5 = 1; } while(0);
 Delay(2);
-sendData(1, 2, 4, 2, DataToSend, 2);
+sendData(1, 2, 4, 2, DataToSend, 1);
 Delay(5);
 do { LATC5 = 0; } while(0);
 }

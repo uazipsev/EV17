@@ -37,6 +37,5 @@ void Update(void);
 bool CoolingCheck();
 void SavePDUFault(char loc, bool data);
 bool GetPDUFault(char loc);
-unsigned int FaultsCollector();
 #endif	/* PDU_H */
 
