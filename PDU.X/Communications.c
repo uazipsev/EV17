@@ -12,6 +12,7 @@
 #include "CarCom.h"
 #include "mcc_generated_files/pin_manager.h" 
 #include "CarDataDictionary.h"
+#include "CoolingControl.h"
 
 
 
@@ -63,6 +64,14 @@ void processPowerRequest(unsigned char powerSet) {
     }
     else{
         EnableSlavePower(AUX,OFF);
+    }
+    if(((powerSet >> 7)  & 0x01)){
+        //Start cooling
+        CoolingStart();
+    }
+    else{
+        //Stop Cooling
+        CoolingStop();
     }
     Update();
 }

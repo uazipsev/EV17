@@ -8507,7 +8507,11 @@ void PIN_MANAGER_IOC(void);
 unsigned char GetDataDict(unsigned char DataTable, unsigned char DataTableIndex, unsigned char *DataArray, unsigned char numbofbytes);
 unsigned char SetDataDict(unsigned char DataTable, unsigned char DataTableIndex, unsigned char *DataArray, unsigned char numbofbytes);
 
-# 18 "Communications.c"
+# 18 "CoolingControl.h"
+void CoolingStart(void);
+void CoolingStop(void);
+
+# 19 "Communications.c"
 void updateComms() {
 if (receiveData()){
 unsigned char DataGet[2];
@@ -8556,6 +8560,14 @@ EnableSlavePower(AUX, ON);
 }
 else{
 EnableSlavePower(AUX,OFF);
+}
+if(((powerSet >> 7) & 0x01)){
+
+CoolingStart();
+}
+else{
+
+CoolingStop();
 }
 Update();
 }

@@ -19,6 +19,9 @@ struct powerStates {
     bool MCS;
     bool SAS;
     bool BMM;
+    bool TSS;
+    bool AUX;
+    bool COOLING;
 };
 
 struct faultStates {

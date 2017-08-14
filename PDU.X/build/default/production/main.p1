@@ -40,12 +40,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _ComputeStorageData `(v ~T0 @X0 0 ef ]
 "11 Communications.h
 [v _updateComms `(v ~T0 @X0 0 ef ]
-"37 PDU.h
-[v _CoolingCheck `(uc ~T0 @X0 0 ef ]
-"18 CoolingControl.h
-[v _CoolingStart `(v ~T0 @X0 0 ef ]
-"19
-[v _CoolingStop `(v ~T0 @X0 0 ef ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -6898,42 +6892,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 65: updateComms();
 "65
 [e ( _updateComms ..  ]
-[; ;main.c: 66: if(CoolingCheck() && UP == 0){
 "66
-[e $ ! && != -> ( _CoolingCheck ..  `i -> -> -> 0 `i `uc `i == -> _UP `i -> 0 `i 856  ]
-{
-[; ;main.c: 67: UP = 1;
-"67
-[e = _UP -> -> 1 `i `uc ]
-[; ;main.c: 68: CoolingStart();
-"68
-[e ( _CoolingStart ..  ]
-"69
-}
-[e :U 856 ]
-[; ;main.c: 69: }
-[; ;main.c: 70: if(!CoolingCheck() && UP == 1){
-"70
-[e $ ! && ! != -> ( _CoolingCheck ..  `i -> -> -> 0 `i `uc `i == -> _UP `i -> 1 `i 857  ]
-{
-[; ;main.c: 71: UP = 0;
-"71
-[e = _UP -> -> 0 `i `uc ]
-[; ;main.c: 72: CoolingStop();
-"72
-[e ( _CoolingStop ..  ]
-"73
-}
-[e :U 857 ]
-"74
 }
 [e :U 853 ]
 "64
 [e $U 854  ]
 [e :U 855 ]
-[; ;main.c: 73: }
-[; ;main.c: 74: }
-[; ;main.c: 75: }
-"75
+[; ;main.c: 66: }
+[; ;main.c: 67: }
+"67
 [e :UE 852 ]
 }

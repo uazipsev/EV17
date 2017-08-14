@@ -71,22 +71,34 @@ bool powerChange() {
 unsigned char  constructPowerSet() {
     static unsigned char powerSettings = 0;
     if (powerSet.BMM) {
-        powerSettings = powerSettings | 0x0001;
+        powerSettings |= 1 << 1;
     } else
-        powerSettings = powerSettings & 0xFFFE;
+        powerSettings &= ~(1 << 1);
     if (powerSet.MCS) {
-        powerSettings = powerSettings | 0x0002;
+        powerSettings |= 1 << 2;
     } else
-        powerSettings = powerSettings & 0xFFFD;
+        powerSettings &= ~(1 << 2);
     if (powerSet.DDS) {
-        powerSettings = powerSettings | 0x0004;
+        powerSettings |= 1 << 3;
     } else
-        powerSettings = powerSettings & 0xFFFB;
+        powerSettings &= ~(1 << 3);
     if (powerSet.SAS) {
-        powerSettings = powerSettings | 0x0008;
+        powerSettings |= 1 << 4;
     } else
-        powerSettings = powerSettings & 0xFFF7;
-    return powerSettings = 0x02;
+        powerSettings &= ~(1 << 4);
+    if (powerSet.TSS) {
+        powerSettings |= 1 << 5;
+    } else
+        powerSettings &= ~(1 << 5);
+    if (powerSet.AUX) {
+        powerSettings |= 1 << 6;
+    } else
+        powerSettings &= ~(1 << 6);
+    if (powerSet.COOLING) {
+        powerSettings |= 1 << 7;
+    } else
+        powerSettings &= ~(1 << 7);
+    return powerSettings;
 }
 
 void ClearPDUTalk(){

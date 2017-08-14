@@ -6,9 +6,9 @@
         <group>
             <file>file:/D:/EV17.git/trunk/ECU.X-SandBox/PDUComms.h</file>
             <file>file:/D:/EV17.git/trunk/ECU.X-SandBox/Communications.c</file>
+            <file>file:/D:/EV17.git/trunk/ECU.X-SandBox/StateMachine.h</file>
             <file>file:/D:/EV17.git/trunk/ECU.X-SandBox/StateMachine.c</file>
             <file>file:/D:/EV17.git/trunk/ECU.X-SandBox/PDUComms.c</file>
-            <file>file:/D:/EV17.git/trunk/ECU.X-SandBox/ADDRESSING.h</file>
         </group>
     </open-files>
 </project-private>

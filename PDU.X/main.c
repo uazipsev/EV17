@@ -63,14 +63,6 @@ void main(void) {
     int j = 1;
     while (1) {
         updateComms();
-        if(CoolingCheck() && UP == 0){
-            UP = 1;
-            CoolingStart();
-        }
-        if(!CoolingCheck() && UP == 1){
-            UP = 0;
-            CoolingStop();
-        }
     }
 }
 /**
