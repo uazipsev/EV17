@@ -22,10 +22,13 @@
 #include "Communications.h"
 #include <errno.h>
 #include "SScomms.h"
+#include "StateMachine.h"
 
 #define LOW_VOLTAGE_FLAG 1
 #define HIGH_TEMPERATURE_FLAG 2
 #define COMMUNICATIONS_FAULT 3
+
+extern struct powerStates powerSet;
 
 double augment[10] = {0.01,-0.04,0.02,0.04,-0.05,0};
 int k = 0;
@@ -805,7 +808,8 @@ void MenuPrint(char Menuloc, char Subloc){
                 printf("4) Battery Info\n");
                 printf("5) ComBus Info\n");
                 printf("6) Driver Config\n");
-                printf("7) Debug\n");
+                printf("7) PDU Config\n");
+                printf("8) Debug\n");
                 if(error){
                   //print errors for us to be alerted! 
                 }
@@ -830,6 +834,9 @@ void MenuPrint(char Menuloc, char Subloc){
           DriverMenu(Subloc);
           break;
        case 7:
+          PDUMenu(Subloc);
+          break;
+       case 8:
           DebugMenu(Subloc);
           break;
        default:
@@ -1063,6 +1070,36 @@ void DriverMenu(char menuitem){
         printf("|RegenInput & FW/RV-|\n");
         printf("What faults are allowed?\n");
         FunctionDataGrab = 11;
+    }
+}
+
+/*******************************************************************
+ * @brief           PDUMenu
+ * @brief           Sub Menu Driver
+ * @return          N/A
+ * @note            The fcn prints and control Driver stuff 
+ *******************************************************************/
+void PDUMenu(char menuitem){
+    SubMenuActive = true;
+    printf("|---PDU Menu---|\n");
+    printf("1) Toggle cooling Status = %d  \n",powerSet.COOLING);
+    printf("2) Toggle AUX     Status = %d \n",powerSet.AUX);
+    printf("3) Toggle TSS     Status = %d \n",powerSet.TSS);
+    printf("4) Toggle SAS NYI Status = %d \n",powerSet.SAS);
+    printf("5) Toggle DDS NYI Status = %d \n",powerSet.DDS);
+    printf("6) Toggle BMM NYI Status = %d \n",powerSet.BMM);
+    printf("7) Toggle MCU NYI Status = %d \n",powerSet.MCS);
+    if(menuitem == 1){
+        powerSet.COOLING = !powerSet.COOLING;
+        printf("\n---COOLING POWER CHANGED---\n");
+    }
+    else if(menuitem == 2){
+        powerSet.AUX = !powerSet.AUX;
+        printf("\n---AUX POWER CHANGED---\n");
+    }
+    else if(menuitem == 3){
+        powerSet.TSS = !powerSet.TSS;
+        printf("\n---TSS POWER CHANGED---\n");
     }
 }
 

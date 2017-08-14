@@ -41,6 +41,7 @@ void DriverMenu(char menuitem);
 void SelectDriver();
 void ClearScreen();
 void MenuBrakeLightValue(char cont);
+void PDUMenu(char menuitem);
 
 void MenuPrint(char Menuloc, char Subloc);
 void MenuClearFlag();

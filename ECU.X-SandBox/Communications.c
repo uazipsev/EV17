@@ -122,11 +122,6 @@ void Run(){
             Delay(3);
             RS485_Direction2(LISTEN);
             
-            unsigned char g = 4;
-            printBits(sizeof(g), &g);
-            g = g ^ (1<<3);
-            printBits(sizeof(g), &g);
-            
 }
 
 bool SASTx = false;
