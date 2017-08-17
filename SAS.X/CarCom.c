@@ -62,13 +62,13 @@ void sendData(unsigned char whereToSend, unsigned char ComandByte, unsigned char
 
 bool receiveData() {
     if(Receive_available()>5){
-        if(Receive_get() == ECU_ADDRESS){
+        if(Receive_get() == SAS_ADDRESS){
             int i = 0;
             unsigned char Data = 0;
             do{
                 Data = Receive_get();
                 ReciveArray[i] = Data;
-                delay_us(100);
+                delay_us(200);
                 i++;
             }while(Data != 0x00);
             
@@ -103,13 +103,13 @@ bool receiveData() {
 
 void ComController(unsigned char *DTI, unsigned int lenth){
     if(DTI[1] == READ_TABLE){
-//        unsigned char DataToSend[8];
-//        GetDataDict(DTI[2], DTI[3], DataToSend, DTI[4]);
-//        RS485_1_Port = TALK;// = TALK;  //RS485 set to talk
-//        Delay(5);
-//        sendData(ECU_ADDRESS, WRITE_TABLE, TABLE_TWO_SAS, SAS_THROTTLE_1, DataToSend, DTI[4]);
-//        Delay(3);
-//        RS485_1_Port = LISTEN;  ///RS485 set to listen
+        unsigned char DataToSend[8];
+        GetDataDict(DTI[2], DTI[3], DataToSend, DTI[4]);
+        RS485_1_Port = TALK;// = TALK;  //RS485 set to talk
+        Delay(5);
+        sendData(ECU_ADDRESS, WRITE_TABLE, TABLE_TWO_SAS, SAS_THROTTLE_1, DataToSend, DTI[4]);
+        Delay(5);
+        RS485_1_Port = LISTEN;  ///RS485 set to listen
     }
 }
 

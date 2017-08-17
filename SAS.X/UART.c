@@ -24,6 +24,8 @@ int UART_buff_size(struct UART_ring_buff* _this);
 unsigned int UART_buff_modulo_inc(const unsigned int value, const unsigned int modulus);
 unsigned char UART_buff_peek(struct UART_ring_buff* _this);
 
+bool Transmit_stall = false;
+
 void UART_init(void) {
     // UART config
     U1MODEbits.STSEL = 0; // 1-stop bit
@@ -119,7 +121,10 @@ unsigned char Receive_get(void) {
 
 void Send_put(unsigned char _data) {
     UART_buff_put(&output_buffer, _data);
-    U1TXREG = UART_buff_get(&output_buffer);
+    if(Transmit_stall == true){
+        Transmit_stall = false;
+        U1TXREG = UART_buff_get(&output_buffer);
+    }
 }
 
 void __attribute__((interrupt, no_auto_psv)) _U1RXInterrupt(void) {
@@ -138,7 +143,7 @@ void __attribute__((interrupt, no_auto_psv)) _U1TXInterrupt(void) {
     if (UART_buff_size(&output_buffer) > 0) {
         U1TXREG = UART_buff_get(&output_buffer);
     } else {
-        //Transmit_stall = true;
+        Transmit_stall = true;
     }
     IFS0bits.U1TXIF = 0; // Clear TX interrupt flag
 }
