@@ -6,6 +6,6 @@ BatteryManagment.h  \
  BatteryManagementGlobal.h  \
 Function.h  \
 PinDef.h  \
-FastTransfer.h  \
+CarCom.h  \
 UART.h  \
- Timers.h 
+Timers.h 

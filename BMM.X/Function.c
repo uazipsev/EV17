@@ -25,6 +25,8 @@ void Setup(void) {
     TRISBbits.TRISB8=0;
     TRISBbits.TRISB7=0;
     IEC1bits.INT1IE=1;
+    TRISCbits.TRISC8 = 0;
+    TRISCbits.TRISC9 = 1;
 //    LATBbits.LATB9=0;
 //    LATBbits.LATB8=0;
 //    delay_ms(1000);
@@ -35,10 +37,14 @@ void Setup(void) {
 
     PPSUnLock;
     //PPSout(_OC1, _RP5);
-    Pin_24_Output = TX1_OUTPUT;
-    RX1_Pin_Map = 25;
-    Pin_22_Output = TX2_OUTPUT;
-    RX2_Pin_Map = 23;
+//    Pin_25_Output = TX1_OUTPUT;
+//    RX1_Pin_Map = 24;
+//    Pin_22_Output = TX2_OUTPUT;
+//    RX2_Pin_Map = 23;
+    PPSout(_U1TX, _RP24);
+    PPSin(_U1RX, _RP25);
+    PPSout(_U2TX, _RP22);
+    PPSin(_U2RX, _RP23);
     PPSout(_SDO1, _RP21);
     PPSout(_SCK1, _RP19);
     PPSin(_SDI1, _RP20);
@@ -50,7 +56,7 @@ void Setup(void) {
     UART1_init();
    //initTimerTwo();
     //Start_BMS();
-    SPI2_Initialize();
+    //SPI2_Initialize();
    // InitI2C();
     //PWM_Init();
 }

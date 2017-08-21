@@ -655,7 +655,7 @@ void LTC6804_rdaux_reg(int reg,
 					   int *data
 					   )
 {
-      INDICATOR=1;
+      //INDICATOR=1;
   int cmd[4];
   int cmd_pec;
   
@@ -693,7 +693,7 @@ void LTC6804_rdaux_reg(int reg,
 	spi_write_read(cmd,4,&data[current_ic*8],8);
 	LT6020_1_CS = 1;
   }
-   INDICATOR=0;
+   //INDICATOR=0;
 }
 /*
   LTC6804_rdaux_reg Function Process:

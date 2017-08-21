@@ -38,7 +38,7 @@ void __attribute__((interrupt, no_auto_psv)) _T1Interrupt(void) {
  * @note            Used for BMS coms and CC
  *******************************************************************/
 void __attribute__((interrupt, no_auto_psv)) _T2Interrupt(void) {
-   INDICATOR = !INDICATOR;
+   //INDICATOR = !INDICATOR;
         //Read_Total_Voltage(cell_codes_Bank1, cell_codes_Bank2,Sample_Number);               
                        
    //FaultValue=Read_Total_Voltage(cell_codes_Bank1, cell_codes_Bank2,Sample_Number);
@@ -73,7 +73,7 @@ void __attribute__((interrupt, no_auto_psv)) _T3Interrupt(void) {
     }
     else if (timer_3_Function==2){
         if (count>100000){
- INDICATOR = !INDICATOR; // TODO may change LED to different LED 
+   //INDICATOR = !INDICATOR; // TODO may change LED to different LED 
       
     count=0;}
     

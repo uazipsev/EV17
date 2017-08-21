@@ -19,10 +19,10 @@
 
 int main(int argc, char** argv) {
     int mode=1;  //mode=1=Run car  mode=2=Charge Car
-    bool BMM_Setup=true;
+    //bool BMM_Setup=true;
     Setup();
-   printf("Start");
-   Start_BMS(mode);
+   //printf("Start");
+   //Start_BMS(mode);
    while (1) { 
         
        
@@ -36,15 +36,15 @@ int main(int argc, char** argv) {
 //            else counter = 0;
 //            ADCTime = 0;
 //        }
-       //ledDebug();
-        Run_Mode(BMM_Setup); //Start run mode with setup.
-        BMM_Setup=false;
-        if (mode == 1) {
-            //Run_Mode(BMM_Setup); //Start run mode with setup.
-            //BMM_Setup=false;
-        } else if (mode == 2) {
-            Charge_Mode();
-        }
+        ledDebug();
+        //Run_Mode(BMM_Setup); //Start run mode with setup.
+        //BMM_Setup=false;
+        //if (mode == 1) {
+        //    //Run_Mode(BMM_Setup); //Start run mode with setup.
+        //    //BMM_Setup=false;
+        //} else if (mode == 2) {
+        //    Charge_Mode();
+        //}
        
        
        

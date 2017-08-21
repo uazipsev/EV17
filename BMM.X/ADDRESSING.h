@@ -8,12 +8,6 @@
 #ifndef ADDRESSING_H
 #define	ADDRESSING_H
 
-#ifdef	__cplusplus
-extern "C" {
-#endif
-#define CLOSE_COMM_TIME 7
-#define BOARD_RESEND_MIN 25
-#define BOARD_TIMEOUT 50
 
     //Addresses
 #define ECU_ADDRESS 1
@@ -27,8 +21,8 @@ extern "C" {
 #define RESPONSE_ADDRESS        0
 #define THROTTLE1_SAS           1
 #define THROTTLE2_SAS           2
-#define BRAKE_SAS               3
-#define WHEELSPEED1_SAS         4
+#define BRAKE1_SAS              3
+#define BRAKE2_SAS              4
 #define WHEELSPEED2_SAS         5
 #define WHEELSPEED3_SAS         6
 #define WHEELSPEED4_SAS         7
@@ -39,12 +33,6 @@ extern "C" {
 #define PDU_FAULT               12
 #define SAS_FAULT               13
 #define BMM_FAULT               14
-#define CURRENT_BMM1            15
-#define CURRENT_BMM2            16
-#define CURRENT_BMM3            17
-#define CURRENT_BMM4            18
-
-    
 
     //MCS Receive
 #define THROTTLE_OUTPUT         1
@@ -65,7 +53,7 @@ extern "C" {
 #define BRAKE_DDS               4
 
     //BMM Receive
-#define BMM_COMM_STATE          2
+#define BMM_COMM_STATE          1
 
 
 
@@ -77,9 +65,29 @@ extern "C" {
 #define TALK 1
 #define LISTEN 0
 
-#ifdef	__cplusplus
-}
-#endif
+#define NUMOFEXTBYTES 5
+
+#define READ_TABLE 1
+#define WRITE_TABLE 2
+
+#define TABLE_ZERO_DEBUG 0
+#define TABLE_ONE_SS 1
+#define TABLE_TWO_SAS 2
+#define TABLE_THREE_DDS 3
+#define TABLE_FOUR_PDU 4
+#define TABLE_FIVE_BMM 5
+#define TABLE_SIX_MCU 5
+
+#define PDU_POWER_CONTROL 1
+#define PDU_POWER_STATUS 2
+
+#define SS_FAULT_STATUS 1
+#define SS_FAULT_STATUS_LENTH 2
+
+#define SAS_THROTTLE_1 1
+#define SAS_THROTTLE_2 2
+#define SAS_BRAKE_1 3
+#define SAS_BRAKE_2 4
 
 #endif	/* ADDRESSING_H */
 

@@ -27,7 +27,7 @@ int SubMenu = 0;
 bool FuncIn = 0;
 bool SubMenuActive = false;
 bool MenuClear = false;
-int Data = 0;
+//int Data = 0;
 char DataHold[10];
 char TimeOutMenu = 0;
 char next = 0;

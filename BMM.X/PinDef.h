@@ -27,7 +27,7 @@
 /*
  *  RS485 Flow control
  */
-#define RS_RE_DE PORTBbits.RB7
+#define RS_RE_DE LATBbits.LATB7
 #define BMS_TURN_ON LATBbits.LATB5
 /*
  *    LED :)
