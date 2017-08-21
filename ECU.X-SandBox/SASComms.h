@@ -14,10 +14,7 @@
 
 
 
-#define GETSAST1RAW 6
-#define GETSAST2RAW 7
-#define GETSASB1RAW 8
-#define GETSASB2RAW 9
+
 
 bool CheckThrotleConsistency();
 void SetBrakeValue(int val);

@@ -106,7 +106,7 @@ bool receiveData() {
 void ComController(unsigned char *DTI, unsigned int lenth){
     if(DTI[1] == READ_TABLE){
         unsigned char DataToSend[8];
-        GetDataDict(DTI[2], DTI[3], DataToSend, DTI[4]);
+        GetDataDict(DTI[2], DTI[3], DataToSend, 8);
         RS485_1_Port = TALK;// = TALK;  //RS485 set to talk
         Delay(5);
         sendData(ECU_ADDRESS, WRITE_TABLE, TABLE_TWO_SAS, SAS_THROTTLE_1, DataToSend, 8);

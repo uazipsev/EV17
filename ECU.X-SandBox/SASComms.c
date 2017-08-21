@@ -6,7 +6,7 @@
 #include <xc.h>
 #include "ThrottleBrakeControl.h"
 
-unsigned int t1Raw, t2Raw, b1Raw, b2Raw;
+//unsigned int t1Raw, t2Raw, b1Raw, b2Raw;
 bool receiveCommSAS();
 bool requestSASData();
 bool readyToSendSAS = true;
@@ -70,18 +70,4 @@ void ClearSASTalk(){
     readyToSendSAS = true;
 }
 
-unsigned int GetSASRaw(char request){
-    if(request == GETSAST1RAW){
-        return t1Raw;
-    }
-    else if(request == GETSAST2RAW){
-        return t2Raw;
-    }
-    else if(request == GETSASB1RAW){
-        return b1Raw;
-    }
-    else if(request == GETSASB2RAW){
-        return b2Raw;
-    }
-    else return 0;
-}
+

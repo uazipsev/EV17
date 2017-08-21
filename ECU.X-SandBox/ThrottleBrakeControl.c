@@ -27,17 +27,23 @@ unsigned int DeltaLastTime = 0;
 //        ADC_Data[7] = GetADC(Brake2) >> 8;
 //        SetDataDict(TABLE_TWO_SAS, SAS_THROTTLE_1, ADC_Data, 8);
 
+unsigned int t1Raw, t2Raw, b1Raw, b2Raw;
+        
 extern int SAS_FAULT_CONDITION;
 bool CheckThrotleConsistency() {
     GetDataDict(TABLE_TWO_SAS, SAS_THROTTLE_1, ADC_Data, 8);
     //int number = buf[0] | buf[1] << 8;
-    throttle1 = ADC_Data[0] | (ADC_Data[1] << 8); //GetSASRaw(GETSAST1RAW)//
-    throttle1 = throttle1*TRATIO;
-    throttle2 = ADC_Data[2] | (ADC_Data[3] << 8); //GetSASRaw(GETSAST1RAW)//
-    throttle2 = throttle2*TRATIO;
+    t1Raw = ADC_Data[0] | (ADC_Data[1] << 8); //GetSASRaw(GETSAST1RAW)//
+    throttle1 = t1Raw*TRATIO;
+    t2Raw = ADC_Data[2] | (ADC_Data[3] << 8); //GetSASRaw(GETSAST1RAW)//
+    throttle2 = t2Raw*TRATIO;
+    b1Raw = ADC_Data[4] | (ADC_Data[5] << 8); //GetSASRaw(GETSAST1RAW)//
+    brake1 = b1Raw*BRATIO;
+    b2Raw = ADC_Data[6] | (ADC_Data[7] << 8); //GetSASRaw(GETSAST1RAW)//
+    brake2 = b2Raw*BRATIO;    
     //throttle2 = GetSASRaw(GETSAST2RAW)*TRATIO;
-    brake1 = GetSASRaw(GETSASB1RAW)*BRATIO;
-    brake2 = GetSASRaw(GETSASB2RAW)*BRATIO;
+    //brake1 = GetSASRaw(GETSASB1RAW)*BRATIO;
+    //brake2 = GetSASRaw(GETSASB2RAW)*BRATIO;
 
     //throttle consistency check
     if((((throttle1*(ThrottlePrecent/100)) > throttle2) && ((throttle1 *((ThrottlePrecent/100)-1)) < throttle2))) {
@@ -91,4 +97,20 @@ char GetSASFalts(){
 
 void SetThrotteMax(int val){
     ThrottleMax = val;
+}
+
+unsigned int GetSASRaw(char request){
+    if(request == GETSAST1RAW){
+        return t1Raw;
+    }
+    else if(request == GETSAST2RAW){
+        return t2Raw;
+    }
+    else if(request == GETSASB1RAW){
+        return b1Raw;
+    }
+    else if(request == GETSASB2RAW){
+        return b2Raw;
+    }
+    else return 0;
 }
