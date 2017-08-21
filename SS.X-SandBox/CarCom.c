@@ -73,18 +73,16 @@ void sendData(unsigned char whereToSend, unsigned char ComandByte, unsigned char
     
 }
 
- COBS_ENCODE_DST_BUF_LEN_MAX = 30;
- COBS_DECODE_DST_BUF_LEN_MAX = 30;
 
  unsigned char ReciveArray[30];
  unsigned char ProcessArray[30];
-
+            unsigned char Data = 0;
 bool receiveData() {
     
     if(Receive_available()>5){
         if(Receive_get() == SS_ADDRESS){
             int i = 0;
-            unsigned char Data = 0;
+
             do{
                 Data = Receive_get();
                 ReciveArray[i] = Data;
@@ -105,8 +103,9 @@ bool receiveData() {
             }
         }
         else{
-            //ClearBuffer();
-            
+//            do{
+//                Data = Receive_get();
+//            }while(Data != 0x00);  
         }
     }
     else{

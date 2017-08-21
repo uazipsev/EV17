@@ -1,6 +1,6 @@
 #include <stdbool.h>
 #include <xc.h>
-#include "FastTransfer.h"
+#include "CarCom.h"
 #include "Communications.h"
 #include "ADDRESSING.h"
 #include "IO.h"
@@ -13,24 +13,14 @@ void updateComms() {
   
     if (receiveData()) {
         //INDICATOR_Toggle();
-        if (ReceiveArrayGet(RESPONSE_ADDRESS) == ECU_ADDRESS) {
-            respondECU();
-            handleIndicators(ReceiveArrayGet(LED_DDS));
-            DataBarGraphs(ReceiveArrayGet(THROTTLE_DDS), ReceiveArrayGet(BRAKE_DDS));
-            //ReceiveArrayGet(RESPONSE_ADDRESS) = 0;
-        }
+//        if (ReceiveArrayGet(RESPONSE_ADDRESS) == ECU_ADDRESS) {
+//            respondECU();
+//            handleIndicators(ReceiveArrayGet(LED_DDS));
+//            DataBarGraphs(ReceiveArrayGet(THROTTLE_DDS), ReceiveArrayGet(BRAKE_DDS));
+//            //ReceiveArrayGet(RESPONSE_ADDRESS) = 0;
+//        }
 
     }
-}
-
-void respondECU() {
-    LATCbits.LATC5 = 1;
-    ToSend(RESPONSE_ADDRESS, DDS_ADDRESS);
-    ToSend(BUTTONS_DDS, buttonsCollector());
-    Delay(2);
-    sendData(ECU_ADDRESS);
-    Delay(3);
-    LATCbits.LATC5 = 0;
 }
 
 void handleIndicators(int receivedIndicators) {

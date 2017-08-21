@@ -5,4 +5,5 @@ SASComms.h  \
 ADDRESSING.h  \
 PinDef.h  \
 Timers.h  \
- DriverConfigs.h 
+ DriverConfigs.h  \
+CarDataDictionary.h 

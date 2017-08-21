@@ -32,7 +32,6 @@ void Setup(void) {
     //timerTwo();
     UART_init();
     UART1_init();
-    //begin(receiveArray1, sizeof (receiveArray1), SAS_ADDRESS, false, Send_put1, Receive_get1, Receive_available1, Receive_peek1);
 
 }
 

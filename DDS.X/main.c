@@ -80,7 +80,7 @@ void main(void) {
             LEDwriteDisplay(0x70);
             LEDsetValue(GetDataBarGraphB()*RATIO, LED_RED);
             LEDwriteDisplay(0x71);
-            INDICATOR_Toggle();
+            //INDICATOR_Toggle();
             ClearTime();
         }
     }

@@ -4,6 +4,6 @@
 Function.h  \
 ADDRESSING.h  \
 IO.h  \
-FastTransfer.h  \
 mcc_generated_files/pin_manager.h  \
-Communications.h 
+Communications.h  \
+CarCom.h 

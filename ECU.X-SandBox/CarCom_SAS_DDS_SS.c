@@ -67,16 +67,14 @@ bool receiveData_SAS_DDS_SS() {
     if(Receive_available1()>5){
         if(Receive_get1() == ECU_ADDRESS){
             int i = 0;
+            //PacketRecived_SAS_DDS_SS = true;
             unsigned char Data = 0;
             do{
                 Data = Receive_get1();
                 ReciveArray1[i] = Data;
                 DelayUS(200);
-                //printf("%u ",Data);
                 i++;
             }while(Data != 0x00);
-            
-            //printf("\n\r ");
             
             ClearBuffer();
             
@@ -88,7 +86,7 @@ bool receiveData_SAS_DDS_SS() {
             
             if(ProcessArray1[result.out_len-2] == CS){
                 //INDICATOR ^= 1;
-                PacketRecived_SAS_DDS_SS = true;
+                
                 ComController_SAS_DDS_SS(ProcessArray1,result.out_len);
                 return true;
             }
@@ -106,13 +104,23 @@ bool receiveData_SAS_DDS_SS() {
 
 void ComController_SAS_DDS_SS(unsigned char *DTI, unsigned int lenth){
     if(DTI[1] == READ_TABLE){
-        //unsigned char DataToSend[4];
-        //GetDataDict(DTI[2], DTI[3], DataToSend, DTI[4]);
-        //RS485_2_Direction = TALK;  //RS485 set to talk
-        //Delay(5);
-        //sendData(ECU_ADDRESS, 1, 1, 1, DataToSend, DTI[4]);
-        //Delay(3);
-        //RS485_2_Direction = LISTEN;   ///RS485 set to listen
+//        unsigned char DataToSend[4];
+//        GetDataDict(DTI[2], DTI[3], DataToSend, DTI[4]);
+//        RS485_1_Direction = TALK;  //RS485 set to talk
+//        Delay(5);
+//        sendData_SAS_DDS_SS(ECU_ADDRESS, 1, 1, 1, DataToSend, DTI[4]);
+//        Delay(3);
+//        RS485_1_Direction = LISTEN;   ///RS485 set to listen
+    }
+    if(DTI[1] == WRITE_TABLE){
+        unsigned char DataToSend[4];
+        unsigned char DataRecived[10];
+        char k = 0;
+        for(;k<DTI[4];k++){
+            DataRecived[k] = DTI[5+k];
+        }
+        SetDataDict(DTI[2], DTI[3], DataRecived, DTI[4]);
+        PacketRecived_SAS_DDS_SS = true;
     }
 }
 

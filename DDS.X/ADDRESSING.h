@@ -20,6 +20,7 @@ extern "C" {
 #define MCS_ADDRESS 4
 #define PDU_ADDRESS 5
 #define BMM_ADDRESS 6
+#define SS_ADDRESS 8
 
     //ECU Data
 #define RESPONSE_ADDRESS        0
@@ -62,16 +63,29 @@ extern "C" {
 
 
 #define DEBUG_ADDRESS 9
+    
+#define NUMOFEXTBYTES 5
 
-#define BUS_1_ERROR_DEBUG       1
-#define BUS_2_ERROR_DEBUG       2
+#define READ_TABLE 1
+#define WRITE_TABLE 2
+
+#define TABLE_ZERO_DEBUG 0
+#define TABLE_ONE_SS 1
+#define TABLE_TWO_SAS 2
+#define TABLE_THREE_DDS 3
+#define TABLE_FOUR_PDU 4
+#define TABLE_FIVE_BMM 5
+#define TABLE_SIX_MCU 5
+
+#define PDU_POWER_CONTROL 0
+#define PDU_POWER_STATUS 2
+
+#define SS_FAULT_STATUS 1
+#define SS_FAULT_STATUS_LENTH 2
 
 #define TALK 1
 #define LISTEN 0
 
-#ifdef	__cplusplus
-}
-#endif
 
 #endif	/* ADDRESSING_H */
 

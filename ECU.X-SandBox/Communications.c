@@ -21,7 +21,7 @@
 #include "PinDef.h"
 #include "ADDRESSING.h"
 #include "Communications.h"
-#include "SASComms.h"
+#include "ThrottleBrakeControl.h"
 #include "MCSComms.h"
 #include "DDSComms.h"
 #include "PDUComms.h"
@@ -79,13 +79,13 @@ void ComStart(){
 void updateComms() {
     bus1Update();
     if(!GetCarLock()){  //prevents MCS and BMM from coming up....Stopping system boot      
-        //bus2Update();
+        bus2Update();
     }
    // }
     //checkCommDirection();
     //checkCommDirection1();
     //RS485_Direction1(TALK);
-    //receiveData_SAS_DDS_SS();
+    receiveData_SAS_DDS_SS();
 }
 
 //void printBits(size_t const size, void const * const ptr)
@@ -120,6 +120,8 @@ bool SASTx = true;
 bool DDSTx = true;
 bool SSTx = true;
 
+unsigned int previousTime = 0;
+
 void bus1Update() {
     switch (commsBus1State) {
         case SAS_UPDATE:
@@ -132,19 +134,24 @@ void bus1Update() {
                 sendData_SAS_DDS_SS(SAS_ADDRESS, READ_TABLE, TABLE_TWO_SAS, SAS_THROTTLE_1, Data, SS_FAULT_STATUS_LENTH);
                 Delay(3);
                 RS485_Direction1(LISTEN);
+                SetTime(SASTIMER);
+                previousTime = GetTime(SASTIMER);
             }
+            //Packet received 
             if (RecivedValidPacket_SAS_DDS_SS()) {
-                //commsBus1State = DDS_UPDATE;
-                //SASTx = true;
+                CheckThrotleConsistency();
+                commsBus1State = DDS_UPDATE;
+                SASTx = true;
                 break;
+            }
+            //Time Out on packet
+            if(GetTime(SASTIMER) - previousTime > 15){
+                commsBus1State = DDS_UPDATE;
+                SASTx = true;
             }
             else{
                 break;
             }
-//            if(false){
-//                commsBus1State = DDS_UPDATE;
-//                break;
-//            }
         case DDS_UPDATE:
             if(DDSTx){
                 DDSTx = false;
@@ -152,22 +159,25 @@ void bus1Update() {
                 Data[0] = 0x11;
                 Data[1] = 0x22;
                 RS485_Direction1(TALK);         
-                //sendData_SAS_DDS_SS(DDS_ADDRESS, READ_TABLE, TABLE_THREE_DDS, SAS_THROTTLE_1, Data, SS_FAULT_STATUS_LENTH);
+                sendData_SAS_DDS_SS(DDS_ADDRESS, READ_TABLE, TABLE_THREE_DDS, SAS_THROTTLE_1, Data, SS_FAULT_STATUS_LENTH);
                 Delay(3);
                 RS485_Direction1(LISTEN);
+                SetTime(DDSTIMER);
+                previousTime = GetTime(DDSTIMER);
             }
             if (RecivedValidPacket_SAS_DDS_SS()) {
-                //commsBus1State = SS_UPDATE;
-                //DDSTx = true;
+                commsBus1State = SS_UPDATE;
+                DDSTx = true;
+                break;
+            }
+            if(GetTime(DDSTIMER) - previousTime > 15){
+                commsBus1State = SS_UPDATE;
+                DDSTx = true;
                 break;
             }
             else{
                 break;
             }
-//            if(false){
-//                commsBus1State = DDS_UPDATE;
-//                break;
-//            }
         case SS_UPDATE:
             if(SSTx){
                 SSTx = false;
@@ -175,22 +185,25 @@ void bus1Update() {
                 Data[0] = 0x11;
                 Data[1] = 0x22;
                 RS485_Direction1(TALK);         
-                //sendData_SAS_DDS_SS(SS_ADDRESS, READ_TABLE, TABLE_ONE_SS, SS_FAULT_STATUS, Data, SS_FAULT_STATUS_LENTH);
+                sendData_SAS_DDS_SS(SS_ADDRESS, READ_TABLE, TABLE_ONE_SS, SS_FAULT_STATUS, Data, SS_FAULT_STATUS_LENTH);
                 Delay(3);
                 RS485_Direction1(LISTEN);
+                SetTime(SSTIMER);
+                previousTime = GetTime(SSTIMER);
             }
             if (RecivedValidPacket_SAS_DDS_SS()) {
-                //commsBus1State = SAS_UPDATE;
-                //SSTx = true;
+                commsBus1State = SAS_UPDATE;
+                SSTx = true;
+                break;
+            }
+            if(GetTime(SSTIMER) - previousTime > 15){
+                commsBus1State = SAS_UPDATE;
+                SSTx = true;
                 break;
             }
             else{
                 break;
             }
-//            if(false){
-//                commsBus1State = DDS_UPDATE;
-//                break;
-//            }
     }
 }
 
@@ -218,115 +231,90 @@ bool MCSTx = false;
 bool BMMTx = false;
 bool PDUTx = false;
 
+// MCS_UPDATE = 0, BMM_UPDATE = 1,  PDU_UPDATE = 2//,
+
 void bus2Update() {
-//    switch (commsBus2State) {
-//        case MCS_UPDATE:
-//            if(MCSTx){
-//                if (receiveCommMCS()) {
-//                    comms.MCS = true;
-//                    commsBus2State = BMM_UPDATE;
-//                    BoardTimeOutCounterBus2 = 0;
-//                    SetTime(MCSTIMER);
-//                    MCSTx = false;
-//                    break;
-//                }
-//                else{
-//                    BoardTimeOutCounterBus2++;
-//                    if(BoardTimeOutCounterBus2 > BOARD_TIMEOUT){
-//                        commsBus2State = BMM_UPDATE;
-//                        BoardTimeOutCounterBus2 = 0;
-//                        comms.MCS = false;
-//                        ClearMCSTalk();
-//                        MCSTx = false;
-//                        SetTime(MCSTIMER);
-//                        break;
-//                    }
-//                    break;
-//                }
-//            }
-//            if (requestMCSData()) {
-//                BoardTimeOutCounterBus2 = 0;
-//                MCSTx = true;
-//                break;
-//            }
-//            else {
-//                //FLAG ERROR ON DDS COMMS -- Move on
-//                commsBus2State = BMM_UPDATE;
-//                break;
-//            }
-//        case BMM_UPDATE:
-//            if(BMMTx){
-//                if (receiveCommBMM()) {
-//                    comms.BMM = true;
-//                    commsBus2State = PDU_UPDATE;
-//                    BoardTimeOutCounterBus2 = 0;
-//                    SetTime(BMMTIMER);
-//                    BMMTx = false;
-//                    break;
-//                }
-//                else{
-//                    BoardTimeOutCounterBus2++;
-//                    if(BoardTimeOutCounterBus2 > BOARD_TIMEOUT){
-//                        commsBus2State = PDU_UPDATE;
-//                        BoardTimeOutCounterBus2 = 0;
-//                        comms.BMM = false;
-//                        ClearBMMTalk();
-//                        BMMTx = false;
-//                        SetTime(BMMTIMER);
-//                        break;
-//                    }
-//                    break;
-//                }
-//            }
-    RS485_2_Direction = 0;
-    requestBMMData();
-     RS485_2_Direction = 1;
-//            if (requestBMMData()) {
-//                BoardTimeOutCounterBus2 = 0;
-//                BMMTx = true;
-//                break;
-//            }
-//            else {
-//                //FLAG ERROR ON DDS COMMS -- Move on
-//                commsBus2State = PDU_UPDATE;
-//                break;
-//            }
-//
-//        case PDU_UPDATE:       
-//            if(PDUTx){
-//                if (receiveCommPDU()) {
-//                    comms.PDU = true;
-//                    commsBus2State = MCS_UPDATE;
-//                    BoardTimeOutCounterBus2 = 0;
-//                    SetTime(PDUTIMER);
-//                    PDUTx = false;
-//                    break;
-//                }
-//                else{
-//                    BoardTimeOutCounterBus2++;
-//                    if(BoardTimeOutCounterBus2 > BOARD_TIMEOUT){
-//                        commsBus2State = MCS_UPDATE;
-//                        BoardTimeOutCounterBus2 = 0;
-//                        comms.PDU = false;
-//                        ClearPDUTalk();
-//                        PDUTx = false;
-//                        SetTime(PDUTIMER);
-//                        break;
-//                    }
-//                    break;
-//                }
-//            }
-//            if (requestPDUData()) {
-//                BoardTimeOutCounterBus2 = 0;
-//                PDUTx = true;
-//                break;
-//            }
-//            else {
-//                //FLAG ERROR ON DDS COMMS -- Move on
-//                commsBus2State = MCS_UPDATE;
-//                break;
-//            }
-//    }
+    switch (commsBus2State) {
+        case MCS_UPDATE:
+            if(MCSTx){
+                MCSTx = false;
+                unsigned char Data[10];
+                Data[0] = 0x11;
+                Data[1] = 0x22;
+                RS485_Direction2(TALK);         
+                sendData_PDU_MCS_BMM(MCS_ADDRESS, READ_TABLE, TABLE_TWO_SAS, SAS_THROTTLE_1, Data, SS_FAULT_STATUS_LENTH);
+                Delay(3);
+                RS485_Direction2(LISTEN);
+                SetTime(MCSTIMER);
+                previousTime = GetTime(MCSTIMER);
+            }
+            //Packet received 
+            if (RecivedValidPacket_PDU_MCS_BMM()) {
+                commsBus2State = DDS_UPDATE;
+                MCSTx = true;
+                break;
+            }
+            //Time Out on packet
+            if(GetTime(MCSTIMER) - previousTime > 15){
+                commsBus2State = DDS_UPDATE;
+                MCSTx = true;
+            }
+            else{
+                break;
+            }
+        case BMM_UPDATE:
+            if(BMMTx){
+                BMMTx = false;
+                unsigned char Data[2];
+                Data[0] = 0x11;
+                Data[1] = 0x22;
+                RS485_Direction2(TALK);         
+                sendData_PDU_MCS_BMM(BMM_ADDRESS, READ_TABLE, TABLE_THREE_DDS, SAS_THROTTLE_1, Data, SS_FAULT_STATUS_LENTH);
+                Delay(3);
+                RS485_Direction2(LISTEN);
+                SetTime(BMMTIMER);
+                previousTime = GetTime(BMMTIMER);
+            }
+            if (RecivedValidPacket_PDU_MCS_BMM()) {
+                commsBus2State = SS_UPDATE;
+                BMMTx = true;
+                break;
+            }
+            if(GetTime(BMMTIMER) - previousTime > 15){
+                commsBus2State = SS_UPDATE;
+                BMMTx = true;
+                break;
+            }
+            else{
+                break;
+            }
+        case PDU_UPDATE:
+            if(PDUTx){
+                PDUTx = false;
+                unsigned char Data[2];
+                Data[0] =  constructPowerSet();
+                //Data[1] = 0x22;
+                RS485_Direction2(TALK);         
+                sendData_PDU_MCS_BMM(PDU_ADDRESS, WRITE_TABLE, TABLE_FOUR_PDU, PDU_POWER_CONTROL, Data, 1);
+                Delay(3);
+                RS485_Direction2(LISTEN);
+                SetTime(PDUTIMER);
+                previousTime = GetTime(PDUTIMER);
+            }
+            if (RecivedValidPacket_PDU_MCS_BMM()) {
+                commsBus2State = MCS_UPDATE;
+                PDUTx = true;
+                break;
+            }
+            if(GetTime(PDUTIMER) - previousTime > 15){
+                commsBus2State = MCS_UPDATE;
+                PDUTx = true;
+                break;
+            }
+            else{
+                break;
+            }
+    }
 }
 
 void checkCommDirection1() {

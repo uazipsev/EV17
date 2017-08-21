@@ -124,9 +124,9 @@ extern "C" {
     int Receive_available(void);
     unsigned char Receive_get(void);
     void Send_put(unsigned char _data);
-
-
-
+    
+    void ClearBuffer();
+    
 #ifdef	__cplusplus
 }
 #endif

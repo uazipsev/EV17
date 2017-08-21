@@ -20,7 +20,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 "164 C:\Program Files (x86)\Microchip\xc8\v1.42\include\pic18.h
 [v __delay `JF6934 ~T0 @X0 0 e ]
 [p i __delay ]
-"95 CarCom.c
+"93 CarCom.c
 [c E7104 0 1 2 4 8 .. ]
 [n E7104 . COBS_DECODE_OK COBS_DECODE_NULL_POINTER COBS_DECODE_OUT_BUFFER_OVERFLOW COBS_DECODE_ZERO_BYTE_IN_INPUT COBS_DECODE_INPUT_TOO_SHORT  ]
 "57 COBS.h
@@ -6985,165 +6985,155 @@ Version 3.2 HI-TECH Software Intermediate Code
 "74
 [e :UE 863 ]
 }
-"76
-[v _COBS_ENCODE_DST_BUF_LEN_MAX `i ~T0 @X0 1 e ]
-[i _COBS_ENCODE_DST_BUF_LEN_MAX
--> 30 `i
-]
-[; ;CarCom.c: 76: COBS_ENCODE_DST_BUF_LEN_MAX = 30;
 "77
-[v _COBS_DECODE_DST_BUF_LEN_MAX `i ~T0 @X0 1 e ]
-[i _COBS_DECODE_DST_BUF_LEN_MAX
--> 30 `i
-]
-[; ;CarCom.c: 77: COBS_DECODE_DST_BUF_LEN_MAX = 30;
-"79
 [v _ReciveArray `uc ~T0 @X0 -> 30 `i e ]
-[; ;CarCom.c: 79: unsigned char ReciveArray[30];
-"80
+[; ;CarCom.c: 77: unsigned char ReciveArray[30];
+"78
 [v _ProcessArray `uc ~T0 @X0 -> 30 `i e ]
-[; ;CarCom.c: 80: unsigned char ProcessArray[30];
-"82
+[; ;CarCom.c: 78: unsigned char ProcessArray[30];
+"79
+[v _Data `uc ~T0 @X0 1 e ]
+[i _Data
+-> -> 0 `i `uc
+]
+[; ;CarCom.c: 79: unsigned char Data = 0;
+"80
 [v _receiveData `(uc ~T0 @X0 1 ef ]
 {
-[; ;CarCom.c: 82: bool receiveData() {
+[; ;CarCom.c: 80: bool receiveData() {
 [e :U _receiveData ]
 [f ]
-[; ;CarCom.c: 84: if(Receive_available()>5){
-"84
+[; ;CarCom.c: 82: if(Receive_available()>5){
+"82
 [e $ ! > ( _Receive_available ..  -> 5 `i 877  ]
 {
-[; ;CarCom.c: 85: if(Receive_get() == 8){
-"85
+[; ;CarCom.c: 83: if(Receive_get() == 8){
+"83
 [e $ ! == -> ( _Receive_get ..  `i -> 8 `i 878  ]
 {
-"86
+"84
 [v _i `i ~T0 @X0 1 a ]
-[; ;CarCom.c: 86: int i = 0;
+[; ;CarCom.c: 84: int i = 0;
 [e = _i -> 0 `i ]
-"87
-[v _Data `uc ~T0 @X0 1 a ]
-[; ;CarCom.c: 87: unsigned char Data = 0;
-[e = _Data -> -> 0 `i `uc ]
-[; ;CarCom.c: 88: do{
-"88
+[; ;CarCom.c: 86: do{
+"86
 [e :U 881 ]
 {
-[; ;CarCom.c: 89: Data = Receive_get();
-"89
+[; ;CarCom.c: 87: Data = Receive_get();
+"87
 [e = _Data ( _Receive_get ..  ]
-[; ;CarCom.c: 90: ReciveArray[i] = Data;
-"90
+[; ;CarCom.c: 88: ReciveArray[i] = Data;
+"88
 [e = *U + &U _ReciveArray * -> -> _i `ui `ux -> -> # *U &U _ReciveArray `ui `ux _Data ]
-[; ;CarCom.c: 91: _delay((unsigned long)((100)*(16000000/4000000.0)));
-"91
+[; ;CarCom.c: 89: _delay((unsigned long)((100)*(16000000/4000000.0)));
+"89
 [e ( __delay (1 -> * -> -> 100 `i `d / -> -> 16000000 `l `d .4000000.0 `ul ]
-[; ;CarCom.c: 92: i++;
-"92
+[; ;CarCom.c: 90: i++;
+"90
 [e ++ _i -> 1 `i ]
-"93
+"91
 }
-[; ;CarCom.c: 93: }while(Data != 0x00);
+[; ;CarCom.c: 91: }while(Data != 0x00);
 [e $ != -> _Data `i -> 0 `i 881  ]
 [e :U 880 ]
-"95
+"93
 [v _result `S851 ~T0 @X0 1 a ]
-[; ;CarCom.c: 95: cobs_decode_result result;
-[; ;CarCom.c: 97: result = cobs_decode(ProcessArray, sizeof(ProcessArray), ReciveArray, i);
-"97
+[; ;CarCom.c: 93: cobs_decode_result result;
+[; ;CarCom.c: 95: result = cobs_decode(ProcessArray, sizeof(ProcessArray), ReciveArray, i);
+"95
 [e = _result ( _cobs_decode (4 , , , &U _ProcessArray -> # _ProcessArray `ui -> &U _ReciveArray `*Cuc -> _i `ui ]
 [v _CS `uc ~T0 @X0 1 a ]
-[; ;CarCom.c: 99: unsigned char CS = CRC8(ProcessArray, result.out_len-1);
-"99
+[; ;CarCom.c: 97: unsigned char CS = CRC8(ProcessArray, result.out_len-1);
+"97
 [e = _CS ( _CRC8 (2 , -> &U _ProcessArray `*Cuc -> - . _result 0 -> -> 1 `i `ui `uc ]
-[; ;CarCom.c: 101: if(ProcessArray[result.out_len-1] == CS){
-"101
+[; ;CarCom.c: 99: if(ProcessArray[result.out_len-1] == CS){
+"99
 [e $ ! == -> *U + &U _ProcessArray * -> - . _result 0 -> -> 1 `i `ui `ux -> -> # *U &U _ProcessArray `ui `ux `i -> _CS `i 882  ]
 {
-[; ;CarCom.c: 102: LATAbits.LATA3 ^= 1;
-"102
+[; ;CarCom.c: 100: LATAbits.LATA3 ^= 1;
+"100
 [e =^ . . _LATAbits 0 3 -> -> 1 `i `uc ]
-[; ;CarCom.c: 103: ComController(ProcessArray,result.out_len);
-"103
+[; ;CarCom.c: 101: ComController(ProcessArray,result.out_len);
+"101
 [e ( _ComController (2 , &U _ProcessArray . _result 0 ]
-[; ;CarCom.c: 104: return 1;
-"104
+[; ;CarCom.c: 102: return 1;
+"102
 [e ) -> -> 1 `i `uc ]
 [e $UE 876  ]
-"105
+"103
 }
 [e :U 882 ]
-"106
+"104
 }
-[; ;CarCom.c: 105: }
-[; ;CarCom.c: 106: }
+[; ;CarCom.c: 103: }
+[; ;CarCom.c: 104: }
 [e $U 883  ]
-"107
+"105
 [e :U 878 ]
-[; ;CarCom.c: 107: else{
+[; ;CarCom.c: 105: else{
 {
-"110
+"109
 }
 [e :U 883 ]
-"111
+"110
 }
+[; ;CarCom.c: 109: }
 [; ;CarCom.c: 110: }
-[; ;CarCom.c: 111: }
 [e $U 884  ]
-"112
+"111
 [e :U 877 ]
-[; ;CarCom.c: 112: else{
+[; ;CarCom.c: 111: else{
 {
-"114
+"113
 }
 [e :U 884 ]
-[; ;CarCom.c: 114: }
-[; ;CarCom.c: 116: return 0;
-"116
+[; ;CarCom.c: 113: }
+[; ;CarCom.c: 115: return 0;
+"115
 [e ) -> -> 0 `i `uc ]
 [e $UE 876  ]
-[; ;CarCom.c: 117: }
-"117
+[; ;CarCom.c: 116: }
+"116
 [e :UE 876 ]
 }
-"119
+"118
 [v _ComController `(v ~T0 @X0 1 ef2`*uc`ui ]
 {
-[; ;CarCom.c: 119: void ComController(unsigned char *DTI, unsigned int lenth){
+[; ;CarCom.c: 118: void ComController(unsigned char *DTI, unsigned int lenth){
 [e :U _ComController ]
 [v _DTI `*uc ~T0 @X0 1 r1 ]
 [v _lenth `ui ~T0 @X0 1 r2 ]
 [f ]
-[; ;CarCom.c: 120: if(DTI[1] == 1){
-"120
+[; ;CarCom.c: 119: if(DTI[1] == 1){
+"119
 [e $ ! == -> *U + _DTI * -> -> 1 `i `x -> -> # *U _DTI `i `x `i -> 1 `i 886  ]
 {
-"121
+"120
 [v _DataToSend `uc ~T0 @X0 -> 4 `i a ]
-[; ;CarCom.c: 121: unsigned char DataToSend[4];
-[; ;CarCom.c: 122: GetDataDict(DTI[2], DTI[3], DataToSend, DTI[4]);
-"122
+[; ;CarCom.c: 120: unsigned char DataToSend[4];
+[; ;CarCom.c: 121: GetDataDict(DTI[2], DTI[3], DataToSend, DTI[4]);
+"121
 [e ( _GetDataDict (4 , , , *U + _DTI * -> -> 2 `i `x -> -> # *U _DTI `i `x *U + _DTI * -> -> 3 `i `x -> -> # *U _DTI `i `x &U _DataToSend *U + _DTI * -> -> 4 `i `x -> -> # *U _DTI `i `x ]
-[; ;CarCom.c: 123: LATDbits.LATD4 = 1;
-"123
+[; ;CarCom.c: 122: LATDbits.LATD4 = 1;
+"122
 [e = . . _LATDbits 0 4 -> -> 1 `i `uc ]
-[; ;CarCom.c: 124: Delay(5);
-"124
+[; ;CarCom.c: 123: Delay(5);
+"123
 [e ( _Delay (1 -> 5 `i ]
-[; ;CarCom.c: 125: sendData(1, 2, 1, 1, DataToSend, DTI[4]);
-"125
+[; ;CarCom.c: 124: sendData(1, 2, 1, 1, DataToSend, DTI[4]);
+"124
 [e ( _sendData (4 , , , , , -> -> 1 `i `uc -> -> 2 `i `uc -> -> 1 `i `uc -> -> 1 `i `uc &U _DataToSend -> *U + _DTI * -> -> 4 `i `x -> -> # *U _DTI `i `x `ui ]
-[; ;CarCom.c: 126: Delay(3);
-"126
+[; ;CarCom.c: 125: Delay(3);
+"125
 [e ( _Delay (1 -> 3 `i ]
-[; ;CarCom.c: 127: LATDbits.LATD4 = 0;
-"127
+[; ;CarCom.c: 126: LATDbits.LATD4 = 0;
+"126
 [e = . . _LATDbits 0 4 -> -> 0 `i `uc ]
-"128
+"127
 }
 [e :U 886 ]
+[; ;CarCom.c: 127: }
 [; ;CarCom.c: 128: }
-[; ;CarCom.c: 129: }
-"129
+"128
 [e :UE 885 ]
 }

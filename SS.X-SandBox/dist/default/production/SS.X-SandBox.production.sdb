@@ -23,7 +23,7 @@ COBS_ENCODE_OK 0
 COBS_ENCODE_NULL_POINTER 1
 COBS_ENCODE_OUT_BUFFER_OVERFLOW 2
 ]
-"95
+"93
 [e E7104 . `uc
 COBS_DECODE_OK 0
 COBS_DECODE_NULL_POINTER 1
@@ -57,9 +57,9 @@ COBS_DECODE_INPUT_TOO_SHORT 8
 [v _CRC8 CRC8 `(uc  1 e 1 0 ]
 "40
 [v _sendData sendData `(v  1 e 1 0 ]
-"82
+"80
 [v _receiveData receiveData `(uc  1 e 1 0 ]
-"119
+"118
 [v _ComController ComController `(v  1 e 1 0 ]
 "9 D:\EV17.git\trunk\SS.X-SandBox\CarDataDictionary.c
 [v _GetDataDict GetDataDict `(uc  1 e 1 0 ]
@@ -562,10 +562,12 @@ COBS_DECODE_INPUT_TOO_SHORT 8
 ]
 [u S349 . 1 `S327 1 . 1 0 `S336 1 . 1 0 `S345 1 . 1 0 ]
 [v _INTCONbits INTCONbits `VES349  1 e 1 @4082 ]
-"79 D:\EV17.git\trunk\SS.X-SandBox\CarCom.c
+"77 D:\EV17.git\trunk\SS.X-SandBox\CarCom.c
 [v _ReciveArray ReciveArray `[30]uc  1 e 30 0 ]
-"80
+"78
 [v _ProcessArray ProcessArray `[30]uc  1 e 30 0 ]
+"79
+[v _Data Data `uc  1 e 1 0 ]
 "6 D:\EV17.git\trunk\SS.X-SandBox\CarDataDictionary.c
 [v _DataTableArrayOne DataTableArrayOne `[10]uc  1 e 10 0 ]
 "7
@@ -594,19 +596,17 @@ COBS_DECODE_INPUT_TOO_SHORT 8
 {
 "20
 } 0
-"82 D:\EV17.git\trunk\SS.X-SandBox\CarCom.c
+"80 D:\EV17.git\trunk\SS.X-SandBox\CarCom.c
 [v _receiveData receiveData `(uc  1 e 1 0 ]
 {
 [s S1214 . 3 `ui 1 out_len 2 0 `E154 1 status 1 2 ]
-"95
-[v receiveData@result result `S1214  1 a 3 4 ]
-"86
+"93
+[v receiveData@result result `S1214  1 a 3 3 ]
+"84
 [v receiveData@i i `i  1 a 2 1 ]
-"87
-[v receiveData@Data Data `uc  1 a 1 3 ]
-"97
+"95
 [v receiveData@CS CS `uc  1 a 1 0 ]
-"117
+"116
 } 0
 "57 D:\EV17.git\trunk\SS.X-SandBox\COBS.h
 [s S1214 . 3 `ui 1 out_len 2 0 `E154 1 status 1 2 ]
@@ -655,33 +655,33 @@ COBS_DECODE_INPUT_TOO_SHORT 8
 [v UART_buff_size@_this _this `*.39S21  1 p 2 26 ]
 "103
 } 0
-"119 D:\EV17.git\trunk\SS.X-SandBox\CarCom.c
+"118 D:\EV17.git\trunk\SS.X-SandBox\CarCom.c
 [v _ComController ComController `(v  1 e 1 0 ]
 {
-"121
-[v ComController@DataToSend DataToSend `[4]uc  1 a 4 93 ]
-"119
-[v ComController@DTI DTI `*.39uc  1 p 2 88 ]
-[v ComController@lenth lenth `ui  1 p 2 90 ]
-"129
+"120
+[v ComController@DataToSend DataToSend `[4]uc  1 a 4 96 ]
+"118
+[v ComController@DTI DTI `*.39uc  1 p 2 92 ]
+[v ComController@lenth lenth `ui  1 p 2 94 ]
+"128
 } 0
 "40
 [v _sendData sendData `(v  1 e 1 0 ]
 {
 [v sendData@whereToSend whereToSend `uc  1 a 1 wreg ]
 "41
-[v sendData@SendArray SendArray `[30]uc  1 a 30 50 ]
+[v sendData@SendArray SendArray `[30]uc  1 a 30 54 ]
 "42
-[v sendData@COBSArray COBSArray `[30]uc  1 a 30 20 ]
+[v sendData@COBSArray COBSArray `[30]uc  1 a 30 24 ]
 [s S1205 . 3 `ui 1 out_len 2 0 `E145 1 status 1 2 ]
 "44
-[v sendData@result result `S1205  1 a 3 82 ]
+[v sendData@result result `S1205  1 a 3 86 ]
 "53
-[v sendData@count count `i  1 a 2 85 ]
+[v sendData@count count `i  1 a 2 89 ]
 "52
-[v sendData@i i `uc  1 a 1 87 ]
+[v sendData@i i `uc  1 a 1 91 ]
 "58
-[v sendData@CS CS `uc  1 a 1 81 ]
+[v sendData@CS CS `uc  1 a 1 85 ]
 "40
 [v sendData@whereToSend whereToSend `uc  1 a 1 wreg ]
 [v sendData@ComandByte ComandByte `uc  1 p 1 13 ]
@@ -690,7 +690,7 @@ COBS_DECODE_INPUT_TOO_SHORT 8
 [v sendData@DTS DTS `*.39uc  1 p 2 16 ]
 [v sendData@lenth lenth `ui  1 p 2 18 ]
 "46
-[v sendData@whereToSend whereToSend `uc  1 a 1 80 ]
+[v sendData@whereToSend whereToSend `uc  1 a 1 84 ]
 "74
 } 0
 "41 D:\EV17.git\trunk\SS.X-SandBox\COBS.h

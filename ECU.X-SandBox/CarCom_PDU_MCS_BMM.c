@@ -110,6 +110,16 @@ void ComController_PDU_MCS_BMM(unsigned char *DTI, unsigned int lenth){
         //Delay(3);
         //RS485_1_Direction = LISTEN;  ///RS485 set to listen
     }
+    if(DTI[1] == WRITE_TABLE){
+        unsigned char DataToSend[4];
+        unsigned char DataRecived[10];
+        char k = 0;
+        for(;k<DTI[4];k++){
+            DataRecived[k] = DTI[5+k];
+        }
+        SetDataDict(DTI[2], DTI[3], DataRecived, DTI[4]);
+        PacketRecived_PDU_MCS_BMM = true;
+    }
 }
 
 unsigned char CRC8_PDU_MCS_BMM(const unsigned char * data, unsigned char len) {

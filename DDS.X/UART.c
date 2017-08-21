@@ -164,3 +164,7 @@ char getch(void) {
 void putch(char txData) {
     Send_put(txData);
 }
+
+void ClearBuffer(){
+    UART_buff_flush(&input_buffer, 1);
+}
