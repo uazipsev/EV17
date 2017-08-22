@@ -31,7 +31,7 @@ bool portClosed = false;
 
 void CommStart(){
     UART_init();
-    RS_RE_DE = 1;
+    RS_RE_DE = 0;
 }
 
 void updateComms() {
