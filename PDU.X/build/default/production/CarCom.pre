@@ -8901,11 +8901,6 @@ void sendData(unsigned char whereToSend, unsigned char ComandByte, unsigned char
 unsigned char SendArray[30];
 unsigned char COBSArray[30];
 
-int j = 0;
-for(j;j<sizeof(SendArray);j++){
-SendArray[j] = 0;
-}
-
 cobs_encode_result result;
 
 SendArray[0] = 5+lenth;
@@ -8937,17 +8932,15 @@ Send_put(SendArray[i]);
 }
 }
 
-COBS_ENCODE_DST_BUF_LEN_MAX = 30;
-COBS_DECODE_DST_BUF_LEN_MAX = 30;
+unsigned char ReciveArray[30];
+unsigned char ProcessArray[30];
 
-char ReciveArray[30];
-char ProcessArray[30];
+unsigned char Data = 0;
 
 bool receiveData(){
 if(Receive_available()>5){
 if(Receive_get() == 5){
 int i = 0;
-unsigned char Data = 0;
 do{
 Data = Receive_get();
 ReciveArray[i] = Data;
@@ -8964,15 +8957,17 @@ cobs_decode_result result;
 
 result = cobs_decode(ProcessArray, sizeof(ProcessArray), ReciveArray, i);
 
-unsigned char CS = CRC8(ProcessArray, result.out_len-2);
+unsigned char CS = CRC8(ProcessArray, result.out_len-1);
 
-if(ProcessArray[result.out_len-2] == CS){
+if(ProcessArray[result.out_len-1] == CS){
 do { LATA3 = ~LATA3; } while(0);
 ComController(ProcessArray,result.out_len);
 return 1;
 }
 }
 else{
+
+
 
 }
 }
