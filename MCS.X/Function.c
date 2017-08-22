@@ -34,7 +34,7 @@ void Setup(void) {
     
     PinSetMode();
     UART_init();
-    begin(receiveArray, sizeof (receiveArray), MCS_ADDRESS, false, Send_put, Receive_get, Receive_available, Receive_peek);
+    //begin(receiveArray, sizeof (receiveArray), MCS_ADDRESS, false, Send_put, Receive_get, Receive_available, Receive_peek);
 
     I2c_Init();
     TimerOneInit();

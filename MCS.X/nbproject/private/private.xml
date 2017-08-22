@@ -4,14 +4,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/EV16.git/trunk/MCS.X/main.c</file>
-            <file>file:/C:/EV16.git/trunk/MCS.X/I2C.c</file>
-            <file>file:/C:/EV16.git/trunk/MCS.X/MotorControler.c</file>
-            <file>file:/C:/EV16.git/trunk/MCS.X/Timers.c</file>
-            <file>file:/C:/EV16.git/trunk/MCS.X/Function.c</file>
-            <file>file:/C:/EV16.git/trunk/MCS.X/Timers.h</file>
-            <file>file:/C:/EV16.git/trunk/MCS.X/Communications.h</file>
-            <file>file:/C:/EV16.git/trunk/MCS.X/MotorControler.h</file>
+            <file>file:/D:/EV17.git/trunk/MCS.X/main.c</file>
+            <file>file:/D:/EV17.git/trunk/MCS.X/CarCom.c</file>
+            <file>file:/D:/EV17.git/trunk/MCS.X/Function.c</file>
+            <file>file:/D:/EV17.git/trunk/MCS.X/Communications.h</file>
+            <file>file:/D:/EV17.git/trunk/MCS.X/UART.c</file>
+            <file>file:/D:/EV17.git/trunk/MCS.X/Function.h</file>
+            <file>file:/D:/EV17.git/trunk/MCS.X/UART.h</file>
+            <file>file:/D:/EV17.git/trunk/MCS.X/Communications.c</file>
         </group>
     </open-files>
 </project-private>

@@ -7,7 +7,6 @@
       <itemPath>PinDef.h</itemPath>
       <itemPath>Function.h</itemPath>
       <itemPath>MotorControler.h</itemPath>
-      <itemPath>FastTransfer.h</itemPath>
       <itemPath>MCP4725.h</itemPath>
       <itemPath>I2C.h</itemPath>
       <itemPath>UART.h</itemPath>
@@ -16,6 +15,9 @@
       <itemPath>ADDRESSING.h</itemPath>
       <itemPath>ADC.h</itemPath>
       <itemPath>UART2.h</itemPath>
+      <itemPath>COBS.h</itemPath>
+      <itemPath>CarCom.h</itemPath>
+      <itemPath>CarDataDictionary.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -27,7 +29,6 @@
       <itemPath>main.c</itemPath>
       <itemPath>Function.c</itemPath>
       <itemPath>MotorControler.c</itemPath>
-      <itemPath>FastTransfer.c</itemPath>
       <itemPath>MCP4725.c</itemPath>
       <itemPath>ConfigBits.c</itemPath>
       <itemPath>I2C.c</itemPath>
@@ -36,6 +37,9 @@
       <itemPath>Timers.c</itemPath>
       <itemPath>ADC.c</itemPath>
       <itemPath>UART2.c</itemPath>
+      <itemPath>COBS.c</itemPath>
+      <itemPath>CarCom.c</itemPath>
+      <itemPath>CarDataDictionary.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -43,6 +47,9 @@
       <itemPath>Makefile</itemPath>
     </logicalFolder>
   </logicalFolder>
+  <sourceRootList>
+    <Elem>.</Elem>
+  </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
     <conf name="default" type="2">
@@ -53,7 +60,7 @@
         <targetPluginBoard></targetPluginBoard>
         <platformTool>PICkit3PlatformTool</platformTool>
         <languageToolchain>XC16</languageToolchain>
-        <languageToolchainVersion>1.23</languageToolchainVersion>
+        <languageToolchainVersion>1.31</languageToolchainVersion>
         <platform>3</platform>
       </toolsSet>
       <compileType>
@@ -68,6 +75,8 @@
           <parseOnProdLoad>false</parseOnProdLoad>
           <alternateLoadableFile></alternateLoadableFile>
         </loading>
+        <subordinates>
+        </subordinates>
       </compileType>
       <makeCustomizationType>
         <makeCustomizationPreStepEnabled>false</makeCustomizationPreStepEnabled>
