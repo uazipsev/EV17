@@ -46,7 +46,7 @@ char CFGR5 = 0;
 #define VA   0x03 //Analog Power Supply
 #define VD   0x04 //Digital Power Supply
 #define Discharge_Time_Out_Value 0x000 // For chart refering to values Refer to 680412fb data sheet, Page 51,  Variable DCTO
-#define NUMBEROFIC 12
+#define NUMBEROFIC 1
 #define NUMBEROFCH 2
 
 #define NUMBEROFDATA 6

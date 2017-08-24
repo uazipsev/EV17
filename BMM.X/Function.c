@@ -27,20 +27,8 @@ void Setup(void) {
     IEC1bits.INT1IE=1;
     TRISCbits.TRISC8 = 0;
     TRISCbits.TRISC9 = 1;
-//    LATBbits.LATB9=0;
-//    LATBbits.LATB8=0;
-//    delay_ms(1000);
-//    LATBbits.LATB9=1;
-//    LATBbits.LATB8=1;
-
-    //INTCON1bits.NSTDIS = 1; //no nesting of interrupts
 
     PPSUnLock;
-    //PPSout(_OC1, _RP5);
-//    Pin_25_Output = TX1_OUTPUT;
-//    RX1_Pin_Map = 24;
-//    Pin_22_Output = TX2_OUTPUT;
-//    RX2_Pin_Map = 23;
     PPSout(_U1TX, _RP24);
     PPSin(_U1RX, _RP25);
     PPSout(_U2TX, _RP22);
@@ -54,11 +42,7 @@ void Setup(void) {
     initTimerOne();
     CommStart();
     UART1_init();
-   //initTimerTwo();
-    //Start_BMS();
-    //SPI2_Initialize();
-   // InitI2C();
-    //PWM_Init();
+    //initTimerTwo();
 }
 
 void Delay(int wait) {
@@ -90,46 +74,12 @@ void PinSetMode(void) {
     TRISCbits.TRISC6 = INPUT;
     //LATCbits.LATC6=1;
     //LATCbits.LATC7=1;
-    
     BMS_TURN_ON = 1;
-    
 }
 
  void ledDebug() {
-
-        if (time_get(LEDTM) > 500) {
-            INDICATOR = !INDICATOR;
-           // LATBbits.LATB6 =!LATBbits.LATB6 ;
-           // ReadCurrentVolt();
-         /*  
-            hi++;
-            printf( "hi Value %i", hi);
-            if (samp==0){
-                yo=hi;
-                samp=1;
-            }
-            else{
-             yo=((.8*yo )+ (.2*hi));
-            }
-            
-             printf( "yo Value %f", yo);
-            */ 
-            
-            //printf("ADC: %d , %d , %d", CurrentGet(0,1),CurrentGet(0,2),CurrentGet(0,3));
-            //printf(SetUnderOverVoltage(5,8));
-            //printf("5) Errors\n");
-//            if (x == 0) {
-//            Saftey_Relay_Reset = 0;
-//        } else if (x == 1) {
-//            Saftey_Relay_Set = 1;
-//        } else if (x == 2) {
-//            Saftey_Relay_Set = 0;
-//        } else if (x == 3) {
-//            Saftey_Relay_Reset = 1;
-//        } else if (x == 4) {
-//            x = 0;
-//        }
-            //ReadCurrentVolt();
-            time_Set(LEDTM, 0);
-        }
+    if (time_get(LEDTM) > 500) {
+        INDICATOR = !INDICATOR;
+        time_Set(LEDTM, 0);
     }
+}

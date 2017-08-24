@@ -116,7 +116,7 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
     readData = SPI2_Exchange8bit(writeData);
     </code>
  */
-void SPI2_Initialize(void);
+void SPI_Initialize(void);
 
 /**
   @Summary

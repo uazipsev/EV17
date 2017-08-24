@@ -19,25 +19,14 @@
 
 int main(int argc, char** argv) {
     int mode=1;  //mode=1=Run car  mode=2=Charge Car
-    //bool BMM_Setup=true;
+    bool BMM_Setup=true;
     Setup();
-   //printf("Start");
-   //Start_BMS(mode);
-   while (1) { 
-        
-       
-      // printf("\n-----Temp Bank A Mod 1----\n");
-       updateTimers();
-//        if (time_get(ADCTM) > 50) {
-//            static int counter = 0;
-//            if (counter < 4){
-//                //ADCReadings[counter]=readADC(counter++);
-//            }
-//            else counter = 0;
-//            ADCTime = 0;
-//        }
+    printf("Start");
+    Start_BMS(mode);
+    while(1){
+        updateTimers();
         ledDebug();
-        //Run_Mode(BMM_Setup); //Start run mode with setup.
+        Run_Mode(BMM_Setup); //Start run mode with setup.
         //BMM_Setup=false;
         //if (mode == 1) {
         //    //Run_Mode(BMM_Setup); //Start run mode with setup.
@@ -45,9 +34,6 @@ int main(int argc, char** argv) {
         //} else if (mode == 2) {
         //    Charge_Mode();
         //}
-       
-       
-       
        handleDebugRequests();
        updateComms();
     }

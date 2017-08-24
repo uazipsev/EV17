@@ -10,7 +10,7 @@
 #include <stdbool.h>
 #include "LT6804.h"
 #include "timers.h"
-#define Cell_Per_Bank 12
+#define Cell_Per_Bank 1
 
   
 #define Over_Voltage_Value 4

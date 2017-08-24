@@ -21,7 +21,7 @@ bool BypassConfigbank1[NUMBEROFIC][12];
 bool BypassConfigbank2[NUMBEROFIC][12];
 double bankforc = 0;
 int qw = 0;
- int Type_Of_State=0;
+int Type_Of_State=0;
 //|r_config[0]|r_config[1]|r_config[2]|r_config[3]|r_config[4]|r_config[5]|r_config[6]  |r_config[7] |r_config[8]|r_config[9]|  .....    |
 //|-----------|-----------|-----------|-----------|-----------|-----------|-------------|------------|-----------|-----------|-----------|
 //|IC1 CFGR0  |IC1 CFGR1  |IC1 CFGR2  |IC1 CFGR3  |IC1 CFGR4  |IC1 CFGR5  |IC1 PEC High |IC1 PEC Low |IC2 CFGR0  |IC2 CFGR1  |  .....    |
@@ -39,7 +39,7 @@ int qw = 0;
 
 void Start_BMS(int mode) {
     //TODO need to have a mode to make sure all slaves are up in running.
-
+    SPI_Initialize();
     LTC6804_initialize(); //LT Code to setup up the spi and AtoD configuration for the LTc684
     Configure_LT6804(); //Configure and send pramaters to LTC6804
     ADS1015Begin();
@@ -51,7 +51,6 @@ void Start_BMS(int mode) {
         Battery_Is_Charging_Flag = 1;
     Send_To_Charger(Battery_Is_Charging_Flag, Voltage_Charge, Amps_Charge);
     }
-
 }
 
 void Charge_Mode() {
@@ -68,53 +67,45 @@ void Charge_Mode() {
 
 void Run_Mode(bool Start_Setup) {
     //This is used to start the process of the switch statement.
-    if  (Start_Setup==true){
-    
-        
-    Type_Of_State=0;
-    }
-    
-
     wakeup_idle();
-    
+    Read_Cell_Voltage_Bank(cell_codes_Bank1);
     int Fault_Type=0;
     //Read_Total_Voltage(cell_codes_Bank1, cell_codes_Bank2);
 
     //Read_Total_GPIO(Aux_codes_Bank1,Aux_codes_Bank2);
-       if (0) {
-    switch (Type_Of_State) {
-        case 0:
-           Fault_Type= Read_GPIO_Bank(Aux_codes_Bank1);
-            break;
-        case 1:
-           Fault_Type= Read_GPIO_Bank(Aux_codes_Bank2);
-            break;
-        case 2:
-           Fault_Type= Convert_To_Temp_Total(Aux_codes_Bank1, Aux_codes_Bank2);
-            break;
-        case 3:
-          Fault_Type= Read_Cell_Voltage_Bank(cell_codes_Bank1);
-            break;
-        case 4:
-          Fault_Type= Read_Cell_Voltage_Bank(cell_codes_Bank2);
-            break;
-        case 5:
-          Fault_Type= Insert_Cell_Data_Total(cell_codes_Bank1,cell_codes_Bank2);
-            break;
-        case 6:
-            Pack_Cell_Voltage_Sum();
-            Pack_Temperature_Sum();
-            break;
-        case 7:
-            Pack_Cell_Voltage_Sum();
-            Pack_Temperature_Sum();
-            break;
-         case 8:
-            Pack_Cell_Voltage_Sum();
-            Pack_Temperature_Sum();
-            break;    
-    }
-       }
+//    switch (Type_Of_State++) {
+//        case 0:
+//           Fault_Type= Read_GPIO_Bank(Aux_codes_Bank1);
+//            break;
+//        case 1:
+//           Fault_Type= Read_GPIO_Bank(Aux_codes_Bank2);
+//            break;
+//        case 2:
+//           Fault_Type= Convert_To_Temp_Total(Aux_codes_Bank1, Aux_codes_Bank2);
+//            break;
+//        case 3:
+//          Fault_Type= Read_Cell_Voltage_Bank(cell_codes_Bank1);
+//            break;
+//        case 4:
+//          Fault_Type= Read_Cell_Voltage_Bank(cell_codes_Bank2);
+//            break;
+//        case 5:
+//          Fault_Type= Insert_Cell_Data_Total(cell_codes_Bank1,cell_codes_Bank2);
+//            break;
+//        case 6:
+//            Pack_Cell_Voltage_Sum();
+//            Pack_Temperature_Sum();
+//            break;
+//        case 7:
+//            Pack_Cell_Voltage_Sum();
+//            Pack_Temperature_Sum();
+//            break;
+//         case 8:
+//            Pack_Cell_Voltage_Sum();
+//            Pack_Temperature_Sum();
+//            Type_Of_State = 0;
+//            break;    
+//    }
     //Report_Fault(Fault_Type);
     //CheckFault();
     
@@ -122,7 +113,7 @@ void Run_Mode(bool Start_Setup) {
      //if (Type_Of_State==6){
      //Type_Of_State=0;
      //Read_Total_Temperature(Aux_codes_Bank1, Aux_codes_Bank2);
-     Send_Read_GPIO_Command(0, Aux_codes_Bank1);
+     //Send_Read_GPIO_Command(0, Aux_codes_Bank1);
 //Read_GPIO_Bank(Aux_codes_Bank1);
  //Convert_To_Temp_Total(Aux_codes_Bank1, Aux_codes_Bank2);
 

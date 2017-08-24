@@ -90,7 +90,6 @@ int ADSTAT [2]; //!< /Stat conversion command.
 */
 void LTC6804_initialize()
 {
-  SPI2_Initialize();
   //Need to determine ADC Values
   set_adc(MD_NORMAL,DCP_DISABLED,CELL_CH_ALL,AUX_CH_ALL);
 }
@@ -1150,7 +1149,13 @@ int LTC6804_rdcfg(int total_ic, int r_config[][8])
 void wakeup_idle()
 {
   LT6020_1_CS = 0;
-  delay_us(10); //Guarantees the isoSPI will be in ready mode
+  Delay(2); //Guarantees the isoSPI will be in ready mode
+  SPI2_Exchange8bit(0xAA);
+  LT6020_1_CS = 1;
+  Delay(1); 
+  LT6020_1_CS = 0;
+  Delay(2); //Guarantees the isoSPI will be in ready mode
+  SPI2_Exchange8bit(0xAA);
   LT6020_1_CS = 1;
 }
 

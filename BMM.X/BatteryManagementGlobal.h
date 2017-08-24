@@ -13,7 +13,7 @@ extern "C" {
 #endif
 
 
-#define NUMBEROFIC 12
+#define NUMBEROFIC 1
 #define NUMBEROFCH 2
 #define bank_1 1
 #define bank_2 2

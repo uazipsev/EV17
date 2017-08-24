@@ -14,7 +14,7 @@
   Section: Module APIs
 */
 
-void SPI2_Initialize(void)
+void SPI_Initialize(void)
 {
     // Set the SPI2 module to the options selected in the User Interface
     SPI1CON1 = 0x0079;   //23  //This ets SPRE and PPRE to a 1:64 prescale   
