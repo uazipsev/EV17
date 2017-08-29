@@ -4,8 +4,8 @@
 int cell_codes_Bank1[NUMBEROFIC][12];
 int cell_codes_Bank2[NUMBEROFIC][12];
 
-double Average_cell_codes_Bank1[NUMBEROFIC][12];
-double Average_cell_codes_Bank2[NUMBEROFIC][12];
+ float Average_cell_codes_Bank1[NUMBEROFIC][12];
+ float Average_cell_codes_Bank2[NUMBEROFIC][12];
 
 double Min_Cell_Voltage[2][3];
 double Max_Cell_Voltage[2][3];
@@ -38,16 +38,16 @@ int Read_Total_Voltage(int cell_codesBank1[][12], int cell_codesBank2[][12]) {
 int Insert_Cell_Data_Total(int New_Cell_Data_Bank1[][12], int New_Cell_Data_Bank2[][12]){
         int Fault=0;
     Insert_Cell_Data_Bank(bank_1,New_Cell_Data_Bank1);
-    Insert_Cell_Data_Bank(bank_2,New_Cell_Data_Bank2);
+    //Insert_Cell_Data_Bank(bank_2,New_Cell_Data_Bank2);
     if (Starting_Samples==false){
 Fault=Check_Array_Faults_Cells();}
     return Fault;
 }
 
 void Insert_Cell_Data_Bank(int bank_num, int I_New_Cell_Data[][12]){
-    double D_New_Cell_Data[NUMBEROFIC][12];
-Convert_To_Voltage_Cell(I_New_Cell_Data,D_New_Cell_Data);
-Update_Average_Array_Cell(bank_num, D_New_Cell_Data);
+    float D_New_Cell_Data[NUMBEROFIC][12];
+    Convert_To_Voltage_Cell(I_New_Cell_Data,D_New_Cell_Data);
+    Update_Average_Array_Cell(bank_num, D_New_Cell_Data);
 }
 
 
@@ -60,17 +60,17 @@ Update_Average_Array_Cell(bank_num, D_New_Cell_Data);
 int Read_Cell_Voltage_Bank(int Cell_Voltage_codes[][12]){
     int  Read_Status_INC = 0;
     int Fault;
-        do { 
+    //    do { 
              Fault = Send_Read_CellV_Command(0, Cell_Voltage_codes);
-            if (Fault != 0) {
-                Read_Status_INC = Read_Status_INC + 1;
-           }
-   
-      } while (Fault != 0 && Read_Status_INC <= 10);
-      //If we cant read the registers 10 times in the row call a fault. 
-       if (Read_Status_INC > 10) {
-          Fault = ReadVoltRegFault;
-       }
+    //        if (Fault != 0) {
+    //            Read_Status_INC = Read_Status_INC + 1;
+    //       }
+   //
+    //  } while (Fault != 0 && Read_Status_INC <= 10);
+    //  //If we cant read the registers 10 times in the row call a fault. 
+     //  if (Read_Status_INC > 10) {
+     //     Fault = ReadVoltRegFault;
+    //   }
     return Fault;
 }
 
@@ -88,19 +88,21 @@ int Read_Cell_Voltage_Bank(int Cell_Voltage_codes[][12]){
 
 int Send_Read_CellV_Command(int ReadOption, int cell_codes[][12]) {
     int Fault = 0;
+    int cell_codes_Bank1_Test[NUMBEROFIC][12];
     switch (ReadOption) {
         //The difference of ReadOption determines which set of cells are going to be read where case 0 is all of the voltage cells in a IC.
         case 0:
             //Setup the ADC for the request.
             set_adc(MD_FILTERED, DCP_DISABLED, CELL_CH_ALL, AUX_CH_ALL);
-            //Alert the LTC6804
-            wakeup_idle();
-            //Send data
+            //Send Config Data
+            UpdateLT6804(1);
+            //Send ADC Data
             LTC6804_adcv();
-            //Alert the LTC6804
-            wakeup_idle();
-            //Read data
+            //Read ADC Values in mV
+            Delay(4);
+            
             Fault = LTC6804_rdcv(0, NUMBEROFIC, cell_codes);
+            Fault = 0;
             break;
         case 1:
             set_adc(MD_NORMAL, DCP_DISABLED, CELL_CH_1and7, AUX_CH_ALL);
@@ -166,15 +168,21 @@ int Send_Read_CellV_Command(int ReadOption, int cell_codes[][12]) {
  * @brief           Data to be converted to the appropriate voltage level
  * @return          none        
  *******************************************************************/
-void Convert_To_Voltage_Cell(int I_Array_Bank[][12],double D_Array_Bank[][12]) {
+void Convert_To_Voltage_Cell(int I_Array_Bank[][12], float D_Array_Bank[][12]) {
     int ic = 0;
     int cell = 0;
-    int Temp_ValB1 = 0;
+    float Temp_ValB1 = 0;
     while (ic < NUMBEROFIC) {
         while (cell < Cell_Per_Bank) {
              //Had to convert to float from int first than mutiply the floating number gave me errors otherwise.
             Temp_ValB1 = I_Array_Bank[ic][cell];
-            D_Array_Bank[ic][cell] = Temp_ValB1*0.0001;
+            if(Temp_ValB1 == 0xFFFF){
+               D_Array_Bank[ic][cell] = 0; 
+            }
+            else{
+                D_Array_Bank[ic][cell] = Temp_ValB1*0.0001;
+            }
+            //printf("IC = %i Cell = %i Volt = %f \n\r",ic,cell,D_Array_Bank[ic][cell]);
             cell++;
         }
         cell=0;
@@ -190,7 +198,7 @@ void Convert_To_Voltage_Cell(int I_Array_Bank[][12],double D_Array_Bank[][12]) {
  *                  of the current average of the Temperature values. The weight is .80 to .20 
  * @return          none          
  *******************************************************************/
-void Update_Average_Array_Cell(int bank, double Array_Bank[][12]) {
+void Update_Average_Array_Cell(int bank, float Array_Bank[][12]) {
     int Ic = 0;
     int cell = 0;
     //If first sample there is no weighted needed because it is the first sample.

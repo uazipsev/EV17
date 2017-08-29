@@ -42,6 +42,7 @@ void Start_BMS(int mode) {
     SPI_Initialize();
     LTC6804_initialize(); //LT Code to setup up the spi and AtoD configuration for the LTc684
     Configure_LT6804(); //Configure and send pramaters to LTC6804
+    time_Set(SLVTM,0);
     ADS1015Begin();
     if (mode == 1) {
             Type_Of_State=0;
@@ -67,9 +68,14 @@ void Charge_Mode() {
 
 void Run_Mode(bool Start_Setup) {
     //This is used to start the process of the switch statement.
-    wakeup_idle();
-    Read_Cell_Voltage_Bank(cell_codes_Bank1);
-    int Fault_Type=0;
+    if(time_get(SLVTM) > 500){
+        wakeup_sleep();
+        Read_Cell_Voltage_Bank(cell_codes_Bank1);
+        Insert_Cell_Data_Total(cell_codes_Bank1,cell_codes_Bank2);
+        //Update_Average_Array_Cell(1,cell_codes_Bank1);
+        int Fault_Type=0;
+        time_Set(SLVTM,0);
+    }
     //Read_Total_Voltage(cell_codes_Bank1, cell_codes_Bank2);
 
     //Read_Total_GPIO(Aux_codes_Bank1,Aux_codes_Bank2);

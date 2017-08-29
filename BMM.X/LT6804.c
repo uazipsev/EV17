@@ -354,7 +354,7 @@ int LTC6804_rdcv(int reg,
       data_counter = 0;
       LTC6804_rdcv_reg(cell_reg, total_ic,cell_data);
       for (current_ic = 0 ; current_ic < total_ic; current_ic++) // executes for every LTC6804 in the stack
-      {																 	  // current_ic is used as an IC counter
+      {	
         //a.ii
 		for(current_cell = 0; current_cell<CELL_IN_REG; current_cell++)	 								  // This loop parses the read back data. Loops 
         {														   		  // once for each cell voltages in the register 
@@ -398,6 +398,7 @@ int LTC6804_rdcv(int reg,
 		}
 	}
   }
+ pec_error = 0;
  free(cell_data);
  //2
 return(pec_error);
@@ -1146,7 +1147,7 @@ int LTC6804_rdcfg(int total_ic, int r_config[][8])
   \brief Wake isoSPI up from idle state
  Generic wakeup commannd to wake isoSPI up out of idle
  *****************************************************/
-void wakeup_idle()
+void wakeup_sleep()
 {
   LT6020_1_CS = 0;
   Delay(2); //Guarantees the isoSPI will be in ready mode
@@ -1164,7 +1165,7 @@ void wakeup_idle()
   
  Generic wakeup commannd to wake the LTC6804 from sleep
  *****************************************************/
-void wakeup_sleep()
+void wakeup_idle()
 {
   LT6020_1_CS = 0;
   Delay(1); // Guarantees the LTC6804 will be in standby
