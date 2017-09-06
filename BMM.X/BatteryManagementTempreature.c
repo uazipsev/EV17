@@ -49,16 +49,16 @@ int Read_Total_Temperature(int Aux_codes_Bank1[][6], int Aux_codes_Bank2[][6]) {
 int Read_GPIO_Bank(int Aux_codes[][6]){
     int  Read_Status_INC = 0;
     int Fault;
-        do { 
+//        do { 
              Fault = Send_Read_GPIO_Command(0, Aux_codes);
-            if (Fault != 0) {
-                Read_Status_INC = Read_Status_INC + 1;
-           }
-   
-      } while (Fault != 0 && Read_Status_INC <= 10);
-       if (Read_Status_INC > 10) {
-          Fault = ReadAuxRegFault;
-       }
+//            if (Fault != 0) {
+//                Read_Status_INC = Read_Status_INC + 1;
+//           }
+//   
+//      } while (Fault != 0 && Read_Status_INC <= 10);
+//       if (Read_Status_INC > 10) {
+//          Fault = ReadAuxRegFault;
+//       }
     return Fault;
 }
 

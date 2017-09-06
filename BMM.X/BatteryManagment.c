@@ -66,14 +66,43 @@ void Charge_Mode() {
 
 }
 
+bool LED_Blink = 0;
+
 void Run_Mode(bool Start_Setup) {
     //This is used to start the process of the switch statement.
     if(time_get(SLVTM) > 500){
-        wakeup_sleep();
-        Read_Cell_Voltage_Bank(cell_codes_Bank1);
-        Insert_Cell_Data_Total(cell_codes_Bank1,cell_codes_Bank2);
+        //wakeup_sleep();
+        //Read_Cell_Voltage_Bank(cell_codes_Bank1);
+        //Insert_Cell_Data_Total(cell_codes_Bank1,cell_codes_Bank2);
         //Update_Average_Array_Cell(1,cell_codes_Bank1);
-        int Fault_Type=0;
+        //Send_Read_GPIO_Command(0, Aux_codes_Bank1);
+        //Read_GPIO_Bank(Aux_codes_Bank1);
+        //Convert_To_Temp_Total(Aux_codes_Bank1, Aux_codes_Bank2);
+        //int Fault_Type=0;
+        
+        int bank = 1;
+        int ICnum = 0;
+        LED_Blink = !LED_Blink;
+    while (bank < NUMBEROFCH) {
+        while (ICnum < NUMBEROFIC) {
+            Set_REFON_Pin(bank, ICnum, 1);
+            Set_ADC_Mode(bank, ICnum, 0);
+            Set_DCC_Mode_OFF(bank, ICnum);
+            Set_DCTO_Mode_OFF(bank, ICnum);
+            SetTempEnable(bank, ICnum, LED_Blink);
+            SetUnderOverVoltage(Under_Voltage_Value_LTC, Over_Voltage_Value_LTC, bank, ICnum);
+            SetBypass(bank, ICnum, 1, true);
+            //This is hardcoded need to see if this can be implemented.
+            //LTC6804_DATA_ConfigBank1[IC][0] = 0xFE;
+            //LTC6804_DATA_ConfigBank2[IC][0] = 0xFE;
+            ICnum++;
+        };
+        bank++;
+    }
+    wakeup_sleep();
+    UpdateLT6804(1);
+        
+        
         time_Set(SLVTM,0);
     }
     //Read_Total_Voltage(cell_codes_Bank1, cell_codes_Bank2);
@@ -250,15 +279,16 @@ void Configure_LT6804() {
             Set_ADC_Mode(bank, IC, 0);
             Set_DCC_Mode_OFF(bank, IC);
             Set_DCTO_Mode_OFF(bank, IC);
-            //SetTempEnable(bank, IC, 1);
+            SetTempEnable(bank, IC, 1);
             SetUnderOverVoltage(Under_Voltage_Value_LTC, Over_Voltage_Value_LTC, bank, IC);
             //This is hardcoded need to see if this can be implemented.
-            LTC6804_DATA_ConfigBank1[IC][0] = 0xFE;
-            LTC6804_DATA_ConfigBank2[IC][0] = 0xFE;
+            //LTC6804_DATA_ConfigBank1[IC][0] = 0xFE;
+            //LTC6804_DATA_ConfigBank2[IC][0] = 0xFE;
             IC++;
         };
         bank++;
     }
+    wakeup_sleep();
     UpdateLT6804(1);
     //UpdateLT6804(2);
 }
@@ -660,10 +690,15 @@ void Open_All_ByPass()//This function is to open all ByPasses
 
 int SetTempEnable(int bank, int ic, bool value) {
     int fault_value = 0;
+    if (bank == 1) {
+        CFGR0 = LTC6804_DATA_ConfigBank1[ic][0]; 
+    } else if (bank == 2) {
+        CFGR0 = LTC6804_DATA_ConfigBank2[ic][0];
+    }
     if (value) {
-        CFGR0 = CFGR0 | (1 << 7); //Turn on GPIO 5
-    } else {
         CFGR0 = CFGR0 & ~(1 << 7); //Turn off GPIO 5
+    } else {
+        CFGR0 = CFGR0 | (1 << 7); //Turn on GPIO 5
     }
 
     if (bank == 1) {
