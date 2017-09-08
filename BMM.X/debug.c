@@ -61,7 +61,7 @@ void handleDebugRequests() {
                 ic = 0;
                 counter = 0;
                 while (ic < 3) {
-                    while (counter < 5) {
+                    while (counter < 4) {
                         temp = gettemp(ic, counter, bank_1);
                         printf("Temp for IC:%i and Sensor #:%i =%f\n", ic, counter, temp);
                         temp = Aux_codes_Bank1[ic][counter]; //TODO for debuging consle get rid of
@@ -81,7 +81,7 @@ void handleDebugRequests() {
                 ic = 3;
                 counter = 0;
                 while (ic < 6) {
-                    while (counter < 5) {
+                    while (counter < 4) {
                         temp = gettemp(ic, counter, bank_1);
                         printf("Temp for IC:%i and Sensor #:%i =%f\n", ic, counter, temp);
                         counter++;
@@ -98,7 +98,7 @@ void handleDebugRequests() {
                 ic = 6;
                 counter = 0;
                 while (ic < 9) {
-                    while (counter < 5) {
+                    while (counter < 4) {
                         temp = gettemp(ic, counter, bank_1);
                         // temp=Aux_codes_Bank1[ic][counter];
                         printf("Temp for IC:%i and Sensor #:%i =%f\n", ic, counter, temp);
@@ -116,7 +116,7 @@ void handleDebugRequests() {
                 ic = 0;
                 counter = 0;
                 while (ic < 3) {
-                    while (counter < 5) {
+                    while (counter < 4) {
                         temp = gettemp(ic, counter, bank_2);
                         printf("Temp for IC:%i and Sensor #:%i =%f\n", ic, counter, temp);
                         counter++;
@@ -133,7 +133,7 @@ void handleDebugRequests() {
                 ic = 3;
                 counter = 0;
                 while (ic < 6) {
-                    while (counter < 5) {
+                    while (counter < 4) {
                         temp = gettemp(ic, counter, bank_2);
                         printf("Temp for IC:%i and Sensor #:%i =%f\n", ic, counter, temp);
                         counter++;

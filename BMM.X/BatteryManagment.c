@@ -71,36 +71,16 @@ bool LED_Blink = 0;
 void Run_Mode(bool Start_Setup) {
     //This is used to start the process of the switch statement.
     if(time_get(SLVTM) > 500){
-        //wakeup_sleep();
-        //Read_Cell_Voltage_Bank(cell_codes_Bank1);
-        //Insert_Cell_Data_Total(cell_codes_Bank1,cell_codes_Bank2);
-        //Update_Average_Array_Cell(1,cell_codes_Bank1);
-        //Send_Read_GPIO_Command(0, Aux_codes_Bank1);
-        //Read_GPIO_Bank(Aux_codes_Bank1);
-        //Convert_To_Temp_Total(Aux_codes_Bank1, Aux_codes_Bank2);
+        wakeup_sleep();
+        UpdateLT6804(1);
+        Read_Cell_Voltage_Bank(cell_codes_Bank1);
+        Insert_Cell_Data_Total(cell_codes_Bank1,cell_codes_Bank2);
+        Update_Average_Array_Cell(1,cell_codes_Bank1);
+        UpdateLT6804(1);
+        Read_GPIO_Bank(Aux_codes_Bank1);
+        Convert_To_Temp_Total(Aux_codes_Bank1, Aux_codes_Bank2);
         //int Fault_Type=0;
         
-        int bank = 1;
-        int ICnum = 0;
-        LED_Blink = !LED_Blink;
-    while (bank < NUMBEROFCH) {
-        while (ICnum < NUMBEROFIC) {
-            Set_REFON_Pin(bank, ICnum, 1);
-            Set_ADC_Mode(bank, ICnum, 0);
-            Set_DCC_Mode_OFF(bank, ICnum);
-            Set_DCTO_Mode_OFF(bank, ICnum);
-            SetTempEnable(bank, ICnum, LED_Blink);
-            SetUnderOverVoltage(Under_Voltage_Value_LTC, Over_Voltage_Value_LTC, bank, ICnum);
-            SetBypass(bank, ICnum, 1, true);
-            //This is hardcoded need to see if this can be implemented.
-            //LTC6804_DATA_ConfigBank1[IC][0] = 0xFE;
-            //LTC6804_DATA_ConfigBank2[IC][0] = 0xFE;
-            ICnum++;
-        };
-        bank++;
-    }
-    wakeup_sleep();
-    UpdateLT6804(1);
         
         
         time_Set(SLVTM,0);
@@ -275,6 +255,8 @@ void Configure_LT6804() {
     //      LTC6804_DATA_ConfigBank1[i][0]= CFGR0 | }
     while (bank < NUMBEROFCH) {
         while (IC < NUMBEROFIC) {
+            LTC6804_DATA_ConfigBank1[IC][0] = 0xFE;
+            //LTC6804_DATA_ConfigBank2[IC][0] = 0xFE;
             Set_REFON_Pin(bank, IC, 1);
             Set_ADC_Mode(bank, IC, 0);
             Set_DCC_Mode_OFF(bank, IC);
@@ -282,8 +264,7 @@ void Configure_LT6804() {
             SetTempEnable(bank, IC, 1);
             SetUnderOverVoltage(Under_Voltage_Value_LTC, Over_Voltage_Value_LTC, bank, IC);
             //This is hardcoded need to see if this can be implemented.
-            //LTC6804_DATA_ConfigBank1[IC][0] = 0xFE;
-            //LTC6804_DATA_ConfigBank2[IC][0] = 0xFE;
+
             IC++;
         };
         bank++;
@@ -817,6 +798,13 @@ int Set_DCTO_Mode_OFF(int bank, int ic) {
  *******************************************************************************/
 int Set_REFON_Pin(int bank, int ic, bool REFON_Mode) {
     int fault_value = 0;
+    if (bank == 1) {
+        CFGR0 = LTC6804_DATA_ConfigBank1[ic][0];
+    } else if (bank == 2) {
+        CFGR0 = LTC6804_DATA_ConfigBank2[ic][0];
+    } else {
+        return 0;
+    }
     if (REFON_Mode) {
         CFGR0 = CFGR0 | REFON_TURN_ON;
     } else {

@@ -94,13 +94,9 @@ int Send_Read_CellV_Command(int ReadOption, int cell_codes[][12]) {
         case 0:
             //Setup the ADC for the request.
             set_adc(MD_FILTERED, DCP_DISABLED, CELL_CH_ALL, AUX_CH_ALL);
-            //Send Config Data
-            UpdateLT6804(1);
             //Send ADC Data
             LTC6804_adcv();
             //Read ADC Values in mV
-            Delay(4);
-            
             Fault = LTC6804_rdcv(0, NUMBEROFIC, cell_codes);
             Fault = 0;
             break;
