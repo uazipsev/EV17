@@ -150,7 +150,7 @@ void handleDebugRequests() {
                 ic = 6;
                 counter = 0;
                 while (ic < 9) {
-                    while (counter < 5) {
+                    while (counter < 4) {
                         temp = gettemp(ic, counter, bank_2);
                         printf("Temp for IC:%i and Sensor #:%i =%f\n", ic, counter, temp);
                         counter++;

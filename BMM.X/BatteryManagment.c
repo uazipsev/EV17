@@ -66,23 +66,26 @@ void Charge_Mode() {
 
 }
 
-bool LED_Blink = 0;
+bool LastVal = 1;
 
 void Run_Mode(bool Start_Setup) {
     //This is used to start the process of the switch statement.
-    if(time_get(SLVTM) > 500){
-        wakeup_sleep();
-        UpdateLT6804(1);
-        Read_Cell_Voltage_Bank(cell_codes_Bank1);
-        Insert_Cell_Data_Total(cell_codes_Bank1,cell_codes_Bank2);
-        Update_Average_Array_Cell(1,cell_codes_Bank1);
-        UpdateLT6804(1);
-        Read_GPIO_Bank(Aux_codes_Bank1);
-        Convert_To_Temp_Total(Aux_codes_Bank1, Aux_codes_Bank2);
-        //int Fault_Type=0;
-        
-        
-        
+    if(time_get(SLVTM) > 50){
+        if(LastVal){
+            //SetBoardTempEnable(0);
+            Read_Cell_Voltage_Bank(cell_codes_Bank1);
+            Insert_Cell_Data_Total(cell_codes_Bank1,cell_codes_Bank2);
+            //Update_Average_Array_Cell(1,cell_codes_Bank1); //This fcn is causing issues....Why? 
+            LastVal = 0;
+        }
+        else{
+            SetBoardTempEnable(1);
+            Read_GPIO_Bank(Aux_codes_Bank1);
+            Convert_To_Temp_Total(Aux_codes_Bank1, Aux_codes_Bank2);
+            SetBoardTempEnable(0);
+            LastVal = 1;
+        }
+        int Fault_Type=0;
         time_Set(SLVTM,0);
     }
     //Read_Total_Voltage(cell_codes_Bank1, cell_codes_Bank2);
@@ -255,21 +258,21 @@ void Configure_LT6804() {
     //      LTC6804_DATA_ConfigBank1[i][0]= CFGR0 | }
     while (bank < NUMBEROFCH) {
         while (IC < NUMBEROFIC) {
-            LTC6804_DATA_ConfigBank1[IC][0] = 0xFE;
-            //LTC6804_DATA_ConfigBank2[IC][0] = 0xFE;
-            Set_REFON_Pin(bank, IC, 1);
+            
             Set_ADC_Mode(bank, IC, 0);
             Set_DCC_Mode_OFF(bank, IC);
             Set_DCTO_Mode_OFF(bank, IC);
-            SetTempEnable(bank, IC, 1);
+            //SetTempEnable(bank, IC, 1);
             SetUnderOverVoltage(Under_Voltage_Value_LTC, Over_Voltage_Value_LTC, bank, IC);
             //This is hardcoded need to see if this can be implemented.
-
+            LTC6804_DATA_ConfigBank1[IC][0] = 0x7E;
+            LTC6804_DATA_ConfigBank2[IC][0] = 0x7E;
+            //Set_REFON_Pin(bank, IC, 1);
+            SetTempEnable(bank, IC, 1);
             IC++;
         };
         bank++;
     }
-    wakeup_sleep();
     UpdateLT6804(1);
     //UpdateLT6804(2);
 }
@@ -672,9 +675,11 @@ void Open_All_ByPass()//This function is to open all ByPasses
 int SetTempEnable(int bank, int ic, bool value) {
     int fault_value = 0;
     if (bank == 1) {
-        CFGR0 = LTC6804_DATA_ConfigBank1[ic][0]; 
+        CFGR0 = LTC6804_DATA_ConfigBank1[ic][0];
     } else if (bank == 2) {
         CFGR0 = LTC6804_DATA_ConfigBank2[ic][0];
+    } else {
+        fault_value = NoBankselected;
     }
     if (value) {
         CFGR0 = CFGR0 & ~(1 << 7); //Turn off GPIO 5
@@ -803,12 +808,12 @@ int Set_REFON_Pin(int bank, int ic, bool REFON_Mode) {
     } else if (bank == 2) {
         CFGR0 = LTC6804_DATA_ConfigBank2[ic][0];
     } else {
-        return 0;
+        fault_value = NoBankselected;
     }
     if (REFON_Mode) {
-        CFGR0 = CFGR0 | REFON_TURN_ON;
-    } else {
         CFGR0 = CFGR0 & ~REFON_TURN_ON; //REFOFF_TURN_OFF
+    } else {   
+        CFGR0 = CFGR0 | REFON_TURN_ON;
     }
     if (bank == 1) {
         LTC6804_DATA_ConfigBank1[ic][0] = CFGR0;
@@ -973,4 +978,29 @@ double VoltGet(char channel) {
     else {
         return Volt2;
     }
+}
+
+
+void SetBoardTempEnable(bool TempEn){
+    int IC_num = 0;
+    int bank = 1;
+
+    while (bank < NUMBEROFCH) {
+        while (IC_num < NUMBEROFIC) {
+            
+//            Set_ADC_Mode(bank, IC_num, 0);
+//            Set_DCC_Mode_OFF(bank, IC_num);
+//            Set_DCTO_Mode_OFF(bank, IC_num);
+//            //SetTempEnable(bank, IC, 1);
+//            SetUnderOverVoltage(Under_Voltage_Value_LTC, Over_Voltage_Value_LTC, bank, IC);
+//            //This is hardcoded need to see if this can be implemented.
+//            LTC6804_DATA_ConfigBank1[IC_num][0] = 0x7E;
+//            LTC6804_DATA_ConfigBank2[IC_num][0] = 0x7E;
+            //Set_REFON_Pin(bank, IC, 1);
+            SetTempEnable(bank, IC_num, TempEn);
+            IC_num++;
+        };
+        bank++;
+    }
+    UpdateLT6804(1);
 }

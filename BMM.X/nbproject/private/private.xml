@@ -6,13 +6,11 @@
         <group>
             <file>file:/D:/EV17.git/trunk/BMM.X/BatteryManagementCells.c</file>
             <file>file:/D:/EV17.git/trunk/BMM.X/BatteryManagment.h</file>
-            <file>file:/D:/EV17.git/trunk/BMM.X/BatteryManagmentPrivate.h</file>
             <file>file:/D:/EV17.git/trunk/BMM.X/LT6804.c</file>
             <file>file:/D:/EV17.git/trunk/BMM.X/BatteryManagment.c</file>
             <file>file:/D:/EV17.git/trunk/BMM.X/main.c</file>
             <file>file:/D:/EV17.git/trunk/BMM.X/debug.c</file>
             <file>file:/D:/EV17.git/trunk/BMM.X/BatteryManagementTempreature.c</file>
-            <file>file:/D:/EV17.git/trunk/BMM.X/Function.c</file>
         </group>
     </open-files>
 </project-private>

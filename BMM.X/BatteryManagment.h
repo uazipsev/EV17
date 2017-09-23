@@ -30,6 +30,9 @@ void ReadVoltToCurrent();
 void ReadVolt();
 void Run_Mode(bool Start_Setup);
 void Charge_Mode();
+
+void SetBoardTempEnable(bool TempEn);
+
   extern int FaultValue;// TODO IS THIs THE RIGHT WAY FOR A GLOBAL VARIABLE?
 
   extern bool BypassConfigbank1[NUMBEROFIC][12];

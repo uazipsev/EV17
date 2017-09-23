@@ -92,6 +92,7 @@ int Send_Read_CellV_Command(int ReadOption, int cell_codes[][12]) {
     switch (ReadOption) {
         //The difference of ReadOption determines which set of cells are going to be read where case 0 is all of the voltage cells in a IC.
         case 0:
+
             //Setup the ADC for the request.
             set_adc(MD_FILTERED, DCP_DISABLED, CELL_CH_ALL, AUX_CH_ALL);
             //Send ADC Data
