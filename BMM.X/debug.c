@@ -364,7 +364,7 @@ void MenuPrint(char Menuloc, char Subloc) {
             printf("3) Temp\n");
             printf("4) Voltage - Bypass\n");
             printf("5) Errors\n");
-            printf("6) Max statistics");
+            printf("6) Max statistics\n");
             break;
         case 1:
             AddressMenu(Subloc);
@@ -386,6 +386,7 @@ void MenuPrint(char Menuloc, char Subloc) {
         default:
             printf("******NO Match*****\n");
             Menu = 0;
+            MenuPrint(0,0); 
             break;
     }
     Menudisplay = 0;

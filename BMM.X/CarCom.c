@@ -17,7 +17,7 @@ void sendData(unsigned char whereToSend, unsigned char ComandByte, unsigned char
     unsigned char COBSArray[30];
     
     int j = 0;
-    for(j;j<sizeof(SendArray);j++){
+    for(;j<sizeof(SendArray);j++){
         SendArray[j] = 0;
     }
     
@@ -32,7 +32,7 @@ void sendData(unsigned char whereToSend, unsigned char ComandByte, unsigned char
     unsigned char i = 0;
     int count = NUMOFEXTBYTES;
     
-    for(i;i<lenth;i++){
+    for(;i<lenth;i++){
         SendArray[i+NUMOFEXTBYTES] = DTS[i];
         count++;
     }
@@ -53,8 +53,8 @@ void sendData(unsigned char whereToSend, unsigned char ComandByte, unsigned char
     }
 }
 
- char ReciveArray[30];
- char ProcessArray[30];
+unsigned char ReciveArray[30];
+unsigned char ProcessArray[30];
             unsigned char Data = 0;
             
 bool receiveData() {

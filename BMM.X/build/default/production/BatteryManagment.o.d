@@ -10,5 +10,6 @@ PinDef.h  \
  BatteryManagementCells.h  \
 timers.h  \
 ADS1015.h  \
+spi2.h  \
 Communications.h  \
  ADDRESSING.h 

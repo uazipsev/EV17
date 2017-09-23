@@ -10,6 +10,7 @@
 #include "BatteryManagementTemperature.h"
 #include "BatteryManagementCells.h"
 #include "ADS1015.h"
+#include "spi2.h"
 #include "LT6804.h"
 #include "Timers.h"
 #include <stdbool.h>
@@ -70,22 +71,23 @@ bool LastVal = 1;
 
 void Run_Mode(bool Start_Setup) {
     //This is used to start the process of the switch statement.
-    if(time_get(SLVTM) > 50){
+    int Fault_Type=0;
+    if(time_get(SLVTM) > 250){
         if(LastVal){
             //SetBoardTempEnable(0);
-            Read_Cell_Voltage_Bank(cell_codes_Bank1);
+            Fault_Type = Read_Cell_Voltage_Bank(cell_codes_Bank1);
             Insert_Cell_Data_Total(cell_codes_Bank1,cell_codes_Bank2);
             //Update_Average_Array_Cell(1,cell_codes_Bank1); //This fcn is causing issues....Why? 
             LastVal = 0;
         }
         else{
             SetBoardTempEnable(1);
-            Read_GPIO_Bank(Aux_codes_Bank1);
+            Fault_Type = Read_GPIO_Bank(Aux_codes_Bank1);
             Convert_To_Temp_Total(Aux_codes_Bank1, Aux_codes_Bank2);
             SetBoardTempEnable(0);
             LastVal = 1;
         }
-        int Fault_Type=0;
+        
         time_Set(SLVTM,0);
     }
     //Read_Total_Voltage(cell_codes_Bank1, cell_codes_Bank2);

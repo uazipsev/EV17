@@ -28,7 +28,7 @@ int Send_Read_CellV_Command(int ReadOption, int cell_codes[][12]);// Amount of I
 void Convert_To_Voltage_Cell(int I_Array_Bank[][12], float D_Array_Bank[][12]);  //Converts A to D readings from the LTC6804 to voltages to determine the voltage.
 void Update_Average_Array_Cell(int bank, float Array_Bank[][12]);
 int Check_Array_Faults_Cells();
-int Check_Cell_Thresholds_Bank(int bank, double cell_codes_bank[][12]) ; // Checks the voltage of a bank if one cell has a error it will break out and present the error.  
+int Check_Cell_Thresholds_Bank(int bank, float cell_codes_bank[][12]) ; // Checks the voltage of a bank if one cell has a error it will break out and present the error.  
 int Check_Thresholds_Cell( double data);// Checks each cell to see if the data is over the threshold.
 int TestThreshold(int test, double data); 
 void Pack_Cell_Voltage_Sum();

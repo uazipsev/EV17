@@ -58,19 +58,8 @@ void Insert_Cell_Data_Bank(int bank_num, int I_New_Cell_Data[][12]){
  *                  to 10 times before it returns a fault.        
  *******************************************************************/
 int Read_Cell_Voltage_Bank(int Cell_Voltage_codes[][12]){
-    int  Read_Status_INC = 0;
-    int Fault;
-    //    do { 
-             Fault = Send_Read_CellV_Command(0, Cell_Voltage_codes);
-    //        if (Fault != 0) {
-    //            Read_Status_INC = Read_Status_INC + 1;
-    //       }
-   //
-    //  } while (Fault != 0 && Read_Status_INC <= 10);
-    //  //If we cant read the registers 10 times in the row call a fault. 
-     //  if (Read_Status_INC > 10) {
-     //     Fault = ReadVoltRegFault;
-    //   }
+    int Fault = 0;
+    Fault = Send_Read_CellV_Command(0, Cell_Voltage_codes);
     return Fault;
 }
 
@@ -88,7 +77,7 @@ int Read_Cell_Voltage_Bank(int Cell_Voltage_codes[][12]){
 
 int Send_Read_CellV_Command(int ReadOption, int cell_codes[][12]) {
     int Fault = 0;
-    int cell_codes_Bank1_Test[NUMBEROFIC][12];
+    //int cell_codes_Bank1_Test[NUMBEROFIC][12];
     switch (ReadOption) {
         //The difference of ReadOption determines which set of cells are going to be read where case 0 is all of the voltage cells in a IC.
         case 0:
@@ -244,7 +233,7 @@ int Check_Array_Faults_Cells() {
 
 //Function to check all the voltage thresholds in the pack. And assigning minimum and maximum values.
 
-int Check_Cell_Thresholds_Bank(int bank, double cell_codes_bank[][12]) {
+int Check_Cell_Thresholds_Bank(int bank, float cell_codes_bank[][12]) {
     int Fault = 0;
     //Going through every IC and cell
     for (int CurrentIC = 0; CurrentIC < NUMBEROFIC; CurrentIC++) {
